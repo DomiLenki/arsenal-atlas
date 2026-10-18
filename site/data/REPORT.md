@@ -1,37 +1,134 @@
-## Arsenal Atlas – Datenstand 2026-10-18T12:14:51.615Z
+## Arsenal Atlas – Datenstand 2026-10-18T12:18:06.663Z
+
+### K
+- Kategorie „Flugzeugtyp des Ersten Weltkrieges (Deutsches Reich)“ (Tiefe 1): 369 Artikel aus 13 Kategorien
+- Kategorie „Luftschiff (Kaiserliche Marine)“ (Tiefe 1): 28 Artikel aus 1 Kategorien
+- Kategorie „Militärluftschiff“ (Tiefe 1): 53 Artikel aus 3 Kategorien
+- Kategorie „Militärschiff (Kaiserliche Marine)“ (Tiefe 2): 725 Artikel aus 88 Kategorien
+- Kategorie „Militärschiffsklasse (Kaiserliche Marine)“ (Tiefe 1): 81 Artikel aus 1 Kategorien
+-   WARNUNG: Kategorie „Deutsches Heer (Deutsches Kaiserreich)“ leer oder nicht vorhanden
+- Kategorie „Deutsches Heer (Deutsches Kaiserreich)“ (Tiefe 2): 0 Artikel aus 1 Kategorien
+- Kategorie „Luftstreitkräfte (Deutsches Kaiserreich)“ (Tiefe 2): 323 Artikel aus 11 Kategorien
+- Suche "Erster Weltkrieg" incategory:Maschinengewehr: 4 Treffer
+- Suche "deutschen Heer" Gewehr eingeführt: 22 Treffer
+- Suche "Deutschen Heeres" Gewehr OR Karabiner OR Pistole OR Revolver: 999 Treffer
+- Suche "Erster Weltkrieg" deutsche Handgranate OR Minenwerfer OR Granatwerfer: 997 Treffer
+- Suche "Erster Weltkrieg" Krupp Feldkanone OR Haubitze OR Mörser: 258 Treffer
+- Suche "Kaiserlichen Marine" Schiffsgeschütz OR Torpedo: 999 Treffer
+- Suche "Ersten Weltkrieg" Stahlhelm OR Gasmaske OR Feldgrau OR Uniform deutsch: 999 Treffer
+- Suche "Ersten Weltkrieg" deutsches Flugabwehrgeschütz OR Ballonabwehrkanone: 994 Treffer
+- Suche incategory:"Handwaffe" "Deutsches Heer" Kaiserreich: 0 Treffer
+- Suche "Erster Weltkrieg" "Deutsches Heer" Geschütz: 3 Treffer
+- Suche "Erster Weltkrieg" deutscher Panzerwagen: 54 Treffer
+- Suche "Erster Weltkrieg" "deutschen Heeres" Ausrüstung: 100 Treffer
+- Streitkräfte in Wikidata: Kaiserliche Marine (Q156649), Schutztruppe (Q513069), Luftstreitkräfte (Deutsches Kaiserreich) (Q678503), Deutsches Heer (Deutsches Kaiserreich) (Q313422)
+- Staaten (verwendet von): Deutsches Kaiserreich (Q43287)
+- Wikidata „betrieben/verwendet von“: 788 Artikel
+- Kandidaten gesamt: 4749
+- Jahreszahlen aus dem Artikelanfang ergänzt: 176 von 426
+- Ergebnis: 1317 Einträge · mit Foto 1054 · mit Jahr 1067 · je Kategorie {"Z":29,"W":15,"A":128,"S":806,"M":5,"R":11,"F":300,"P":20,"K":2,"H":1}
+- Aussortiert: {"excluded":2293,"unclassified":732,"disambig":53,"otherEra":162,"generic":37}
+
+### R
+- Kategorie „Militärschiff (Reichsmarine)“ (Tiefe 2): 105 Artikel aus 18 Kategorien
+- Kategorie „Militärschiffsklasse (Reichsmarine)“ (Tiefe 1): 16 Artikel aus 1 Kategorien
+- Kategorie „Reichswehr“ (Tiefe 2): 132 Artikel aus 6 Kategorien
+- Suche Reichswehr incategory:"Kettenfahrzeug der Wehrmacht": 9 Treffer
+- Suche Reichswehr incategory:"Radfahrzeug der Wehrmacht": 36 Treffer
+- Suche Reichswehr incategory:"Handwaffe der Wehrmacht": 4 Treffer
+- Suche Reichswehr incategory:"Artillerie der Wehrmacht": 0 Treffer
+- Suche Reichswehr incategory:"Luftfahrzeug der Wehrmacht": 2 Treffer
+- Suche Reichsmarine incategory:"Militärschiffsklasse (Kriegsmarine)": 19 Treffer
+- Suche Reichsmarine incategory:"Militärschiff (Kriegsmarine)": 3 Treffer
+- Streitkräfte in Wikidata: Reichswehr (Q157608), Reichsmarine (Q643834), Reichsheer (Q1176523)
+- Staaten (verwendet von): Weimarer Republik (Q41304)
+- Wikidata „betrieben/verwendet von“: 36 Artikel
+- Kandidaten gesamt: 288
+- Jahreszahlen aus dem Artikelanfang ergänzt: 23 von 40
+- Ergebnis: 104 Einträge · mit Foto 85 · mit Jahr 87 · je Kategorie {"W":4,"S":81,"A":8,"P":1,"F":2,"Z":2,"K":1,"R":5}
+- Aussortiert: {"excluded":59,"unclassified":38,"disambig":0,"otherEra":80,"generic":2}
+
+### W
+- Kategorie „Kettenfahrzeug der Wehrmacht“ (Tiefe 3): 192 Artikel aus 5 Kategorien
+- Kategorie „Radfahrzeug der Wehrmacht“ (Tiefe 3): 124 Artikel aus 3 Kategorien
+- Kategorie „Luftfahrzeug der Wehrmacht“ (Tiefe 3): 97 Artikel aus 1 Kategorien
+- Kategorie „Artillerie der Wehrmacht“ (Tiefe 3): 88 Artikel aus 3 Kategorien
+- Kategorie „Handwaffe der Wehrmacht“ (Tiefe 3): 118 Artikel aus 6 Kategorien
+- Kategorie „Militärische Ausrüstung (Wehrmacht)“ (Tiefe 2): 1519 Artikel aus 59 Kategorien
+- Kategorie „Militärschiffsklasse (Kriegsmarine)“ (Tiefe 2): 84 Artikel aus 1 Kategorien
+- Kategorie „Militärschiff (Kriegsmarine)“ (Tiefe 3): 1213 Artikel aus 55 Kategorien
+- Liste „Liste von Kettenfahrzeugen der Wehrmacht“: 291 verlinkte Artikel
+- Liste „Liste der Handwaffen der Wehrmacht“: 161 verlinkte Artikel
+- Liste „Liste von Luftfahrzeugen der Luftwaffe (Wehrmacht)“: 229 verlinkte Artikel
+- Liste „Liste von Schiffen der Kriegsmarine“: 442 verlinkte Artikel
+- Kategorie „Wehrmacht“ (Tiefe 2): 2287 Artikel aus 69 Kategorien
+- Suche Wehrmacht incategory:Maschinengewehr: 16 Treffer
+- Suche Wehrmacht incategory:Lenkflugkörper: 0 Treffer
+- Suche Wehrmacht Vergeltungswaffe Rakete: 42 Treffer
+- Streitkräfte in Wikidata: Luftwaffe (Wehrmacht) (Q2564009), Kriegsmarine (Q151701), Wehrmacht (Q128781), Heer (Wehrmacht) (Q701923)
+- Staaten (verwendet von): NS-Staat (Q7318)
+- Wikidata „betrieben/verwendet von“: 1266 Artikel
+- Kandidaten gesamt: 4195
+- Jahreszahlen aus dem Artikelanfang ergänzt: 473 von 1006
+- Ergebnis: 2260 Einträge · mit Foto 1539 · mit Jahr 1727 · je Kategorie {"S":1238,"A":247,"W":79,"R":130,"K":58,"M":23,"Z":82,"P":130,"F":262,"H":11}
+- Aussortiert: {"excluded":886,"unclassified":540,"disambig":33,"otherEra":46,"generic":52}
+
+### N
+- Liste „Liste der Technik und Bewaffnung der NVA“: 388 verlinkte Artikel
+- Kategorie „Militärschiff (Volksmarine)“ (Tiefe 2): 10 Artikel aus 4 Kategorien
+- Kategorie „Militärschiffsklasse (Volksmarine)“ (Tiefe 1): 23 Artikel aus 1 Kategorien
+- Kategorie „Nationale Volksarmee“ (Tiefe 3): 554 Artikel aus 35 Kategorien
+- Suche "Nationale Volksarmee" incategory:"Militärisches Kettenfahrzeug": 0 Treffer
+- Suche "Nationalen Volksarmee" Panzer: 189 Treffer
+- Suche Volksmarine Schiffsklasse: 20 Treffer
+- Suche "Nationalen Volksarmee" Flugzeug: 186 Treffer
+- Suche "Nationalen Volksarmee" Hubschrauber: 104 Treffer
+- Suche "Nationalen Volksarmee" Lastkraftwagen: 24 Treffer
+- Suche "Nationalen Volksarmee" Handwaffe: 16 Treffer
+- Suche "Nationalen Volksarmee" Uniform Ausrüstung: 88 Treffer
+- Streitkräfte in Wikidata: Volksmarine (Q508647), Grenztruppen der DDR (Q704449), Luftstreitkräfte der Nationalen Volksarmee (Q507491), Nationale Volksarmee (Q155740), Landstreitkräfte der NVA (Q557432)
+- Staaten (verwendet von): Deutsche Demokratische Republik (Q16957)
+- Wikidata „betrieben/verwendet von“: 51 Artikel
+- Kandidaten gesamt: 1132
+- Jahreszahlen aus dem Artikelanfang ergänzt: 100 von 209
+- Ergebnis: 354 Einträge · mit Foto 332 · mit Jahr 245 · je Kategorie {"W":17,"A":45,"Z":48,"M":10,"R":89,"P":32,"S":40,"F":28,"H":7,"K":38}
+- Aussortiert: {"excluded":352,"unclassified":212,"disambig":14,"otherEra":30,"generic":24}
+
+### B
+- Kategorie „Kettenfahrzeug der Bundeswehr“ (Tiefe 3): 61 Artikel aus 1 Kategorien
+- Kategorie „Radfahrzeug der Bundeswehr“ (Tiefe 3): 58 Artikel aus 1 Kategorien
+- Kategorie „Luftfahrzeug der Bundeswehr“ (Tiefe 3): 95 Artikel aus 5 Kategorien
+- Kategorie „Militärschiff (Bundeswehr)“ (Tiefe 3): 172 Artikel aus 35 Kategorien
+- Kategorie „Militärschiffsklasse (Bundeswehr)“ (Tiefe 2): 89 Artikel aus 1 Kategorien
+- Kategorie „Militärische Ausrüstung (Bundeswehr)“ (Tiefe 2): 436 Artikel aus 23 Kategorien
+- Kategorie „Bundeswehr“ (Tiefe 2): 1687 Artikel aus 72 Kategorien
+- Liste „Liste von Handwaffen der Bundeswehr“: 191 verlinkte Artikel
+- Liste „Liste von Luftfahrzeugen der Bundeswehr“: 178 verlinkte Artikel
+- Liste „Liste von Kettenfahrzeugen der Bundeswehr“: 133 verlinkte Artikel
+- Liste „Liste von Radfahrzeugen der Bundeswehr“: 172 verlinkte Artikel
+- Liste „Liste der Schiffe der Bundeswehr“: 281 verlinkte Artikel
+- Suche Bundeswehr incategory:Maschinengewehr: 11 Treffer
+- Suche Bundeswehr incategory:Lenkflugkörper: 13 Treffer
+- Suche Bundeswehr Panzerhaubitze Artilleriesystem: 11 Treffer
+- Streitkräfte in Wikidata: Bundeswehr (Q56010), Bundesmarine (Q314103), Deutsche Marine (Q56015), Heeresflieger (Q1593564), Streitkräftebasis (Q56017), Heer (Bundeswehr) (Q11322507), Luftwaffe (Bundeswehr) (Q56013)
+- Staaten (verwendet von): keine
+- Wikidata „betrieben/verwendet von“: 378 Artikel
+- Kandidaten gesamt: 2636
+- Jahreszahlen aus dem Artikelanfang ergänzt: 211 von 418
+- Ergebnis: 794 Einträge · mit Foto 721 · mit Jahr 587 · je Kategorie {"S":257,"Z":95,"W":52,"M":12,"A":24,"F":102,"P":70,"R":104,"K":42,"H":36}
+- Aussortiert: {"excluded":1120,"unclassified":558,"disambig":1,"otherEra":30,"generic":27}
 
 ### Highlights
-Highlights: 253 von 280 zugeordnet, 244 mit Foto
-Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfernrohr ZF 39, Schnellboot S-38-Klasse, Karl-Gerät 040, Ferdinand / Elefant, Brummbär, Flakpanzer IV Wirbelwind, IFA P3, Hamburg-Klasse, IFA W50, LARS 110 mm, F-4F Phantom II, Biber, MAN-Lkw gl, 2S1 Gwosdika, Sea King Mk41, Parchim-Klasse, MPi-AK-74N, Klasse 332, Flecktarn, Gefechtshelm B826, Nachtsichtbrille Lucie, U-Boot-Klasse 212A, Baden-Württemberg-Klasse, F-35A Lightning II
+Highlights: 274 von 280 zugeordnet, 265 mit Foto
+Ohne passenden Artikel: Kfz 13, Feldfernsprecher 33, Zielfernrohr ZF 39, LARS 110 mm, Gefechtshelm B826, Nachtsichtbrille Lucie
 
 #### Gründe
-- **Pistole 08 (Luger)** – direkt: nicht gefunden; Suche: Parabellumpistole [ns 0; Einordnung W; Ausschluss –; Kategorien: Kategorie:Ordonnanzpistole, Kategorie:Reichswehr, Kategorie:Selbstladepistole, Kategorie:Selbstladepistole (Deutsches Kaiserreich), Kategorie:Selbstladepistole (Wehrmacht)] | Georg Luger [ns 0; Einordnung null; Ausschluss Kategorie:Geboren 1849; Kategorien: Kategorie:Geboren 1849, Kategorie:Gestorben 1923, Kategorie:Mann, Kategorie:Militärperson (Österreich-Ungarn), Kategorie:Person (Berlin), Kategorie:Person (Cisleithanien), Kategorie:Waffentechniker] | 9 × 19 mm [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Patronenmunition] | 7,65 × 21 mm Luger [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Patronenmunition] | Parabellumpistole (Schweiz) [ns 0; Einordnung W; Ausschluss –; Kategorien: Kategorie:Militärtechnik (Schweizer Armee), Kategorie:Ordonnanzpistole, Kategorie:Selbstladepistole]
-- **Kfz 13** – direkt: nicht gefunden; Suche: Kfz-Kennzeichen (Türkei) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen nach Staat; Kategorien: Kategorie:Kraftfahrzeugkennzeichen nach Staat, Kategorie:Straßenverkehr (Türkei)] | Kfz-Kennzeichen (Deutschland) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Deutschland); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Deutschland), Kategorie:Wikipedia:Lesenswert] | Schwerer Panzerspähwagen [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Radfahrzeug der Wehrmacht, Kategorie:Reichswehr] | Liste der deutschen Kfz-Kennzeichen (historisch) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Deutschland); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Deutschland)] | Panzerspähwagen Sd.Kfz. 234 [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Militärisches Radfahrzeug (8×8), Kategorie:Radpanzer]
-- **Feldfernsprecher 33** – direkt: nicht gefunden; Suche: Wehrmacht [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Aufgelöst 1946, Kategorie:Deutschland im Zweiten Weltkrieg, Kategorie:Gegründet 1935, Kategorie:Wehrmacht] | Liste von Auslandshilfen für die Ukraine seit 2014 [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Humanitäre Hilfe (Militär), Kategorie:Humanitäre Hilfsaktion, Kategorie:Liste (Politik), Kategorie:Russisch-Ukrainischer Krieg] | Luftstreitkräfte (Deutsches Kaiserreich) [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Ballonfahren (Deutschland), Kategorie:Deutsche Militärgeschichte (Erster Weltkrieg), Kategorie:Gegründet 1913, Kategorie:Historische Luftstreitkraft, Kategorie:Luftschifffahrt (Deutschland), Kategorie:Luftstreitkräfte (Deutsches Kaiserreich), Kategorie:Luftstreitkräfte im Ersten Weltkrieg]
+- **Kfz 13** – direkt: nicht gefunden; Suche: Kfz-Kennzeichen (Türkei) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen nach Staat; Kategorien: Kategorie:Kraftfahrzeugkennzeichen nach Staat, Kategorie:Straßenverkehr (Türkei)] | Kfz-Kennzeichen (Deutschland) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Deutschland); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Deutschland), Kategorie:Wikipedia:Lesenswert] | Schwerer Panzerspähwagen [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Radfahrzeug der Wehrmacht, Kategorie:Reichswehr] | Panzerspähwagen Sd.Kfz. 234 [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Militärisches Radfahrzeug (8×8), Kategorie:Radpanzer] | Kfz-Kennzeichen (Niederlande) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Königreich der Niederlande); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Königreich der Niederlande), Kategorie:Straßenverkehr (Niederlande)]
+- **Feldfernsprecher 33** – direkt: nicht gefunden; Suche: Liste von Auslandshilfen für die Ukraine seit 2014 [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Humanitäre Hilfe (Militär), Kategorie:Humanitäre Hilfsaktion, Kategorie:Liste (Politik), Kategorie:Russisch-Ukrainischer Krieg] | Wehrmacht [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Aufgelöst 1946, Kategorie:Deutschland im Zweiten Weltkrieg, Kategorie:Gegründet 1935, Kategorie:Wehrmacht] | Luftstreitkräfte (Deutsches Kaiserreich) [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Ballonfahren (Deutschland), Kategorie:Deutsche Militärgeschichte (Erster Weltkrieg), Kategorie:Gegründet 1913, Kategorie:Historische Luftstreitkraft, Kategorie:Luftschifffahrt (Deutschland), Kategorie:Luftstreitkräfte (Deutsches Kaiserreich), Kategorie:Luftstreitkräfte im Ersten Weltkrieg]
 - **Zielfernrohr ZF 39** – direkt: nicht gefunden; Suche: Scharfschütze [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Allgemeine Truppenkunde, Kategorie:Berufliche Funktion der Polizei, Kategorie:Infanterie, Kategorie:Kriegs- und Gefechtsführung, Kategorie:Scharfschütze, Kategorie:Waffengebrauch] | Scharfschützengewehr [ns 0; Einordnung W; Ausschluss –; Kategorien: Kategorie:Scharfschütze, Kategorie:Scharfschützengewehr] | Berlin-Lübecker Maschinenfabriken [ns 0; Einordnung null; Ausschluss Kategorie:Ehemaliger Waffenhersteller; Kategorien: Kategorie:Ehemaliger Waffenhersteller, Kategorie:Ehemaliges Unternehmen (Lübeck), Kategorie:Lübeck-St. Gertrud, Kategorie:Lübeck im 20. Jahrhundert, Kategorie:NS-Zwangsarbeit, Kategorie:Unternehmen (Deutsches Reich, 1933–1945), Kategorie:Unternehmensgründung 1934, Kategorie:Wehr- und Rüstungswirtschaft im Nationalsozialismus] | Leopard 1 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer, Kategorie:Kettenfahrzeug der Bundeswehr, Kategorie:Krauss-Maffei Wegmann, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Rheinmetall, Kategorie:Wikipedia:Exzellent]
-- **Schnellboot S-38-Klasse** – direkt: nicht gefunden; Suche: Albatros-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Albatros-Klasse, Kategorie:Militärschiffsklasse (Bundeswehr), Kategorie:Schnellbootklasse] | Schnellboote der Reichs- und Kriegsmarine [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Kriegsmarine, Kategorie:Liste (Militärschiffe), Kategorie:Liste (Schifffahrt, Deutschland), Kategorie:Militärschiffstyp, Kategorie:Reichsmarine, Kategorie:Schnellboot, Kategorie:Schnellbootklasse] | Liste der Schiffe der Bundeswehr [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Liste (Militärschiffe), Kategorie:Liste (militärische Wasserfahrzeuge), Kategorie:Militärschiff (Bundeswehr), Kategorie:Militärschiffsklasse (Bundeswehr)] | Sachsen-Klasse (2004) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Fregattenklasse, Kategorie:Militärschiffsklasse (Bundeswehr), Kategorie:Sachsen-Klasse (2004)] | Liste von Schiffen der israelischen Marine [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Liste (Militärschiffe), Kategorie:Marine (Israel)]
-- **Karl-Gerät 040** – direkt: nicht gefunden; Suche: Mörser Karl [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Geschütz Kaliber über 300 mm, Kategorie:Kettenfahrzeug der Wehrmacht, Kategorie:Museumsbestand, Kategorie:Mörser (Wehrmacht), Kategorie:Rheinmetall] | 10,5-cm-leichte Feldhaubitze 18 [ns 0; Einordnung A; Ausschluss –; Kategorien: Kategorie:Geschütz Kaliber 100 mm bis 200 mm, Kategorie:Haubitze (Wehrmacht), Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Rheinmetall] | Artillerietruppe (Deutsches Kaiserreich) [ns 0; Einordnung A; Ausschluss Kategorie:Truppengattung (historisch); Kategorien: Kategorie:Artillerie des Deutschen Kaiserreiches, Kategorie:Deutsche Militärgeschichte (Erster Weltkrieg), Kategorie:Militär (Deutsches Kaiserreich), Kategorie:Truppengattung (historisch)] | U-Boot-Klasse VII [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Militär-U-Boot-Klasse, Kategorie:Militärschiffsklasse (Kriegsmarine), Kategorie:U-Boot-Klasse VII] | Geschossstabilisierung [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Waffentechnik]
-- **Ferdinand / Elefant** – direkt: nicht gefunden; Suche: Panzerjäger Tiger (P) [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Jagdpanzer der Wehrmacht, Kategorie:Porsche] | Panzerkampfwagen VI Tiger [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer der Wehrmacht, Kategorie:Schwerer Panzer, Kategorie:Wikipedia:Exzellent] | Schwere Panzer-Abteilung [ns 0; Einordnung P; Ausschluss Kategorie:Militärischer Verband der SS; Kategorien: Kategorie:Militärischer Verband der SS, Kategorie:Militärischer Verband im Zweiten Weltkrieg (Deutsches Reich), Kategorie:Panzerverband (Wehrmacht)] | Olifant (Panzer) [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer, Kategorie:Kettenfahrzeug, Kategorie:Südafrikanisches Militärfahrzeug] | VK 45.01 (P) [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer der Wehrmacht, Kategorie:Kettenfahrzeug der Wehrmacht, Kategorie:Prototyp der Wehrmacht (Landfahrzeug), Kategorie:Schwerer Panzer]
-- **Brummbär** – direkt: Brummbär [ns 0, Begriffsklärung; Einordnung null; Ausschluss Kategorie:Begriffsklärung; Kategorien: Kategorie:Begriffsklärung]; Suche: Panzerkampfwagen IV [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer der Wehrmacht, Kategorie:Mittlerer Panzer, Kategorie:Wikipedia:Exzellent] | Sturmpanzer IV [ns 0; Einordnung A; Ausschluss –; Kategorien: Kategorie:Panzerartillerie (Wehrmacht), Kategorie:Sturmpanzer der Wehrmacht] | Unternehmen Zitadelle [ns 0; Einordnung P; Ausschluss Kategorie:Konflikt 1943; Kategorien: Kategorie:Deckname, Kategorie:Deutsche Militärgeschichte (Zweiter Weltkrieg), Kategorie:Konflikt 1943, Kategorie:Luftschlacht, Kategorie:Militärische Operation des Deutsch-Sowjetischen Krieges, Kategorie:Panzerschlacht, Kategorie:Schlacht des Zweiten Weltkriegs] | KW-2 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kettenfahrzeug, Kategorie:Kliment Jefremowitsch Woroschilow als Namensgeber, Kategorie:Militärfahrzeug des Zweiten Weltkrieges (Sowjetunion), Kategorie:Schwerer Panzer, Kategorie:Sowjetisches Militärfahrzeug] | Panzertruppe von Wehrmacht und Waffen-SS [ns 0; Einordnung P; Ausschluss Kategorie:Truppengattung (historisch); Kategorien: Kategorie:Luftwaffe (Wehrmacht), Kategorie:Panzertruppe, Kategorie:Truppengattung (historisch), Kategorie:Waffen-SS, Kategorie:Wehrmacht]
-- **Flakpanzer IV Wirbelwind** – direkt: nicht gefunden; Suche: Flakpanzer IV [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Flugabwehrpanzer der Wehrmacht] | Panzerkampfwagen IV [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer der Wehrmacht, Kategorie:Mittlerer Panzer, Kategorie:Wikipedia:Exzellent] | Wirbelwind [ns 0, Begriffsklärung; Einordnung null; Ausschluss Kategorie:Begriffsklärung; Kategorien: Kategorie:Begriffsklärung] | Flugabwehrpanzer [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Flugabwehrpanzer, Kategorie:Panzer] | 3-cm-Flak 103/38 [ns 0; Einordnung A; Ausschluss –; Kategorien: Kategorie:Flugabwehrkanone (Wehrmacht), Kategorie:Flugabwehrwaffe aus dem Zweiten Weltkrieg, Kategorie:Geschütz Kaliber bis 50 mm, Kategorie:Maschinenkanone]
-- **IFA P3** – direkt: IFA P3 [ns 0; Einordnung R; Ausschluss Kategorie:Industrieverband Fahrzeugbau; Kategorien: Kategorie:Geländewagen, Kategorie:Industrieverband Fahrzeugbau, Kategorie:Militärisches Radfahrzeug (4×4), Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Technik und Bewaffnung (NVA)]; Suche: IFA P3 [ns 0; Einordnung R; Ausschluss Kategorie:Industrieverband Fahrzeugbau; Kategorien: Kategorie:Geländewagen, Kategorie:Industrieverband Fahrzeugbau, Kategorie:Militärisches Radfahrzeug (4×4), Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Technik und Bewaffnung (NVA)] | P3 [ns 0, Begriffsklärung; Einordnung null; Ausschluss Kategorie:Begriffsklärung; Kategorien: Kategorie:Abkürzung, Kategorie:Begriffsklärung] | IFA P1 [ns 0; Einordnung R; Ausschluss Kategorie:Industrieverband Fahrzeugbau; Kategorien: Kategorie:Geländewagen, Kategorie:Industrieverband Fahrzeugbau, Kategorie:Militärisches Radfahrzeug (4×4), Kategorie:Nicht realisiertes Militärprojekt (Landfahrzeug), Kategorie:Technik und Bewaffnung (NVA)] | IFA P2M [ns 0; Einordnung R; Ausschluss Kategorie:Industrieverband Fahrzeugbau; Kategorien: Kategorie:Geländewagen, Kategorie:Industrieverband Fahrzeugbau, Kategorie:Militärisches Radfahrzeug (4×4), Kategorie:Technik und Bewaffnung (NVA)] | Kübelwagen [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Karosseriebauform, Kategorie:Kübelwagen, Kategorie:Militärisches Radfahrzeug]
-- **Hamburg-Klasse** – direkt: Hamburg-Klasse [ns 0, Begriffsklärung; Einordnung null; Ausschluss Kategorie:Begriffsklärung; Kategorien: Kategorie:Begriffsklärung]; Suche: Hamburg (Schiff, 1964) [ns 0; Einordnung S; Ausschluss Kategorie:Militärschiff (Stülcken-Werft); Kategorien: Kategorie:Hamburg-Klasse, Kategorie:Militärschiff (Stülcken-Werft), Kategorie:Schifffahrt (Hamburg)] | Gorch-Fock-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Gorch-Fock-Klasse, Kategorie:Gorch Fock als Namensgeber, Kategorie:Militärschiffsklasse (Kriegsmarine), Kategorie:Militärschiffsklasse (Reichsmarine)] | Rheinland-Pfalz (Schiff, 2022) [ns 0; Einordnung S; Ausschluss Kategorie:Fr. Lürssen Werft; Kategorien: Kategorie:Baden-Württemberg-Klasse, Kategorie:Fr. Lürssen Werft, Kategorie:Militärschiff (Blohm + Voss), Kategorie:ThyssenKrupp Marine Systems] | Emden (Schiff, 2026) [ns 0; Einordnung S; Ausschluss Kategorie:Fr. Lürssen Werft; Kategorien: Kategorie:Braunschweig-Klasse (2008), Kategorie:Fr. Lürssen Werft, Kategorie:Militärschiff (Blohm + Voss), Kategorie:Peene-Werft] | MEKO 200 [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Blohm + Voss, Kategorie:Fregattenklasse]
-- **IFA W50** – direkt: IFA W50 [ns 0; Einordnung R; Ausschluss Kategorie:Industrieverband Fahrzeugbau; Kategorien: Kategorie:Industrieverband Fahrzeugbau, Kategorie:Lkw-Modell, Kategorie:Ludwigsfelde, Kategorie:Technik und Bewaffnung (NVA)]; Suche: IFA W50 [ns 0; Einordnung R; Ausschluss Kategorie:Industrieverband Fahrzeugbau; Kategorien: Kategorie:Industrieverband Fahrzeugbau, Kategorie:Lkw-Modell, Kategorie:Ludwigsfelde, Kategorie:Technik und Bewaffnung (NVA)] | Löschfahrzeuge in der DDR [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Feuerwehr (DDR), Kategorie:Feuerwehrfahrzeug in Deutschland, Kategorie:Liste (Automobil)] | Bundeswehrfeuerwehr [ns 0; Einordnung null; Ausschluss Kategorie:Organisation der Feuerwehr (Deutschland); Kategorien: Kategorie:Infrastruktur, Umweltschutz und Dienstleistungen (Bundeswehr), Kategorie:Organisation der Feuerwehr (Deutschland)] | Allradantrieb [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Allradantrieb, Kategorie:Fachbegriff (Motorsport), Kategorie:Fahrzeugantrieb nach Konstruktion, Kategorie:Wikipedia:Lesenswert] | Handbuch des Freiheitskampfes [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Asymmetrische Kriegführung, Kategorie:Beziehungen zwischen Nicaragua und den Vereinigten Staaten, Kategorie:Contra-Krieg, Kategorie:Guerilla, Kategorie:Handbuch, Kategorie:Literatur (Spanisch), Kategorie:Medien (Kalter Krieg), Kategorie:Terrorismus]
 - **LARS 110 mm** – direkt: nicht gefunden; Suche: Artillerie [ns 0; Einordnung A; Ausschluss Kategorie:Truppengattung; Kategorien: Kategorie:Artillerie, Kategorie:Truppengattung] | Raketenwerfer [ns 0; Einordnung A; Ausschluss –; Kategorien: Kategorie:Artillerie, Kategorie:Raketenartillerie, Kategorie:Raketenwerfer] | Kaga (Schiff, 1928) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Flugzeugträger (Japanisches Kaiserreich), Kategorie:Militärschiff (Kawasaki), Kategorie:Schiff im Pazifikkrieg, Kategorie:Schiffsverlust 1942, Kategorie:Schiffsverlust im Zweiten Weltkrieg, Kategorie:Tosa-Klasse] | Fubuki-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Fubuki-Klasse, Kategorie:Militärschiffsklasse (Japanisches Kaiserreich), Kategorie:Zerstörerklasse] | Artillerietruppe (Bundeswehr) [ns 0; Einordnung A; Ausschluss Kategorie:Truppengattung (Bundeswehr); Kategorien: Kategorie:Truppengattung (Bundeswehr), Kategorie:Truppenteil (Artillerie, Bundeswehr)]
-- **F-4F Phantom II** – direkt: nicht gefunden; Suche: McDonnell F-4 [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Abfangjäger, Kategorie:Erstflug 1958, Kategorie:Jagdbomber, Kategorie:Jagdflugzeug (1950–1959), Kategorie:Luftfahrzeug der Luftwaffe (Bundeswehr), Kategorie:Luftfahrzeug der Royal Air Force, Kategorie:Luftfahrzeug des Fleet Air Arm, Kategorie:Luftfahrzeug im Vietnamkrieg] | Taktisches Luftwaffengeschwader 71 „Richthofen“ [ns 0; Einordnung null; Ausschluss Kategorie:Militärischer Verband der Luftwaffe (Bundeswehr); Kategorien: Kategorie:Gegründet 1959, Kategorie:Manfred von Richthofen, Kategorie:Militärischer Verband der Luftwaffe (Bundeswehr), Kategorie:Organisation (Wittmund), Kategorie:Wikipedia:Veraltet seit 2025] | Jagdgeschwader 72 „Westfalen“ [ns 0; Einordnung null; Ausschluss Kategorie:Militärischer Verband der Luftwaffe (Bundeswehr); Kategorien: Kategorie:Gegründet 1961, Kategorie:Hopsten, Kategorie:Militärischer Verband der Luftwaffe (Bundeswehr), Kategorie:Organisation (Rheine), Kategorie:Organisation (Tecklenburger Land)] | Eurofighter Typhoon [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Canard, Kategorie:Erstflug 1994, Kategorie:Jagdflugzeug (1990–1999), Kategorie:Luftfahrzeug (Bundesheer), Kategorie:Luftfahrzeug der Luftwaffe (Bundeswehr), Kategorie:Luftfahrzeug der Royal Air Force, Kategorie:Mehrzweckkampfflugzeug, Kategorie:Militärluftfahrzeug (Italien)] | Lockheed F-104 [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Abfangjäger, Kategorie:Einstrahliges Flugzeug, Kategorie:Erstflug 1954, Kategorie:Flugzeug mit T-Leitwerk, Kategorie:Jagdbomber, Kategorie:Jagdflugzeug (1950–1959), Kategorie:Lockheed F-104, Kategorie:Lockheed Martin]
-- **Biber** – direkt: Biber [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Biberverwandte]; Suche: Panzer [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Panzer, Kategorie:Wikipedia:Lesenswert] | Leopard 1 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer, Kategorie:Kettenfahrzeug der Bundeswehr, Kategorie:Krauss-Maffei Wegmann, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Rheinmetall, Kategorie:Wikipedia:Exzellent] | Liste von Panzermodellen nach 1945 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Liste (militärische Landfahrzeuge), Kategorie:Panzer] | Brückenlegepanzer M48 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kettenfahrzeug der Bundeswehr, Kategorie:Militärisches Brückenlegesystem, Kategorie:Pionierpanzer, Kategorie:US-amerikanisches Militärfahrzeug] | Panzerpioniere (Bundeswehr) [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Pionierwesen (Militär)]
-- **MAN-Lkw gl** – direkt: nicht gefunden; Suche: MAN gl [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Lkw-Modell, Kategorie:MAN-Nutzfahrzeug, Kategorie:Militärisches Radfahrzeug (4×4), Kategorie:Militärisches Radfahrzeug (6×6), Kategorie:Militärisches Radfahrzeug (8×8), Kategorie:Radfahrzeug der Bundeswehr] | Wolf (Fahrzeug) [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Geländewagen, Kategorie:Kübelwagen, Kategorie:Militärisches Radfahrzeug (4×4), Kategorie:Radfahrzeug der Bundeswehr] | MAN Truck & Bus [ns 0; Einordnung R; Ausschluss Kategorie:Elektrolastkraftwagenhersteller; Kategorien: Kategorie:Elektrolastkraftwagenhersteller, Kategorie:Lkw-Hersteller (Deutschland), Kategorie:MAN Truck & Bus, Kategorie:Militärfahrzeughersteller, Kategorie:Oberleitungsbushersteller, Kategorie:Omnibushersteller (Deutschland), Kategorie:Produzierendes Unternehmen (München)] | Lastkraftwagen [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Lastkraftwagen] | Liste von Radfahrzeugen der Wehrmacht [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Liste (Wehrmachtsmaterial), Kategorie:Liste (militärische Landfahrzeuge), Kategorie:Militärfahrzeugtyp des Zweiten Weltkrieges, Kategorie:Radfahrzeug der Wehrmacht]
-- **2S1 Gwosdika** – direkt: nicht gefunden; Suche: Liste von Panzermodellen nach 1945 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Liste (militärische Landfahrzeuge), Kategorie:Panzer] | BMP-23 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Bulgarisches Militärfahrzeug, Kategorie:Schwimmpanzer, Kategorie:Schützenpanzer] | Ukrainische Streitkräfte [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Militär (Ukraine), Kategorie:Streitkräfte] | Jugoslawische Volksarmee [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Aufgelöst 1992, Kategorie:Gegründet 1945, Kategorie:Militär (Jugoslawien)] | BMP-30 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Bulgarisches Militärfahrzeug, Kategorie:Schwimmpanzer, Kategorie:Schützenpanzer]
-- **Sea King Mk41** – direkt: nicht gefunden; Suche: Sikorsky S-61 [ns 0; Einordnung H; Ausschluss –; Kategorien: Kategorie:Airborne Warning and Control System, Kategorie:Erstflug 1959, Kategorie:Luftfahrzeug der Marine (Bundeswehr), Kategorie:Luftfahrzeug der Royal Air Force, Kategorie:Luftfahrzeug des Fleet Air Arm, Kategorie:Luftfahrzeug im Falklandkrieg, Kategorie:Luftfahrzeug im Vietnamkrieg, Kategorie:Mehrzweckhubschrauber] | Bonn (Schiff, 2013) [ns 0; Einordnung S; Ausschluss Kategorie:Fr. Lürssen Werft; Kategorien: Kategorie:Berlin-Klasse, Kategorie:Flensburger Schiffbau-Gesellschaft, Kategorie:Fr. Lürssen Werft, Kategorie:Peene-Werft, Kategorie:ThyssenKrupp Marine Systems] | Berlin (Schiff, 2001) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Berlin-Klasse, Kategorie:Militärschiff (Flensburger Schiffbau-Gesellschaft)] | Frankfurt am Main (Schiff) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Berlin-Klasse, Kategorie:Militärschiff (Flensburger Schiffbau-Gesellschaft)] | Ramstein-Format [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Außenpolitik (Deutschland), Kategorie:Außenpolitik (Vereinigte Staaten), Kategorie:Internationale Konferenz (Politik), Kategorie:Politik 2022, Kategorie:Politik 2023, Kategorie:Russisch-Ukrainischer Krieg, Kategorie:Sicherheitspolitik]
-- **Parchim-Klasse** – direkt: Projekt 133.1 [ns 0; Einordnung S; Ausschluss Kategorie:Peene-Werft; Kategorien: Kategorie:Korvettenklasse, Kategorie:Militärschiffsklasse (Indonesien), Kategorie:Militärschiffsklasse (Sowjetunion), Kategorie:Militärschiffsklasse (Volksmarine), Kategorie:Peene-Werft]; Suche: RBU-6000 [ns 0; Einordnung Z; Ausschluss –; Kategorien: Kategorie:Granatwaffe, Kategorie:Militärische Ausrüstung (Sowjetunion), Kategorie:Waffensystem (See)] | Liste der Schiffe der Bundeswehr [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Liste (Militärschiffe), Kategorie:Liste (militärische Wasserfahrzeuge), Kategorie:Militärschiff (Bundeswehr), Kategorie:Militärschiffsklasse (Bundeswehr)] | Liste der Namen deutscher Kriegsschiffe (A–M) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Deutsche Marinegeschichte, Kategorie:Liste (Militärschiffe), Kategorie:Militärschiff (Deutschland), Kategorie:Militärschiffsname] | Deutsche Marine [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Deutsche Marine, Kategorie:Organisationsbereich (Bundeswehr)] | Baltische Flotte [ns 0; Einordnung null; Ausschluss Kategorie:Marineverband (Russland und Sowjetunion); Kategorien: Kategorie:Gegründet 1696, Kategorie:Marinegeschichte (Ostsee), Kategorie:Marineverband (Russland und Sowjetunion), Kategorie:Militärischer Verband (Russland), Kategorie:Träger des Rotbannerordens]
-- **MPi-AK-74N** – direkt: nicht gefunden; Suche: AK-74 [ns 0; Einordnung W; Ausschluss –; Kategorien: Kategorie:Ischmasch-Waffe, Kategorie:Militärische Ausrüstung (Sowjetunion), Kategorie:Sturmgewehr, Kategorie:Technik und Bewaffnung (NVA)] | Kalaschnikow [ns 0; Einordnung W; Ausschluss –; Kategorien: Kategorie:Ischmasch-Waffe, Kategorie:Militärische Ausrüstung (Sowjetunion), Kategorie:Sturmgewehr] | Liste der Technik und Bewaffnung in der Bedarfsträgerschaft des Raketen- und Waffentechnischen Dienstes [ns 0; Einordnung K; Ausschluss –; Kategorien: Kategorie:Liste (Militär), Kategorie:Liste (Waffen), Kategorie:Raketen- und Waffentechnischer Dienst]
-- **Klasse 332** – direkt: nicht gefunden; Suche: Klasse 214 [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Howaldtswerke, Kategorie:Militär-U-Boot-Klasse, Kategorie:Militärschiffsklasse (Griechenland), Kategorie:Militärschiffsklasse (Portugal), Kategorie:Militärschiffsklasse (Türkei), Kategorie:Schiff mit Brennstoffzellenantrieb] | Liste der Schiffe der Bundeswehr [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Liste (Militärschiffe), Kategorie:Liste (militärische Wasserfahrzeuge), Kategorie:Militärschiff (Bundeswehr), Kategorie:Militärschiffsklasse (Bundeswehr)] | Yamato-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Militärschiffsklasse (Japanisches Kaiserreich), Kategorie:Schlachtschiff-Klasse, Kategorie:Yamato-Klasse] | Minenabwehrfahrzeug [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Gerät zur Kampfmittelräumung und -beseitigung, Kategorie:Militärschiffstyp für den Minenkrieg] | Siegfried-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Militärschiffsklasse (Kaiserliche Marine), Kategorie:Panzerschiffklasse, Kategorie:Siegfried-Klasse, Kategorie:Wikipedia:Exzellent]
-- **Flecktarn** – direkt: Flecktarn [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Tarnkleidung, Kategorie:Waffen-SS]; Suche: Flecktarn [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Tarnkleidung, Kategorie:Waffen-SS] | Splittertarn [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Reichswehr, Kategorie:Tarnkleidung] | Feldspaten [ns 0; Einordnung Z; Ausschluss Kategorie:Schimpfwort (Mann); Kategorien: Kategorie:Militärische Ausrüstung, Kategorie:Schimpfwort (Mann), Kategorie:Spaten] | Gamasche [ns 0; Einordnung Z; Ausschluss –; Kategorien: Kategorie:Ausrüstung im Pferdesport, Kategorie:Beinkleid, Kategorie:Bergsportausrüstung, Kategorie:Kostümkunde der 1910er, Kategorie:Kostümkunde der 1920er, Kategorie:Kostümkunde der 1930er, Kategorie:Militäruniform, Kategorie:Outdoor-Ausrüstung] | Seebataillon [ns 0; Einordnung null; Ausschluss Kategorie:Infanterieverband (Bundeswehr); Kategorien: Kategorie:Bataillon (Bundeswehr), Kategorie:Berufstauchen, Kategorie:Gegründet 2014, Kategorie:Infanterieverband (Bundeswehr), Kategorie:Marineinfanterie, Kategorie:Marineinfanterie (Deutschland), Kategorie:Militär (Eckernförde), Kategorie:Militärischer Verband der Marine (Bundeswehr)]
 - **Gefechtshelm B826** – direkt: nicht gefunden; Suche: keine Treffer
 - **Nachtsichtbrille Lucie** – direkt: nicht gefunden; Suche: keine Treffer
-- **U-Boot-Klasse 212A** – direkt: nicht gefunden; Suche: Brandenburg-Klasse (1994) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Brandenburg-Klasse (1994), Kategorie:Fregattenklasse, Kategorie:Militärschiffsklasse (Bundeswehr)] | Liste der Schiffe der Bundeswehr [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Liste (Militärschiffe), Kategorie:Liste (militärische Wasserfahrzeuge), Kategorie:Militärschiff (Bundeswehr), Kategorie:Militärschiffsklasse (Bundeswehr)] | TKMS [ns 0; Einordnung null; Ausschluss Kategorie:Börsennotiertes Unternehmen; Kategorien: Kategorie:Abkürzung, Kategorie:Börsennotiertes Unternehmen, Kategorie:Kieler Hafen, Kategorie:Produzierendes Unternehmen (Kiel), Kategorie:Rüstungshersteller (Deutschland), Kategorie:ThyssenKrupp Marine Systems, Kategorie:Unternehmen im MDAX, Kategorie:Unternehmensgründung 2005] | Marina Militare [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Marina Militare]
-- **Baden-Württemberg-Klasse** – direkt: Baden-Württemberg-Klasse [ns 0; Einordnung S; Ausschluss Kategorie:Fr. Lürssen Werft; Kategorien: Kategorie:Baden-Württemberg-Klasse, Kategorie:Fr. Lürssen Werft, Kategorie:Fregattenklasse, Kategorie:Militärschiffsklasse (Bundeswehr)]; Suche: Baden-Württemberg-Klasse [ns 0; Einordnung S; Ausschluss Kategorie:Fr. Lürssen Werft; Kategorien: Kategorie:Baden-Württemberg-Klasse, Kategorie:Fr. Lürssen Werft, Kategorie:Fregattenklasse, Kategorie:Militärschiffsklasse (Bundeswehr)] | Baden-Württemberg (Schiff) [ns 0; Einordnung S; Ausschluss Kategorie:Fr. Lürssen Werft; Kategorien: Kategorie:Baden-Württemberg-Klasse, Kategorie:Fr. Lürssen Werft, Kategorie:Militärschiff (Blohm + Voss), Kategorie:ThyssenKrupp Marine Systems] | Fregatte [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Fregatte, Kategorie:Militärschiffstyp] | Rheinland-Pfalz (Schiff, 2022) [ns 0; Einordnung S; Ausschluss Kategorie:Fr. Lürssen Werft; Kategorien: Kategorie:Baden-Württemberg-Klasse, Kategorie:Fr. Lürssen Werft, Kategorie:Militärschiff (Blohm + Voss), Kategorie:ThyssenKrupp Marine Systems] | Bayern-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Bayern-Klasse, Kategorie:Militärschiffsklasse (Kaiserliche Marine), Kategorie:Schlachtschiff-Klasse, Kategorie:Wikipedia:Exzellent]
-- **F-35A Lightning II** – direkt: nicht gefunden; Suche: Lockheed Martin F-35 [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Einstrahliges Flugzeug, Kategorie:Erstflug 2006, Kategorie:Lockheed Martin, Kategorie:Luftfahrzeug der Royal Air Force, Kategorie:Mehrzweckkampfflugzeug, Kategorie:Militärluftfahrzeug (Belgien), Kategorie:Militärluftfahrzeug (Dänemark), Kategorie:Militärluftfahrzeug (Finnland)] | Tarnkappenflugzeug [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Tarnkappenflugzeug] | Eurofighter Typhoon [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Canard, Kategorie:Erstflug 1994, Kategorie:Jagdflugzeug (1990–1999), Kategorie:Luftfahrzeug (Bundesheer), Kategorie:Luftfahrzeug der Luftwaffe (Bundeswehr), Kategorie:Luftfahrzeug der Royal Air Force, Kategorie:Mehrzweckkampfflugzeug, Kategorie:Militärluftfahrzeug (Italien)] | Panavia Tornado [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Abfangjäger, Kategorie:Aufklärungsflugzeug, Kategorie:Erstflug 1974, Kategorie:Jagdbomber, Kategorie:Jagdflugzeug (1970–1979), Kategorie:Luftfahrzeug der Luftwaffe (Bundeswehr), Kategorie:Luftfahrzeug der Marine (Bundeswehr), Kategorie:Luftfahrzeug der Royal Air Force] | Lockheed Martin X-35 [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Erstflug 2000, Kategorie:Lockheed Martin, Kategorie:Mehrzweckkampfflugzeug, Kategorie:Nicht realisiertes Militärflugzeugprojekt (Vereinigte Staaten), Kategorie:Tarnkappenflugzeug, Kategorie:X-Flugzeug]
 
 | Highlight | Wikipedia-Artikel | Foto |
 |---|---|---|
@@ -42,7 +139,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | 7,7-cm-Feldkanone 96 n.A. | 7,7-cm-Feldkanone 96 n. A. | ja |
 | Gewehr 98 | Mauser Modell 98 | ja |
 | U 1 | U 1 (U-Boot, 1906) | ja |
-| Pistole 08 (Luger) | – | nein |
+| Pistole 08 (Luger) | Parabellumpistole | ja |
 | MG 08 | MG 08 | ja |
 | SMS Emden | Emden (Schiff, 1909) | ja |
 | Nassau-Klasse | Nassau-Klasse | ja |
@@ -122,7 +219,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | DFS 230 | DFS 230 | ja |
 | Flugzeugträger Graf Zeppelin | Graf Zeppelin (Schiff, 1938) | ja |
 | U-Boot-Typ IX | U-Boot-Klasse IX | ja |
-| Panzerkampfwagen 38(t) | Panzerkampfwagen VIII Maus | ja |
+| Panzerkampfwagen 38(t) | Panzerkampfwagen IV | ja |
 | Sd.Kfz. 251 | Schützenpanzerwagen Sd.Kfz. 251 | ja |
 | Eihandgranate 39 | Eihandgranate 39 | ja |
 | Zielfernrohr ZF 39 | – | nein |
@@ -131,11 +228,11 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | Junkers Ju 88 | Junkers Ju 88 | ja |
 | Scharnhorst | Scharnhorst (Schiff, 1939) | ja |
 | Admiral Hipper | Admiral Hipper | ja |
-| Schnellboot S-38-Klasse | – | nein |
+| Schnellboot S-38-Klasse | Schnellboote der Reichs- und Kriegsmarine | ja |
 | Sturmgeschütz III | Sturmgeschütz III | ja |
 | Kübelwagen (VW Typ 82) | VW Typ 82 | ja |
 | MP 40 | Maschinenpistole 40 | ja |
-| Karl-Gerät 040 | – | nein |
+| Karl-Gerät 040 | Mörser Karl | ja |
 | Bismarck | Bismarck (Schiff, 1940) | ja |
 | Focke-Wulf Fw 200 Condor | Focke-Wulf Fw 200 | ja |
 | Focke-Achgelis Fa 223 Drache | Focke-Achgelis Fa 223 | ja |
@@ -156,11 +253,11 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | Heinkel He 177 Greif | Heinkel He 177 | ja |
 | Flettner Fl 282 Kolibri | Flettner Fl 282 | ja |
 | Panther | Panzerkampfwagen V Panther | ja |
-| Ferdinand / Elefant | – | nein |
+| Ferdinand / Elefant | Panzerjäger Tiger (P) | ja |
 | Nashorn | Panzerjäger Nashorn | ja |
 | Wespe | Panzerhaubitze Wespe | ja |
 | Hummel | Panzerhaubitze Hummel | ja |
-| Brummbär | – | nein |
+| Brummbär | Sturmpanzer IV | ja |
 | Sd.Kfz. 4 Maultier | Maultier (Halbkettenfahrzeug) | ja |
 | Gewehr 43 | Gewehr 43 | ja |
 | Panzerfaust | Panzerfaust | ja |
@@ -174,7 +271,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | Jagdpanzer 38(t) Hetzer | Jagdpanzer 38 | ja |
 | Jagdtiger | Jagdpanzer VI Jagdtiger | ja |
 | Sturmtiger | 38-cm-Sturmmörser | ja |
-| Flakpanzer IV Wirbelwind | – | nein |
+| Flakpanzer IV Wirbelwind | Flakpanzer IV | ja |
 | Maus | Panzerkampfwagen VIII Maus | ja |
 | Sd.Kfz. 234/2 Puma | Panzerspähwagen Sd.Kfz. 234 | ja |
 | Sturmgewehr 44 | Sturmgewehr 44 | ja |
@@ -218,17 +315,17 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | SPz lang HS 30 | HS 30 | ja |
 | MPi-K | Kalaschnikow | ja |
 | Pistole M (Makarow) | Makarow (Pistole) | ja |
-| F-104G Starfighter | Lockheed F-104 G CCV | nein |
+| F-104G Starfighter | Lockheed F-104 | ja |
 | U-Boot-Klasse 205 | Klasse 205 | ja |
 | MiG-21 | Mikojan-Gurewitsch MiG-21 | ja |
-| IFA P3 | – | nein |
+| IFA P3 | IFA P3 | ja |
 | M113 | M113 | ja |
-| Hamburg-Klasse | – | nein |
+| Hamburg-Klasse | Hamburg-Klasse (1964) | ja |
 | M109 | M109 (Panzerhaubitze) | ja |
 | MIM-23 HAWK | MIM-23 HAWK | ja |
 | T-55 | T-55 | ja |
 | Leopard 1 | Leopard 1 | ja |
-| IFA W50 | – | nein |
+| IFA W50 | IFA W50 | ja |
 | MPi-KM | Kalaschnikow | ja |
 | Strichtarn | Strichtarn | ja |
 | Kanonenjagdpanzer | Kanonenjagdpanzer | ja |
@@ -247,42 +344,42 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | 9K32 Strela-2 | 9K32 Strela-2 | ja |
 | Marder 1 | Marder (Schützenpanzer) | ja |
 | CH-53G | Sikorsky CH-53 | ja |
-| F-4F Phantom II | – | nein |
+| F-4F Phantom II | McDonnell F-4 | ja |
 | U-Boot-Klasse 206 | Klasse 206 | ja |
 | BMP-1 | BMP-1 | ja |
 | Luchs | Luchs (Spähpanzer) | ja |
-| Biber | – | nein |
+| Biber | Biber (Brückenlegepanzer) | ja |
 | Flakpanzer Gepard | Flugabwehrkanonenpanzer Gepard | ja |
 | Schnellboot Klasse 143 | Albatros-Klasse | ja |
-| MAN-Lkw gl | – | nein |
+| MAN-Lkw gl | MAN gl | ja |
 | Milan | MILAN | ja |
 | FH 70 | FH155-1 | ja |
 | MiG-23 | Mikojan-Gurewitsch MiG-23 | ja |
 | Mi-24 | Mil Mi-24 | ja |
-| 2S1 Gwosdika | – | nein |
+| 2S1 Gwosdika | 2S1 | ja |
 | Fregatte Rostock | Projekt 1159 | ja |
 | Leopard 2 | Leopard 2 | ja |
 | Fuchs | Fuchs (Panzer) | ja |
 | Alpha Jet | Alpha Jet | ja |
 | T-72 | T-72 | ja |
 | PAH-1 (Bo 105) | Bölkow Bo 105 | ja |
-| Sea King Mk41 | – | nein |
+| Sea King Mk41 | Sikorsky S-61 | ja |
 | Roland | Roland (Waffensystem) | ja |
 | Sea Lynx | Westland Lynx | ja |
-| Parchim-Klasse | – | nein |
+| Parchim-Klasse | Projekt 133.1 | ja |
 | Panavia Tornado | Panavia Tornado | ja |
 | Bremen-Klasse | Bremen-Klasse (1982) | ja |
-| MPi-AK-74N | – | nein |
+| MPi-AK-74N | AK-74 | ja |
 | Su-22 | Suchoi Su-22 | ja |
 | Tarantul-Klasse | Tarantul-Klasse | ja |
 | BMP-2 | BMP-2 | ja |
 | MiG-29 | Mikojan-Gurewitsch MiG-29 | ja |
 | Patriot | MIM-104 Patriot | ja |
-| Klasse 332 | – | nein |
+| Klasse 332 | Frankenthal-Klasse | ja |
 | Wolf | Wolf (Fahrzeug) | ja |
 | MARS | Multiple Launch Rocket System | ja |
 | Wiesel 1 | Wiesel (militärisches Kettenfahrzeug) | ja |
-| Flecktarn | – | nein |
+| Flecktarn | Flecktarn | nein |
 | Gefechtshelm B826 | – | nein |
 | Panzerfaust 3 | Panzerfaust 3 | ja |
 | P8 | HK P8 | ja |
@@ -297,7 +394,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | IRIS-T | IRIS-T | ja |
 | Taurus KEPD 350 | Taurus (Marschflugkörper) | ja |
 | MG4 | HK MG4 | ja |
-| U-Boot-Klasse 212A | – | nein |
+| U-Boot-Klasse 212A | Klasse 212 A | ja |
 | Tiger | Eurocopter Tiger | ja |
 | NH90 | NH90 | ja |
 | Fennek | Spähwagen Fennek | ja |
@@ -308,12 +405,12 @@ Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfer
 | MG5 | HK MG5 | ja |
 | Puma | Puma (Schützenpanzer) | ja |
 | MELLS (Spike LR) | Spike (Panzerabwehrlenkwaffe) | ja |
-| Baden-Württemberg-Klasse | – | nein |
+| Baden-Württemberg-Klasse | Baden-Württemberg-Klasse | ja |
 | NH90 Sea Lion | NH90 | ja |
 | Heron TP | IAI Heron TP | ja |
 | IRIS-T SLM | IRIS-T SLM | ja |
 | Arrow 3 | Arrow (Rakete) | ja |
 | G95 | HK416 | ja |
-| F-35A Lightning II | – | nein |
+| F-35A Lightning II | Lockheed Martin F-35 | ja |
 
-269 Anfragen in 72 s
+1424 Anfragen in 416 s
