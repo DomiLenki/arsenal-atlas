@@ -1,4 +1,4 @@
-## Arsenal Atlas – Datenstand 2026-10-18T10:56:28.028Z
+## Arsenal Atlas – Datenstand 2026-10-18T11:06:11.260Z
 
 ### K
 - Kategorie „Flugzeugtyp des Ersten Weltkrieges (Deutsches Reich)“ (Tiefe 1): 369 Artikel aus 13 Kategorien
@@ -12,10 +12,10 @@
 - Suche "Erster Weltkrieg" incategory:Maschinengewehr: 4 Treffer
 - Suche "deutschen Heer" Gewehr eingeführt: 22 Treffer
 - Suche "Deutschen Heeres" Gewehr OR Karabiner OR Pistole OR Revolver: 998 Treffer
-- Suche "Erster Weltkrieg" deutsche Handgranate OR Minenwerfer OR Granatwerfer: 997 Treffer
+- Suche "Erster Weltkrieg" deutsche Handgranate OR Minenwerfer OR Granatwerfer: 995 Treffer
 - Suche "Erster Weltkrieg" Krupp Feldkanone OR Haubitze OR Mörser: 258 Treffer
-- Suche "Kaiserlichen Marine" Schiffsgeschütz OR Torpedo: 999 Treffer
-- Suche "Ersten Weltkrieg" Stahlhelm OR Gasmaske OR Feldgrau OR Uniform deutsch: 1000 Treffer
+- Suche "Kaiserlichen Marine" Schiffsgeschütz OR Torpedo: 996 Treffer
+- Suche "Ersten Weltkrieg" Stahlhelm OR Gasmaske OR Feldgrau OR Uniform deutsch: 999 Treffer
 - Suche "Ersten Weltkrieg" deutsches Flugabwehrgeschütz OR Ballonabwehrkanone: 995 Treffer
 - Suche incategory:"Handwaffe" "Deutsches Heer" Kaiserreich: 0 Treffer
 - Suche "Erster Weltkrieg" "Deutsches Heer" Geschütz: 3 Treffer
@@ -24,10 +24,10 @@
 - Streitkräfte in Wikidata: Kaiserliche Marine (Q156649), Schutztruppe (Q513069), Luftstreitkräfte (Deutsches Kaiserreich) (Q678503), Deutsches Heer (Deutsches Kaiserreich) (Q313422)
 - Staaten (verwendet von): Deutsches Kaiserreich (Q43287)
 - Wikidata „betrieben/verwendet von“: 788 Artikel
-- Kandidaten gesamt: 4749
-- Jahreszahlen aus dem Artikelanfang ergänzt: 147 von 353
-- Ergebnis: 1019 Einträge · mit Foto 840 · mit Jahr 813 · je Kategorie {"Z":26,"W":14,"A":112,"S":537,"M":5,"R":11,"F":292,"P":20,"K":2}
-- Aussortiert: {"excluded":2685,"unclassified":614,"disambig":52,"otherEra":147,"generic":80}
+- Kandidaten gesamt: 4743
+- Jahreszahlen aus dem Artikelanfang ergänzt: 149 von 378
+- Ergebnis: 1022 Einträge · mit Foto 830 · mit Jahr 793 · je Kategorie {"Z":26,"W":14,"A":113,"S":538,"M":5,"R":11,"F":293,"P":20,"K":2}
+- Aussortiert: {"excluded":2686,"unclassified":607,"disambig":53,"otherEra":143,"generic":78}
 
 ### R
 - Kategorie „Militärschiff (Reichsmarine)“ (Tiefe 2): 105 Artikel aus 18 Kategorien
@@ -69,9 +69,9 @@
 - Staaten (verwendet von): NS-Staat (Q7318)
 - Wikidata „betrieben/verwendet von“: 1266 Artikel
 - Kandidaten gesamt: 4195
-- Jahreszahlen aus dem Artikelanfang ergänzt: 414 von 888
-- Ergebnis: 1945 Einträge · mit Foto 1370 · mit Jahr 1471 · je Kategorie {"A":245,"S":934,"W":79,"R":128,"K":58,"M":23,"Z":80,"P":128,"F":260,"H":10}
-- Aussortiert: {"excluded":1217,"unclassified":510,"disambig":33,"otherEra":37,"generic":79}
+- Jahreszahlen aus dem Artikelanfang ergänzt: 473 von 1071
+- Ergebnis: 1948 Einträge · mit Foto 1347 · mit Jahr 1350 · je Kategorie {"A":245,"M":23,"S":934,"W":79,"R":128,"K":58,"Z":81,"P":130,"F":260,"H":10}
+- Aussortiert: {"excluded":1219,"unclassified":509,"disambig":33,"otherEra":37,"generic":71}
 
 ### N
 - Liste „Liste der Technik und Bewaffnung der NVA“: 388 verlinkte Artikel
@@ -90,9 +90,9 @@
 - Staaten (verwendet von): Deutsche Demokratische Republik (Q16957)
 - Wikidata „betrieben/verwendet von“: 51 Artikel
 - Kandidaten gesamt: 1132
-- Jahreszahlen aus dem Artikelanfang ergänzt: 82 von 172
-- Ergebnis: 312 Einträge · mit Foto 297 · mit Jahr 222 · je Kategorie {"W":17,"A":45,"M":10,"Z":42,"R":70,"P":31,"S":25,"F":28,"H":6,"K":38}
-- Aussortiert: {"excluded":426,"unclassified":177,"disambig":14,"otherEra":26,"generic":35}
+- Jahreszahlen aus dem Artikelanfang ergänzt: 82 von 174
+- Ergebnis: 311 Einträge · mit Foto 295 · mit Jahr 219 · je Kategorie {"W":17,"A":45,"M":10,"Z":42,"R":70,"P":30,"S":25,"F":28,"H":6,"K":38}
+- Aussortiert: {"excluded":426,"unclassified":196,"disambig":5,"otherEra":25,"generic":27}
 
 ### B
 - Kategorie „Kettenfahrzeug der Bundeswehr“ (Tiefe 3): 61 Artikel aus 1 Kategorien
@@ -101,7 +101,7 @@
 - Kategorie „Militärschiff (Bundeswehr)“ (Tiefe 3): 172 Artikel aus 35 Kategorien
 - Kategorie „Militärschiffsklasse (Bundeswehr)“ (Tiefe 2): 89 Artikel aus 1 Kategorien
 - Kategorie „Militärische Ausrüstung (Bundeswehr)“ (Tiefe 2): 436 Artikel aus 23 Kategorien
-- Kategorie „Bundeswehr“ (Tiefe 2): 1686 Artikel aus 72 Kategorien
+- Kategorie „Bundeswehr“ (Tiefe 2): 1687 Artikel aus 72 Kategorien
 - Liste „Liste von Handwaffen der Bundeswehr“: 191 verlinkte Artikel
 - Liste „Liste von Luftfahrzeugen der Bundeswehr“: 178 verlinkte Artikel
 - Liste „Liste von Kettenfahrzeugen der Bundeswehr“: 133 verlinkte Artikel
@@ -113,14 +113,14 @@
 - Streitkräfte in Wikidata: Bundeswehr (Q56010), Bundesmarine (Q314103), Deutsche Marine (Q56015), Heeresflieger (Q1593564), Streitkräftebasis (Q56017), Heer (Bundeswehr) (Q11322507), Luftwaffe (Bundeswehr) (Q56013)
 - Staaten (verwendet von): keine
 - Wikidata „betrieben/verwendet von“: 378 Artikel
-- Kandidaten gesamt: 2635
-- Jahreszahlen aus dem Artikelanfang ergänzt: 191 von 375
-- Ergebnis: 717 Einträge · mit Foto 645 · mit Jahr 533 · je Kategorie {"S":200,"Z":96,"W":51,"M":12,"A":23,"F":100,"P":60,"R":97,"K":42,"H":36}
-- Aussortiert: {"excluded":1202,"unclassified":527,"disambig":1,"otherEra":22,"generic":61}
+- Kandidaten gesamt: 2636
+- Jahreszahlen aus dem Artikelanfang ergänzt: 278 von 533
+- Ergebnis: 719 Einträge · mit Foto 607 · mit Jahr 464 · je Kategorie {"S":202,"Z":96,"W":51,"M":12,"F":100,"A":23,"P":60,"K":42,"H":36,"R":97}
+- Aussortiert: {"excluded":1205,"unclassified":536,"disambig":0,"otherEra":21,"generic":50}
 
 ### Highlights
-Highlights: 273 von 280 zugeordnet, 262 mit Foto
-Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund, Stahlhelm M56, Strichtarn, Gefechtshelm B826, Nachtsichtbrille Lucie
+Highlights: 250 von 280 zugeordnet, 241 mit Foto
+Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF 39, Schnellboot S-38-Klasse, Karl-Gerät 040, Ferdinand / Elefant, Brummbär, Flakpanzer IV Wirbelwind, IFA P3, Hamburg-Klasse, IFA W50, LARS 110 mm, F-4F Phantom II, Biber, Flakpanzer Gepard, MAN-Lkw gl, 2S1 Gwosdika, Leopard 2, Sea King Mk41, Parchim-Klasse, MPi-AK-74N, Klasse 332, Flecktarn, Gefechtshelm B826, ATF Dingo, Nachtsichtbrille Lucie, U-Boot-Klasse 212A, Fennek, Baden-Württemberg-Klasse, F-35A Lightning II
 
 | Highlight | Wikipedia-Artikel | Foto |
 |---|---|---|
@@ -131,7 +131,7 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | 7,7-cm-Feldkanone 96 n.A. | 7,7-cm-Feldkanone 96 n. A. | ja |
 | Gewehr 98 | Mauser Modell 98 | ja |
 | U 1 | U 1 (U-Boot, 1906) | ja |
-| Pistole 08 (Luger) | Parabellumpistole | ja |
+| Pistole 08 (Luger) | – | nein |
 | MG 08 | MG 08 | ja |
 | SMS Emden | Emden (Schiff, 1909) | ja |
 | Nassau-Klasse | Nassau-Klasse | ja |
@@ -172,11 +172,11 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | Enigma I | Enigma (Maschine) | ja |
 | Junkers Ju 52/3m | Junkers Ju 52/3m | ja |
 | 7,5-cm-leichtes Infanteriegeschütz 18 | 7,5-cm-leichtes Infanteriegeschütz 18 | ja |
-| Kfz 13 | Kfz-Kennzeichen (Türkei) | ja |
+| Kfz 13 | Panzerspähwagen Sd.Kfz. 234 | ja |
 | 8,8-cm-Flak 18 | 8,8-cm-Flak 18/36/37 | ja |
 | Panzerschiff Deutschland | Deutschland (Schiff, 1933) | ja |
 | Segelschulschiff Gorch Fock (I) | Gorch Fock (Schiff, 1933) | ja |
-| Feldfernsprecher 33 | Luftstreitkräfte (Deutsches Kaiserreich) | ja |
+| Feldfernsprecher 33 | – | nein |
 | Panzerkampfwagen I | Panzerkampfwagen I | ja |
 | MG 34 | MG 34 | ja |
 | 15-cm-schwere Feldhaubitze 18 | 15-cm-schwere Feldhaubitze 18 | ja |
@@ -190,12 +190,12 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | Panzerkampfwagen II | Panzerkampfwagen II | ja |
 | 3,7-cm-PaK 36 | 3,7-cm-Pak | ja |
 | 8-cm-Granatwerfer 34 | Granatwerfer 34 | ja |
-| Admiral Graf Spee | – | nein |
+| Admiral Graf Spee | Admiral Graf Spee | ja |
 | U-Boot-Typ VII | U-Boot-Klasse VII | ja |
 | Heinkel He 111 | Heinkel He 111 | nein |
 | Panzerkampfwagen III | Panzerkampfwagen III | ja |
 | Panzerkampfwagen IV | Panzerkampfwagen IV | ja |
-| Sd.Kfz. 231 (8-Rad) | Schwerer Panzerspähwagen | nein |
+| Sd.Kfz. 231 (8-Rad) | Panzerspähwagen Sd.Kfz. 234 | ja |
 | Opel Blitz | Opel Blitz | ja |
 | Sd.Kfz. 7 | Sd.Kfz. 7 | ja |
 | Messerschmitt Bf 109 | Messerschmitt Bf 109 | ja |
@@ -214,21 +214,21 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | Panzerkampfwagen 38(t) | Panzerkampfwagen IV | ja |
 | Sd.Kfz. 251 | Schützenpanzerwagen Sd.Kfz. 251 | ja |
 | Eihandgranate 39 | Eihandgranate 39 | ja |
-| Zielfernrohr ZF 39 | Scharfschützengewehr | ja |
+| Zielfernrohr ZF 39 | – | nein |
 | Panzerbüchse 39 | Panzerbüchse 39 | ja |
 | 2-cm-Flak 38 | 2-cm-Flak 38 | ja |
 | Junkers Ju 88 | Junkers Ju 88 | ja |
 | Scharnhorst | Scharnhorst (Schiff, 1939) | ja |
 | Admiral Hipper | Admiral Hipper | ja |
-| Schnellboot S-38-Klasse | Albatros-Klasse | ja |
+| Schnellboot S-38-Klasse | – | nein |
 | Sturmgeschütz III | Sturmgeschütz III | ja |
 | Kübelwagen (VW Typ 82) | VW Typ 82 | ja |
 | MP 40 | Maschinenpistole 40 | ja |
-| Karl-Gerät 040 | Mörser Karl | ja |
+| Karl-Gerät 040 | – | nein |
 | Bismarck | Bismarck (Schiff, 1940) | ja |
 | Focke-Wulf Fw 200 Condor | Focke-Wulf Fw 200 | ja |
 | Focke-Achgelis Fa 223 Drache | Focke-Achgelis Fa 223 | ja |
-| Kettenkrad (Sd.Kfz. 2) | Kettenkrad | ja |
+| Kettenkrad (Sd.Kfz. 2) | Mittlerer Ladungsträger (Sd.Kfz. 304) „Springer“ | ja |
 | BMW R 75 | BMW R 75 Gespann | ja |
 | 5-cm-PaK 38 | 5-cm-Pak 38 | ja |
 | 15-cm-Nebelwerfer 41 | Nebelwerfer | ja |
@@ -245,11 +245,11 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | Heinkel He 177 Greif | Heinkel He 177 | ja |
 | Flettner Fl 282 Kolibri | Flettner Fl 282 | ja |
 | Panther | Panzerkampfwagen V Panther | ja |
-| Ferdinand / Elefant | Panzerjäger Tiger (P) | ja |
+| Ferdinand / Elefant | – | nein |
 | Nashorn | Panzerjäger Nashorn | ja |
 | Wespe | Panzerhaubitze Wespe | ja |
 | Hummel | Panzerhaubitze Hummel | ja |
-| Brummbär | Panzerkampfwagen IV | ja |
+| Brummbär | – | nein |
 | Sd.Kfz. 4 Maultier | Maultier (Halbkettenfahrzeug) | ja |
 | Gewehr 43 | Gewehr 43 | ja |
 | Panzerfaust | Panzerfaust | ja |
@@ -263,11 +263,11 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | Jagdpanzer 38(t) Hetzer | Jagdpanzer 38 | ja |
 | Jagdtiger | Jagdpanzer VI Jagdtiger | ja |
 | Sturmtiger | 38-cm-Sturmmörser | ja |
-| Flakpanzer IV Wirbelwind | Flakpanzer IV | ja |
+| Flakpanzer IV Wirbelwind | – | nein |
 | Maus | Panzerkampfwagen VIII Maus | ja |
 | Sd.Kfz. 234/2 Puma | Panzerspähwagen Sd.Kfz. 234 | ja |
 | Sturmgewehr 44 | Sturmgewehr 44 | ja |
-| Infrarotgerät „Vampir“ | – | nein |
+| Infrarotgerät „Vampir“ | Zielgerät 1229 | ja |
 | V1 (Fieseler Fi 103) | Fieseler Fi 103 | ja |
 | V2 (Aggregat 4) | Aggregat 4 | ja |
 | Ruhrstahl X-4 | Ruhrstahl X-4 | ja |
@@ -278,7 +278,7 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | Horten Ho 229 | Horten H IX | ja |
 | U-Boot-Typ XXI | U-Boot-Klasse XXI | ja |
 | U-Boot-Typ XXIII | U-Boot-Klasse XXIII | ja |
-| Seehund | – | nein |
+| Seehund | Seehund (U-Boot) | ja |
 | Heinkel He 162 Volksjäger | Heinkel He 162 | ja |
 | Volkssturmgewehr | Volkssturmgewehr | ja |
 | Unimog S 404 | Unimog 404 | ja |
@@ -288,7 +288,7 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | T-34/85 | T-34 | ja |
 | BTR-152 | BTR-152 | ja |
 | Karabiner S | Karabiner 98k | ja |
-| Stahlhelm M56 | – | nein |
+| Stahlhelm M56 | Stahlhelm | nein |
 | MiG-15 | Mikojan-Gurewitsch MiG-15 | ja |
 | M48 | M48 (Kampfpanzer) | ja |
 | Pistole P1 | Walther P1 | ja |
@@ -301,25 +301,25 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | Alouette II | Alouette II | ja |
 | Nord Noratlas | Nord Noratlas | ja |
 | Gorch Fock (II) | Gorch Fock (Schiff, 1958) | ja |
-| Zerstörer Z1 | Z 1 Leberecht Maass | ja |
+| Zerstörer Z1 | Klasse 119 | ja |
 | G3 | HK G3 | ja |
 | MG 3 | MG 3 | nein |
 | SPz lang HS 30 | HS 30 | ja |
 | MPi-K | Kalaschnikow | ja |
 | Pistole M (Makarow) | Makarow (Pistole) | ja |
-| F-104G Starfighter | Lockheed F-104 | ja |
+| F-104G Starfighter | Lockheed F-104 G CCV | nein |
 | U-Boot-Klasse 205 | Klasse 205 | ja |
 | MiG-21 | Mikojan-Gurewitsch MiG-21 | ja |
-| IFA P3 | Kübelwagen | ja |
+| IFA P3 | – | nein |
 | M113 | M113 | ja |
-| Hamburg-Klasse | Gorch-Fock-Klasse | ja |
+| Hamburg-Klasse | – | nein |
 | M109 | M109 (Panzerhaubitze) | ja |
 | MIM-23 HAWK | MIM-23 HAWK | ja |
 | T-55 | T-55 | ja |
-| Leopard 1 | Mexas | ja |
-| IFA W50 | Löschfahrzeuge in der DDR | ja |
+| Leopard 1 | VT1 (Panzer) | ja |
+| IFA W50 | – | nein |
 | MPi-KM | Kalaschnikow | ja |
-| Strichtarn | – | nein |
+| Strichtarn | Strichtarn | ja |
 | Kanonenjagdpanzer | Kanonenjagdpanzer | ja |
 | Bergepanzer 2 | Bergepanzer 2 | ja |
 | BTR-60 | BTR-60 | ja |
@@ -331,54 +331,54 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | RPG-7 | RPG-7 | ja |
 | Transall C-160 | Transall C-160 | ja |
 | Mi-8 | Mil Mi-8 | ja |
-| LARS 110 mm | Raketenwerfer | ja |
+| LARS 110 mm | – | nein |
 | Lütjens-Klasse | Lütjens-Klasse | ja |
 | 9K32 Strela-2 | 9K32 Strela-2 | ja |
 | Marder 1 | Marder (Schützenpanzer) | ja |
 | CH-53G | Sikorsky CH-53 | ja |
-| F-4F Phantom II | McDonnell F-4 | ja |
+| F-4F Phantom II | – | nein |
 | U-Boot-Klasse 206 | Klasse 206 | ja |
 | BMP-1 | BMP-1 | ja |
 | Luchs | Luchs (Spähpanzer) | ja |
-| Biber | Panzer | ja |
-| Flakpanzer Gepard | Flakpanzer IV | ja |
-| Schnellboot Klasse 143 | Schnellboot | nein |
-| MAN-Lkw gl | MAN gl | ja |
+| Biber | – | nein |
+| Flakpanzer Gepard | – | nein |
+| Schnellboot Klasse 143 | Albatros-Klasse | ja |
+| MAN-Lkw gl | – | nein |
 | Milan | MILAN | ja |
 | FH 70 | FH155-1 | ja |
 | MiG-23 | Mikojan-Gurewitsch MiG-23 | ja |
 | Mi-24 | Mil Mi-24 | ja |
-| 2S1 Gwosdika | BMP-23 | ja |
-| Fregatte Rostock | Braunschweig (Schiff, 2008) | ja |
-| Leopard 2 | Panzer des Kalten Krieges | ja |
+| 2S1 Gwosdika | – | nein |
+| Fregatte Rostock | Projekt 1159 | ja |
+| Leopard 2 | – | nein |
 | Fuchs | Fuchs (Panzer) | ja |
 | Alpha Jet | Alpha Jet | ja |
 | T-72 | T-72 | ja |
 | PAH-1 (Bo 105) | Bölkow Bo 105 | ja |
-| Sea King Mk41 | Sikorsky S-61 | ja |
+| Sea King Mk41 | – | nein |
 | Roland | Roland (Waffensystem) | ja |
 | Sea Lynx | Westland Lynx | ja |
-| Parchim-Klasse | RBU-6000 | ja |
+| Parchim-Klasse | – | nein |
 | Panavia Tornado | Panavia Tornado | ja |
 | Bremen-Klasse | Bremen-Klasse (1982) | ja |
-| MPi-AK-74N | AK-74 | ja |
+| MPi-AK-74N | – | nein |
 | Su-22 | Suchoi Su-22 | ja |
 | Tarantul-Klasse | Tarantul-Klasse | ja |
 | BMP-2 | BMP-2 | ja |
 | MiG-29 | Mikojan-Gurewitsch MiG-29 | ja |
 | Patriot | MIM-104 Patriot | ja |
-| Klasse 332 | Klasse 214 | ja |
+| Klasse 332 | – | nein |
 | Wolf | Wolf (Fahrzeug) | ja |
-| MARS | Mars (Schiff, 1563) | ja |
+| MARS | Multiple Launch Rocket System | ja |
 | Wiesel 1 | Wiesel (militärisches Kettenfahrzeug) | ja |
-| Flecktarn | Gamasche | ja |
+| Flecktarn | – | nein |
 | Gefechtshelm B826 | – | nein |
 | Panzerfaust 3 | Panzerfaust 3 | ja |
 | P8 | HK P8 | ja |
 | Brandenburg-Klasse | Brandenburg-Klasse (1994) | ja |
 | G36 | HK G36 | ja |
 | Panzerhaubitze 2000 | Panzerhaubitze Hummel | ja |
-| ATF Dingo | Jackal (Fahrzeug) | ja |
+| ATF Dingo | – | nein |
 | Berlin-Klasse | Berlin-Klasse | ja |
 | Nachtsichtbrille Lucie | – | nein |
 | Sachsen-Klasse | Sachsen-Klasse (2004) | ja |
@@ -386,23 +386,23 @@ Ohne passenden Artikel: Admiral Graf Spee, Infrarotgerät „Vampir“, Seehund,
 | IRIS-T | IRIS-T | ja |
 | Taurus KEPD 350 | Taurus (Marschflugkörper) | ja |
 | MG4 | HK MG4 | ja |
-| U-Boot-Klasse 212A | Brandenburg-Klasse (1994) | ja |
+| U-Boot-Klasse 212A | – | nein |
 | Tiger | Eurocopter Tiger | ja |
 | NH90 | NH90 | ja |
-| Fennek | Luftbeweglicher Waffenträger | nein |
+| Fennek | – | nein |
 | Braunschweig-Klasse | Braunschweig-Klasse (2008) | ja |
-| Boxer | Militärfahrzeug | nein |
+| Boxer | GTK Boxer | ja |
 | IdZ-ES „Gladius“ | Infanterist der Zukunft | ja |
 | Airbus A400M | Airbus A400M | ja |
 | MG5 | HK MG5 | ja |
-| Puma | Panzer | ja |
+| Puma | Puma (Schützenpanzer) | ja |
 | MELLS (Spike LR) | Spike (Panzerabwehrlenkwaffe) | ja |
-| Baden-Württemberg-Klasse | Fregatte | ja |
+| Baden-Württemberg-Klasse | – | nein |
 | NH90 Sea Lion | NH90 | ja |
 | Heron TP | IAI Heron TP | ja |
 | IRIS-T SLM | IRIS-T SLM | ja |
 | Arrow 3 | Arrow (Rakete) | ja |
 | G95 | HK416 | ja |
-| F-35A Lightning II | Lockheed Martin F-35 | ja |
+| F-35A Lightning II | – | nein |
 
-1437 Anfragen in 460 s
+1858 Anfragen in 2730 s
