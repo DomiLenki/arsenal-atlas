@@ -17,22 +17,24 @@ export const CATEGORY_RULES = [
   ["S", ["schiff", "boot", "korvette", "fregatte", "zerstörer", "kreuzer", "u-boot", "minensucher", "tender", "flottenbegleiter"]],
   ["P", ["panzer"]],
   ["R", ["radfahrzeug", "lastkraftwagen", "lkw", "geländewagen", "pkw", "kraftrad", "motorrad", "zugmaschine", "militärfahrzeug", "kraftfahrzeug", "automobil", "kettenkrad"]],
-  ["Z", ["ausrüstung", "helm", "uniform", "tarnmuster", "funkgerät", "optisches gerät", "fernglas", "zielfernrohr", "schlüsselmaschine", "chiffriermaschine", "feldküche", "nachtsichtgerät", "radar", "gasmaske", "fallschirm", "feldflasche"]],
+  ["Z", ["ausrüstung", "helm", "uniform", "tarnmuster", "funkgerät", "optisches gerät", "fernglas", "zielfernrohr", "schlüsselmaschine", "chiffriermaschine", "feldküche", "nachtsichtgerät", "radar", "gasmaske", "fallschirm", "feldflasche", "tarnkleidung", "kopfbedeckung", "schutzausrüstung", "spaten", "militärische ausrüstung"]],
 ];
 
 /** Ganze Wörter in Kategorienamen, die auf Personen, Orte, Einheiten usw. hinweisen. */
 export const EXCLUDE_WORDS = [
-  "mann", "frau", "geboren", "gestorben", "person", "militärperson", "gemeinde", "konflikt", "begriffsklärung",
+  "geboren", "gestorben", "person", "militärperson", "gemeinde", "konflikt", "begriffsklärung",
   "organisation", "truppengattung", "dienstgrad", "kaserne", "pilot", "film", "roman", "orden", "turm",
+  "militärischer verband", "militärischer verband der ss",
 ];
-/** Wortenden, die auch in Zusammensetzungen ausschließen (z. B. Flugzeughersteller, Seeschlacht, Marinewerft). */
+/** Wortenden, die auch in Zusammensetzungen ausschließen (z. B. Flugzeughersteller, Seeschlacht). */
 export const EXCLUDE_SUFFIXES = [
-  "hersteller", "unternehmen", "werft", "schlacht", "museum", "verband", "offizier", "kennzeichen", "bauwerk",
+  "hersteller", "unternehmen", "schlacht", "museum", "offizier", "kennzeichen", "bauwerk",
   "baudenkmal", "bunker", "befestigungsanlage", "festung", "denkmal", "geschwader", "behörde", "flugplatz",
   "konstrukteur", "ingenieur", "computerspiel", "ehrenzeichen", "kriegsfilm",
 ];
 const L = "a-zäöüß";
-export const EXCLUDE_PATTERN = `(^|[^${L}])(${EXCLUDE_WORDS.join("|")})([^${L}]|$)|(${EXCLUDE_SUFFIXES.join("|")})([^${L}]|$)`;
+/** „Mann“ und „Frau“ nur als ganze Kategorie (Personenartikel), nicht z. B. in „Schimpfwort (Mann)“. */
+export const EXCLUDE_PATTERN = `^(mann|frau)$|(^|[^${L}])(${EXCLUDE_WORDS.join("|")})([^${L}]|$)|(${EXCLUDE_SUFFIXES.join("|")})([^${L}]|$)`;
 
 const GROUP = { P: "v", R: "v", F: "v", H: "v", S: "v", W: "w", M: "w", A: "w", K: "w", Z: "z" };
 export const groupOf = (c) => GROUP[c];

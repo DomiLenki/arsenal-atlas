@@ -513,7 +513,7 @@ const FEATURED_WIKI = {
   "SMS Emden": "Emden (Schiff, 1909)", "SMS Seydlitz": "Seydlitz (Schiff, 1913)",
   "Bismarck": "Bismarck (Schiff, 1940)", "Scharnhorst": "Scharnhorst (Schiff, 1939)", "Tirpitz": "Tirpitz (Schiff, 1941)",
   "Panzerschiff Deutschland": "Deutschland (Schiff, 1933)", "Flugzeugträger Graf Zeppelin": "Graf Zeppelin (Schiff, 1938)",
-  "Karabiner S": "Simonow SKS", "ZSU-23-4 Schilka": "ZSU-23-4", "Luchs": "Spähpanzer Luchs", "2S1 Gwosdika": "2S1 Gwosdika",
+  "Karabiner S": "Simonow SKS", "ZSU-23-4 Schilka": "ZSU-23-4", "Luchs": "Spähpanzer Luchs",
 "IdZ-ES „Gladius“": "Infanterist der Zukunft",
   "Sd.Kfz. 4 Maultier": "Maultier (Halbkettenfahrzeug)", "Gasmaske GM 30": "Gasmaske", "Gummimaske GM15": "Gasmaske",
   "Stahlhelm M35": "Stahlhelm", "Stahlhelm M1916": "Stahlhelm", "Scherenfernrohr 14": "Scherenfernrohr",
@@ -528,6 +528,13 @@ const FEATURED_WIKI = {
   "Infrarotgerät „Vampir“": "en:Zielgerät 1229", "Seehund": "en:Seehund", "Boxer": "en:Boxer (armoured fighting vehicle)",
   "Admiral Graf Spee": "en:German cruiser Admiral Graf Spee", "Strichtarn": "en:Strichtarn", "Stahlhelm M56": "Stahlhelm",
   "MARS": "en:M270 Multiple Launch Rocket System",
+  "Pistole 08 (Luger)": "Parabellumpistole", "F-4F Phantom II": "McDonnell F-4", "F-35A Lightning II": "Lockheed Martin F-35",
+  "Brummbär": "Sturmpanzer IV", "Hamburg-Klasse": "Hamburg-Klasse (1964)", "Ferdinand / Elefant": "Panzerjäger Tiger (P)",
+  "Flakpanzer IV Wirbelwind": "Flakpanzer IV", "Karl-Gerät 040": "Mörser Karl", "Klasse 332": "Frankenthal-Klasse",
+  "U-Boot-Klasse 212A": "Klasse 212 A", "Sea King Mk41": "Sikorsky S-61", "MPi-AK-74N": "AK-74", "MAN-Lkw gl": "MAN gl",
+  "Schnellboot S-38-Klasse": "Schnellboote der Reichs- und Kriegsmarine", "Parchim-Klasse": "Projekt 133.1",
+  "Biber": "q:Brückenlegepanzer Biber", "LARS 110 mm": "q:Leichtes Artillerieraketensystem LARS", "2S1 Gwosdika": "q:2S1 Gwosdika Panzerhaubitze",
+  "Kfz 13": "q:Maschinengewehrkraftwagen Kfz. 13", "Feldfernsprecher 33": "q:Feldfernsprecher 33 Wehrmacht",
   "Pickelhaube": "Pickelhaube", "Gorch Fock (II)": "Gorch Fock (Schiff, 1958)", "Segelschulschiff Gorch Fock (I)": "Gorch Fock (Schiff, 1933)",
 };
 const SEARCH_HINT = { P: "Panzer", R: "Militärfahrzeug", F: "Flugzeug", H: "Hubschrauber", S: "Kriegsschiff", W: "Waffe", M: "Maschinengewehr", A: "Geschütz", K: "Rakete", Z: "Militär Ausrüstung" };
@@ -543,7 +550,8 @@ const GENERIC_TOKENS = new Set(["klasse", "typ", "schiff", "panzer", "fregatte",
 const norm = (t) => t.toLowerCase().replace(/[^a-z0-9äöüß]/g, "");
 function nameTokens(name) {
   return name.replace(/[„“()/]/g, " ").split(/[\s,]+/).map((t) => t.toLowerCase())
-    .filter((t) => (t.length >= 3 || /\d/.test(t)) && !GENERIC_TOKENS.has(t)).map(norm).filter(Boolean);
+    .filter((t) => (t.length >= 3 || /\d/.test(t)) && !GENERIC_TOKENS.has(t)).map(norm).filter(Boolean)
+    .flatMap((t) => /\d[a-z]+$/.test(t) ? [t, t.replace(/[a-z]+$/, "")] : [t]);
 }
 function isGenericPage(page) {
   return GENERIC_TITLES.has(page.title) || GENERIC_KEYWORDS.has(page.title.toLowerCase());
@@ -567,7 +575,7 @@ async function featuredImages(rawFile) {
   const rows = raw.trim().split("\n").map((l) => l.split("|")).map(([, c, , n]) => ({ c, n }));
   FEATURE_TITLES = new Set(rows.map((r) => r.n));
   const fixed = new Map(rows.map((r) => [r.n, FEATURED_WIKI[r.n] || null]));
-  const deRequests = rows.filter((r) => !(fixed.get(r.n) || "").startsWith("en:")).map((r) => fixed.get(r.n) || r.n.replace(/[„“]/g, ""));
+  const deRequests = rows.filter((r) => !/^(en|q):/.test(fixed.get(r.n) || "")).map((r) => fixed.get(r.n) || r.n.replace(/[„“]/g, ""));
   const direct = await pageDetails(deRequests);
   const out = {};
   let found = 0;
@@ -580,12 +588,13 @@ async function featuredImages(rawFile) {
       if (res) { out[r.n] = res; if (res.img) found++; } else unmatched.push(r.n);
       continue;
     }
-    const req = map || r.n.replace(/[„“]/g, "");
-    let page = direct.get(req) || null;
-    const trusted = !!map && page && page.ns === 0 && !page.disambig;
+    const query = map && map.startsWith("q:") ? map.slice(2) : null;
+    const req = (!query && map) || r.n.replace(/[„“]/g, "");
+    let page = query ? null : direct.get(req) || null;
+    const trusted = !!map && !query && page && page.ns === 0 && !page.disambig;
     if (!trusted && !(plausibleEquipment(page) && !isGenericPage(page))) {
       const tokens = nameTokens(r.n);
-      const hits = await pageDetailsFromSearch(`${r.n.replace(/[„“]/g, "")} ${SEARCH_HINT[r.c]}`);
+      const hits = await pageDetailsFromSearch(query || `${r.n.replace(/[„“]/g, "")} ${SEARCH_HINT[r.c]}`);
       page = hits.find((h) => plausibleEquipment(h) && !isGenericPage(h) && tokens.some((t) => norm(h.title).includes(t))) || null;
     }
     if (page) {
