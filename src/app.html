@@ -461,7 +461,7 @@ let META=null,FEAT_MAP={};
 const BOOT=(async()=>{
  try{const r=await fetch("data/meta.json",{cache:"no-cache"});if(r.ok)META=await r.json()}catch(e){}
  if(META){try{const r=await fetch("data/featured.json");if(r.ok)FEAT_MAP=await r.json()}catch(e){}}
- FEATURED.forEach(x=>{const m=FEAT_MAP[x.title];if(m){x.wiki=m.w;x.thumb=m.img||null}else if(META){x.noLookup=true}});
+ FEATURED.forEach(x=>{const m=FEAT_MAP[x.title];if(m){x.wiki=m.w;x.thumb=m.img||null;x.wikiHost=m.h==="en"?EN:DE}else if(META){x.noLookup=true}});
 })();
 BOOT.then(()=>{if(META&&!location.hash.slice(2))rerender()});
 
@@ -500,7 +500,7 @@ function firstHit(q,host){return collect({action:"query",generator:"search",gsrs
 function photoRef(item){
  if(REFS.has(item.id))return REFS.get(item.id);
  let p;
- if(item.wiki)p=Promise.resolve({thumb:item.thumb||null,title:item.wiki,host:DE});
+ if(item.wiki)p=Promise.resolve({thumb:item.thumb||null,title:item.wiki,host:item.wikiHost||DE});
  else if(item.noLookup)p=Promise.resolve({thumb:null,title:null,host:DE});
  else p=(async()=>{let title=null;
   for(const[q,h]of[[item.title+" "+CATS[item.cat].h,DE],[item.title,DE],[item.title,EN]]){
@@ -670,7 +670,7 @@ function viewItem(id){
  <dl class="facts"><div><dt>Einführung</dt><dd>${x.year||"unbekannt"}</dd></div><div><dt>Epoche</dt><dd>${E.n} · ${E.r}</dd></div>
  <div><dt>Kategorie</dt><dd>${CATS[x.cat].n}</dd></div><div><dt>Kennwert</dt><dd>${esc(x.spec||"–")}</dd></div></dl>
  <div class="btnrow" style="margin-top:0" id="mbtn">${mappeBtn(x.id)}<a class="btn" href="#/era/${x.era}">Zur Epoche ${E.n}</a></div>
- <div class="wiki"><div class="label" style="margin-top:8px">Aus Wikipedia</div><div id="wiki"><div class="loading"><div class="spin"></div>Artikel wird geladen …</div></div></div></div></div>`;
+ <div class="wiki"><div class="label" style="margin-top:8px">${x.wikiHost===EN?"Aus der englischsprachigen Wikipedia":"Aus Wikipedia"}</div><div id="wiki"><div class="loading"><div class="spin"></div>Artikel wird geladen …</div></div></div></div></div>`;
 }
 function citation(title,url){
  const d=new Date().toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"});

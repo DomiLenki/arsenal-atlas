@@ -26,7 +26,7 @@ export const EXCLUDE_WORDS = [
   "geschwader", "verband", "flugplatz", "gemeinde", "behörde", "museum", "schlacht", "konflikt",
   "begriffsklärung", "organisation", "truppengattung", "dienstgrad", "kaserne", "werft",
   "konstrukteur", "ingenieur", "pilot", "offizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
-  "bauwerk", "baudenkmal", "bunker", "befestigungsanlage", "festung", "turm", "denkmal",
+  "kennzeichen", "bauwerk", "baudenkmal", "bunker", "befestigungsanlage", "festung", "turm", "denkmal",
 ];
 
 const GROUP = { P: "v", R: "v", F: "v", H: "v", S: "v", W: "w", M: "w", A: "w", K: "w", Z: "z" };

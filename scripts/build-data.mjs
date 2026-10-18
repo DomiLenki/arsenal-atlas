@@ -360,7 +360,7 @@ async function introYears(titles, range) {
 
 /* ------------------------------------------------------------ Details */
 /** Details zu vielen Titeln; liefert Map angefragter Titel -> Seite (Weiterleitungen aufgelöst). */
-async function pageDetails(titles) {
+async function pageDetails(titles, host = DE) {
   const list = [...titles];
   const result = new Map();
   for (let i = 0; i < list.length; i += 50) {
@@ -373,7 +373,7 @@ async function pageDetails(titles) {
       const json = await api({
         action: "query", titles: chunk.join("|"), redirects: "1", ...PAGE_PROPS,
         prop: "pageimages|pageprops|categories", cllimit: "max", clshow: "!hidden", ...(cont || {}),
-      });
+      }, host);
       if (!json) break;
       const q = json.query || {};
       for (const n of q.normalized || []) alias.set(n.from, n.to);
@@ -515,7 +515,7 @@ const FEATURED_WIKI = {
   "Bismarck": "Bismarck (Schiff, 1940)", "Scharnhorst": "Scharnhorst (Schiff, 1939)", "Tirpitz": "Tirpitz (Schiff, 1941)",
   "Panzerschiff Deutschland": "Deutschland (Schiff, 1933)", "Flugzeugträger Graf Zeppelin": "Graf Zeppelin (Schiff, 1938)",
   "Karabiner S": "Simonow SKS", "ZSU-23-4 Schilka": "ZSU-23-4", "Luchs": "Spähpanzer Luchs", "2S1 Gwosdika": "2S1 Gwosdika",
-  "MARS": "Mittleres Artillerieraketensystem", "IdZ-ES „Gladius“": "Infanterist der Zukunft",
+"IdZ-ES „Gladius“": "Infanterist der Zukunft",
   "Sd.Kfz. 4 Maultier": "Maultier (Halbkettenfahrzeug)", "Gasmaske GM 30": "Gasmaske", "Gummimaske GM15": "Gasmaske",
   "Stahlhelm M35": "Stahlhelm", "Stahlhelm M1916": "Stahlhelm", "Scherenfernrohr 14": "Scherenfernrohr",
   "Zeltbahn 31": "Zeltbahn", "Feldflasche M31": "Feldflasche", "Kleiner Flammenwerfer (Kleif)": "Flammenwerfer",
@@ -524,6 +524,11 @@ const FEATURED_WIKI = {
   "U-Boot-Typ XXIII": "U-Boot-Klasse XXIII", "Reichsrevolver M1879": "Reichsrevolver", "Enigma I": "Enigma (Maschine)",
   "Gewehr 98": "Mauser Modell 98", "Tiger I": "Panzerkampfwagen VI Tiger", "Panther": "Panzerkampfwagen V Panther",
   "Maus": "Panzerkampfwagen VIII Maus", "MP 38": "Maschinenpistole 40", "MPi-K": "Kalaschnikow", "MPi-KM": "Kalaschnikow",
+  "Zerstörer Z1": "en:Zerstörer 1-class destroyer", "Puma": "en:Puma (German infantry fighting vehicle)",
+  "Schnellboot Klasse 143": "en:Albatros-class fast attack craft", "Fregatte Rostock": "en:Koni-class frigate",
+  "Infrarotgerät „Vampir“": "en:Zielgerät 1229", "Seehund": "en:Seehund", "Boxer": "en:Boxer (armoured fighting vehicle)",
+  "Admiral Graf Spee": "en:German cruiser Admiral Graf Spee", "Strichtarn": "en:Strichtarn", "Stahlhelm M56": "Stahlhelm",
+  "MARS": "en:M270 Multiple Launch Rocket System",
   "Pickelhaube": "Pickelhaube", "Gorch Fock (II)": "Gorch Fock (Schiff, 1958)", "Segelschulschiff Gorch Fock (I)": "Gorch Fock (Schiff, 1933)",
 };
 const SEARCH_HINT = { P: "Panzer", R: "Militärfahrzeug", F: "Flugzeug", H: "Hubschrauber", S: "Kriegsschiff", W: "Waffe", M: "Maschinengewehr", A: "Geschütz", K: "Rakete", Z: "Militär Ausrüstung" };
@@ -535,23 +540,54 @@ function plausibleEquipment(page) {
   return classify(page.cats) !== null;
 }
 
+const GENERIC_TOKENS = new Set(["klasse", "typ", "schiff", "panzer", "fregatte", "schnellboot", "zerstörer", "lkw", "kanone", "kampfpanzer", "schützenpanzer", "flakpanzer", "leichter", "schwerer", "mittlerer", "kreuzer", "gewehr", "pistole", "u-boot", "stahlhelm", "gefechtshelm", "segelschulschiff", "flugzeugträger", "panzerschiff"]);
+const norm = (t) => t.toLowerCase().replace(/[^a-z0-9äöüß]/g, "");
+function nameTokens(name) {
+  return name.replace(/[„“()/]/g, " ").split(/[\s,]+/).map((t) => t.toLowerCase())
+    .filter((t) => (t.length >= 3 || /\d/.test(t)) && !GENERIC_TOKENS.has(t)).map(norm).filter(Boolean);
+}
+function isGenericPage(page) {
+  return GENERIC_TITLES.has(page.title) || GENERIC_KEYWORDS.has(page.title.toLowerCase()) ||
+    (/^[A-ZÄÖÜ][a-zäöüß-]+$/.test(page.title) && page.cats.includes("Kategorie:" + page.title));
+}
+
+/** Englischen Artikel nachschlagen und, wenn vorhanden, auf den deutschen Artikel umleiten. */
+async function resolveEnglish(title) {
+  const en = (await pageDetails([title], "en.wikipedia.org")).get(title);
+  if (!en) return null;
+  const json = await api({ action: "query", titles: en.title, prop: "langlinks", lllang: "de", redirects: "1" }, "en.wikipedia.org");
+  const ll = (((json && json.query && json.query.pages) || [])[0] || {}).langlinks;
+  if (ll && ll[0] && ll[0].title) {
+    const de = (await pageDetails([ll[0].title])).get(ll[0].title);
+    if (de) return { w: de.title, img: de.thumb || en.thumb || null };
+  }
+  return { w: en.title, img: en.thumb || null, h: "en" };
+}
+
 async function featuredImages(rawFile) {
   const raw = await fs.readFile(rawFile, "utf8");
   const rows = raw.trim().split("\n").map((l) => l.split("|")).map(([, c, , n]) => ({ c, n }));
   FEATURE_TITLES = new Set(rows.map((r) => r.n));
   const fixed = new Map(rows.map((r) => [r.n, FEATURED_WIKI[r.n] || null]));
-  const direct = await pageDetails(rows.map((r) => fixed.get(r.n) || r.n.replace(/[„“]/g, "")));
+  const deRequests = rows.filter((r) => !(fixed.get(r.n) || "").startsWith("en:")).map((r) => fixed.get(r.n) || r.n.replace(/[„“]/g, ""));
+  const direct = await pageDetails(deRequests);
   const out = {};
   let found = 0;
   const unmatched = [];
   for (const r of rows) {
-    const req = fixed.get(r.n) || r.n.replace(/[„“]/g, "");
+    const map = fixed.get(r.n);
+    if (map && map.startsWith("en:")) {
+      const res = await resolveEnglish(map.slice(3));
+      if (res) { out[r.n] = res; if (res.img) found++; } else unmatched.push(r.n);
+      continue;
+    }
+    const req = map || r.n.replace(/[„“]/g, "");
     let page = direct.get(req) || null;
-    const trusted = !!fixed.get(r.n) && page && page.ns === 0 && !page.disambig;
-    if (!trusted && !plausibleEquipment(page)) {
-      page = null;
+    const trusted = !!map && page && page.ns === 0 && !page.disambig;
+    if (!trusted && !(plausibleEquipment(page) && !isGenericPage(page))) {
+      const tokens = nameTokens(r.n);
       const hits = await pageDetailsFromSearch(`${r.n.replace(/[„“]/g, "")} ${SEARCH_HINT[r.c]}`);
-      page = hits.find(plausibleEquipment) || null;
+      page = hits.find((h) => plausibleEquipment(h) && !isGenericPage(h) && tokens.some((t) => norm(h.title).includes(t))) || null;
     }
     if (page) {
       out[r.n] = { w: page.title, img: page.thumb || null };
@@ -565,7 +601,7 @@ async function featuredImages(rawFile) {
   lines.push("", "| Highlight | Wikipedia-Artikel | Foto |", "|---|---|---|");
   for (const r of rows) {
     const m = out[r.n];
-    lines.push(`| ${r.n} | ${m ? m.w : "–"} | ${m && m.img ? "ja" : "nein"} |`);
+    lines.push(`| ${r.n} | ${m ? (m.h === "en" ? "en: " : "") + m.w : "–"} | ${m && m.img ? "ja" : "nein"} |`);
   }
   console.log(lines[0]);
   return { out, lines };
