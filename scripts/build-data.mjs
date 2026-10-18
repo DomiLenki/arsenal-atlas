@@ -572,6 +572,7 @@ async function featuredImages(rawFile) {
   const out = {};
   let found = 0;
   const unmatched = [];
+  const diagnostics = [];
   for (const r of rows) {
     const map = fixed.get(r.n);
     if (map && map.startsWith("en:")) {
@@ -592,10 +593,14 @@ async function featuredImages(rawFile) {
       if (page.thumb) found++;
     } else {
       unmatched.push(r.n);
+      const d = direct.get(req);
+      const why = (pg) => pg ? `${pg.title} [ns ${pg.ns}${pg.disambig ? ", Begriffsklärung" : ""}; Einordnung ${classify(pg.cats)}; Ausschluss ${(pg.cats.find((c) => EXCLUDE_RE.test(c.toLowerCase().replace(/^kategorie:/, ""))) || "–")}; Kategorien: ${pg.cats.slice(0, 8).join(", ")}]` : "nicht gefunden";
+      const hits = await pageDetailsFromSearch(`${r.n.replace(/[„“]/g, "")} ${SEARCH_HINT[r.c]}`);
+      diagnostics.push(`- **${r.n}** – direkt: ${why(d)}; Suche: ${hits.map((h) => why(h)).join(" | ") || "keine Treffer"}`);
     }
   }
   const lines = [`Highlights: ${Object.keys(out).length} von ${rows.length} zugeordnet, ${found} mit Foto`];
-  if (unmatched.length) lines.push(`Ohne passenden Artikel: ${unmatched.join(", ")}`);
+  if (unmatched.length) lines.push(`Ohne passenden Artikel: ${unmatched.join(", ")}`, "", "#### Gründe", ...diagnostics);
   lines.push("", "| Highlight | Wikipedia-Artikel | Foto |", "|---|---|---|");
   for (const r of rows) {
     const m = out[r.n];

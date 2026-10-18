@@ -35,7 +35,7 @@ jobs:
       - name: Daten aus Wikipedia und Wikidata sammeln
         if: ${{ !contains(github.event.head_commit.message, '[nur-website]') }}
         env:
-          ERAS: ${{ github.event.inputs.eras }}
+          ERAS: ${{ github.event.inputs.eras || (contains(github.event.head_commit.message, '[nur-highlights]') && 'featured' || '') }}
         run: node scripts/build-data.mjs
 
       - name: Daten im Repository speichern
