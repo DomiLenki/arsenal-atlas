@@ -1,4 +1,4 @@
-## Arsenal Atlas – Datenstand 2026-10-18T11:06:11.260Z
+## Arsenal Atlas – Datenstand 2026-10-18T11:53:28.192Z
 
 ### K
 - Kategorie „Flugzeugtyp des Ersten Weltkrieges (Deutsches Reich)“ (Tiefe 1): 369 Artikel aus 13 Kategorien
@@ -14,9 +14,9 @@
 - Suche "Deutschen Heeres" Gewehr OR Karabiner OR Pistole OR Revolver: 998 Treffer
 - Suche "Erster Weltkrieg" deutsche Handgranate OR Minenwerfer OR Granatwerfer: 995 Treffer
 - Suche "Erster Weltkrieg" Krupp Feldkanone OR Haubitze OR Mörser: 258 Treffer
-- Suche "Kaiserlichen Marine" Schiffsgeschütz OR Torpedo: 996 Treffer
+- Suche "Kaiserlichen Marine" Schiffsgeschütz OR Torpedo: 998 Treffer
 - Suche "Ersten Weltkrieg" Stahlhelm OR Gasmaske OR Feldgrau OR Uniform deutsch: 999 Treffer
-- Suche "Ersten Weltkrieg" deutsches Flugabwehrgeschütz OR Ballonabwehrkanone: 995 Treffer
+- Suche "Ersten Weltkrieg" deutsches Flugabwehrgeschütz OR Ballonabwehrkanone: 994 Treffer
 - Suche incategory:"Handwaffe" "Deutsches Heer" Kaiserreich: 0 Treffer
 - Suche "Erster Weltkrieg" "Deutsches Heer" Geschütz: 3 Treffer
 - Suche "Erster Weltkrieg" deutscher Panzerwagen: 54 Treffer
@@ -24,10 +24,10 @@
 - Streitkräfte in Wikidata: Kaiserliche Marine (Q156649), Schutztruppe (Q513069), Luftstreitkräfte (Deutsches Kaiserreich) (Q678503), Deutsches Heer (Deutsches Kaiserreich) (Q313422)
 - Staaten (verwendet von): Deutsches Kaiserreich (Q43287)
 - Wikidata „betrieben/verwendet von“: 788 Artikel
-- Kandidaten gesamt: 4743
-- Jahreszahlen aus dem Artikelanfang ergänzt: 149 von 378
-- Ergebnis: 1022 Einträge · mit Foto 830 · mit Jahr 793 · je Kategorie {"Z":26,"W":14,"A":113,"S":538,"M":5,"R":11,"F":293,"P":20,"K":2}
-- Aussortiert: {"excluded":2686,"unclassified":607,"disambig":53,"otherEra":143,"generic":78}
+- Kandidaten gesamt: 4750
+- Jahreszahlen aus dem Artikelanfang ergänzt: 150 von 365
+- Ergebnis: 1035 Einträge · mit Foto 856 · mit Jahr 820 · je Kategorie {"Z":26,"W":15,"A":115,"S":543,"M":5,"R":11,"F":297,"P":20,"K":2,"H":1}
+- Aussortiert: {"excluded":2667,"unclassified":654,"disambig":54,"otherEra":155,"generic":33}
 
 ### R
 - Kategorie „Militärschiff (Reichsmarine)“ (Tiefe 2): 105 Artikel aus 18 Kategorien
@@ -45,8 +45,8 @@
 - Wikidata „betrieben/verwendet von“: 36 Artikel
 - Kandidaten gesamt: 288
 - Jahreszahlen aus dem Artikelanfang ergänzt: 14 von 27
-- Ergebnis: 73 Einträge · mit Foto 63 · mit Jahr 60 · je Kategorie {"W":4,"S":51,"A":8,"P":1,"F":2,"Z":1,"K":1,"R":5}
-- Aussortiert: {"excluded":103,"unclassified":35,"disambig":0,"otherEra":67,"generic":6}
+- Ergebnis: 74 Einträge · mit Foto 63 · mit Jahr 61 · je Kategorie {"W":4,"S":52,"A":8,"P":1,"F":2,"Z":1,"K":1,"R":5}
+- Aussortiert: {"excluded":102,"unclassified":39,"disambig":0,"otherEra":67,"generic":2}
 
 ### W
 - Kategorie „Kettenfahrzeug der Wehrmacht“ (Tiefe 3): 192 Artikel aus 5 Kategorien
@@ -69,9 +69,9 @@
 - Staaten (verwendet von): NS-Staat (Q7318)
 - Wikidata „betrieben/verwendet von“: 1266 Artikel
 - Kandidaten gesamt: 4195
-- Jahreszahlen aus dem Artikelanfang ergänzt: 473 von 1071
-- Ergebnis: 1948 Einträge · mit Foto 1347 · mit Jahr 1350 · je Kategorie {"A":245,"M":23,"S":934,"W":79,"R":128,"K":58,"Z":81,"P":130,"F":260,"H":10}
-- Aussortiert: {"excluded":1219,"unclassified":509,"disambig":33,"otherEra":37,"generic":71}
+- Jahreszahlen aus dem Artikelanfang ergänzt: 415 von 899
+- Ergebnis: 1957 Einträge · mit Foto 1379 · mit Jahr 1473 · je Kategorie {"A":247,"S":938,"W":79,"R":129,"K":58,"M":23,"Z":80,"P":130,"F":262,"H":11}
+- Aussortiert: {"excluded":1202,"unclassified":539,"disambig":33,"otherEra":38,"generic":52}
 
 ### N
 - Liste „Liste der Technik und Bewaffnung der NVA“: 388 verlinkte Artikel
@@ -91,8 +91,8 @@
 - Wikidata „betrieben/verwendet von“: 51 Artikel
 - Kandidaten gesamt: 1132
 - Jahreszahlen aus dem Artikelanfang ergänzt: 82 von 174
-- Ergebnis: 311 Einträge · mit Foto 295 · mit Jahr 219 · je Kategorie {"W":17,"A":45,"M":10,"Z":42,"R":70,"P":30,"S":25,"F":28,"H":6,"K":38}
-- Aussortiert: {"excluded":426,"unclassified":196,"disambig":5,"otherEra":25,"generic":27}
+- Ergebnis: 314 Einträge · mit Foto 299 · mit Jahr 222 · je Kategorie {"W":17,"A":45,"M":10,"Z":42,"R":70,"P":31,"S":26,"F":28,"H":7,"K":38}
+- Aussortiert: {"excluded":422,"unclassified":193,"disambig":14,"otherEra":29,"generic":18}
 
 ### B
 - Kategorie „Kettenfahrzeug der Bundeswehr“ (Tiefe 3): 61 Artikel aus 1 Kategorien
@@ -114,13 +114,13 @@
 - Staaten (verwendet von): keine
 - Wikidata „betrieben/verwendet von“: 378 Artikel
 - Kandidaten gesamt: 2636
-- Jahreszahlen aus dem Artikelanfang ergänzt: 278 von 533
-- Ergebnis: 719 Einträge · mit Foto 607 · mit Jahr 464 · je Kategorie {"S":202,"Z":96,"W":51,"M":12,"F":100,"A":23,"P":60,"K":42,"H":36,"R":97}
-- Aussortiert: {"excluded":1205,"unclassified":536,"disambig":0,"otherEra":21,"generic":50}
+- Jahreszahlen aus dem Artikelanfang ergänzt: 256 von 491
+- Ergebnis: 747 Einträge · mit Foto 651 · mit Jahr 512 · je Kategorie {"S":209,"Z":96,"W":52,"M":12,"A":24,"F":102,"R":104,"P":70,"K":42,"H":36}
+- Aussortiert: {"excluded":1180,"unclassified":559,"disambig":0,"otherEra":24,"generic":21}
 
 ### Highlights
-Highlights: 250 von 280 zugeordnet, 241 mit Foto
-Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF 39, Schnellboot S-38-Klasse, Karl-Gerät 040, Ferdinand / Elefant, Brummbär, Flakpanzer IV Wirbelwind, IFA P3, Hamburg-Klasse, IFA W50, LARS 110 mm, F-4F Phantom II, Biber, Flakpanzer Gepard, MAN-Lkw gl, 2S1 Gwosdika, Leopard 2, Sea King Mk41, Parchim-Klasse, MPi-AK-74N, Klasse 332, Flecktarn, Gefechtshelm B826, ATF Dingo, Nachtsichtbrille Lucie, U-Boot-Klasse 212A, Fennek, Baden-Württemberg-Klasse, F-35A Lightning II
+Highlights: 253 von 280 zugeordnet, 244 mit Foto
+Ohne passenden Artikel: Pistole 08 (Luger), Kfz 13, Feldfernsprecher 33, Zielfernrohr ZF 39, Schnellboot S-38-Klasse, Karl-Gerät 040, Ferdinand / Elefant, Brummbär, Flakpanzer IV Wirbelwind, IFA P3, Hamburg-Klasse, IFA W50, LARS 110 mm, F-4F Phantom II, Biber, MAN-Lkw gl, 2S1 Gwosdika, Sea King Mk41, Parchim-Klasse, MPi-AK-74N, Klasse 332, Flecktarn, Gefechtshelm B826, Nachtsichtbrille Lucie, U-Boot-Klasse 212A, Baden-Württemberg-Klasse, F-35A Lightning II
 
 | Highlight | Wikipedia-Artikel | Foto |
 |---|---|---|
@@ -172,7 +172,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | Enigma I | Enigma (Maschine) | ja |
 | Junkers Ju 52/3m | Junkers Ju 52/3m | ja |
 | 7,5-cm-leichtes Infanteriegeschütz 18 | 7,5-cm-leichtes Infanteriegeschütz 18 | ja |
-| Kfz 13 | Panzerspähwagen Sd.Kfz. 234 | ja |
+| Kfz 13 | – | nein |
 | 8,8-cm-Flak 18 | 8,8-cm-Flak 18/36/37 | ja |
 | Panzerschiff Deutschland | Deutschland (Schiff, 1933) | ja |
 | Segelschulschiff Gorch Fock (I) | Gorch Fock (Schiff, 1933) | ja |
@@ -211,7 +211,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | DFS 230 | DFS 230 | ja |
 | Flugzeugträger Graf Zeppelin | Graf Zeppelin (Schiff, 1938) | ja |
 | U-Boot-Typ IX | U-Boot-Klasse IX | ja |
-| Panzerkampfwagen 38(t) | Panzerkampfwagen IV | ja |
+| Panzerkampfwagen 38(t) | Panzerkampfwagen II | ja |
 | Sd.Kfz. 251 | Schützenpanzerwagen Sd.Kfz. 251 | ja |
 | Eihandgranate 39 | Eihandgranate 39 | ja |
 | Zielfernrohr ZF 39 | – | nein |
@@ -316,7 +316,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | M109 | M109 (Panzerhaubitze) | ja |
 | MIM-23 HAWK | MIM-23 HAWK | ja |
 | T-55 | T-55 | ja |
-| Leopard 1 | VT1 (Panzer) | ja |
+| Leopard 1 | Leopard 1 | ja |
 | IFA W50 | – | nein |
 | MPi-KM | Kalaschnikow | ja |
 | Strichtarn | Strichtarn | ja |
@@ -341,7 +341,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | BMP-1 | BMP-1 | ja |
 | Luchs | Luchs (Spähpanzer) | ja |
 | Biber | – | nein |
-| Flakpanzer Gepard | – | nein |
+| Flakpanzer Gepard | Flugabwehrkanonenpanzer Gepard | ja |
 | Schnellboot Klasse 143 | Albatros-Klasse | ja |
 | MAN-Lkw gl | – | nein |
 | Milan | MILAN | ja |
@@ -350,7 +350,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | Mi-24 | Mil Mi-24 | ja |
 | 2S1 Gwosdika | – | nein |
 | Fregatte Rostock | Projekt 1159 | ja |
-| Leopard 2 | – | nein |
+| Leopard 2 | Leopard 2 | ja |
 | Fuchs | Fuchs (Panzer) | ja |
 | Alpha Jet | Alpha Jet | ja |
 | T-72 | T-72 | ja |
@@ -377,8 +377,8 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | P8 | HK P8 | ja |
 | Brandenburg-Klasse | Brandenburg-Klasse (1994) | ja |
 | G36 | HK G36 | ja |
-| Panzerhaubitze 2000 | Panzerhaubitze Hummel | ja |
-| ATF Dingo | – | nein |
+| Panzerhaubitze 2000 | Panzerhaubitze 2000 | ja |
+| ATF Dingo | ATF Dingo | ja |
 | Berlin-Klasse | Berlin-Klasse | ja |
 | Nachtsichtbrille Lucie | – | nein |
 | Sachsen-Klasse | Sachsen-Klasse (2004) | ja |
@@ -389,7 +389,7 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | U-Boot-Klasse 212A | – | nein |
 | Tiger | Eurocopter Tiger | ja |
 | NH90 | NH90 | ja |
-| Fennek | – | nein |
+| Fennek | Spähwagen Fennek | ja |
 | Braunschweig-Klasse | Braunschweig-Klasse (2008) | ja |
 | Boxer | GTK Boxer | ja |
 | IdZ-ES „Gladius“ | Infanterist der Zukunft | ja |
@@ -405,4 +405,4 @@ Ohne passenden Artikel: Pistole 08 (Luger), Feldfernsprecher 33, Zielfernrohr ZF
 | G95 | HK416 | ja |
 | F-35A Lightning II | – | nein |
 
-1858 Anfragen in 2730 s
+1579 Anfragen in 1187 s
