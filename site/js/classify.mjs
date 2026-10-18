@@ -22,12 +22,17 @@ export const CATEGORY_RULES = [
 
 /** Ganze Wörter in Kategorienamen, die auf Personen, Orte, Einheiten usw. hinweisen. */
 export const EXCLUDE_WORDS = [
-  "mann", "frau", "geboren", "gestorben", "person", "hersteller", "unternehmen",
-  "geschwader", "verband", "flugplatz", "gemeinde", "behörde", "museum", "schlacht", "konflikt",
-  "begriffsklärung", "organisation", "truppengattung", "dienstgrad", "kaserne", "werft",
-  "konstrukteur", "ingenieur", "pilot", "offizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
-  "kennzeichen", "bauwerk", "baudenkmal", "bunker", "befestigungsanlage", "festung", "turm", "denkmal",
+  "mann", "frau", "geboren", "gestorben", "person", "militärperson", "gemeinde", "konflikt", "begriffsklärung",
+  "organisation", "truppengattung", "dienstgrad", "kaserne", "pilot", "film", "roman", "orden", "turm",
 ];
+/** Wortenden, die auch in Zusammensetzungen ausschließen (z. B. Flugzeughersteller, Seeschlacht, Marinewerft). */
+export const EXCLUDE_SUFFIXES = [
+  "hersteller", "unternehmen", "werft", "schlacht", "museum", "verband", "offizier", "kennzeichen", "bauwerk",
+  "baudenkmal", "bunker", "befestigungsanlage", "festung", "denkmal", "geschwader", "behörde", "flugplatz",
+  "konstrukteur", "ingenieur", "computerspiel", "ehrenzeichen", "kriegsfilm",
+];
+const L = "a-zäöüß";
+export const EXCLUDE_PATTERN = `(^|[^${L}])(${EXCLUDE_WORDS.join("|")})([^${L}]|$)|(${EXCLUDE_SUFFIXES.join("|")})([^${L}]|$)`;
 
 const GROUP = { P: "v", R: "v", F: "v", H: "v", S: "v", W: "w", M: "w", A: "w", K: "w", Z: "z" };
 export const groupOf = (c) => GROUP[c];

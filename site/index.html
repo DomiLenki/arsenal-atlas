@@ -905,18 +905,23 @@ const CATEGORY_RULES = [
 
 /** Ganze Wörter in Kategorienamen, die auf Personen, Orte, Einheiten usw. hinweisen. */
 const EXCLUDE_WORDS = [
-  "mann", "frau", "geboren", "gestorben", "person", "hersteller", "unternehmen",
-  "geschwader", "verband", "flugplatz", "gemeinde", "behörde", "museum", "schlacht", "konflikt",
-  "begriffsklärung", "organisation", "truppengattung", "dienstgrad", "kaserne", "werft",
-  "konstrukteur", "ingenieur", "pilot", "offizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
-  "kennzeichen", "bauwerk", "baudenkmal", "bunker", "befestigungsanlage", "festung", "turm", "denkmal",
+  "mann", "frau", "geboren", "gestorben", "person", "militärperson", "gemeinde", "konflikt", "begriffsklärung",
+  "organisation", "truppengattung", "dienstgrad", "kaserne", "pilot", "film", "roman", "orden", "turm",
 ];
+/** Wortenden, die auch in Zusammensetzungen ausschließen (z. B. Flugzeughersteller, Seeschlacht, Marinewerft). */
+const EXCLUDE_SUFFIXES = [
+  "hersteller", "unternehmen", "werft", "schlacht", "museum", "verband", "offizier", "kennzeichen", "bauwerk",
+  "baudenkmal", "bunker", "befestigungsanlage", "festung", "denkmal", "geschwader", "behörde", "flugplatz",
+  "konstrukteur", "ingenieur", "computerspiel", "ehrenzeichen", "kriegsfilm",
+];
+const L = "a-zäöüß";
+const EXCLUDE_PATTERN = `(^|[^${L}])(${EXCLUDE_WORDS.join("|")})([^${L}]|$)|(${EXCLUDE_SUFFIXES.join("|")})([^${L}]|$)`;
 
 const GROUP = { P: "v", R: "v", F: "v", H: "v", S: "v", W: "w", M: "w", A: "w", K: "w", Z: "z" };
 const groupOf = (c) => GROUP[c];
 
 const RULES=CATEGORY_RULES;
-const EXCL_RE=new RegExp(`(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
+const EXCL_RE=new RegExp(EXCLUDE_PATTERN);
 const SKIPCAT=["militärische einheit","verband","division","regiment","bataillon","geschwader","staffel","hersteller","unternehmen","museum","liste","film","spiel","besatzung","operation","werft","bauwerk","stützpunkt","flugplatz","person","kommandant","schiffsverlust","wrack","kriegsgefangen","modell","kaserne"];
 function classify(cats){const l=cats.map(c=>c.toLowerCase().replace(/^kategorie:/,""));if(l.some(c=>EXCL_RE.test(c)))return null;
  for(const[cat,keys]of RULES)if(l.some(c=>keys.some(k=>c.includes(k))))return cat;return null}

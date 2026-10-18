@@ -11,7 +11,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { CATEGORY_RULES, EXCLUDE_WORDS, groupOf } from "../site/js/classify.mjs";
+import { CATEGORY_RULES, EXCLUDE_PATTERN, groupOf } from "../site/js/classify.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "site", "data");
@@ -192,7 +192,7 @@ async function wikidataOperated(qids, stateQids, log) {
 }
 
 /* ------------------------------------------------------------ Einordnung */
-const EXCLUDE_RE = new RegExp(`(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
+const EXCLUDE_RE = new RegExp(EXCLUDE_PATTERN);
 const SKIP_CATEGORY = /(militärische einheit|verband|division|regiment|bataillon|geschwader|staffel|hersteller|unternehmen|museum|liste|film|spiel|besatzung|schlacht |schlacht$|operation|werft|bauwerk|stützpunkt|flugplatz|person|kommandant|schiffsverlust|wrack|kriegsgefangen|modell|kaserne|truppenübungsplatz)/;
 function skipCategory(title) {
   return SKIP_CATEGORY.test(title.toLowerCase());
@@ -471,8 +471,7 @@ async function buildEra(key, era) {
     const w = page.qid ? wd.get(page.qid) || {} : {};
     if (page.disambig || /begriffsklärung/i.test(w.desc || "")) { dropped.disambig++; continue; }
     if (excluded(page.cats)) { dropped.excluded++; continue; }
-    const conceptPage = /^[A-ZÄÖÜ][a-zäöüß-]+$/.test(page.title) && page.cats.includes("Kategorie:" + page.title) && !(FEATURE_TITLES.has(page.title));
-    if (GENERIC_TITLES.has(page.title) || GENERIC_KEYWORDS.has(page.title.toLowerCase()) || conceptPage || GENERIC_DESC.test(w.desc || "")) { dropped.generic++; continue; }
+    if (GENERIC_TITLES.has(page.title) || GENERIC_KEYWORDS.has(page.title.toLowerCase()) || GENERIC_DESC.test(w.desc || "")) { dropped.generic++; continue; }
     const isOperated = operated.has(title) || operated.has(page.title);
     if (!isOperated && foreignToEra(key, page.cats, w.desc)) { dropped.otherEra++; continue; }
     const c = classify(page.cats);
@@ -540,15 +539,14 @@ function plausibleEquipment(page) {
   return classify(page.cats) !== null;
 }
 
-const GENERIC_TOKENS = new Set(["klasse", "typ", "schiff", "panzer", "fregatte", "schnellboot", "zerstörer", "lkw", "kanone", "kampfpanzer", "schützenpanzer", "flakpanzer", "leichter", "schwerer", "mittlerer", "kreuzer", "gewehr", "pistole", "u-boot", "stahlhelm", "gefechtshelm", "segelschulschiff", "flugzeugträger", "panzerschiff"]);
+const GENERIC_TOKENS = new Set(["klasse", "typ", "schiff", "panzer", "fregatte", "schnellboot", "zerstörer", "lkw", "kanone", "kampfpanzer", "schützenpanzer", "flakpanzer", "leichter", "schwerer", "mittlerer", "kreuzer", "gewehr", "pistole", "u-boot", "stahlhelm", "gefechtshelm", "segelschulschiff", "flugzeugträger", "panzerschiff", "kfz", "sd", "sdkfz"]);
 const norm = (t) => t.toLowerCase().replace(/[^a-z0-9äöüß]/g, "");
 function nameTokens(name) {
   return name.replace(/[„“()/]/g, " ").split(/[\s,]+/).map((t) => t.toLowerCase())
     .filter((t) => (t.length >= 3 || /\d/.test(t)) && !GENERIC_TOKENS.has(t)).map(norm).filter(Boolean);
 }
 function isGenericPage(page) {
-  return GENERIC_TITLES.has(page.title) || GENERIC_KEYWORDS.has(page.title.toLowerCase()) ||
-    (/^[A-ZÄÖÜ][a-zäöüß-]+$/.test(page.title) && page.cats.includes("Kategorie:" + page.title));
+  return GENERIC_TITLES.has(page.title) || GENERIC_KEYWORDS.has(page.title.toLowerCase());
 }
 
 /** Englischen Artikel nachschlagen und, wenn vorhanden, auf den deutschen Artikel umleiten. */

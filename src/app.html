@@ -386,7 +386,7 @@ const SRC={
 };
 __CLASSIFY__
 const RULES=CATEGORY_RULES;
-const EXCL_RE=new RegExp(`(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
+const EXCL_RE=new RegExp(EXCLUDE_PATTERN);
 const SKIPCAT=["militärische einheit","verband","division","regiment","bataillon","geschwader","staffel","hersteller","unternehmen","museum","liste","film","spiel","besatzung","operation","werft","bauwerk","stützpunkt","flugplatz","person","kommandant","schiffsverlust","wrack","kriegsgefangen","modell","kaserne"];
 function classify(cats){const l=cats.map(c=>c.toLowerCase().replace(/^kategorie:/,""));if(l.some(c=>EXCL_RE.test(c)))return null;
  for(const[cat,keys]of RULES)if(l.some(c=>keys.some(k=>c.includes(k))))return cat;return null}
