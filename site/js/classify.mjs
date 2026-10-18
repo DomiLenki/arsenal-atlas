@@ -22,10 +22,11 @@ export const CATEGORY_RULES = [
 
 /** Ganze Wörter in Kategorienamen, die auf Personen, Orte, Einheiten usw. hinweisen. */
 export const EXCLUDE_WORDS = [
-  "mann", "frau", "geboren", "gestorben", "person", "militärperson", "hersteller", "unternehmen",
+  "mann", "frau", "geboren", "gestorben", "person", "hersteller", "unternehmen",
   "geschwader", "verband", "flugplatz", "gemeinde", "behörde", "museum", "schlacht", "konflikt",
   "begriffsklärung", "organisation", "truppengattung", "dienstgrad", "kaserne", "werft",
-  "konstrukteur", "ingenieur", "pilot", "marineoffizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
+  "konstrukteur", "ingenieur", "pilot", "offizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
+  "bauwerk", "baudenkmal", "bunker", "befestigungsanlage", "festung", "turm", "denkmal",
 ];
 
 const GROUP = { P: "v", R: "v", F: "v", H: "v", S: "v", W: "w", M: "w", A: "w", K: "w", Z: "z" };

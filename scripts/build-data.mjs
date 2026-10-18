@@ -192,7 +192,7 @@ async function wikidataOperated(qids, stateQids, log) {
 }
 
 /* ------------------------------------------------------------ Einordnung */
-const EXCLUDE_RE = new RegExp(`(^|[^a-zäöüß])(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
+const EXCLUDE_RE = new RegExp(`(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
 const SKIP_CATEGORY = /(militärische einheit|verband|division|regiment|bataillon|geschwader|staffel|hersteller|unternehmen|museum|liste|film|spiel|besatzung|schlacht |schlacht$|operation|werft|bauwerk|stützpunkt|flugplatz|person|kommandant|schiffsverlust|wrack|kriegsgefangen|modell|kaserne|truppenübungsplatz)/;
 function skipCategory(title) {
   return SKIP_CATEGORY.test(title.toLowerCase());
@@ -223,7 +223,14 @@ const ERAS = {
       ["cat", "Militärschiffsklasse (Kaiserliche Marine)", "S", 1],
       ["cat", "Deutsches Heer (Deutsches Kaiserreich)", null, 2],
       ["cat", "Luftstreitkräfte (Deutsches Kaiserreich)", null, 2],
-      ["search", '"Deutsches Heer" "Erster Weltkrieg" incategory:Maschinengewehr', "M"],
+      ["search", '"Erster Weltkrieg" incategory:Maschinengewehr', "M"],
+      ["search", '"deutschen Heer" Gewehr eingeführt', null],
+      ["search", '"Deutschen Heeres" Gewehr OR Karabiner OR Pistole OR Revolver', null],
+      ["search", '"Erster Weltkrieg" deutsche Handgranate OR Minenwerfer OR Granatwerfer', null],
+      ["search", '"Erster Weltkrieg" Krupp Feldkanone OR Haubitze OR Mörser', null],
+      ["search", '"Kaiserlichen Marine" Schiffsgeschütz OR Torpedo', null],
+      ["search", '"Ersten Weltkrieg" Stahlhelm OR Gasmaske OR Feldgrau OR Uniform deutsch', null],
+      ["search", '"Ersten Weltkrieg" deutsches Flugabwehrgeschütz OR Ballonabwehrkanone', null],
       ["search", 'incategory:"Handwaffe" "Deutsches Heer" Kaiserreich', null],
       ["search", '"Erster Weltkrieg" "Deutsches Heer" Geschütz', null],
       ["search", '"Erster Weltkrieg" deutscher Panzerwagen', null],
@@ -330,6 +337,8 @@ function foreignToEra(key, cats, desc) {
   return !OWN_RE[key].test(text) && OTHER_RE[key].test(text);
 }
 const GENERIC_TITLES = new Set(["Luftfahrzeug", "Flugzeug", "Panzer", "Kampfpanzer", "Hubschrauber", "Schiff", "Kriegsschiff", "Waffe", "Feuerwaffe", "Handfeuerwaffe", "Kraftfahrzeug", "Militärfahrzeug", "Vorgeschobener Beobachter", "Artillerie", "Geschütz", "Uniform", "Ausrüstung"]);
+const GENERIC_KEYWORDS = new Set(CATEGORY_RULES.flatMap(([, w]) => w));
+let FEATURE_TITLES = new Set();
 const GENERIC_DESC = /^(transportmittel|rolle |begriff|oberbegriff|sammelbegriff|wikimedia-|teilstreitkraft|truppengattung|waffengattung|militärische einheit|verband )/i;
 
 /* ------------------------------------------------------------ Jahreszahlen aus dem Artikelanfang */
@@ -340,7 +349,7 @@ async function introYears(titles, range) {
     const json = await api({ action: "query", titles: list.slice(i, i + 20).join("|"), prop: "extracts", exintro: "1", explaintext: "1", exlimit: "20", exchars: "600" });
     for (const p of (json && json.query && json.query.pages) || []) {
       if (!p.extract) continue;
-      for (const m of p.extract.matchAll(/(?<![\d.,])(1[89]\d\d|20[0-2]\d)(?![\d.,])/g)) {
+      for (const m of p.extract.matchAll(/(?<![\d.,–-])(1[89]\d\d|20[0-2]\d)(?![\d.,]|\s*(?:–|-|bis\b))/g)) {
         const y = Number(m[1]);
         if (y >= range[0] && y <= range[1]) { out.set(p.title, y); break; }
       }
@@ -462,7 +471,8 @@ async function buildEra(key, era) {
     const w = page.qid ? wd.get(page.qid) || {} : {};
     if (page.disambig || /begriffsklärung/i.test(w.desc || "")) { dropped.disambig++; continue; }
     if (excluded(page.cats)) { dropped.excluded++; continue; }
-    if (GENERIC_TITLES.has(page.title) || GENERIC_DESC.test(w.desc || "")) { dropped.generic++; continue; }
+    const conceptPage = /^[A-ZÄÖÜ][a-zäöüß-]+$/.test(page.title) && page.cats.includes("Kategorie:" + page.title) && !(FEATURE_TITLES.has(page.title));
+    if (GENERIC_TITLES.has(page.title) || GENERIC_KEYWORDS.has(page.title.toLowerCase()) || conceptPage || GENERIC_DESC.test(w.desc || "")) { dropped.generic++; continue; }
     const isOperated = operated.has(title) || operated.has(page.title);
     if (!isOperated && foreignToEra(key, page.cats, w.desc)) { dropped.otherEra++; continue; }
     const c = classify(page.cats);
@@ -471,7 +481,8 @@ async function buildEra(key, era) {
     else cat = c;
     if (!cat) { dropped.unclassified++; continue; }
     if (items.has(page.title)) continue;
-    let year = operated.get(title) || operated.get(page.title) || w.service || w.flight || w.inception || null;
+    const titleYear = page.title.match(/\((?:[^()]*, )?(1[89]\d\d|20[0-2]\d)\)$/);
+    let year = (titleYear && Number(titleYear[1])) || operated.get(title) || operated.get(page.title) || w.service || w.flight || w.inception || null;
     if (!year) {
       for (const c2 of page.cats) {
         const m = c2.match(/(Erstflug|Stapellauf|Indienststellung|Erbaut|Eingeführt)\D*(1[89]\d\d|20[0-2]\d)/i);
@@ -497,28 +508,75 @@ async function buildEra(key, era) {
 }
 
 /* ------------------------------------------------------------ Highlights mit Fotos */
+/** Feste Zuordnung, wo der Name in der App vom Wikipedia-Artikel abweicht oder mehrdeutig ist. */
+const FEATURED_WIKI = {
+  "U 1": "U 1 (U-Boot, 1906)", "U 9": "U 9 (U-Boot, 1910)", "Leichter Kreuzer Emden": "Emden (Schiff, 1925)",
+  "SMS Emden": "Emden (Schiff, 1909)", "SMS Seydlitz": "Seydlitz (Schiff, 1913)",
+  "Bismarck": "Bismarck (Schiff, 1940)", "Scharnhorst": "Scharnhorst (Schiff, 1939)", "Tirpitz": "Tirpitz (Schiff, 1941)",
+  "Panzerschiff Deutschland": "Deutschland (Schiff, 1933)", "Flugzeugträger Graf Zeppelin": "Graf Zeppelin (Schiff, 1938)",
+  "Karabiner S": "Simonow SKS", "ZSU-23-4 Schilka": "ZSU-23-4", "Luchs": "Spähpanzer Luchs", "2S1 Gwosdika": "2S1 Gwosdika",
+  "MARS": "Mittleres Artillerieraketensystem", "IdZ-ES „Gladius“": "Infanterist der Zukunft",
+  "Sd.Kfz. 4 Maultier": "Maultier (Halbkettenfahrzeug)", "Gasmaske GM 30": "Gasmaske", "Gummimaske GM15": "Gasmaske",
+  "Stahlhelm M35": "Stahlhelm", "Stahlhelm M1916": "Stahlhelm", "Scherenfernrohr 14": "Scherenfernrohr",
+  "Zeltbahn 31": "Zeltbahn", "Feldflasche M31": "Feldflasche", "Kleiner Flammenwerfer (Kleif)": "Flammenwerfer",
+  "Stielhandgranate M1915": "Stielhandgranate", "Mauser T-Gewehr": "Tankgewehr M1918", "U-Boot-Typ II": "U-Boot-Klasse II",
+  "U-Boot-Typ IX": "U-Boot-Klasse IX", "U-Boot-Typ VII": "U-Boot-Klasse VII", "U-Boot-Typ XXI": "U-Boot-Klasse XXI",
+  "U-Boot-Typ XXIII": "U-Boot-Klasse XXIII", "Reichsrevolver M1879": "Reichsrevolver", "Enigma I": "Enigma (Maschine)",
+  "Gewehr 98": "Mauser Modell 98", "Tiger I": "Panzerkampfwagen VI Tiger", "Panther": "Panzerkampfwagen V Panther",
+  "Maus": "Panzerkampfwagen VIII Maus", "MP 38": "Maschinenpistole 40", "MPi-K": "Kalaschnikow", "MPi-KM": "Kalaschnikow",
+  "Pickelhaube": "Pickelhaube", "Gorch Fock (II)": "Gorch Fock (Schiff, 1958)", "Segelschulschiff Gorch Fock (I)": "Gorch Fock (Schiff, 1933)",
+};
+const SEARCH_HINT = { P: "Panzer", R: "Militärfahrzeug", F: "Flugzeug", H: "Hubschrauber", S: "Kriegsschiff", W: "Waffe", M: "Maschinengewehr", A: "Geschütz", K: "Rakete", Z: "Militär Ausrüstung" };
+
+/** Akzeptiert nur Artikel über militärisches Gerät (keine Tiere, Personen, Listen oder Operationen). */
+function plausibleEquipment(page) {
+  if (!page || page.ns !== 0 || page.disambig || /^Liste /.test(page.title)) return false;
+  if (excluded(page.cats)) return false;
+  return classify(page.cats) !== null;
+}
+
 async function featuredImages(rawFile) {
   const raw = await fs.readFile(rawFile, "utf8");
-  const HINT = { P: "Panzer", R: "Militärfahrzeug", F: "Flugzeug", H: "Hubschrauber", S: "Schiff", W: "Waffe", M: "Maschinengewehr", A: "Geschütz", K: "Rakete", Z: "Militär" };
   const rows = raw.trim().split("\n").map((l) => l.split("|")).map(([, c, , n]) => ({ c, n }));
+  FEATURE_TITLES = new Set(rows.map((r) => r.n));
+  const fixed = new Map(rows.map((r) => [r.n, FEATURED_WIKI[r.n] || null]));
+  const direct = await pageDetails(rows.map((r) => fixed.get(r.n) || r.n.replace(/[„“]/g, "")));
   const out = {};
-  const direct = await pageDetails(rows.map((r) => r.n.replace(/[„“]/g, "")));
   let found = 0;
+  const unmatched = [];
   for (const r of rows) {
-    const req = r.n.replace(/[„“]/g, "");
+    const req = fixed.get(r.n) || r.n.replace(/[„“]/g, "");
     let page = direct.get(req) || null;
-    const valid = page && !page.disambig && page.ns === 0;
-    if (!valid) {
-      const bag = await collect({ action: "query", generator: "search", gsrsearch: `${req} ${HINT[r.c]}`, gsrnamespace: "0", gsrlimit: "1", ...PAGE_PROPS }, DE, 1);
-      page = [...bag.values()][0] || null;
+    const trusted = !!fixed.get(r.n) && page && page.ns === 0 && !page.disambig;
+    if (!trusted && !plausibleEquipment(page)) {
+      page = null;
+      const hits = await pageDetailsFromSearch(`${r.n.replace(/[„“]/g, "")} ${SEARCH_HINT[r.c]}`);
+      page = hits.find(plausibleEquipment) || null;
     }
     if (page) {
       out[r.n] = { w: page.title, img: page.thumb || null };
       if (page.thumb) found++;
+    } else {
+      unmatched.push(r.n);
     }
   }
-  console.log(`[Highlights] ${Object.keys(out).length} von ${rows.length} zugeordnet, ${found} mit Foto`);
-  return out;
+  const lines = [`Highlights: ${Object.keys(out).length} von ${rows.length} zugeordnet, ${found} mit Foto`];
+  if (unmatched.length) lines.push(`Ohne passenden Artikel: ${unmatched.join(", ")}`);
+  lines.push("", "| Highlight | Wikipedia-Artikel | Foto |", "|---|---|---|");
+  for (const r of rows) {
+    const m = out[r.n];
+    lines.push(`| ${r.n} | ${m ? m.w : "–"} | ${m && m.img ? "ja" : "nein"} |`);
+  }
+  console.log(lines[0]);
+  return { out, lines };
+}
+
+async function pageDetailsFromSearch(query) {
+  const json = await api({ action: "query", list: "search", srsearch: query, srnamespace: "0", srlimit: "5", srprop: "" });
+  const titles = ((json && json.query && json.query.search) || []).map((h) => h.title);
+  if (!titles.length) return [];
+  const details = await pageDetails(titles);
+  return titles.map((t) => details.get(t)).filter(Boolean);
 }
 
 /* ------------------------------------------------------------ Start */
@@ -528,6 +586,15 @@ async function main() {
   const meta = { generated: new Date().toISOString(), eras: {} };
   try { Object.assign(meta.eras, JSON.parse(await fs.readFile(path.join(OUT, "meta.json"), "utf8")).eras || {}); } catch {}
   const report = [];
+  let featuredReport = [];
+  if (!ONLY || ONLY.includes("featured")) {
+    const { out, lines } = await featuredImages(path.join(ROOT, "site", "js", "highlights.txt"));
+    await fs.writeFile(path.join(OUT, "featured.json"), JSON.stringify(out));
+    featuredReport = lines;
+  } else {
+    const raw = await fs.readFile(path.join(ROOT, "site", "js", "highlights.txt"), "utf8");
+    FEATURE_TITLES = new Set(raw.trim().split("\n").map((l) => l.split("|")[3]));
+  }
   for (const [key, era] of Object.entries(ERAS)) {
     if (ONLY && !ONLY.includes(key)) continue;
     const { list, lines, stats } = await buildEra(key, era);
@@ -539,10 +606,7 @@ async function main() {
     meta.eras[key] = stats;
     report.push(`### ${key}`, ...lines.map((l) => `- ${l}`), "");
   }
-  if (!ONLY || ONLY.includes("featured")) {
-    const featured = await featuredImages(path.join(ROOT, "site", "js", "highlights.txt"));
-    await fs.writeFile(path.join(OUT, "featured.json"), JSON.stringify(featured));
-  }
+  report.push("### Highlights", ...featuredReport);
   await fs.writeFile(path.join(OUT, "meta.json"), JSON.stringify(meta, null, 1));
   const summary = `## Arsenal Atlas – Datenstand ${meta.generated}\n\n${report.join("\n")}\n\n${requestCount} Anfragen in ${Math.round((Date.now() - started) / 1000)} s\n`;
   await fs.writeFile(path.join(ROOT, "site", "data", "REPORT.md"), summary);

@@ -905,17 +905,18 @@ const CATEGORY_RULES = [
 
 /** Ganze Wörter in Kategorienamen, die auf Personen, Orte, Einheiten usw. hinweisen. */
 const EXCLUDE_WORDS = [
-  "mann", "frau", "geboren", "gestorben", "person", "militärperson", "hersteller", "unternehmen",
+  "mann", "frau", "geboren", "gestorben", "person", "hersteller", "unternehmen",
   "geschwader", "verband", "flugplatz", "gemeinde", "behörde", "museum", "schlacht", "konflikt",
   "begriffsklärung", "organisation", "truppengattung", "dienstgrad", "kaserne", "werft",
-  "konstrukteur", "ingenieur", "pilot", "marineoffizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
+  "konstrukteur", "ingenieur", "pilot", "offizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
+  "bauwerk", "baudenkmal", "bunker", "befestigungsanlage", "festung", "turm", "denkmal",
 ];
 
 const GROUP = { P: "v", R: "v", F: "v", H: "v", S: "v", W: "w", M: "w", A: "w", K: "w", Z: "z" };
 const groupOf = (c) => GROUP[c];
 
 const RULES=CATEGORY_RULES;
-const EXCL_RE=new RegExp(`(^|[^a-zäöüß])(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
+const EXCL_RE=new RegExp(`(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
 const SKIPCAT=["militärische einheit","verband","division","regiment","bataillon","geschwader","staffel","hersteller","unternehmen","museum","liste","film","spiel","besatzung","operation","werft","bauwerk","stützpunkt","flugplatz","person","kommandant","schiffsverlust","wrack","kriegsgefangen","modell","kaserne"];
 function classify(cats){const l=cats.map(c=>c.toLowerCase().replace(/^kategorie:/,""));if(l.some(c=>EXCL_RE.test(c)))return null;
  for(const[cat,keys]of RULES)if(l.some(c=>keys.some(k=>c.includes(k))))return cat;return null}
@@ -990,7 +991,7 @@ let META=null,FEAT_MAP={};
 const BOOT=(async()=>{
  try{const r=await fetch("data/meta.json",{cache:"no-cache"});if(r.ok)META=await r.json()}catch(e){}
  if(META){try{const r=await fetch("data/featured.json");if(r.ok)FEAT_MAP=await r.json()}catch(e){}}
- FEATURED.forEach(x=>{const m=FEAT_MAP[x.title];if(m){x.wiki=m.w;x.thumb=m.img||null}});
+ FEATURED.forEach(x=>{const m=FEAT_MAP[x.title];if(m){x.wiki=m.w;x.thumb=m.img||null}else if(META){x.noLookup=true}});
 })();
 BOOT.then(()=>{if(META&&!location.hash.slice(2))rerender()});
 
@@ -1030,6 +1031,7 @@ function photoRef(item){
  if(REFS.has(item.id))return REFS.get(item.id);
  let p;
  if(item.wiki)p=Promise.resolve({thumb:item.thumb||null,title:item.wiki,host:DE});
+ else if(item.noLookup)p=Promise.resolve({thumb:null,title:null,host:DE});
  else p=(async()=>{let title=null;
   for(const[q,h]of[[item.title+" "+CATS[item.cat].h,DE],[item.title,DE],[item.title,EN]]){
    const hit=await firstHit(q,h);if(!hit)continue;if(!title&&h===DE)title=hit.title;
