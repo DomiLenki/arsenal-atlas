@@ -1,0 +1,1471 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arsenal Atlas</title>
+<meta name="description" content="Fahrzeuge, Waffen und Ausrüstung deutscher Streitkräfte von 1871 bis heute – mit Zeitleisten, historischer Einordnung, Quiz und Arbeitsaufträgen für den Unterricht.">
+<meta name="theme-color" content="#0b1626">
+<meta property="og:title" content="Arsenal Atlas">
+<meta property="og:description" content="Deutsche Militärgeschichte in Technik und Kontext, 1871 bis heute. Für Schule und Unterricht.">
+<meta property="og:image" content="icon-512.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Arsenal Atlas">
+<style>
+:root{
+  --night:#0b1626;--deep:#0f1f33;--plate:#14283f;--line:#24405f;
+  --brass:#c9a96a;--brass-hi:#e6cf97;--ink:#e8ecf1;--mute:#93a4b8;
+  --ctx:#2a1f1e;--ctx-line:#5a3a33;--ctx-ink:#f0d9d2;
+  --ok:#5fb37f;--bad:#e0745f;--zoom:1;
+  --cond:"sans-serif-condensed","Roboto Condensed","Avenir Next Condensed","Arial Narrow",sans-serif;
+  --body:Roboto,-apple-system,"Segoe UI",system-ui,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,Menlo,"Droid Sans Mono",monospace;
+  --st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --night:#eef2f6;--deep:#ffffff;--plate:#dde5ee;--line:#c3cfdc;
+  --brass:#8b6a2a;--brass-hi:#5f4512;--ink:#0f1f33;--mute:#4a5a6e;
+  --ctx:#fbeeea;--ctx-line:#e3b9ad;--ctx-ink:#4a1d12;
+  --ok:#2e7d4f;--bad:#b3412f;
+  color-scheme:light;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--night);color:var(--ink);font:15px/1.5 var(--body)}
+body.noscroll{overflow:hidden}
+#app{zoom:var(--zoom)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:disabled{opacity:.35;cursor:default}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.view{min-height:100vh;padding-bottom:calc(40px + var(--sb))}
+.pad{padding-left:18px;padding-right:18px}
+.label{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.sec{margin-top:26px}
+.sec>.label{margin-bottom:12px}
+.yr{font:600 13px var(--mono);color:var(--brass)}
+.chev{color:var(--brass);font-size:20px}
+.ico24{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Kopfleiste */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;height:calc(52px + var(--st));padding:var(--st) 8px 0;background:var(--night);border-bottom:1px solid var(--line)}
+.bar .back{width:40px;height:40px;display:grid;place-items:center;color:var(--brass);font-size:26px;border-radius:20px}
+.bar .back:active{background:var(--deep)}
+.bar h1{margin:0;font:600 17px var(--body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+
+/* Startseite */
+.head{display:flex;gap:16px;align-items:center;padding:calc(24px + var(--st)) 18px 20px}
+.head img{width:68px;height:68px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.4),0 0 0 1px rgba(201,169,106,.4)}
+.head .t{font:800 38px/1 var(--cond);letter-spacing:.05em;color:var(--brass-hi)}
+.head .t span{color:var(--ink)}
+.head p{margin:6px 0 0;color:var(--mute);font-size:14px}
+.head .gear{margin-left:auto;align-self:flex-start;width:42px;height:42px;display:grid;place-items:center;border-radius:21px;color:var(--brass);border:1px solid var(--line)}
+.school{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stile{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:12px;background:var(--deep);border:1px solid var(--line);min-width:0}
+.stile:active{border-color:var(--brass)}
+.stile .ico24{color:var(--brass)}
+.stile b{font:700 19px/1.1 var(--cond);letter-spacing:.03em;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere}
+.stile small{color:var(--mute);font-size:12.5px;line-height:1.35}
+.stile em{font-style:normal;color:var(--brass);font:600 12px var(--mono)}
+.station{position:relative;display:flex;gap:16px;padding:0 18px 28px}
+.station:not(:last-child)::before{content:"";position:absolute;left:26px;top:22px;bottom:0;width:2px;background:var(--line)}
+.dot{flex:none;width:18px;height:18px;border-radius:50%;background:var(--night);border:4px solid var(--c);margin-top:2px;position:relative;z-index:1}
+.station .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.hero{position:relative;height:170px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.hero .photo{position:absolute;inset:0}
+.hero .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.82))}
+.hero .cap{position:absolute;left:14px;right:14px;bottom:12px;z-index:3}
+.hero .cap b{display:block;font:800 32px/1 var(--cond);letter-spacing:.05em;text-transform:uppercase;color:#fff}
+.hero .cap small{display:block;margin-top:4px;color:rgba(255,255,255,.85);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta-row{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-size:13px}
+.credit{color:var(--mute);font-size:12px;padding:0 18px}
+
+/* Foto / Tafel */
+.photo{position:relative;background:var(--plate);overflow:hidden;color:var(--brass)}
+.photo::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,169,106,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,106,.08) 1px,transparent 1px);background-size:18px 18px}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,var(--tint,transparent));opacity:.4;pointer-events:none}
+.photo svg{position:absolute;inset:12% 8%;width:84%;height:76%;opacity:.4;transition:opacity .3s}
+.photo.done svg{opacity:.9}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;z-index:1}
+.photo img.on{opacity:1}
+
+/* Epoche */
+.era-hero{position:relative;height:250px}
+.era-hero .photo{position:absolute;inset:0}
+.era-hero .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 30%,var(--night))}
+.era-hero .cap{position:absolute;left:18px;right:18px;bottom:14px;z-index:3}
+.era-hero .cap .yr{font-size:14px}
+.era-hero .cap b{display:block;font:800 44px/1 var(--cond);letter-spacing:.05em;text-transform:uppercase;color:var(--brass-hi)}
+.era-hero .cap small{display:block;margin-top:4px;color:var(--ink);opacity:.85;font-size:14px}
+.summary{margin:18px 0 0;font-size:16px;line-height:1.6}
+.events{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:6px}
+.events li{position:relative;padding:0 0 14px 18px}
+.events li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--night);border:2px solid var(--brass)}
+.events b{display:block;font:600 13px var(--mono);color:var(--brass)}
+.events span{font-size:15px;line-height:1.5}
+.ctx{padding:14px 16px;border-radius:12px;background:var(--ctx);border:1px solid var(--ctx-line);color:var(--ctx-ink);font-size:15px;line-height:1.55}
+.ctx b{display:flex;align-items:center;gap:8px;margin-bottom:6px;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.ctx b::before{content:"!";display:grid;place-items:center;width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;font-size:11px}
+.tiles{display:flex;flex-direction:column;gap:12px}
+.tile{display:flex;align-items:center;gap:14px;padding:14px;background:var(--deep);border:1px solid var(--line);border-radius:14px}
+.tile:active{border-color:var(--brass)}
+.tile .ico{flex:none;width:104px;height:64px;border-radius:10px}
+.tile .ico svg{opacity:.95!important;inset:14% 10%;width:80%;height:72%}
+.tile .txt{flex:1;min-width:0}
+.tile b{display:block;font:800 24px/1.1 var(--cond);letter-spacing:.04em;text-transform:uppercase}
+.tile small{display:block;color:var(--mute);font-size:13px;line-height:1.35;margin-top:2px}
+.tile em{display:block;font:600 12px var(--mono);font-style:normal;color:var(--brass);margin-top:4px}
+.tasks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.tasks li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--deep);border:1px solid var(--line);border-radius:10px;font-size:15px;line-height:1.5}
+.afb{flex:none;font:700 11px var(--mono);letter-spacing:.06em;padding:3px 7px;border-radius:5px;border:1px solid var(--brass);color:var(--brass);margin-top:2px;white-space:nowrap}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:10px;border:1px solid var(--line);background:var(--deep);color:var(--brass);font-weight:600;font-size:15px}
+.btn.primary{background:var(--brass);border-color:var(--brass);color:var(--night)}
+.btn .ico24{width:20px;height:20px}
+.banner{display:flex;align-items:center;gap:12px;margin-top:16px;padding:14px;background:var(--deep);border:1px solid var(--line);border-radius:12px}
+.banner b{display:block;font-size:14px}
+.banner small{display:block;font:12px var(--mono);color:var(--mute)}
+.banner button{margin-left:auto;color:var(--brass);font-weight:600}
+.spin{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--brass);animation:sp .8s linear infinite}
+.spin.sm{width:11px;height:11px;display:inline-block;vertical-align:-1px;margin-left:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* Liste */
+.search{margin:12px 18px 0;position:relative;display:block}
+.search input{width:100%;padding:11px 12px 11px 38px;border-radius:10px;border:1px solid var(--line);background:var(--deep);color:var(--ink);font:16px var(--body);outline:none}
+.search input:focus{border-color:var(--brass)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--mute)}
+.hscroll{display:flex;gap:8px;overflow-x:auto;padding:0 18px;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.feat{margin-top:16px}
+.feat .label{padding:0 18px 10px}
+.fcard{flex:none;width:230px;background:var(--deep);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fcard .photo{height:130px}
+.fcard div.t{padding:10px 12px}
+.fcard small{display:block;font:11px var(--mono);color:var(--mute)}
+.fcard b{display:block;font:700 19px/1.2 var(--cond);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chips{margin-top:16px}
+.chip{flex:none;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--mute);font:600 14px var(--cond);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.chip svg{width:24px;height:13px;fill:currentColor}
+.chip em{font:11px var(--mono);font-style:normal;opacity:.7}
+.chip.on{background:var(--brass);border-color:var(--brass);color:var(--night)}
+.decades{margin-top:10px;gap:4px}
+.decades button{flex:none;font:600 12px var(--mono);color:var(--brass-hi);background:var(--deep);padding:5px 10px;border-radius:6px;border:1px solid var(--line)}
+.count{font:12px var(--mono);color:var(--mute);padding:14px 18px 4px}
+.yh{position:sticky;top:calc(52px + var(--st));z-index:5;display:flex;align-items:center;gap:10px;padding:9px 18px;background:var(--night)}
+.yh::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brass)}
+.yh b{font:600 15px var(--mono);color:var(--brass-hi)}
+.yh hr{flex:1;border:0;height:1px;background:var(--line);margin:0}
+.yh small{font:11px var(--mono);color:var(--mute)}
+.row{display:flex;align-items:center;gap:12px;padding:9px 18px}
+.row:active{background:var(--deep)}
+.row .photo{flex:none;width:108px;height:72px;border-radius:8px;border:1px solid var(--line)}
+.row .txt{flex:1;min-width:0}
+.row small{display:block;font:11px var(--mono);color:var(--mute)}
+.row small .star{color:var(--brass)}
+.row b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:700 18px/1.2 var(--cond)}
+.row p{margin:2px 0 0;font-size:13px;color:var(--mute);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35}
+.row .chev{color:var(--line);font-size:16px}
+.row .rm{flex:none;width:36px;height:36px;border-radius:18px;color:var(--mute);font-size:18px;border:1px solid var(--line)}
+.empty{text-align:center;padding:50px 18px;color:var(--mute)}
+.empty b{display:block;font:700 24px var(--cond);color:var(--ink);margin-bottom:4px}
+
+/* Detail */
+.d-photo{position:relative;height:290px}
+.d-photo .photo{position:absolute;inset:0}
+.tag{position:absolute;right:12px;top:12px;z-index:3;font:700 12px var(--cond);letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:4px 8px;border-radius:5px}
+.tag.static{position:static;display:inline-block}
+.d-body{padding:20px 18px;display:flex;flex-direction:column;gap:16px}
+.d-body h2{margin:0;font:800 36px/1.05 var(--cond);color:var(--brass-hi)}
+.d-desc{color:var(--brass);font-weight:500}
+.d-info{font-size:17px;line-height:1.55}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0}
+.facts div{background:var(--plate);padding:12px;min-height:58px}
+.facts dt{font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.facts dd{margin:3px 0 0;font:600 17px/1.25 var(--cond)}
+.wiki p{margin:10px 0 0;font-size:16px;line-height:1.65}
+.wiki a.more{display:flex;align-items:center;gap:8px;margin-top:14px;padding:14px;border-radius:12px;background:var(--deep);border:1px solid var(--line);color:var(--brass);font-weight:600}
+.wiki a.more span{margin-left:auto}
+.cite{margin-top:14px;padding:12px 14px;border-radius:10px;border:1px dashed var(--line);font-size:13px;line-height:1.5;color:var(--mute)}
+.cite code{display:block;margin:6px 0 10px;font:13px/1.5 var(--body);color:var(--ink);user-select:all;-webkit-user-select:all}
+.lic{margin-top:10px;font-size:11px;color:var(--mute)}
+.loading{display:flex;align-items:center;gap:10px;color:var(--mute);margin-top:10px;font-size:14px}
+
+/* Quiz */
+.q-progress{height:6px;border-radius:3px;background:var(--plate);overflow:hidden;margin-top:16px}
+.q-progress i{display:block;height:100%;background:var(--brass);transition:width .3s}
+.q-photo{height:190px;border-radius:12px;border:1px solid var(--line);margin-top:16px}
+.q-text{margin:18px 0 0;font:700 26px/1.2 var(--cond);letter-spacing:.01em}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;padding:14px 16px;border-radius:12px;background:var(--deep);border:2px solid var(--line);font-size:17px;line-height:1.4;min-height:56px}
+.opt.long{font-size:15px}
+.opt .k{flex:none;width:28px;height:28px;border-radius:14px;display:grid;place-items:center;border:1px solid var(--line);font:600 13px var(--mono);color:var(--mute)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--deep))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--deep))}
+.feedback{margin-top:16px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--deep);font-size:15px;line-height:1.55}
+.feedback b{display:block;font:700 18px var(--cond);margin-bottom:4px}
+.feedback b.ok{color:var(--ok)}.feedback b.bad{color:var(--bad)}
+.score{font:800 64px/1 var(--cond);color:var(--brass-hi);margin-top:24px}
+.scopes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scope{display:flex;align-items:center;gap:10px;padding:14px;border-radius:12px;background:var(--deep);border:1px solid var(--line);font:700 18px var(--cond);letter-spacing:.03em;text-align:left}
+.scope i{flex:none;width:12px;height:12px;border-radius:50%;background:var(--c)}
+.scope.all{grid-column:1/-1;background:var(--brass);border-color:var(--brass);color:var(--night);justify-content:center}
+
+/* Glossar, Lehrkräfte, Einstellungen */
+.gl{border-bottom:1px solid var(--line);padding:14px 0}
+.gl b{display:block;font:700 19px var(--cond);color:var(--brass-hi)}
+.gl span{font-size:15px;line-height:1.55}
+.prose h3{margin:26px 0 8px;font:700 22px var(--cond);color:var(--brass-hi)}
+.prose p,.prose li{font-size:15.5px;line-height:1.65}
+.prose ul{padding-left:20px;margin:6px 0}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px}
+.seg button{flex:1;padding:12px 6px;font-weight:600;color:var(--mute);background:var(--deep)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button.on{background:var(--brass);color:var(--night)}
+.note{font-size:13px;color:var(--mute);margin-top:6px}
+
+/* Vergleichstabelle */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:6px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);background:var(--plate)}
+td.y{font:600 13px var(--mono);color:var(--brass);font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+
+/* Präsentation */
+#pres{position:fixed;inset:0;z-index:100;background:var(--night);color:var(--ink);display:grid;grid-template-rows:42vh 1fr auto;padding-top:var(--st)}
+#pres .p-media{position:relative}
+#pres .p-media .photo{position:absolute;inset:0}
+#pres .p-text{overflow:auto;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+#pres h2{margin:0;font:800 clamp(32px,6vw,72px)/1.02 var(--cond);color:var(--brass-hi)}
+#pres p{margin:0;font-size:clamp(17px,2.2vw,26px);line-height:1.5}
+#pres .label{font-size:clamp(12px,1.3vw,16px)}
+#pres .p-spec{font:600 clamp(14px,1.6vw,20px) var(--mono);color:var(--brass)}
+#pres .ctx{font-size:clamp(15px,1.8vw,22px)}
+#pres .p-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + var(--sb));border-top:1px solid var(--line);background:var(--deep)}
+#pres .p-bar span{font:600 15px var(--mono);color:var(--mute)}
+#pres .p-bar button{padding:10px 16px;border-radius:10px;border:1px solid var(--line);font-weight:600;color:var(--brass)}
+#pres .p-bar div{display:flex;gap:8px}
+@media (min-width:820px) and (min-aspect-ratio:4/3){
+  #pres{grid-template-columns:1.15fr 1fr;grid-template-rows:1fr auto}
+  #pres .p-text{justify-content:center;padding:40px}
+  #pres .p-bar{grid-column:1/-1}
+}
+/* Willkommen und Rolle */
+.welcome{min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:calc(30px + var(--st)) 20px calc(30px + var(--sb));max-width:560px;margin:0 auto}
+.welcome img{width:96px;height:96px;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.45),0 0 0 1px rgba(201,169,106,.4)}
+.welcome h1{margin:0;font:800 46px/1 var(--cond);letter-spacing:.05em;color:var(--brass-hi)}
+.welcome h1 span{color:var(--ink)}
+.welcome p{margin:0;font-size:16px;line-height:1.6;color:var(--mute)}
+.roles{display:flex;flex-direction:column;gap:12px}
+.role{display:flex;align-items:center;gap:16px;text-align:left;padding:18px;border-radius:16px;background:var(--deep);border:2px solid var(--line)}
+.role:hover,.role:focus-visible{border-color:var(--brass)}
+.role .ico24{width:34px;height:34px;color:var(--brass);flex:none}
+.role b{display:block;font:800 24px/1.1 var(--cond);letter-spacing:.03em}
+.role small{display:block;margin-top:3px;color:var(--mute);font-size:14px;line-height:1.4}
+.rolechip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font:600 12px var(--mono);color:var(--brass);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.stile.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:12px}
+.stile.wide div{display:flex;flex-direction:column;gap:2px}
+details.hint{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+details.hint summary{cursor:pointer;color:var(--brass);font-weight:600;font-size:14px}
+details.hint p{margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--mute)}
+.tasks li>span:last-child{flex:1;min-width:0}
+.toast{position:fixed;left:50%;bottom:calc(24px + var(--sb));transform:translateX(-50%);z-index:200;background:var(--ink);color:var(--night);padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+@media (min-width:700px){.view>.pad,.prose{max-width:760px}.school{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+"use strict";
+/* ---------- Stammdaten ---------- */
+const LOGO="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCACgAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD41t4POYs7bY1+839B71Ye5CoIoQEjH8I7/X1qOd1iQQRnKr39T3NVd/Ne8vd0PDfv6vYnLn1pA9RhuaN3FHMHKS+YRS78NnNQFqQscZPAHrRzByloyH/9VHmN2rtdH+FmszaHD4h8WX9p4Q0KVDLFd6sH8+5QdWt7VAZZR/tYCf7VW49X+FmgTpFonhK+8T3AYA6l4mmMMHXlls4GGQOuHlPuK5pYuN7QTk/L/Pb5Xubxwz3lp6/5bnn6ybpBGp3OeAq8k/h1r1v9nXwhfeIP2p/BFne6fcxWsV8dRczwsistuhm7jn5lT86xpfir49a6l0vw3fWekwByi23hnTIbTcAcAgxJ5hz15Y19C/sX2Ot698afEvivxHc6pcNo2jJbr/aUsjtHLcMCxAc5GVhY/Q1zYjE1Y0pOSSVu93+SNaVGm5pJt69v+CfN/wAVNEvLH42eJ4LWzuJImvDdAxRMwUSgSdhxyx/KuIaTY5R/lYfwtwfyr3L48R6tpnxY0zVdGuL+OTVNOwBYu6tI8bMAcLyflZT9K4ZPiF4yW6i03X7u2v4yyo0Gv2MdxtBOMnzFDgAehrHLcXVqYWnOKT91dddNH0fVG2Nw1OGInFtrV9O+vc4jzO3OaPM4612Mmo/D7Wpmj1Pw9deH5SxC3uhyGSI88FraUnH0RxVLVvAWqWmmNq+i3MHiDSQglN1YK3mRIejSwMN8Y98Ffeu6OMjdKacW+/8Ant8r3OR4V2vDVeX+W/6HM+Yc00yHBqHeMcHrRn3rq5jDlJt/HNN8wg5BqJnpu/rRzByl5LvdGYplDxnqD/MehqvPB5RDKd0bfdb+h96gD96t28iyIYJD8rd/Q+tP4hJ8jutitI+WJ60z3oYnNNzUspDtxzQSTTc1a03T7/WNXttL0y2e5vLqQRQwoOXY9B/9fsMmpbSV3sUk27In0fRtU1/W4NI0aylvLydsRxR/mSSeFUDkscADk16DY3/hL4c3UcGlmz8QeJw22bW5oRcWOlt/07RNxPIp/wCWrjaMfKp61UvfEEfgO2PhnwVeRPfKw/tbW41D/apFPNvFkEfZ1PBH/LQ5zxgV7P8AAj9nGz+KGpr8QfF+nNoHg1sSwaXFMVa/YD5zGxwYrXcGwc5x8qnA3V5OIxCcfaVXan07v19ei69ex6FKlyvkp6z/AAXp+r+7ueZfDzwL8V/i144n1/SVm1GTc8V9rusSMbbDKVZHkblwVYjy0BOMcCvbYfgT8GfhRokeq/EvX4dVuQOupTG2tmI7RwId8v4k5/uit74i/tAM8L/D39nHQbKSz0tPs0uuRQqtlaDp5dqn3ZG77jkHqA33q8EufBV3c+M4LjxNquoaxrF64zdXsbXFxISQCBHkmNc7sEjAC9uAcqeHxeM1T9lT8via/Qxr5hhME+WX7yp+CPQtW/aA8Iabpkul/DnwrqEluVKJJY2aabbnjHXAYj6ivcf2OLCWb4G+JfGt5D5U/iDVrhwN27EUEYhUbu+GEnNfIeopHovjLUNFudC07UbW0hd5ZirOzRKm4Sb2PuvTA+tfoN8G/D//AAiP7LnhbRDGsUseiieZAMYklRpn/WQ1hmOCo4GkuRtyk9W3du2peXZjVx83zJKKV0l5nwv471SbU/gn8PfG0CeddafdfY5cNtJJUpjPbJiHPvV3SfjToNxpEWk+OtCvhbKoQtfWyahbY/EEj8BXM6BMdX/ZW8X6OcNPpM8WqQg84XKs3/oD/nXFW893bW8clzYvH9oQtEXVoVkBGAwxjOOx5HrWuBy2jXVSjO6cJOzT2T95fmXj8wq0PZ1IJNTirp91o/yPabr4VfC34g6ZJqHgrVY9KmI+/p0hubYE9ngY74/+AsMf3TXlnjPw38QvAHi+LW9RLWbSMsdnq+lufsrBVCrGjD7oCqB5bAHA6Gl8O+G9WvrZ/E3hu9XT7u2nEHmWs3kXAY42grwjg5xjIz+lereHPipcLanwl8UdEtna/i2RXEqqlnqQ7RyhuInz/Fxg8/KcE3VoYrB6v97T8/iS/UzoYzCYx8kX7Op+DZ4Dr+r6dr8j3ctlDa6mG+e5tYxFDd/7TRDhHPXK8HuM132n/Ae51v4Mw+LNA106nrE0AvYtMhgwkkQ3B4lcnc06lTxgAlSoySCc7xL4Ou9Bvbua5+EmpRWaszqy6pPdRxR54y8a9BkDJxT/AAz8etV8DeHxofhzwrokdqs7XCLdTXVwyu2N20+aMAlQceuT3rpU26aeGd16p/IJJKT9qtfRnlOTnOK7f4f/AAj+IPxNvFj8JeHp57Tdtk1K4/c2cX+9M3BP+yu5vauu8PeNfC1/48uPHvxG8PeC9MjaY3MtnZ6bLd3d7KcEiO2kmaGPJ5aSRcAkkAk1ufFP9qzxp428Lz+GvDdkPCvh+QKi+XKVunRWBCJ5e1YlOACEHTjdiqq4ms3yUYa9W9l/n8hQo00uapL5dWa2l/sva7YR+XrPh+1n2kfaNR1PXRZQRjuEihV3/wCBOwz/AHRXIeNfhl8I/DK3LaZ8Z49QvIlybCy0s3ixvj7huFkVcZ4BIB9q4LWdZ8Wa14JtNV8T6zrOq2XmCzs47u5eWAFAdyt82FYfLgHDNknoM1yxleQKp2qq/dRBtVfoBTw9PEN81Sp8kv8AO5FaVJK0Ife/0ViNjzSbuKax+am5xXecyHbjXf6aT4K+Hg1VPk8QeIIXjtH6NZWOdryD0eUgqD2UEjrXLeFNEPiTxlp+jF/LhnlzPL/zziUFpG/BFY1va34lHiTXr4RaHa3C3Uiw6cqhlmtkAEcMaMp5G0KNjAjJJ4JrhxL9pNUum79Oi+b19FbqddBckHU67L9f68zuPgh8M7f4j+N21XW7GOHw3pWw3kcIKLezHlIF/u7gNz7eig4wWFeyfFP4iat8QtbuPhV4Qu2sPDdhth16/swE83HAsoccBABhgOOMfdXDV9fum+DfwEsvCfh7Y/iCdhYQNH1m1Cb/AF0w9QmMA+iR1J4H8J2nhnw3a6VEd5iG+WY9Zpm++5PfJ6ewFcGCpLH4h4mp/DhpFd33/wAv+AYZ1j3luGVGn/Enu+yIrrwhd2/w3l0jwkW0udFVYFtgAcbhkZJyM5yX68E80+x8CeGtB8NQaVfa3DHrIYyG/W68md3O4BVJO4Id2No689zWh4w8dWHgqCOIQ/a9QmjMkdsrhQijjc56gZIwO/PpXimveLPFXiOz/t8+WW0tgXvLKERyWu9vlLMvKqTwG6Z4JyefoHzS1vZHx+FpVKisvXzOd07QdQ1X4maJ4QhuTJc6prEenTzRknzFeUI5yeSCN559q/Vi/aKHRbmKEBY0t3VFH8KhCAPyxX51/s02U/jD9szTdUvZHujpMFzqk8shyWkVPKVifXfIDX6BanchdMuecfuX/wDQTXyHEmIviI0+y/P/AIY/Q8hw/LQc2tWfmn8HJFufEWoeG52/c63pM9kVPd9m5f8A2avO9PS7lsY4pRIzRfuWyc7dpwRjPb0rd8Fat/YvjbRNWyQLe7iZj/skgN+hNQeMLFNC+LHibSAAEi1GVox/sOd6/o1e5hv3eOmv54p/OLs/waPPxS9pg4tbxk/ua/zTPTPDdneyal/Z3hPUbW+0W7nYXtrcKxMJjXAlyRkI+FI5DZAHUbj0d94Xku/Bw0fxLMurTHd5k7Z3NySpyedwBxu46dO1c38MIdH0HwjJ4w1HULnTp289YoZLjy4r+JQPmSNh8+HO3cucNx1yKo/8LJ8U2oTUfEmj3NtbSEgr9mMURTggLvwd5G4gg84IIIwR68Jq/c+RrUKrnaCta3k7/wBfobfhRftt5F8MfH+tatHpzZGj6jb30luZx/zwdUP7xgB8ucgdOMrXFfGr4ZaX4H8R6UvhPS7+DRrqBnj1PUb3znlkUjzEcBVWMpkYAzuVlOScgQ36ReJvt7af4iSWf7U91ZQ5zJbspyjI+c7SPbjjupr3KKa3+Of7McmnXKINfTOzjHlajADj6CQEr/219q+exsHgMRCtH+FJ2a6J9z7LLsQ8bh5Uqn8WK7bo+XIPBN5c+GG17R9Si1QxsfPt7eI+bCvqVbkn2x05Geaim0/RdP8ADYutVvbx9bmYNDZxxKy+V/elctlD1woBz7VJo+ry6Ffx6laA2c8a+WIlY75Cepkz/CDzt45/Orl5qPhzxbM8mrhdD1s8NeRgta3JHGXXqhPqOK9iPLJbWZ5s3Vpy953j3S19Gu3mtfzMvSPEUekNKLZZjBOoS5tJYlkhuVHO2RCcH2PBU8qQayrmW3m1CeaztWtbd3LRwNIZDGvZdxwWx6mrGqaLqGkMpu4AYX/1dzEweKQf7Ljg/wA6oLxTUbM3U1KOjuhr5zxTOcdakPWn2trcX92trZW8tzcMcLDAhkc/RVyaGUtTqvBp/s3wp4o17Hzi2j02I5x81w/z4PY+WjjPvXWfBfTLDVvjjpt7BZyR2mlRSao8M0gk+eIfuwDtGR5rRdRnitbwp8CPjB4j+HSaRYeANYtftGpC7kn1NVsYvLWLah3SkE8s3AU12vgr4a6n8HPGPiGx8Z6jpUV7JpVnKGjuPkiSW4kO0u4UFv8ARs8cdK+fxWLpxjWcZe+9lfpZL89T1qNCUpUk17q3+9szPGPiKLUP2mNB0uUmWHSolRFz0uJvmLn3CY/KsK8+Iniv/hPxd29/cWujJqJijgDRxJKsTAOm5uCxB5ycZYelcdf6X4w8a/FTW9S8HeH9b1iSXUWaCbS7SScYQ7UYOgIxwMHNerWn7Nfx/wDHWk2o1XwfFpNxCQqXmsX8dvuQ5LbolLNuzjnbk16mBqUMLhYU5yS0/HqeFmWDq4rGSqqN09PRHkGr31z/AGpevezyLdyzFpPtAYSeuGyM5yR+QqLw7431bwT4wtPEWkXMUkkWY57Z13x3MLcPE6kYZWHUHjpX1Vov7DXie8sYoPGvxQsIIFdpDb6VYGdgzcEiSXbg44+6R6V6PoP7FvwN0QLJq0Ot+IpR1Oo35jQn/chCfqTWGLzrBuDpyfMn2OvB5TXhJT2aM39nfQfhTNq2rfEP4do+n3WrWUUV3opfdHZ/OXLQ5+YIzYBUk7SuOOBXtGrT5sp1B6xv/wCgmvDfH3wkf4Y3a+Ofg1brpsOnBrifSoMsqJj94VUkmRCB8yE54yPbA8N3Pxq/aXWfWtA8QSeA/Cajy4IdOcCe56q0kkxBYAsG2qo6Dn+83xUqM8RN1Of3V1e/ktN2fWKcaUVFR17L+tj43tfNlhjhgR3lfCIqKWZmPAAA5JJwAB1r6x1L4N+DfC6r8Y/jgzfaX0y3mj8JE7S00cYVnuiDkjIUeWuMngk8gcFZ6TP+y58Y4/E0+n6f4wtbBTHLBeDbLZbvlW4hYcAg4BJXIDEDGQw958FfDG5+Ll4/jn4ywDULW+2z2ukT7kVkx+7ZlBBRADlU69z7+3j8xhU5KtGVo6q631tdeuiPNwuCnS5qdVa6O332Z83+G/F2peL/AB5qfxA1ryImulFpYWccYRbG2Q4WKMDhUA4wABkE10Gtz6drVg1lqdrFcwMd2yQZAPqPQ8nmvpi8/ZO+Estrs8Oy614bbkqtleefEpP+xMG/IEVw+s/skeKrfc/hvxzpWor1EWo2z2r/APfSF1/QV9Bgc5wHs400+W3df8OfH5nkePnXlXWt30f/AAx8zS+HtB0Zkv8AS7FxcW6MFxK2ZBg53dicE/pXQfCDXJtM+Jer6RHLiHVbddSttpwBLGeSB6lWJ/4CK63xB8AfjPou6STwbLqMa/8ALTSriO6H/fIIf/x2vKNLtda8GfGnw/8A8JBpN9o1vHPJE0uowPbgJIrAglwAACcda2zWVDFYOcaUk9L6d0a5LTxOHxcXWT7a9ij8UbGw0H4ya/by2H2iwu5Bf28Cv5YQTqJDtbBK4ZnHHpzXFXegpJBBd6XdrMJ1LpazEJOMHBA/hfkfwnPtXvPjT4cav8V/iVbx+EL3TJLi30JbiQSz4WVVuHQBXUMM/OvXivOfFnwc+KWg6HBBqXgjVJVtppG+0WKC7j2tg53RE45B6gV5uCzCnKFOMpLmsrpvXb/M93E4KanNxTt07bnnlrqOpaW0kEE0sQPElvIMo3syNx+lK89lc8yWn2WQ/wAVucof+AHp+BqOS7vInNpfoZDHx5V0p3p7AnDCoyYTyiun+yxyPzr2k+x5jjZ3a1H2l41hqMV2lvaztGdwiuohNG3syHgivZfDP7UvjjwxYCx0600/SIQMbtBs7eyP4r5RB/OvEHPJ9aiPSuTE4WliFaovxaOvD150fg/I+jtX+P3jbxboS3V58UvGOlWjyGAONkCM4AJUvCvXBB5xxWR4f8W+Ohqt7eaBrvh7Uri2iikN7e6TbXc772dR++ZGYYK9/wC9XmGkg3/wv1TT41LTWuo290iAZLCRWiP67PzrtfgkhsviTqHh6/EaPqOmvsQOr/vImWYA7ScHakgx1rxJYVUKdRwfw9NPJ+ux6sa/tJQUo79fw9DpZf2pfjPaXc9hfeNvEFm1tIYGOn/ZDGpHYK0H9atH9of4rzpAyfHzXLIzx+Yi3+nwxgDcy8skbDqprg/iZoi6X8SdZhC7Y7qGLUIeODxtcD8d35VzOsWobSdFkCE/8S8s2B0H2iVcn9K9Ghg6NalCpHTmXZP80zzquLnTqzpyWzPaf+FqftJXkXm6X8YL/VI+ubCa2lP/AHyFDfpWFqHxm/aKsX233xR8SW7ekyLH/wCyV5tpUdjfRCGdlju04Rh8pYexHetoax4t0m38qx8QXssR+UW1xi5Vs8BQrg9emBW7y5xV1GMl6W/zOaOYwcuVuUX9/wDkdLpnxD/aJ8e63B4O03x/rurXGrbrQWgnULKrAh9x24VNpJZjgAZNey/Cj4xa74C+GL+CbHTJ4/EWi7rC+01Yi00MkZKbtmMkEAcjIzn2zv8Aw9tofhboen2l9Holr8TfEoEErxRpF9hRhuFuq85kAGXwMbsA5wAen1T9n/4f+J9L/tTxBZXsmtKGlbV7S7e3uXbBPLDOR6ZBPvXyOY4zD137Hl5Y3umu6uvK6/4fyPp8FQq0f3jfM+z7f5nzh4zfxLqdhq+qeMbe5j1vxFCul6LpFypS6upJZkLzeUfmSJFU/MwAZmULnDEcze/FX9oHwZqEnhe6+IWv6dJpgW1FsLhSsaqAF2nacrtAwe4xXn+h67eaN4iTXF33FyT88kjlpD7hzyGHY19A61fL490OU21rpkvjrSI9sP2qFZTdLjcYWU8CTByvYnp1Neo4Qy9xpTgpQfXs9F52Xf1ucfPLGqVSMmpL8v8AM4XTvjh+0dqEwi0z4i+Kbxz/AA26CX+SV0Y+KP7UNlEJtW+Kt5osZ76pd20R/wC+Npb9K8huvHHjfU1NpdeIb23t+d1vakWyADqNqAenesK1tJ7vVIQhaSd3HzucnPXJJr1VgnP7EV8r/wCX5HmSxUYbyb/D/M+gI/j58YbY4uPj1rl+46ppmlxSD/v5Iiioj+018Y7jU4tEtvGOt30ly/lf8TQ2hjBxnDIlv6deTXCSJFDmR8CNBliewqX4X6A+r/EJ7uZSItOtpLuXPaSVtiKffBJ/A1WMy+hhqMqstWl2S/JIwwOYVcVWVNJJff8AmbGveLfGA8QRS6vrnh/S7iW2M5vNN0q3spQPM2hfNRVZskE8elXLL43eLPDejLPF8RPFuqW/mGFJD5cilwAxUPKueAR69a434qo2pfFObTbFEY6faxW+zeqkvje4GSMnMmMDniud10C08BeHNPYbZZDc30i9wGcRrn8IzXmLCQrxpup9rpp2b9T2PrDpOaituuvdL0Ox8S/HvxR4nhaDULDTdQQ8B9XtILt/wPljFeYyTGe5eZkjQsS22JAij2AHQe1VxT0PNezhsLSw65aSseXiMROs7zYjZ3VeutB1qys4bq70u6gimUvG0kZBZfXHXHvivZvD3hfw94cZbqK3N3eA5F1cgMU/3V6A+/X3qp4olvb+9F5OyiP7kSq2Sg9/c9a7VSb3PL+vK9oo8v8AC1xHFqs+n3BAt9St3s3J6AtgofwcLT/Dd9qvhzxVaeIrG0leXSLhLiQKp2ja2GVj0AYZX8a2b3RrW6YSPG0EgP8ArIuCfrWTrVpqTDcsss9uW8xkUnAfHLbemT61zVMO7vs9zupYqMktdVsezfF21tNa8O6f4s0ZvtCWiiUMOslnKAf0yM+nzelea3iKvhRSDlY9CiZW9QdSYA/ka0vAPi2VtGPhG8jaYxhmtU2lt0bZLxEDnHJYfVh6Vu65o2ieH9ItfDRuzc3XiLw5BbaczRnFnONUMhWQ8FVCL94Bic9K8nCTlhV9WnrZ6en9anpYinGu/bx3as/U8jthc3N5HFZwyTTFhtSMZJPavWPDsmueGtYk1yPwpf3mt2cX2mxjltHkhtMqD9qcAHdtDAr/AAgkMTwAed03SY30HWNBtPGn7mytJdYmgTTXWK48sINhZ3UsSNpUFcAg19HeAv2evFvg+3k8QeBfjHoSeJdUsBBbuSnkfZnRGkhljKSEHG3DKwwV6V14rHwhBwns+mqv8+nmcdLBOU4zjuvQ+VZvGuqQ/EWw8XXWozahq1neRXv2iWUMW2Nu2gDoDzwOOa/T22vrTUfDyahYOHtLq08+Fh0KPHuX9CK/OL4tH4h+FPHer+BfGmsWWoXVv5fnPbQRvGVZFkXy5DGHAwy9x3HIr7A/Zv8AE/8Awkf7MOkF3Lz6Wk2lSkc8R5Mf/kNk/KvA4hpKVGlXgkktNNrPVdj2Mpk4znSk23vr36nxP4E0lNY8e6XZzDNusvnzk9BHGN7Z/wC+cfjWRc+INRl8b3viWwu5La5nuXnV4zjALZA9xjHHtXT+FZU0jwH4q8QGRUmFqNNtsnB3zNhse4WuFjldAArEAdBXvUoqtiKjlqklH9X+a+48ypKVKhBR3bb/AEX5P7zpNb1iHxBK+tS2yW2qTDbdrEMR3DnrMo/hYgfMPXkdSBW8PDdr8T9o1Zzz04xz+dZLXMoZQr/d78dad9okI2ggu/UBR+X416dGMaSUY7I8yvzVbt7s6LV9Yiur1LaEq1vCfMkkzwSP5gfqcV7R8Pre08E/C6417W18u5vV/te7VvvJCFxBF9Spz9ZlryrwD4Xh1e9bVtXiVtEsZB5y4wL2YfMtupHVRwznsvuy51Pir4wuL5n8OQSl3MguNSdR/HnKRcdAudxHQHaP4a8jNKjxc1hY+svQ9HLKEcLB136I4G7i1bXPEv2i8hkF5qs5mDOpw5kbOQe45/SjxdewXnimWOzINnZollbkdCkY25/E7j+NGnajLpmnS3H2plckpawl+A5GGkC+oBIz6mrmgfDf4g+KmUeGvBHiLVVPR7TT5XT/AL727f1rqSUZc0tEtEF242j1OYFPU8ivTT8B/GNrpjTazqnhjR7/AO1LYR6PeaojXr3LBykBiiDiN38t8eYVGRyRkV5inUE/rW9OpGfwu5jODitTtptXvLy/ScX8zTRfcJbGPpWzp3iQXDNa60VCEfLMFx+DAfzrjQjq4dSQRzkdqsLdvkidNwPcDBrtUmjyZ0k1Y9L03Q7rX7iGz0KA6jJNuEUURBLYBJ5OAMAHrUmueHfDOhW+qQXepXtxqFlayTGOGSzijZ0QMUUec8rAE43eWOhPSuV8J+Jbjwnrn9sWiG6j8mWI25l8tZC8ZTk4OOvpWj4x8SaalvryQ66LgXlu8cccE7ESs23BKJaovGOryE8Dqa8/G168akYwXuvr8zty/C0ZRk6ju+2x6D4T8Jxa38INK1m+8T6lo1h5U14LPTLeNJGAdzulmJO/IX+5wMDtXl1v4y0rxJZTw+MLPVvEGsQWcdn4eikvXjW2Yvna3lBQyjJIGASTywArQl+KWor4GtfCujSeHI7Uaatk8stzKroPL2N94KM8k5GRzWb4HsNF0a6m1nV9c0f7QoCQLHdo4QY5Y+/YfjXnUqcrzlV3vp/S/E9SclFRVPax3+jaV4d8OWizXXhLw1fbUDTpf2IuYyQOdpY7x3xhgTXqXgDwR8Dvip4l/srxF8NYfD2uSxvcxXOjapcRpO4OWQxyFwGC5PfO014bqPj7wqLlIX1NZoo8SEQRtJvYH5RnGOD8x/4D71UtfjVZ+H9ctNX0S3vvttnMs8Esm2IBlORnknHY+xNTVo1KkXytp9xU58rV1dH3R/wzN8A3sPs134Ca6lAAF5LfTeeMDA/eKw6Y4zmse9/Zm8OJBcxeHPH3jDTIrmW3meC9mXUERoJRKnl7irJ8wAPJyOK8cj/b7tiAbj4ZbT/0y1lcfhmKr0P7emhSDEvw11Me8eqRN/OMV4X1fNFum/mn+p6vPhO9vvO613Q/FVx4yvvh54o+MWjah9q06XUTa634JgT7ZbbHErW00JOZI/m4xvGAQCOa8Rk/ZM8LahoWn6x4U+PXh68tdRkS3she2EkT3EjLuVVVGZidoLfcGByQBXOfFf8Aaj1b4g+KtA1HQdAg8Or4evPt9jevL5155vHBYYUIcDKAHOBk9q8rtviB4ts9Zur/AMN67c6ArXF1crJZP9mMIuNvmKCnIBCIML2GBxxXsYTD4mnTTvyvqrK34I8+vUpSm1a676npXjH9k74u+DNa+zXFjpV7p+2MnWIr5IbRC77ArGYowbJHG08EHmrE3wK+Hfhy7sovF/x78OAzTGK7OiQtcpaAIzkvITkltu1QqEknsAa7vTvgF8MPGnhyS7u/2nYPEXiSW1L24m1CJYEuCuQHWZzKU3cH7px2HSvmK90+HQtUudI1WxK6hbTNBLbeaWCyKSCCV4IznGM5B9DW9DEVcQuVT1W9o2/P/IzqUadLVx387/ke6v8AEb9n3RtQg0i1i8c6pp9put4JtOS2sYIEyf3kSP5kkjE/NucqWY5b0HMf8JX8EtHkL6J8EtX1yfJb7V4v8QuNxPUtDAEB5964u0s5pLVXWFLJWGdgQK3PsORRF4dup7oQ28Uckkh6hwufrmumllltbtX83r91jmqZlHb/AC0/M7YftA+KNLGzwh4b+H/gxV4U6NoEcs6/9tZgxz75rlfEPxi+JnicFNf+IfirUIz1hN+1vF/3xHxitXTfh7Zecra3ctKw5+zWuf8Ax5/8PzqPWPBWjvdvHBGLJ8bhFDJvMY7Bgev1rphllNO9tfx+/f8AE5Xm93ypnI6H428QeGPth0GeG1a7A82SSFbh9wztkUyhtki7m2yLhl3HBGa5tBjAHQcV0lx4S1mG5EMVutwGOFaNgB+OcYpl74R1mwRWlhikYjLRwyB2T6gf0zW0aHK9EN4mMrXkPgmt5kyXWNs42ucVvafPp0FvHbxeGINZvWy7M5uJtvJAURxMB0APOetYHh67g0zxNbX9wwVISzgmMSYbaQp2kEHkjtXXX/i/WdUAUeIr+aIk5WK6ZQOD/CCAPyrPEVJfCl8woUo35myxG/j1OdL8I22jrwfMOlW1oAM/37gbiPxqQ3PieaULrF34Ay2SRdW1tO4A9fs0ZP61zJkR7gs2GYLks3JPJ70olZp12/3T/MVy2Z06djpXsPBtx/yGLTQZ27/2Rpd3Cx+jPcxj/wAdqnNoXwvkj/0bw34g85XILPq6xowB/u+U5H/fdZJm2HLMB9Tiq/8Aa9jb7zNeRL87cBtx6+gqPZvu/vL9o+iN6O08I20sX2XwVpp+Y5N7cXFyTweoMir/AOO1pxasLRh/Z2l6HYHsbTSrdGH/AAIoW/WuBn8WWUcyGBJpsZPTaOmO9UZ/GN65zb20MXuxLH+lP2TY+Znri/FXxDpOhS2mpPBq2lNcp5sN3CjSQqcBmhlxujOO3KHuprpPgLr/AIN1/wCN9x8Pviz4O8Ka9Y3zSxWWpXGmQW80EyAsgMkSplJEB69G24PJFfNdzrWqXUDRTXR8t23FFUAE1u6F4bbU7S9vdUS/a3NgZLedIjIsk5KrGhbPHO4H0Cn8MqtCCg09L9UaU5y5lbWx+jF7+y7+zZrMbND4FW1LDiTTdQuI8e4AkI/Svjf4vfCD4efCPxrf6Bq194wnD7LvS7i2hgZJbRg25pNxX94jqUIHDcEYzXltvpGqW1wy6fd3cTqBhbeSePkk4GQvXip5PEnibTNeuha+MdZnMDNbRXS3s2WjDZwMtkKSM49s1zYTC16U9a3Mv69TavVpyjfks/69D6Ii/Ye8WtZQ3kGoaHqkM8aTR7r57aTayhhw0LAHBHrWjY/sg+JtPbB0PVIGAx59jd2F/wDpI8DfgK8NsPjt8ZdNVVs/ij4pRVGAr3zSAD6Pmujsv2qvj7ZAbfiHcXAHa6s7aX+cda8mYR+GcfxMG8NLSSZ02q/s7/Fyw80/2DePEmcSJYzksB3xEsuOOwJ+prirP4Z+KNTs7vULCTRJ4bOXyriSbV4LNo3zjaVujEwOeMY68V2Fn+2j8crXHnX/AIevcd59JQE/98MtcV8QPjPL8UtWTVPGvgfQJb8ACS60yWeyefAwDKN7K5UZAYjIHGcYrelXxydqlvl/lp+ZjLD4W3uX/r7zo5fhN8dbHTMDwH4oa1kw4ms4lugw65DxM2R9DXBaro/iDw/qwi1jTNS0u+I8wR3sDwSkE/ew4BI969b+B37Vq/CrwFP4Xv8Awxq+paT9uluNMMF0rG0ibBeHLgbwG+YHjG4+tb/xf/aQ+H3xm+G40h/DHiS11y1nSbTbu5tYmSNyfnjaRXyEeMPkY6qpxxRTzHFKuqdWleN7XX+V2TUy6h7Jzpzs+zPArXV7+2VlmUXCkcCQ8j6GtD+2LeaFT9jkEv8AENwxn29az53IysMAz2Zv8Kz7mTyEU3UwTJ6L1P5V73NY8PkUnsZxgBBAxmqF/aNbvPqCzpH2VQ+HyQNpAHbrz7GtxvGiIyRHRtOurT+KGaHZJ+Dqaqald+G9WTbBbahYuMlGZRMoJxwcfNjj3riqpS2Z6VCUoP31ozGhvb94VeXUnhRm8sMVyT6k+wyOfemy/bYpZVvbi6JjkMJWN+Sw649v8RW5o2kQzwYurpY0hEqtKi78BwMMqnlj94YxkHb+DtOSG71eefUPP0/E8kqM8bMVVlxxgHLLgcd8+1cjbTeh3JxezRgy6eYLyVJM3W1kSIKSPNLjcp9enOPfFPuNOjtJmmCl4vISZI26gscbWx6EN9ce9benfZZ9elku4Lu1tUlSS3domJ2ouwBtvIbbgg9MjHfIFaOXxHK0lldx6ZsSKF3UM4EZBVnXI3bju3AHPznHTlXnf4X9xTdNfaX3mZc6VHA9pLNbmFvLlNxbg9HizkD0BG36ZNWl0wXmi2xvIYobp7qFEeIBd0MoYAEDuDGcd8NV2/c3PieKax0mT+zIkaLyZZgryq+fMYnJ2kliR1xhfSpNZM961pFpFtFaJbssrzzsiPPKowrFVyAFAwBk9Se+AlGq7LlYOrRV/eRQtkabRtRe6KNBPA720AGWhaN4whHoCHKe+aibUnsfD0Wh+aZY0lNxLG8smwORjaEGACvOT3JPpW5qdzdXehDT7K1sbRWffI63G89d2xDtBCBuQDk9OeBXNPolyg3zXlqg95DV06E5azVtSJ4mmtIyuMhv0tc3KRKsqtuQpIeH/h4PpgH8KoC5bklWYnqSck+9acfh+eeZUfUrGHdwhmkIU+2cVpH4fa6IS8UthK39wT7SR6gsAD+dbKlJa2MXXp7NnOC69VNOF2g6hvyqbUdD1fSMHUtNuLdScB3XKH6MOP1rPyDSLVmrot/a4z/e/KkaYzsIYQxLnBx6VVPXHf3qeKQwqfLzvIwzDuPT/PWkx2SOom1Kzj0Oz0WLyJ1tI2jBkucqZXYmSRAVwAflx7ID3rq7JLOw8HQxtElvJeTfbGQbG3RqhSJlZQD82+Xj02nvXFeG7CG+1FZtSv4re2RvuyzBWkPUAA9vWut1PVtE+3NE19AZWJyUHyKfTIGB9BV4fD2fO9v1OTGYnmTpRWr39DPvdVYxPFb24jY8CTOSB9PWueeJnkLsSWJySeprUn1bSTcCJZcjvIEO0UrQxO2YypB5ypzketdr97qccPcW1jmkv5rdgUYq4GCR/EKlbXL+U7ftAgH95F5qGeAOuRwexqkwKnawwf0NcfO1oem6UXrY00lglfbNrN1uxwxBCg/iasL/AGsy+XbX8MkYHDq4zj371h49aVHeOQPGxVh3FUpkul2/I2ZU1iNC8khnQdfKkB/MdaptqlwDgIoI/vZJ/WoRfXO7cz7vYilF6zDEyLIPfrQ5dmSqdt0hJb+7mPzTMo/uodopv2u52bDO5X0JPFRuIicxlh7H/Gm44qbs1UY22LKX06LjdkVXdt7bsY/HNN70Um2xqKWqF3Hbtydvp2q7p+r6hpjlrS4ZFIwUPKn8DxVLHFJRe2wOKaszqbPxrexwGC7j3xsMMYm2bh7r0P6U+8jE0QutK1Tb5nKxsFTPqAQBg+1cnS5O0rk464q1N9TJ0I3vHQ6BvEuqLF9i1W2gvUUYC3UILL7570llrWjmVV1Hw7YlD954FKn8s1ii4doRFIBIq/d3dV+hqIgUuZj9lG1rW9D0G7XwTdWguFtXt0H33sHJCj3Q5x+VY8mgRzgzaRqVreW/Yu4idfYg1ywyrBlJB9RTlZg2VJHaq9on0M1h3HaX3mzdaFqdoMzWEwGM7kAcfmM1S3NAwEbOkp4GOCtJbalf24EdtcyBR/BnKj8KkzLNM09xIZJG6sam6fwmkYS+2f/Z";
+const ERAS={
+ K:{n:"Kaiserreich",r:"1871 – 1918",c:"#9a7b4f",hero:"A7V Sturmpanzerwagen",sub:"Kaiserliches Heer · Kaiserliche Marine · Luftstreitkräfte",
+  s:"Vom Einzellader Mauser 71 bis zum ersten Panzer: Das Kaiserreich erlebte den Übergang von Pferd und Linienschiff zu Maschinengewehr, Flugzeug und Tank. Der Erste Weltkrieg brachte Stahlhelm, Gasmaske und U-Boot-Krieg."},
+ R:{n:"Reichswehr",r:"1919 – 1935",c:"#7a8a5c",hero:"Junkers Ju 52/3m",sub:"Reichsheer · Reichsmarine",
+  s:"Der Versailler Vertrag begrenzte das Heer auf 100.000 Mann und verbot Panzer, Flugzeuge und U-Boote. Neue Technik entstand im Verborgenen, etwa in der Panzerschule Kama in der Sowjetunion."},
+ W:{n:"Wehrmacht",r:"1935 – 1945",c:"#8c6a6a",hero:"Tiger I",sub:"Heer · Luftwaffe · Kriegsmarine",
+  s:"Die Wehrmacht war das militärische Instrument des NS-Staats für Eroberungskrieg und Vernichtungspolitik. Panzer, Flugzeuge und U-Boote wurden in großer Zahl gebaut, ab 1942 zunehmend mit Zwangsarbeit."},
+ N:{n:"NVA",r:"1956 – 1990",c:"#a3574e",hero:"T-72",sub:"Landstreitkräfte · Luftstreitkräfte · Volksmarine",
+  s:"Die Nationale Volksarmee der DDR war nach sowjetischem Vorbild ausgerüstet: Panzer der T-Reihe, MiG-Jäger und Kalaschnikow-Gewehre, teils in Lizenz in der DDR gefertigt."},
+ B:{n:"Bundeswehr",r:"1955 – heute",c:"#4f86a8",hero:"Leopard 2",sub:"Heer · Luftwaffe · Marine · Streitkräftebasis",
+  s:"Die Bundeswehr begann mit amerikanischem Gerät und entwickelte bald eigene Systeme wie Leopard, Marder und Gepard. Heute prägen Leopard 2, Puma, Eurofighter und neue Luftverteidigung das Bild."}
+};
+const TIMELINE=["K","R","W","B","N"];
+const CATS={
+ P:{n:"Panzer & Kettenfahrzeuge",s:"Panzer",h:"Panzer"},R:{n:"Rad- & Halbkettenfahrzeuge",s:"Radfahrzeuge",h:"Militärfahrzeug"},
+ F:{n:"Flugzeuge & Luftschiffe",s:"Flugzeuge",h:"Flugzeug"},H:{n:"Hubschrauber",s:"Hubschrauber",h:"Hubschrauber"},
+ S:{n:"Schiffe & U-Boote",s:"Marine",h:"Schiff"},W:{n:"Handwaffen",s:"Handwaffen",h:"Waffe"},
+ M:{n:"Maschinengewehre",s:"MG",h:"Maschinengewehr"},A:{n:"Artillerie & Flak",s:"Artillerie",h:"Geschütz"},
+ K:{n:"Raketen & Lenkwaffen",s:"Raketen",h:"Rakete"},Z:{n:"Ausrüstung & Zubehör",s:"Ausrüstung",h:"Militär"}
+};
+const GROUPS={
+ vehicles:{t:"Fahrzeuge",s:"Panzer, Radfahrzeuge, Flugzeuge, Hubschrauber, Schiffe",sil:"P",cats:["P","R","F","H","S"]},
+ weapons:{t:"Waffen",s:"Handwaffen, Maschinengewehre, Artillerie, Raketen",sil:"W",cats:["W","M","A","K"]},
+ equipment:{t:"Ausrüstung",s:"Helme, Optik, Tarnung, Funk und Zubehör",sil:"Z",cats:["Z"]}
+};
+const DOMAINS={
+ land:{t:"Land",lt:"Landfahrzeuge",s:"Panzer, Kettenfahrzeuge, Rad- und Halbkettenfahrzeuge",sil:"P",cats:["P","R"]},
+ air:{t:"Luft",lt:"Luftfahrzeuge",s:"Flugzeuge, Luftschiffe, Hubschrauber, Drohnen",sil:"F",cats:["F","H"]},
+ sea:{t:"Wasser",lt:"Wasserfahrzeuge",s:"Schlachtschiffe, Kreuzer, Zerstörer, Fregatten, U-Boote",sil:"S",cats:["S"]}
+};
+const PL='style="fill:var(--plate)"';
+const SIL={
+P:`<path d="M30 76 L50 60 H188 L210 76Z"/><rect x="24" y="76" width="192" height="24" rx="12"/><path d="M78 60 L88 41 H150 L162 60Z"/><rect x="156" y="46" width="76" height="6" rx="2"/><rect x="104" y="34" width="20" height="8" rx="2"/><g ${PL}><circle cx="44" cy="88" r="7"/><circle cx="70" cy="88" r="7"/><circle cx="96" cy="88" r="7"/><circle cx="122" cy="88" r="7"/><circle cx="148" cy="88" r="7"/><circle cx="174" cy="88" r="7"/><circle cx="198" cy="88" r="7"/></g>`,
+R:`<path d="M24 84 V62 L42 48 H152 L176 60 H204 L216 72 V84Z"/><path d="M92 48 L98 34 H138 L144 48Z"/><rect x="138" y="38" width="56" height="5" rx="2"/><circle cx="62" cy="88" r="15"/><circle cx="114" cy="88" r="15"/><circle cx="182" cy="88" r="15"/><g ${PL}><circle cx="62" cy="88" r="6"/><circle cx="114" cy="88" r="6"/><circle cx="182" cy="88" r="6"/></g>`,
+A:`<rect x="80" y="58" width="150" height="8" rx="3" transform="rotate(-16 80 62)"/><path d="M70 50 L118 44 L122 80 L74 86Z"/><path d="M96 78 L22 104 L18 98 L90 70Z"/><circle cx="104" cy="88" r="22"/><circle cx="104" cy="88" r="9" ${PL}/><rect x="64" y="62" width="52" height="16" rx="4"/>`,
+F:'<path d="M24 56 H186 Q216 57 220 60 Q216 63 186 64 H24 Q18 60 24 56Z"/><path d="M98 57 L128 8 H146 L136 57Z"/><path d="M98 63 L128 112 H146 L136 63Z"/><path d="M28 57 L42 34 H52 L48 57Z"/><path d="M28 63 L42 86 H52 L48 63Z"/>',
+H:'<rect x="24" y="30" width="190" height="4" rx="2"/><rect x="104" y="33" width="6" height="14"/><path d="M66 70 Q66 46 110 46 Q150 46 156 66 L222 62 L224 70 L156 78 Q148 92 110 92 Q66 92 66 70Z"/><path d="M212 62 L222 44 H228 L224 66Z"/><rect x="74" y="98" width="80" height="4" rx="2"/><rect x="88" y="90" width="4" height="10"/><rect x="134" y="90" width="4" height="10"/>',
+S:'<path d="M8 76 H232 L216 96 H30Z"/><rect x="88" y="52" width="58" height="24"/><rect x="100" y="38" width="32" height="14"/><rect x="114" y="14" width="4" height="26"/><rect x="104" y="20" width="24" height="3"/><rect x="152" y="58" width="16" height="18"/><path d="M40 66 H64 L68 76 H36Z"/><rect x="58" y="66" width="28" height="3"/><path d="M178 66 H202 L206 76 H174Z"/><rect x="150" y="66" width="30" height="3"/>',
+W:'<path d="M10 66 L58 56 H96 L104 52 H224 V58 H120 L110 66 H96 L84 74 H70 L64 70 L14 84Z"/><rect x="92" y="66" width="10" height="16" rx="2"/><rect x="126" y="46" width="26" height="5" rx="2"/>',
+M:'<path d="M14 62 L48 54 H70 V68 L20 80Z"/><rect x="66" y="50" width="88" height="20" rx="3"/><rect x="150" y="56" width="78" height="6" rx="2"/><path d="M196 62 L184 96 H188 L200 64Z"/><path d="M200 62 L214 96 H210 L198 64Z"/><rect x="84" y="70" width="26" height="22" rx="2"/>',
+K:'<path d="M30 54 H176 Q222 60 176 66 H30Z"/><path d="M30 54 L14 34 H34 L52 54Z"/><path d="M30 66 L14 86 H34 L52 66Z"/><rect x="18" y="58" width="14" height="4"/><path d="M120 54 L132 44 H140 L136 54Z"/><path d="M120 66 L132 76 H140 L136 66Z"/>',
+Z:`<path d="M44 84 Q42 30 118 26 Q186 26 192 70 L212 86 Q196 90 180 82 Q176 86 170 86 H44Z"/><path d="M60 88 H170" style="stroke:var(--plate)" stroke-width="3" fill="none"/><circle cx="84" cy="54" r="4" ${PL}/>`
+};
+const svg=c=>`<svg viewBox="0 0 240 120" fill="currentColor" aria-hidden="true">${SIL[c]}</svg>`;
+const ICON={
+ quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.6v.4"/><path d="M12 17h.01"/>',
+ book:'<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19"/><path d="M9 7h6"/>',
+ folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5h.01"/>',
+ sliders:'<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
+ screen:'<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/>',
+ copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
+ star:'<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>'
+};
+const ico=n=>`<svg class="ico24" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
+
+/* Unterrichtsinhalte: Zeitleisten, Einordnungen, Arbeitsaufträge, Glossar */
+
+const ERA_CTX={
+ K:{
+  ev:[["1871","Gründung des Deutschen Kaiserreichs nach dem Deutsch-Französischen Krieg."],
+      ["1898","Erstes Flottengesetz: Beginn des Flottenwettrüstens mit Großbritannien."],
+      ["1904–1908","Krieg gegen die Herero und Nama in Deutsch-Südwestafrika. Die Bundesregierung erkennt ihn seit 2021 als Völkermord an."],
+      ["1914","Beginn des Ersten Weltkriegs im August."],
+      ["1915","Erster großer Giftgaseinsatz bei Ypern am 22. April."],
+      ["1916","Schlachten von Verdun und an der Somme, Skagerrakschlacht in der Nordsee."],
+      ["1917","Uneingeschränkter U-Boot-Krieg. Daraufhin treten die USA in den Krieg ein."],
+      ["1918","Matrosenaufstand in Kiel, Ende der Monarchie, Waffenstillstand am 11. November."]],
+  folgen:"Im Ersten Weltkrieg starben rund 17 Millionen Menschen, darunter etwa 2 Millionen deutsche Soldaten. Maschinengewehre, Artillerie und Giftgas machten den Krieg zu einem industriellen Massensterben. Viele Überlebende blieben ihr Leben lang körperlich oder seelisch versehrt.",
+  tasks:[["I","Nenne drei Waffen oder Ausrüstungsgegenstände, die im Ersten Weltkrieg neu eingeführt wurden."],
+         ["II","Erkläre, warum das Maschinengewehr den Stellungskrieg begünstigte."],
+         ["II","Vergleiche die Pickelhaube mit dem Stahlhelm M1916 und erkläre, warum der Helm 1916 gewechselt wurde."],
+         ["III","Beurteile, welche Rolle das Flottenwettrüsten mit Großbritannien für die Entstehung des Ersten Weltkriegs spielte."]]
+ },
+ R:{
+  ev:[["1919","Versailler Vertrag: Heer höchstens 100.000 Mann, Marine 15.000. Panzer, Luftwaffe und U-Boote sind verboten."],
+      ["1920","Kapp-Putsch: Die Führung der Reichswehr verweigert der gewählten Regierung den Schutz."],
+      ["1922","Vertrag von Rapallo. Danach arbeitet die Reichswehr geheim mit der Roten Armee zusammen."],
+      ["1926–1933","Geheime Fliegerschule in Lipezk und Panzerschule Kama in der Sowjetunion."],
+      ["1933","Adolf Hitler wird Reichskanzler. Die Aufrüstung beginnt."],
+      ["1934","Nach dem Tod Hindenburgs werden die Soldaten persönlich auf Hitler vereidigt."],
+      ["1935","Allgemeine Wehrpflicht. Aus der Reichswehr wird die Wehrmacht."]],
+  folgen:"Die Reichswehr galt als „Staat im Staate“ und stand der Weimarer Demokratie überwiegend distanziert gegenüber. Ihre heimliche Aufrüstung verstieß gegen den Versailler Vertrag und schuf Grundlagen, auf denen die Wehrmacht ab 1935 aufbaute.",
+  tasks:[["I","Nenne die wichtigsten militärischen Bestimmungen des Versailler Vertrags."],
+         ["II","Erkläre an Beispielen wie dem Großtraktor, wie die Reichswehr die Verbote des Versailler Vertrags umging."],
+         ["II","Erläutere, was mit dem Ausdruck „Staat im Staate“ gemeint ist."],
+         ["III","Beurteile das Verhalten der Reichswehr während des Kapp-Putsches 1920."]]
+ },
+ W:{
+  ev:[["1935","Wehrpflicht und offene Aufrüstung unter Bruch des Versailler Vertrags."],
+      ["1937","Die Legion Condor bombardiert im Spanischen Bürgerkrieg die Stadt Guernica."],
+      ["1939","Überfall auf Polen am 1. September: Beginn des Zweiten Weltkriegs."],
+      ["1940","Besetzung von Dänemark, Norwegen, den Niederlanden, Belgien, Luxemburg und Frankreich."],
+      ["1941","Überfall auf die Sowjetunion am 22. Juni. Der Vernichtungskrieg beginnt, hinter der Front werden Jüdinnen und Juden massenhaft ermordet."],
+      ["1943","Niederlage bei Stalingrad. Die Rüstung stützt sich zunehmend auf Zwangsarbeit und KZ-Häftlinge."],
+      ["1944","Landung der Alliierten in der Normandie am 6. Juni."],
+      ["1945","Bedingungslose Kapitulation am 8. Mai."]],
+  folgen:"Der Zweite Weltkrieg kostete schätzungsweise 60 bis 70 Millionen Menschen das Leben, darunter rund 27 Millionen Menschen aus der Sowjetunion. Im Holocaust wurden etwa sechs Millionen Jüdinnen und Juden ermordet. Die Wehrmacht war an Kriegsverbrechen und am Völkermord beteiligt. Über drei Millionen sowjetische Kriegsgefangene starben in deutschem Gewahrsam.",
+  tasks:[["I","Beschreibe mithilfe der Zeitleiste, wann die Wehrmacht welche Länder überfiel."],
+         ["II","Erläutere am Beispiel der V2, unter welchen Bedingungen Rüstungsgüter ab 1943 hergestellt wurden."],
+         ["II","Analysiere, warum die NS-Propaganda von „Wunderwaffen“ sprach und welche Wirkung sie erzielen wollte."],
+         ["III","Beurteile die Behauptung, die Wehrmacht habe „einen ganz normalen Krieg“ geführt (Mythos der „sauberen Wehrmacht“)."]]
+ },
+ N:{
+  ev:[["1956","Gründung der Nationalen Volksarmee. Die DDR ist Teil des Warschauer Pakts."],
+      ["1961","Bau der Berliner Mauer. Die Grenztruppen gehören bis 1973 zur NVA."],
+      ["1962","Einführung der Wehrpflicht in der DDR."],
+      ["1964","Als Bausoldat ist Wehrdienst ohne Waffe möglich."],
+      ["1968","Prager Frühling: NVA-Verbände stehen zum Einmarsch bereit, bleiben aber an der Grenze."],
+      ["1978","Wehrkunde wird Pflichtfach an den Schulen der DDR."],
+      ["1989","Friedliche Revolution. Die NVA wird nicht gegen Demonstrierende eingesetzt."],
+      ["1990","Auflösung der NVA am 2. Oktober. Teile werden von der Bundeswehr übernommen."]],
+  folgen:"Die NVA führte nie Krieg. Sie war der SED unterstellt und galt als „Parteiarmee“. An der innerdeutschen Grenze und an der Berliner Mauer kamen Menschen durch Schusswaffen und Minen ums Leben, allein an der Berliner Mauer mindestens 140.",
+  tasks:[["I","Nenne die Herkunftsländer der Fahrzeuge und Waffen der NVA."],
+         ["II","Erkläre den Begriff „Parteiarmee“ und grenze die NVA von der Bundeswehr ab."],
+         ["II","Vergleiche die Ausrüstung von NVA und Bundeswehr um das Jahr 1980."],
+         ["III","Beurteile die Einführung des Wehrkundeunterrichts an den Schulen der DDR im Jahr 1978."]]
+ },
+ B:{
+  ev:[["1955","Gründung der Bundeswehr, zehn Jahre nach Kriegsende. Die Wiederbewaffnung ist stark umstritten."],
+      ["1956","Wehrpflicht. Leitbild „Staatsbürger in Uniform“ und Innere Führung."],
+      ["1990","Nach der Wiedervereinigung übernimmt die Bundeswehr Teile der NVA."],
+      ["1994","Bundesverfassungsgericht: Bewaffnete Auslandseinsätze brauchen die Zustimmung des Bundestags."],
+      ["1999","Kosovo: erster Kampfeinsatz der Bundeswehr."],
+      ["2001–2021","Einsatz in Afghanistan. 59 deutsche Soldaten kommen ums Leben."],
+      ["2011","Die Wehrpflicht wird ausgesetzt."],
+      ["2022","„Zeitenwende“ nach dem russischen Angriff auf die Ukraine, Sondervermögen von 100 Milliarden Euro."]],
+  folgen:"Die Bundeswehr ist eine Parlamentsarmee: Über bewaffnete Auslandseinsätze entscheidet der Bundestag. Das Leitbild des „Staatsbürgers in Uniform“ soll verhindern, dass sich das Militär wie im Kaiserreich und in der NS-Zeit von Demokratie und Gesellschaft abkoppelt.",
+  tasks:[["I","Nenne drei Systeme, die die Bundeswehr seit 2022 neu beschafft."],
+         ["II","Erkläre die Begriffe „Parlamentsarmee“ und „Staatsbürger in Uniform“."],
+         ["II","Vergleiche den Leopard 1 mit dem Leopard 2."],
+         ["III","Erörtere Argumente für und gegen eine Wiedereinführung der Wehrpflicht."]]
+ }
+};
+
+const CROSS_TASKS=[
+ ["II","Vergleiche je einen Kampfpanzer aus mehreren Epochen (z. B. A7V, Panzerkampfwagen IV, Leopard 1, T-72, Leopard 2). Was hat sich verändert, was ist gleich geblieben?"],
+ ["II","Erstelle mit der Unterrichtsmappe eine Präsentation zu einem Thema deiner Wahl, z. B. „Vom Luftschiff zur Drohne“."],
+ ["III","Beurteile, ob technischer Fortschritt Kriege „sauberer“ gemacht hat."],
+ ["III","Diskutiere, wie ein Museum oder eine App Waffen ausstellen sollte, ohne sie zu verherrlichen."]
+];
+
+/* Historische Einordnung zu einzelnen Highlights */
+const CTX={
+ "Pickelhaube":"Die Lederhaube bot kaum Schutz gegen Granatsplitter. Hohe Verluste durch Kopfverletzungen führten 1916 zur Einführung des Stahlhelms.",
+ "MG 08":"Maschinengewehre verursachten im Ersten Weltkrieg einen großen Teil der Verluste. Angriffe über offenes Gelände endeten oft im Massensterben, etwa am ersten Tag der Somme-Schlacht.",
+ "Gummimaske GM15":"Am 22. April 1915 setzte das deutsche Heer bei Ypern erstmals in großem Umfang Chlorgas ein. Giftwaffen waren bereits durch die Haager Landkriegsordnung geächtet.",
+ "U 9":"Der U-Boot-Krieg richtete sich bald auch gegen Handels- und Passagierschiffe. Bei der Versenkung der Lusitania durch U 20 starben 1915 fast 1.200 Menschen.",
+ "Fokker Dr.I":"Die Kriegspropaganda machte Jagdflieger wie Manfred von Richthofen zu Helden. Ihre Geschichten sollten von den Massenverlusten am Boden ablenken.",
+ "Gotha G.V":"Die Luftangriffe auf London trafen vor allem Zivilisten. Sie gelten als Beginn des strategischen Bombenkriegs gegen Städte.",
+ "Paris-Geschütz":"Die Granaten richteten sich gegen die Zivilbevölkerung. Am Karfreitag 1918 starben beim Einschlag in die Kirche Saint-Gervais fast 90 Menschen.",
+ "A7V Sturmpanzerwagen":"Großbritannien setzte bereits 1916 Panzer ein. Deutschland baute nur 20 A7V und nutzte mehr erbeutete britische Panzer als eigene.",
+ "Stahlhelm M1916":"Der Helm senkte die Zahl tödlicher Kopfverletzungen deutlich. Seine Form wurde später zum Erkennungszeichen des deutschen Soldaten, auch in der NS-Propaganda.",
+ "Großtraktor":"Die Erprobung in der Sowjetunion verstieß gegen den Versailler Vertrag und wurde geheim gehalten.",
+ "Enigma I":"Polnische Mathematiker entschlüsselten die Enigma schon vor dem Krieg. Britische Fachleute um Alan Turing setzten die Arbeit in Bletchley Park fort. Viele Historiker meinen, dass dies den Krieg verkürzte.",
+ "Junkers Ju 52/3m":"Ju 52 der Legion Condor waren 1937 am Luftangriff auf die spanische Stadt Guernica beteiligt.",
+ "Panzerkampfwagen I":"Im Spanischen Bürgerkrieg erprobte die Wehrmacht ab 1936 neue Waffen unter Kriegsbedingungen, darunter diesen Panzer.",
+ "Heinkel He 111":"He 111 bombardierten 1937 Guernica und ab 1940 britische Städte wie Coventry.",
+ "Junkers Ju 87 „Stuka“":"Am 1. September 1939 bombardierten Stukas die polnische Kleinstadt Wieluń. Etwa 1.200 Menschen starben, die meisten von ihnen Zivilisten.",
+ "U-Boot-Typ VII":"Von rund 40.000 deutschen U-Boot-Fahrern kamen etwa drei Viertel ums Leben. Ihre Angriffe versenkten Tausende Handelsschiffe, Zehntausende Seeleute starben.",
+ "Bismarck":"Beim Untergang im Mai 1941 starben über 2.000 Besatzungsmitglieder, nur 114 überlebten.",
+ "80-cm-Kanone „Schwerer Gustav“":"Ein riesiger Aufwand mit über tausend Mann Bedienung für geringen militärischen Nutzen. Ein Beispiel für Prestigeprojekte der NS-Rüstung.",
+ "Tiger I":"Der Tiger war teuer und aufwendig: Es entstanden 1.347 Stück. Die Sowjetunion baute im selben Krieg über 50.000 T-34, die USA rund 49.000 Sherman.",
+ "Maus":"Ein Prestigeprojekt ohne militärischen Wert. Das Fahrzeug war zu schwer für die meisten Brücken.",
+ "Messerschmitt Me 262":"Für die Fertigung wurden in großem Umfang KZ-Häftlinge und Zwangsarbeiter eingesetzt, viele von ihnen starben.",
+ "V1 (Fieseler Fi 103)":"Die V1 traf vor allem London und Antwerpen. In Großbritannien starben rund 6.000 Menschen. Die NS-Propaganda nannte sie eine „Vergeltungswaffe“.",
+ "V2 (Aggregat 4)":"Die V2 wurde unter Tage im Lager Mittelbau-Dora gefertigt. Dort starben rund 20.000 Häftlinge, mehr Menschen als durch Angriffe mit der V2 ums Leben kamen (schätzungsweise 9.000).",
+ "Panzerfaust":"1945 wurden auch Jugendliche aus Volkssturm und Hitlerjugend mit der Panzerfaust in aussichtslose Kämpfe geschickt.",
+ "Volkssturmgewehr":"Der Volkssturm bestand aus Jugendlichen ab 16 und Männern bis 60. Die meisten hatten kaum Ausbildung und schlechte Waffen.",
+ "T-34/85":"Die NVA übernahm sowjetische Technik. Erstausstattung war ein Panzer des früheren Kriegsgegners.",
+ "MPi-KM":"Auch die Grenztruppen der DDR trugen Kalaschnikows. Der Schießbefehl an der innerdeutschen Grenze führte zu Todesopfern.",
+ "F-104G Starfighter":"Bei Unfällen gingen rund 270 Starfighter verloren, 116 Piloten starben. Die „Starfighter-Affäre“ beschäftigte Politik und Öffentlichkeit jahrelang.",
+ "Leopard 1":"Die erste eigene Panzerentwicklung der Bundesrepublik. Exporte in viele Länder zeigen, wie umstritten Rüstungsexporte bis heute sind.",
+ "Flakpanzer Gepard":"Die Bundeswehr musterte den Gepard 2010 aus. Ab 2022 lieferte Deutschland Gepard-Panzer aus Industriebeständen an die Ukraine.",
+ "Leopard 2":"Die Lieferung von Leopard 2 an die Ukraine wurde 2023 in Deutschland lange und kontrovers diskutiert.",
+ "G36":"2015 gab es eine öffentliche Debatte über die Treffgenauigkeit bei Hitze. Danach wurde ein Nachfolger beschlossen.",
+ "ATF Dingo":"Entwickelt für Auslandseinsätze wie in Afghanistan, um Soldaten vor Minen und Sprengfallen zu schützen.",
+ "Taurus KEPD 350":"Eine mögliche Lieferung an die Ukraine war ab 2023 politisch stark umstritten.",
+ "IRIS-T SLM":"Seit Herbst 2022 setzt die Ukraine das System zur Abwehr russischer Luftangriffe ein, noch bevor die Bundeswehr selbst es erhielt."
+};
+
+const GLOSSAR=[
+ ["Abschreckung","Strategie, einen Gegner durch eigene Stärke von einem Angriff abzuhalten. Prägend für den Kalten Krieg."],
+ ["Bausoldat","In der DDR ab 1964 möglicher Wehrdienst ohne Waffe. Bausoldaten wurden oft benachteiligt."],
+ ["Flak","Flugabwehrkanone: Geschütz zur Bekämpfung von Flugzeugen."],
+ ["Halbkettenfahrzeug","Fahrzeug mit Rädern vorne und Gleisketten hinten, z. B. Sd.Kfz. 251."],
+ ["Indienststellung","Zeitpunkt, ab dem ein Schiff, Flugzeug oder Fahrzeug offiziell von der Truppe genutzt wird."],
+ ["Innere Führung","Führungsgrundsatz der Bundeswehr: Soldaten behalten ihre Grundrechte und sollen Befehle nicht blind befolgen."],
+ ["Jagdpanzer","Kettenfahrzeug zur Panzerbekämpfung, meist ohne drehbaren Turm."],
+ ["Kaliber","Innendurchmesser eines Laufs oder Rohrs, angegeben in Millimetern oder Zentimetern."],
+ ["Kalter Krieg","Konflikt zwischen dem Westen unter Führung der USA und dem Osten unter Führung der Sowjetunion, etwa 1947 bis 1991. Die Supermächte führten keinen direkten Krieg gegeneinander."],
+ ["KwK","Kampfwagenkanone: die Kanone im Turm eines Panzers."],
+ ["Lizenzbau","Fertigung nach fremden Plänen mit Erlaubnis des Entwicklers, z. B. Kalaschnikows in der DDR."],
+ ["NATO","Westliches Verteidigungsbündnis, gegründet 1949. Die Bundesrepublik ist seit 1955 Mitglied."],
+ ["PaK","Panzerabwehrkanone."],
+ ["Panzerhaubitze","Geschütz auf einem gepanzerten Kettenfahrgestell, z. B. Panzerhaubitze 2000."],
+ ["Parlamentsarmee","Über bewaffnete Auslandseinsätze der Bundeswehr entscheidet der Bundestag, nicht allein die Regierung."],
+ ["Parteiarmee","Bezeichnung für die NVA: Sie war der SED verpflichtet, Offiziere waren fast alle Parteimitglieder."],
+ ["Schützenpanzer","Panzer, der Soldaten transportiert und sie mit eigener Bewaffnung unterstützt, z. B. Marder und Puma."],
+ ["Sd.Kfz.","Sonderkraftfahrzeug: Bezeichnungssystem der Wehrmacht für Militärfahrzeuge."],
+ ["Staatsbürger in Uniform","Leitbild der Bundeswehr: Soldaten sind Bürger mit Rechten und Pflichten in einer Demokratie."],
+ ["Stellungskrieg","Kriegsführung aus festen Gräben. Typisch für die Westfront 1914 bis 1918."],
+ ["Sturmgeschütz","Gepanzertes Geschütz ohne Drehturm zur Unterstützung der Infanterie."],
+ ["Uneingeschränkter U-Boot-Krieg","Angriffe auf Handelsschiffe ohne Vorwarnung, auch auf neutrale Schiffe. 1917 ein Grund für den Kriegseintritt der USA."],
+ ["Vernichtungskrieg","Der Krieg gegen die Sowjetunion ab 1941. Er zielte auf Eroberung, Ausbeutung und die Ermordung großer Bevölkerungsgruppen."],
+ ["Versailler Vertrag","Friedensvertrag von 1919. Er begrenzte die deutschen Streitkräfte stark."],
+ ["Volkssturm","1944 gebildete Miliz aus Jugendlichen ab 16 und Männern bis 60, kaum ausgebildet und schlecht bewaffnet."],
+ ["Warschauer Pakt","Militärbündnis der Ostblockstaaten unter Führung der Sowjetunion, 1955 bis 1991. Die DDR gehörte dazu."],
+ ["Wehrpflicht","Gesetzliche Pflicht, Wehrdienst zu leisten. In der Bundesrepublik seit 2011 ausgesetzt."],
+ ["Wettrüsten","Gegenseitiges Aufrüsten von Staaten, die einander als Bedrohung sehen, z. B. der Flottenbau vor 1914 oder der Kalte Krieg."],
+ ["Wunderwaffe","Propagandabegriff der NS-Zeit für neue Waffen wie V1 und V2, die den verlorenen Krieg angeblich noch wenden sollten."],
+ ["Zeitenwende","Begriff für die Neuausrichtung der deutschen Sicherheitspolitik nach dem russischen Angriff auf die Ukraine 2022."],
+ ["Zwangsarbeit","Im NS-Staat mussten Millionen Menschen aus besetzten Ländern sowie KZ-Häftlinge unter Zwang arbeiten, auch in der Rüstungsindustrie."]
+];
+
+/* Erwartungshorizonte (nur in der Lehrkraft-Ansicht sichtbar), gleiche Reihenfolge wie die Aufgaben */
+const EXPECT={
+ K:["Panzer (A7V), Giftgas und Gasmaske, Flugzeuge als Jäger und Bomber, Flammenwerfer, Stahlhelm, Luftschiffe als Bomber, U-Boot-Krieg gegen Handelsschiffe.",
+    "Hohe Feuerrate aus gedeckter Stellung; Angreifer laufen ungeschützt über offenes Gelände. Die Verteidigung ist überlegen, die Front erstarrt, es entstehen Grabensysteme und Materialschlachten.",
+    "Pickelhaube: Leder, repräsentativ, kaum Schutz gegen Splitter. Stahlhelm: Stahl, schützt Kopf und Nacken. Der Wechsel 1916 war eine Reaktion auf die vielen Kopfverletzungen durch Artilleriesplitter.",
+    "Der Flottenbau ab 1898 belastete das Verhältnis zu Großbritannien und förderte dessen Annäherung an Frankreich und Russland. Eine wichtige, aber nicht die einzige Ursache: Bündnissysteme, Nationalismus und die Julikrise 1914 kommen hinzu. Ein begründetes Urteil wägt diese Faktoren ab."],
+ R:["Heer höchstens 100.000, Marine 15.000 Mann; keine Wehrpflicht; Verbot von Panzern, Luftwaffe, U-Booten und schwerer Artillerie; Auflösung des Generalstabs; entmilitarisiertes Rheinland.",
+    "Tarnnamen wie „Großtraktor“, Erprobung und Ausbildung in der Sowjetunion (Kama, Lipezk), Konstruktionsbüros im Ausland, etwa für U-Boote in den Niederlanden, Übungen mit Attrappen.",
+    "Die Reichswehr verstand sich als überparteilich, entzog sich aber weitgehend der parlamentarischen Kontrolle, verfolgte eigene Interessen und war eher dem „Reich“ als der demokratischen Verfassung verpflichtet.",
+    "Die Reichswehrführung lehnte 1920 den Einsatz gegen die Putschisten ab, die Regierung musste Berlin verlassen. Der Putsch scheiterte am Generalstreik und an der Verweigerung der Beamtenschaft. Urteil: Die Reichswehr ließ die Republik im Stich."],
+ W:["1. September 1939 Polen; April 1940 Dänemark und Norwegen; Mai 1940 Niederlande, Belgien, Luxemburg, Frankreich; April 1941 Jugoslawien und Griechenland; 22. Juni 1941 Sowjetunion.",
+    "Fertigung unter Tage im Lager Mittelbau-Dora durch KZ-Häftlinge unter mörderischen Bedingungen. Rund 20.000 Menschen starben, mehr als durch den Einsatz der Rakete. Die Rüstung beruhte zunehmend auf Zwangsarbeit.",
+    "Die Propaganda sollte trotz der Niederlagen Hoffnung auf eine Wende wecken, den Durchhaltewillen stärken und „Vergeltung“ versprechen. Militärisch blieben die Waffen wirkungslos: zu spät, zu wenige, zu ungenau.",
+    "Der Mythos entstand nach 1945, unter anderem durch Erinnerungen ehemaliger Generäle. Widerlegt ist er durch Kommissarbefehl, Hungerpolitik, das Massensterben sowjetischer Kriegsgefangener und die Beteiligung an Massenmorden. Die Wehrmachtsausstellungen ab 1995 machten das öffentlich bekannt. Die Behauptung ist nicht haltbar."],
+ N:["Überwiegend Sowjetunion (z. B. T-55, T-72, MiG-21, BMP), dazu Tschechoslowakei und Polen; Lizenzbau und Eigenfertigung in der DDR (MPi-K, IFA W50).",
+    "Führungsanspruch der SED, Politoffiziere, fast alle Offiziere waren Parteimitglieder. Die Bundeswehr ist dagegen parteipolitisch neutral, vom Parlament kontrolliert und an die Grundrechte gebunden (Innere Führung).",
+    "NVA: T-55/T-72, BMP-1, MiG-21/MiG-23, AK-74. Bundeswehr: Leopard 1/2, Marder, Tornado/F-4F, G3. Beide waren in Bündnisse eingebunden und spiegelbildlich ausgerüstet.",
+    "Wehrkunde in den Klassen 9 und 10 mit Lagern zur Wehrausbildung. Kirchen und viele Eltern protestierten, es entstand die Friedensbewegung „Schwerter zu Pflugscharen“. Ein Urteil kann die Militarisierung der Erziehung kritisch bewerten."]
+ ,B:["Seit 2022 unter anderem IRIS-T SLM, Arrow 3, F-35A, Leopard 2A8, G95.",
+    "Parlamentsarmee: Bewaffnete Auslandseinsätze brauchen die Zustimmung des Bundestags (Bundesverfassungsgericht 1994). Staatsbürger in Uniform: Soldaten behalten ihre Grundrechte, Befehle, die Straftaten verlangen, dürfen nicht befolgt werden.",
+    "Leopard 1 (1965): 105-mm-Kanone, rund 40 t, Beweglichkeit vor Schutz. Leopard 2 (1979): 120-mm-Glattrohrkanone, deutlich stärkere Panzerung, moderne Feuerleitung, über 55 t.",
+    "Pro: Personalbedarf, Verankerung in der Gesellschaft, Verteidigungsfähigkeit. Contra: Eingriff in die Freiheit, Kosten, Wehrgerechtigkeit, Berufsarmee ist professioneller. Wichtig ist eine begründete eigene Position, die Gegenargumente ernst nimmt."]
+};
+const CROSS_EXPECT=[
+ "Veränderung: Panzerung, Kaliber (5,7 cm bis 12,5 cm), Gewicht, Geschwindigkeit, Besatzung (A7V 18 Mann, heute 3 bis 4). Gleich geblieben: das Zusammenspiel von Feuerkraft, Schutz und Beweglichkeit.",
+ "Offene Aufgabe. Kriterien: sinnvolle Auswahl, Chronologie, korrekte Angaben mit Quellen, historische Einordnung statt reiner Technikbeschreibung.",
+ "Präzisere Waffen können zivile Opfer verringern. Im 20. Jahrhundert stieg aber der Anteil ziviler Opfer stark, Waffen wurden gezielt gegen Städte eingesetzt. Ein differenziertes Urteil ist zu erwarten.",
+ "Kontext statt Faszination, Perspektive der Opfer, keine Heldenerzählungen, Quellenangaben, Raum für kontroverse Fragen."
+];
+
+/* Lösungshinweise (Erwartungshorizont) – nur in der Ansicht für Lehrkräfte sichtbar */
+const TASK_HINTS={
+ K:["Zum Beispiel Panzer (A7V), Giftgas und Gasmaske, Flammenwerfer, Stahlhelm, Jagdflugzeuge mit synchronisiertem Maschinengewehr, U-Boote im Handelskrieg.",
+    "Hohe Feuerrate aus gedeckter Stellung. Angreifer über offenes Gelände erleiden enorme Verluste, die Verteidigung ist überlegen. Die Fronten erstarren, beide Seiten graben sich ein.",
+    "Pickelhaube aus Leder, eher Tradition und Repräsentation, kaum Splitterschutz. Stahlhelm aus Chromnickelstahl mit Nacken- und Stirnschutz. Grund: viele Kopfverletzungen durch Artilleriesplitter im Stellungskrieg.",
+    "Pro: Der Flottenbau verschärfte die Gegnerschaft zu Großbritannien und förderte dessen Annäherung an Frankreich und Russland. Einschränkung: weitere Ursachen wie Bündnissystem, Imperialismus, Nationalismus und die Julikrise 1914. Erwartet wird ein begründetes eigenes Urteil."],
+ R:["Heer höchstens 100.000, Marine höchstens 15.000 Mann. Keine Panzer, keine Luftwaffe, keine U-Boote, keine Wehrpflicht. Auflösung des Generalstabs, entmilitarisiertes Rheinland.",
+    "Tarnbezeichnungen (Großtraktor statt Panzer), Erprobung und Ausbildung im Ausland (Kama, Lipezk), Zusammenarbeit mit der Roten Armee nach Rapallo, Ausbildung von Führungskräften für eine spätere größere Armee.",
+    "Die Reichswehr entzog sich weitgehend der parlamentarischen Kontrolle. Sie gab sich überparteilich, stand der Republik aber fern und verfolgte eigene Ziele wie die geheime Aufrüstung.",
+    "Die Reichswehrführung verweigerte den Einsatz gegen die Putschisten, die Republik wurde durch einen Generalstreik gerettet. Kritik: fehlende Loyalität zur Demokratie. Gegenposition: Furcht vor einem Bürgerkrieg innerhalb der Truppe. Begründetes Urteil erwartet."],
+ W:["1939 Polen; 1940 Dänemark, Norwegen, Niederlande, Belgien, Luxemburg, Frankreich; 1941 Jugoslawien, Griechenland und die Sowjetunion.",
+    "Fertigung durch KZ-Häftlinge im unterirdischen Stollensystem von Mittelbau-Dora, katastrophale Lebens- und Arbeitsbedingungen, rund 20.000 Tote. Zwangsarbeit war ab 1943 eine tragende Säule der Rüstungsproduktion.",
+    "Durchhaltepropaganda angesichts der drohenden Niederlage. Die Bevölkerung sollte an eine Kriegswende glauben und weiterkämpfen. Militärisch hatten V1 und V2 keine kriegsentscheidende Wirkung.",
+    "Der Mythos wurde nach 1945 vor allem von ehemaligen Generälen verbreitet. Widerlegt unter anderem durch Kommissarbefehl, Beteiligung am Holocaust, das Massensterben sowjetischer Kriegsgefangener und Verbrechen bei der Partisanenbekämpfung. Die Wehrmachtsausstellungen ab 1995 lösten eine breite öffentliche Debatte aus."],
+ N:["Überwiegend aus der Sowjetunion (z. B. T-55, T-72, MiG-21, Mi-24), dazu Lizenzbauten und Eigenentwicklungen der DDR (MPi-KM, IFA W50) sowie Technik aus anderen Staaten des Warschauer Pakts.",
+    "Führungsanspruch der SED, Politoffiziere, fast alle Offiziere waren Parteimitglieder. Die Bundeswehr ist dagegen parteipolitisch neutral, wird vom Parlament kontrolliert und folgt der Inneren Führung.",
+    "NVA: T-72, BMP-1, MiG-23, MPi-KM. Bundeswehr: Leopard 2, Marder, Tornado (ab 1982), G3. Beide Seiten waren auf einen Panzerkrieg in Mitteleuropa ausgerichtet.",
+    "Ziel war Wehrbereitschaft und ein klares Feindbild. Kirchen und viele Eltern protestierten. Abwägung zwischen Erziehung zur Verteidigungsbereitschaft und Militarisierung der Schule; begründetes Urteil erwartet."],
+ B:["Zum Beispiel IRIS-T SLM, Arrow 3, F-35A, G95.",
+    "Parlamentsarmee: Der Bundestag muss bewaffneten Auslandseinsätzen zustimmen (Urteil des Bundesverfassungsgerichts 1994). Staatsbürger in Uniform: Soldaten behalten ihre Grundrechte, sind ihrem Gewissen verpflichtet und politisch gebildet. Beides ist eine Lehre aus Kaiserreich und NS-Zeit.",
+    "Leopard 1 (1965): 105-mm-Kanone, Betonung der Beweglichkeit, vergleichsweise leichte Panzerung. Leopard 2 (1979): 120-mm-Glattrohrkanone, deutlich stärkere Panzerung, moderne Feuerleitung, höheres Gewicht.",
+    "Pro: Personalbedarf, Verankerung der Streitkräfte in der Gesellschaft, Verteidigungsfähigkeit. Contra: Eingriff in die persönliche Freiheit, Kosten, Wehrgerechtigkeit, Berufsarmee gilt als professioneller. Begründetes eigenes Urteil erwartet."]
+};
+const CROSS_HINTS=[
+ "Feuerkraft, Panzerung und Gewicht nehmen zu, Elektronik und Vernetzung kommen hinzu. Gleich bleiben das Grundprinzip aus Kanone, Panzerung und Kettenantrieb sowie die Abwägung zwischen Schutz und Beweglichkeit.",
+ "Kriterien: sinnvolle Auswahl, nachvollziehbare Reihenfolge, Quellenangaben, eigene Einordnung statt reiner Technikbeschreibung.",
+ "Präzisere Waffen können zivile Opfer verringern, zugleich steigen Reichweite und Zerstörungskraft. Beispiele: Giftgas 1915, Bombenkrieg gegen Städte, Drohnen heute. Ein differenziertes Urteil wird erwartet.",
+ "Kontext statt Faszination, Opfer benennen, keine Heldenerzählungen, sachliche Sprache, Quellen kritisch prüfen."
+];
+
+
+const RAW=`1842|Z|K|Pickelhaube|Lederhelm mit Spitze, in Preußen eingeführt und bis 1916 Sinnbild des deutschen Soldaten.|Leder, Messingbeschlag
+1871|W|K|Mauser Modell 71|Erstes Einheitsgewehr des Reichsheeres, ein Einzellader mit Zylinderverschluss.|11 × 60 mm R
+1879|W|K|Reichsrevolver M1879|Ordonnanzrevolver der Kavallerie, als M1883 gekürzt für Offiziere.|10,6 mm, 6 Schuss
+1888|W|K|Gewehr 88|„Kommissionsgewehr“, die erste deutsche Waffe für rauchschwaches Pulver.|8 × 57 mm, 5 Schuss
+1896|A|K|7,7-cm-Feldkanone 96 n.A.|Standardgeschütz der Feldartillerie zu Beginn des Ersten Weltkriegs, mit Rohrrücklauf.|Kaliber 77 mm
+1898|W|K|Gewehr 98|Mauser-Repetiergewehr, Grundlage fast aller deutschen Infanteriegewehre bis 1945.|7,92 × 57 mm, 5 Schuss
+1906|S|K|U 1|Erstes U-Boot der Kaiserlichen Marine. Heute im Deutschen Museum in München ausgestellt.|Länge 42 m
+1908|W|K|Pistole 08 (Luger)|Dienstpistole mit Kniegelenkverschluss, weltweit eine der bekanntesten Pistolen.|9 × 19 mm, 8 Schuss
+1908|M|K|MG 08|Wassergekühltes Maxim-Maschinengewehr auf Schlittenlafette, prägte den Stellungskrieg.|ca. 450 Schuss/min
+1909|S|K|SMS Emden|Kleiner Kreuzer, führte 1914 im Indischen Ozean Handelskrieg und versenkte zahlreiche Handelsschiffe.|3.660 t
+1909|S|K|Nassau-Klasse|Die ersten deutschen Großkampfschiffe nach dem Vorbild der britischen Dreadnought.|4 Schiffe
+1909|A|K|10,5-cm-leichte Feldhaubitze 98/09|Haubitze der Feldartillerie für Steilfeuer auf Gräben und Deckungen.|Kaliber 105 mm
+1912|S|K|SMS Seydlitz|Schlachtkreuzer, der in der Skagerrakschlacht schwerste Treffer überstand.|24.988 t
+1913|A|K|42-cm-Mörser „Dicke Bertha“|Krupp-Belagerungsmörser, der 1914 die belgischen Festungen von Lüttich zerschlug.|Granate ca. 800 kg
+1914|F|K|Etrich Taube|Frühes Aufklärungsflugzeug mit vogelartigen Flügeln, typisch für die ersten Kriegsmonate.|ca. 100 km/h
+1914|Z|K|Scherenfernrohr 14|Beobachtungsfernrohr der Artillerie, mit dem man aus der Deckung über die Brustwehr blickte.|10-fache Vergrößerung
+1914|S|K|U 9|Versenkte im September 1914 drei britische Panzerkreuzer innerhalb einer Stunde.|Petroleum-Antrieb
+1915|F|K|Fokker E.III|Eindecker mit durch den Propeller synchronisiertem MG, Auslöser der „Fokker-Plage“.|1 × MG 08/15
+1915|F|K|Junkers J 1|Erstes Ganzmetallflugzeug der Welt, ein reiner Versuchsträger.|Stahlblech
+1915|F|K|Zeppelin P-Klasse|Marineluftschiffe, eingesetzt zur Seeaufklärung und für Angriffe auf England.|Länge 163 m
+1915|M|K|MG 08/15|Leichtere Version des MG 08 mit Zweibein und Kolben für bewegliche Einsätze.|ca. 18 kg
+1915|W|K|Stielhandgranate M1915|Erste deutsche Stielhandgranate, Vorbild aller späteren Modelle.|Brennzünder
+1915|Z|K|Gummimaske GM15|Erste Gasmaske für die gesamte Truppe, eingeführt nach den ersten Gasangriffen.|Schraubfilter
+1915|W|K|Kleiner Flammenwerfer (Kleif)|Tragbarer Flammenwerfer der Pioniere für den Grabenkampf.|Reichweite ca. 20 m
+1916|Z|K|Stahlhelm M1916|Ersetzte die Pickelhaube und bestimmte die Silhouette des deutschen Soldaten bis 1945.|Chromnickelstahl
+1916|S|K|Bayern-Klasse|Letzte fertiggestellte Schlachtschiffe der Kaiserlichen Marine.|8 × 38 cm
+1916|A|K|Leichter Minenwerfer n.A.|Grabenmörser der Pioniere, auch im Flachbahnschuss einsetzbar.|Kaliber 76 mm
+1917|F|K|Albatros D.III|Jagdflugzeug, mit dem die deutschen Staffeln im April 1917 den britischen Fliegern schwere Verluste zufügten.|2 × MG 08/15
+1917|F|K|Fokker Dr.I|Wendiger Dreidecker, eng verbunden mit Manfred von Richthofen.|ca. 185 km/h
+1917|F|K|Gotha G.V|Zweimotoriger Großbomber für Angriffe auf London.|Bombenlast ca. 500 kg
+1917|F|K|Zeppelin-Staaken R.VI|Viermotoriges Riesenflugzeug, eines der größten Flugzeuge seiner Zeit.|Spannweite 42 m
+1917|R|K|Ehrhardt E-V/4|Panzerwagen mit Allradantrieb, nach dem Krieg bei Polizei und Freikorps im Einsatz.|3 MG
+1918|P|K|A7V Sturmpanzerwagen|Erster deutscher Panzer. Nur 20 Stück entstanden, Besatzung von bis zu 18 Mann.|30 t, 5,7-cm-Kanone
+1918|W|K|MP 18|Bergmann-Maschinenpistole für Stoßtrupps, eine der ersten einsatzfähigen MPs.|9 × 19 mm
+1918|W|K|Mauser T-Gewehr|Erstes Panzerabwehrgewehr der Welt, eingeführt als Antwort auf britische Tanks.|13,2 mm
+1918|F|K|Fokker D.VII|Jagdflugzeug von 1918. Der Versailler Vertrag verlangte ausdrücklich die Auslieferung aller Exemplare.|ca. 190 km/h
+1918|A|K|Paris-Geschütz|Fernkanone, die 1918 Paris aus über 120 km Entfernung beschoss.|Reichweite ca. 130 km
+1923|W|R|Karabiner 98b|Gekürzte Version des Gewehr 98 mit abgebogenem Kammerstängel für die Reichswehr.|7,92 × 57 mm
+1924|W|R|Stielhandgranate 24|Die bekannteste deutsche Handgranate, gefertigt bis 1945.|Zugzünder
+1925|S|R|Leichter Kreuzer Emden|Erster größerer Kriegsschiffneubau nach dem Ersten Weltkrieg, später Schulkreuzer.|5.600 t
+1929|P|R|Großtraktor|Geheim entwickelter Versuchspanzer, erprobt in der Panzerschule Kama in der Sowjetunion.|6 Fahrzeuge
+1930|Z|R|Gasmaske GM 30|Gummimaske mit Filterbüchse im geriffelten Tragbehälter.|Tragbüchse
+1930|M|R|MG 13|Luftgekühltes Maschinengewehr aus dem Dreyse-MG, Übergangslösung bis zum MG 34.|Trommel- oder Kurvenmagazin
+1931|Z|R|Zeltbahn 31|Dreieckige Zeltbahn im Splittertarn, auch als Regenponcho tragbar und zu Zelten koppelbar.|Splittertarn
+1931|Z|R|Feldflasche M31|Aluminium-Feldflasche mit Filzbezug und Becher, später vielfach nachgebaut.|0,8 Liter
+1932|Z|R|Enigma I|Elektromechanische Schlüsselmaschine des Heeres. Ihre Entzifferung beeinflusste den Kriegsverlauf.|3 Walzen + Steckbrett
+1932|F|R|Junkers Ju 52/3m|„Tante Ju“: Dreimotoriger Transporter, im Krieg das Arbeitspferd der Luftwaffe.|Wellblechbeplankung
+1932|A|R|7,5-cm-leichtes Infanteriegeschütz 18|Begleitgeschütz der Infanterieregimenter für direkten und indirekten Schuss.|Kaliber 75 mm
+1933|R|R|Kfz 13|Leichter Panzerspähwagen auf Adler-Pkw-Fahrgestell, oft als Ausbildungsfahrzeug.|1 MG 13
+1933|A|R|8,8-cm-Flak 18|Flugabwehrkanone, die im Krieg auch gegen Panzer eingesetzt wurde.|Kaliber 88 mm
+1933|S|R|Panzerschiff Deutschland|„Westentaschenschlachtschiff“ mit Dieselantrieb für große Reichweite, später Lützow.|6 × 28 cm
+1933|S|R|Segelschulschiff Gorch Fock (I)|Bark zur Ausbildung des Marinenachwuchses, heute Museumsschiff in Stralsund.|Bark, 3 Masten
+1933|Z|R|Feldfernsprecher 33|Robuster Feldtelefonapparat im Bakelitgehäuse für das Leitungsnetz der Truppe.|Kurbelinduktor
+1934|P|R|Panzerkampfwagen I|Als Ausbildungspanzer gedacht, kämpfte er in Spanien, Polen und Frankreich.|2 MG, 2 Mann
+1934|M|R|MG 34|Erstes Einheitsmaschinengewehr der Welt, gleichermaßen auf Zweibein und Lafette nutzbar.|800–900 Schuss/min
+1934|A|R|15-cm-schwere Feldhaubitze 18|Standardgeschütz der schweren Divisionsartillerie.|Kaliber 149 mm
+1934|S|R|Zerstörer 1934|Erste Zerstörerklasse der neuen Flotte, Hochdruck-Dampfantrieb.|5 × 12,7 cm
+1935|Z|W|Stahlhelm M35|Leichtere, kompaktere Weiterentwicklung des M1916, Standardhelm der Wehrmacht.|ca. 1 kg
+1935|W|W|Karabiner 98k|Standardgewehr der Wehrmacht, über 14 Millionen Stück gefertigt.|7,92 × 57 mm, 5 Schuss
+1935|R|W|Sd.Kfz. 221|Leichter Panzerspähwagen mit offenem Turm für Aufklärungsabteilungen.|1 MG 34
+1935|P|W|Neubaufahrzeug|Mehrturm-Versuchspanzer. Fünf Exemplare, eingesetzt 1940 in Norwegen.|7,5-cm- und 3,7-cm-Kanone
+1935|A|W|10,5-cm-leichte Feldhaubitze 18|Standardhaubitze der Divisionsartillerie im Zweiten Weltkrieg.|Reichweite 10,6 km
+1935|S|W|U-Boot-Typ II|Kleines Küsten-U-Boot, die ersten Boote der neuen Kriegsmarine.|ca. 250 t
+1936|P|W|Panzerkampfwagen II|Leichter Panzer mit 2-cm-Kanone, Rückgrat der Panzerdivisionen 1939/40.|3 Mann
+1936|A|W|3,7-cm-PaK 36|Leichte Panzerabwehrkanone, gegen schwere Panzer bald wirkungslos.|Kaliber 37 mm
+1936|A|W|8-cm-Granatwerfer 34|Mittlerer Mörser der Infanterie, präzise und weit verbreitet.|Kaliber 81 mm
+1936|S|W|Admiral Graf Spee|Panzerschiff, 1939 nach dem Gefecht am Río de la Plata selbst versenkt.|6 × 28 cm
+1936|S|W|U-Boot-Typ VII|Meistgebaute U-Boot-Klasse der Geschichte mit über 700 Booten.|5 Torpedorohre
+1936|F|W|Heinkel He 111|Mittlerer Bomber mit charakteristischer verglaster Kanzel.|Bombenlast bis 2 t
+1937|P|W|Panzerkampfwagen III|Hauptkampfpanzer der ersten Kriegsjahre, zuletzt mit 5-cm-Langrohr.|5 Mann
+1937|P|W|Panzerkampfwagen IV|Einziger deutscher Panzer, der den ganzen Krieg über gebaut wurde, rund 8.500 Stück.|7,5-cm-Kanone
+1937|R|W|Sd.Kfz. 231 (8-Rad)|Schwerer Panzerspähwagen mit acht Rädern und Allradlenkung.|2-cm-Kanone
+1937|R|W|Opel Blitz|Mittlerer Lkw, der wichtigste Lastwagen der Wehrmacht.|3 t Nutzlast
+1937|R|W|Sd.Kfz. 7|Mittlerer Zugkraftwagen, Zugmittel der 8,8-cm-Flak.|8 t Zugkraft
+1937|F|W|Messerschmitt Bf 109|Meistgebautes Jagdflugzeug der Geschichte, rund 34.000 Stück.|bis ca. 640 km/h
+1937|F|W|Junkers Ju 87 „Stuka“|Sturzkampfbomber mit Knickflügel. Die Sirene, „Jericho-Trompete“ genannt, sollte Angst verbreiten.|Bombenlast bis 1,8 t
+1937|F|W|Dornier Do 17|„Fliegender Bleistift“, schlanker Schnellbomber.|2 Motoren
+1937|F|W|Messerschmitt Bf 110|Zweimotoriger Zerstörer, später erfolgreicher Nachtjäger.|3 Mann
+1937|F|W|Fieseler Fi 156 Storch|Verbindungsflugzeug, das auf wenigen Dutzend Metern starten und landen konnte.|Start ca. 50 m
+1937|A|W|28-cm-Kanone 5 (E)|Eisenbahngeschütz, bei Anzio von den Alliierten „Anzio Annie“ genannt.|Reichweite ca. 62 km
+1937|Z|W|Wehrmachtskanister|20-Liter-Kraftstoffkanister, von den Alliierten als „Jerrycan“ übernommen.|20 Liter
+1938|R|W|Sd.Kfz. 250|Leichter Schützenpanzerwagen für Aufklärung und Führung.|Halbkette
+1938|W|W|MP 38|Erste Maschinenpistole mit Klappschaft und ganz ohne Holzteile.|9 × 19 mm, 32 Schuss
+1938|W|W|Walther P38|Pistole mit Spannabzug, nach dem Krieg als P1 bei der Bundeswehr.|9 × 19 mm, 8 Schuss
+1938|F|W|DFS 230|Lastensegler, 1940 beim Handstreich auf das Fort Eben-Emael eingesetzt.|10 Mann
+1938|S|W|Flugzeugträger Graf Zeppelin|Einziger deutscher Flugzeugträger. 1938 vom Stapel gelaufen, nie fertiggestellt.|262 m
+1938|S|W|U-Boot-Typ IX|Großes Hochsee-U-Boot für Einsätze vor Amerika und im Indischen Ozean.|bis 1.800 t
+1939|P|W|Panzerkampfwagen 38(t)|Tschechischer Panzer, nach der Besetzung in großer Zahl übernommen.|3,7-cm-Kanone
+1939|R|W|Sd.Kfz. 251|Mittlerer Schützenpanzerwagen, über 15.000 gebaut in mehr als 20 Varianten.|Halbkette, 12 Mann
+1939|W|W|Eihandgranate 39|Kleine, leicht zu werfende Handgranate mit Zugzünder.|ca. 230 g
+1939|Z|W|Zielfernrohr ZF 39|Vierfach-Zielfernrohr für den Scharfschützen-Karabiner 98k.|4-fache Vergrößerung
+1939|W|W|Panzerbüchse 39|Panzerabwehrgewehr der Infanterie, bald von Hohlladungswaffen abgelöst.|7,92 × 94 mm
+1939|A|W|2-cm-Flak 38|Leichte Flak, als Flakvierling 38 auch mit vier Rohren gebaut.|bis 480 Schuss/min
+1939|F|W|Junkers Ju 88|Vielseitigster Bomber der Luftwaffe: Sturzkampf, Aufklärer, Nachtjäger.|über 15.000 gebaut
+1939|S|W|Scharnhorst|Schlachtschiff, versenkt im Dezember 1943 im Gefecht am Nordkap.|9 × 28 cm
+1939|S|W|Admiral Hipper|Schwerer Kreuzer, Führungsschiff einer Klasse von drei Einheiten.|8 × 20,3 cm
+1939|S|W|Schnellboot S-38-Klasse|Schnelle Torpedoboote für den Kampf im Ärmelkanal und an der Küste.|ca. 43 kn
+1940|P|W|Sturmgeschütz III|Meistgebautes deutsches Kettenfahrzeug des Krieges, rund 10.000 Stück.|ohne Drehturm
+1940|R|W|Kübelwagen (VW Typ 82)|Geländewagen auf Käfer-Basis, rund 50.000 Stück gebaut.|luftgekühlter Heckmotor
+1940|W|W|MP 40|Vereinfachte Fertigungsversion der MP 38, eine der bekanntesten Waffen des Krieges.|9 × 19 mm
+1940|A|W|Karl-Gerät 040|60-cm-Mörser auf Kettenfahrgestell, sieben Exemplare.|Granate bis 2,2 t
+1940|S|W|Bismarck|Schlachtschiff, versenkte im Mai 1941 die HMS Hood und sank wenige Tage später.|8 × 38 cm
+1940|F|W|Focke-Wulf Fw 200 Condor|Viermotoriger Fernaufklärer über dem Atlantik, aus einem Verkehrsflugzeug entstanden.|Reichweite ca. 3.500 km
+1940|H|W|Focke-Achgelis Fa 223 Drache|Transporthubschrauber mit zwei seitlichen Rotoren.|2 Rotoren
+1941|R|W|Kettenkrad (Sd.Kfz. 2)|Kettenkraftrad, ursprünglich für Luftlandetruppen entwickelt.|Zugmaschine
+1941|R|W|BMW R 75|Krad mit angetriebenem Beiwagen und Geländeuntersetzung.|750 cm³
+1941|A|W|5-cm-PaK 38|Panzerabwehrkanone, erstmals wirksam gegen den T-34.|Kaliber 50 mm
+1941|A|W|15-cm-Nebelwerfer 41|Sechsrohr-Raketenwerfer mit markantem Heulgeräusch.|6 Rohre
+1941|A|W|80-cm-Kanone „Schwerer Gustav“|Größtes je im Kampf eingesetztes Geschütz, 1942 vor Sewastopol.|Granate ca. 7 t
+1941|F|W|Focke-Wulf Fw 190|Robustes Jagdflugzeug mit Sternmotor, auch als Jagdbomber genutzt.|bis ca. 650 km/h
+1941|S|W|Tirpitz|Schwesterschiff der Bismarck, band in Norwegen große Teile der britischen Flotte.|8 × 38 cm
+1942|P|W|Tiger I|56 Tonnen schwerer Panzer mit 8,8-cm-Kanone, 1.347 Stück gebaut.|Frontpanzer 100 mm
+1942|P|W|Marder III|Jagdpanzer auf Basis des 38(t) mit offenem Kampfraum.|7,5-cm-PaK 40
+1942|P|W|Goliath|Ferngelenkter Ladungsträger, per Kabel aus Deckung gesteuert.|Kabelsteuerung
+1942|R|W|Schwimmwagen (VW Typ 166)|Meistgebautes Serien-Amphibienfahrzeug, rund 15.000 Stück.|Propeller am Heck
+1942|M|W|MG 42|Bis zu 1.500 Schuss pro Minute. Als MG 3 bis heute im Dienst.|7,92 × 57 mm
+1942|W|W|FG 42|Fallschirmjägergewehr, automatisches Gewehr mit seitlichem Magazin.|7,92 × 57 mm
+1942|A|W|7,5-cm-PaK 40|Standard-Panzerabwehrkanone der zweiten Kriegshälfte, rund 23.000 Stück.|Kaliber 75 mm
+1942|F|W|Heinkel He 177 Greif|Schwerer Bomber mit gekoppelten Motoren.|Spannweite 31 m
+1942|H|W|Flettner Fl 282 Kolibri|Hubschrauber mit ineinanderkämmenden Rotoren, einer der ersten in Serie bestellten.|Doppelrotor
+1943|P|W|Panther|Antwort auf den T-34 mit geneigter Panzerung, rund 6.000 gebaut.|7,5-cm-KwK 42
+1943|P|W|Ferdinand / Elefant|Schwerer Jagdpanzer auf Porsche-Tiger-Fahrgestell, 91 Stück.|8,8-cm-PaK 43
+1943|P|W|Nashorn|Leicht gepanzerter Jagdpanzer mit großer Kampfentfernung.|8,8-cm-PaK 43
+1943|P|W|Wespe|Leichte Panzerhaubitze auf Panzer-II-Fahrgestell.|10,5 cm
+1943|P|W|Hummel|Schwere Panzerhaubitze auf Panzer-III/IV-Fahrgestell.|15 cm
+1943|P|W|Brummbär|Sturmpanzer IV für den Häuserkampf.|15-cm-Haubitze
+1943|R|W|Sd.Kfz. 4 Maultier|Lkw mit Kettenlaufwerk für den Schlamm an der Ostfront.|Halbkette
+1943|W|W|Gewehr 43|Selbstladegewehr mit Gasdrucklader und Wechselmagazin.|10 Schuss
+1943|K|W|Panzerfaust|Einweg-Panzerabwehrwaffe mit Hohlladung, in Millionen gefertigt.|Kampfentfernung 30–100 m
+1943|K|W|Panzerschreck (RPzB 54)|Raketenpanzerbüchse nach dem Vorbild der amerikanischen Bazooka.|8,8 cm
+1943|K|W|Fritz X|Funkgelenkte Gleitbombe, versenkte 1943 das Schlachtschiff Roma.|1,4 t
+1943|K|W|Henschel Hs 293|Funkgelenkte Gleitbombe mit Raketenantrieb gegen Schiffe.|Raketenmotor
+1943|A|W|8,8-cm-PaK 43|Schwere Panzerabwehrkanone, auch in Jagdpanzern verbaut.|Kaliber 88 mm
+1943|A|W|12,8-cm-Flak 40|Schwerste deutsche Flak, oft auf Flaktürmen.|Kaliber 128 mm
+1944|P|W|Tiger II (Königstiger)|69 Tonnen, 8,8-cm-KwK 43, rund 490 gebaut.|Frontpanzer 150 mm
+1944|P|W|Jagdpanther|Jagdpanzer ohne Drehturm auf Basis des Panther.|8,8-cm-PaK 43
+1944|P|W|Jagdpanzer 38(t) Hetzer|Kleiner, flacher Jagdpanzer, nach dem Krieg in der Schweiz als G-13.|7,5-cm-PaK 39
+1944|P|W|Jagdtiger|Schwerstes Serienkampffahrzeug des Krieges.|12,8-cm-PaK 44
+1944|P|W|Sturmtiger|Tiger-Fahrgestell mit 38-cm-Raketenmörser, nur 18 Stück.|38 cm
+1944|P|W|Flakpanzer IV Wirbelwind|Panzer IV mit offenem Turm und Flakvierling.|4 × 2 cm
+1944|P|W|Maus|188-Tonnen-Prototyp. Nur zwei Exemplare wurden gebaut.|12,8-cm-Kanone
+1944|R|W|Sd.Kfz. 234/2 Puma|Achtrad-Spähpanzer mit 5-cm-Kanone in Drehturm.|101 Stück
+1944|W|W|Sturmgewehr 44|Erstes in Masse eingesetztes Sturmgewehr mit Mittelpatrone.|7,92 × 33 mm, 30 Schuss
+1944|Z|W|Infrarotgerät „Vampir“|Nachtsichtzielgerät für das Sturmgewehr 44.|Aktiv-Infrarot
+1944|K|W|V1 (Fieseler Fi 103)|Flugbombe mit Pulsstrahltriebwerk, erster serienmäßiger Marschflugkörper.|ca. 250 km Reichweite
+1944|K|W|V2 (Aggregat 4)|Erste ballistische Großrakete. Ein Testflug 1944 erreichte als erstes Objekt den Weltraum.|ca. 320 km Reichweite
+1944|K|W|Ruhrstahl X-4|Drahtgelenkte Luft-Luft-Rakete, nicht mehr im Einsatz.|Drahtlenkung
+1944|F|W|Messerschmitt Me 262|Erstes einsatzfähiges Strahljagdflugzeug der Welt.|ca. 870 km/h
+1944|F|W|Messerschmitt Me 163 Komet|Raketenjäger, schnellstes Flugzeug des Krieges.|ca. 960 km/h
+1944|F|W|Arado Ar 234|Erster einsatzfähiger Strahlbomber, auch als Aufklärer genutzt.|2 Strahltriebwerke
+1944|F|W|Dornier Do 335 Pfeil|Jäger mit Zug- und Druckpropeller in Tandemanordnung.|ca. 760 km/h
+1944|F|W|Horten Ho 229|Nurflügel-Strahlflugzeug, Prototyp.|Nurflügel
+1944|S|W|U-Boot-Typ XXI|„Elektroboot“, Vorbild für die U-Boote der Nachkriegszeit.|Schnorchel
+1944|S|W|U-Boot-Typ XXIII|Kleines Elektroboot für Küstengewässer.|2 Bugrohre
+1944|S|W|Seehund|Kleinst-U-Boot mit zwei Mann Besatzung.|2 Torpedos
+1945|F|W|Heinkel He 162 Volksjäger|Leichter Strahljäger aus der Endphase des Krieges, in wenigen Monaten entwickelt.|Holzflügel
+1945|W|W|Volkssturmgewehr|Einfach gefertigte Notwaffe der letzten Kriegsmonate.|7,92 × 33 mm
+1955|R|B|Unimog S 404|Geländegängiger Lkw, Jahrzehnte lang ein vertrautes Bild bei der Truppe.|1,5 t Nutzlast
+1956|P|B|M47 Patton|Erster Kampfpanzer der Bundeswehr, aus US-Beständen.|90-mm-Kanone
+1956|R|B|DKW Munga|Leichter Geländewagen mit Zweitaktmotor.|Allradantrieb
+1956|Z|B|Gefechtshelm M1|Helm nach US-Vorbild, Erstausstattung der Bundeswehr.|Stahl
+1956|P|N|T-34/85|Sowjetischer Kampfpanzer, Erstausstattung der Panzertruppe der NVA.|85-mm-Kanone
+1956|R|N|BTR-152|Sowjetischer Schützenpanzerwagen auf Lkw-Basis.|3 Achsen
+1956|W|N|Karabiner S|Selbstladekarabiner, lizenzgefertigter SKS.|7,62 × 39 mm
+1956|Z|N|Stahlhelm M56|Helm der NVA, schon im Zweiten Weltkrieg entworfen.|Stahl
+1956|F|N|MiG-15|Erstes Strahljagdflugzeug der Luftstreitkräfte der NVA.|ca. 1.050 km/h
+1957|P|B|M48|US-Kampfpanzer, später teils auf 105 mm kampfwertgesteigert.|90 mm / 105 mm
+1957|W|B|Pistole P1|Nachkriegsversion der Walther P38 mit Aluminiumgriffstück.|9 × 19 mm
+1957|F|N|MiG-17|Verbesserter Nachfolger der MiG-15.|Pfeilflügel
+1957|H|N|Mi-4|Erster Hubschrauber der NVA.|Sternmotor
+1957|P|N|PT-76|Schwimmfähiger Spähpanzer.|76-mm-Kanone
+1957|P|N|T-54|Sowjetischer Kampfpanzer der ersten Nachkriegsgeneration.|100-mm-Kanone
+1957|F|B|Dornier Do 27|Leichtes Verbindungsflugzeug, erstes deutsches Nachkriegsflugzeug in Serie.|Kurzstarter
+1958|P|B|SPz kurz (Hotchkiss)|Leichter Schützenpanzer, auch als Spähpanzer und Beobachter.|20-mm-Kanone
+1958|H|B|Alouette II|Erster Hubschrauber mit Wellenturbine bei der Bundeswehr.|Turbine
+1958|F|B|Nord Noratlas|Doppelrumpf-Transportflugzeug, Vorgänger der Transall.|Doppelrumpf
+1958|S|B|Gorch Fock (II)|Segelschulschiff der Deutschen Marine, Wahrzeichen der Marine.|Bark, 3 Masten
+1958|S|B|Zerstörer Z1|Ehemalige US-Fletcher-Zerstörer, erste Zerstörer der Bundesmarine.|5 Einheiten
+1959|W|B|G3|Heckler-&-Koch-Gewehr mit Rollenverschluss, Standardgewehr bis in die 1990er.|7,62 × 51 mm, 20 Schuss
+1959|M|B|MG 3|Weiterentwicklung des MG 42 auf NATO-Kaliber.|bis 1.200 Schuss/min
+1959|P|B|SPz lang HS 30|Schützenpanzer mit 20-mm-Kanone, technisch problematisch.|20 mm
+1959|W|N|MPi-K|Lizenzbau der Kalaschnikow für die NVA.|7,62 × 39 mm
+1959|W|N|Pistole M (Makarow)|Dienstpistole der NVA und der Volkspolizei.|9 × 18 mm
+1960|F|B|F-104G Starfighter|Mehrzweckkampfflugzeug, wegen vieler Abstürze in der Kritik.|Mach 2
+1962|S|B|U-Boot-Klasse 205|Erste neu gebaute U-Boote der Bundesmarine.|Küsten-U-Boot
+1962|F|N|MiG-21|Wichtigstes Jagdflugzeug der NVA, über 500 Stück im Dienst.|Mach 2
+1962|R|N|IFA P3|Geländegängiger Pkw der NVA.|Allradantrieb
+1962|P|B|M113|Gepanzertes Transportfahrzeug in vielen Rollen.|11 Mann
+1964|S|B|Hamburg-Klasse|Erste in Deutschland nach dem Krieg gebaute Zerstörer.|4 Einheiten
+1964|A|B|M109|Panzerhaubitze, bis zur PzH 2000 Standard der Rohrartillerie.|155 mm
+1964|K|B|MIM-23 HAWK|Flugabwehrraketensystem mittlerer Reichweite.|halbaktiv
+1964|P|N|T-55|Wichtigster Kampfpanzer der NVA.|100-mm-Kanone
+1965|P|B|Leopard 1|Erster deutscher Kampfpanzer der Nachkriegszeit, in viele Länder exportiert.|105-mm-Kanone
+1965|R|N|IFA W50|Universal-Lkw aus Ludwigsfelde, über 570.000 gebaut.|5 t Nutzlast
+1965|W|N|MPi-KM|Modernisierte Kalaschnikow aus Wiesa, mit Kunststoffgriff.|7,62 × 39 mm
+1965|Z|N|Strichtarn|Tarnmuster der NVA, „Ein Strich, kein Strich“ genannt.|Strichmuster
+1966|P|B|Kanonenjagdpanzer|Jagdpanzer ohne Drehturm mit 90-mm-Kanone.|90 mm
+1966|P|B|Bergepanzer 2|Bergepanzer auf Leopard-1-Basis.|Kran, Seilwinde
+1966|R|N|BTR-60|Achtrad-Schützenpanzerwagen, schwimmfähig.|8 × 8
+1966|R|N|BRDM-2|Amphibischer Spähwagen.|14,5-mm-MG
+1966|A|N|ZSU-23-4 Schilka|Flugabwehrkanonenpanzer mit vier Rohren und Radar.|4 × 23 mm
+1966|W|B|MP2 (Uzi)|Maschinenpistole israelischer Herkunft, später durch die MP7 ersetzt.|9 × 19 mm
+1967|P|B|Raketenjagdpanzer 2|Jagdpanzer mit SS.11-Lenkflugkörpern.|Drahtlenkung
+1967|H|B|Bell UH-1D|Transporthubschrauber, bekannt aus Rettungseinsätzen.|ca. 350 im Dienst
+1967|K|N|RPG-7|Wiederverwendbare Panzerbüchse mit Raketengranate.|40 mm Rohr
+1968|F|B|Transall C-160|Deutsch-französisches Transportflugzeug, über 50 Jahre im Dienst.|16 t Nutzlast
+1968|H|N|Mi-8|Mittlerer Transporthubschrauber.|bis 24 Mann
+1969|A|B|LARS 110 mm|Leichtes Artillerieraketensystem auf Lkw.|36 Rohre
+1969|S|B|Lütjens-Klasse|Lenkwaffenzerstörer US-amerikanischer Bauart.|Tartar-Flugabwehr
+1970|K|N|9K32 Strela-2|Tragbare Flugabwehrrakete der NVA.|Infrarot
+1971|P|B|Marder 1|Schützenpanzer für den Kampf mit Kampfpanzern, über 50 Jahre im Dienst.|20-mm-Kanone
+1972|H|B|CH-53G|Schwerer Transporthubschrauber, lizenzgebaut.|36 Mann
+1973|F|B|F-4F Phantom II|Jagdflugzeug, bis 2013 bei der Luftwaffe.|Mach 2,2
+1973|S|B|U-Boot-Klasse 206|Kleine, leise Küsten-U-Boote aus amagnetischem Stahl.|18 Einheiten
+1974|P|N|BMP-1|Sowjetischer Schützenpanzer, Vorreiter seiner Klasse.|73-mm-Kanone
+1975|R|B|Luchs|Amphibischer Spähpanzer mit Fahrern vorne und hinten.|8 × 8
+1975|P|B|Biber|Brückenlegepanzer auf Leopard-1-Basis.|22 m Brücke
+1976|P|B|Flakpanzer Gepard|Zwei 35-mm-Kanonen mit Radar. Seit 2022 in der Ukraine zur Abwehr von Drohnen im Einsatz.|2 × 35 mm
+1976|S|B|Schnellboot Klasse 143|Albatros-Klasse, Flugkörperschnellboote.|Exocet
+1976|R|B|MAN-Lkw gl|Geländegängige Lkw-Familie der Bundeswehr.|5–10 t
+1977|K|B|Milan|Drahtgelenkte Panzerabwehrrakete der Infanterie, deutsch-französische Gemeinschaftsentwicklung.|bis 2 km
+1978|A|B|FH 70|Gezogene Feldhaubitze mit eigenem Hilfsmotor für kurze Stellungswechsel.|155 mm, ca. 24 km
+1978|F|N|MiG-23|Schwenkflügel-Jagdflugzeug der Luftstreitkräfte der NVA.|Mach 2,3
+1978|H|N|Mi-24|Kampfhubschrauber mit zusätzlichem Transportraum für acht Soldaten.|„fliegender Panzer“
+1978|P|N|2S1 Gwosdika|Schwimmfähige Panzerhaubitze der Artillerieregimenter.|122 mm
+1978|S|N|Fregatte Rostock|Koni-Klasse, die größten Kampfschiffe der Volksmarine.|2 Einheiten
+1979|P|B|Leopard 2|Kampfpanzer mit 120-mm-Glattrohrkanone. Ständig modernisiert, aktuell als 2A8 im Zulauf.|ca. 60 t, 120 mm
+1979|R|B|Fuchs|Sechsrädriger Transportpanzer, als ABC-Spürpanzer international gefragt.|6 × 6, schwimmfähig
+1979|F|B|Alpha Jet|Leichtes Erdkampf- und Schulflugzeug, bis 1998 in der Luftwaffe.|Unterschall
+1979|P|N|T-72|Modernster Kampfpanzer der NVA mit automatischem Lader.|125-mm-Kanone
+1980|H|B|PAH-1 (Bo 105)|Panzerabwehrhubschrauber mit HOT-Lenkflugkörpern.|6 × HOT
+1974|H|B|Sea King Mk41|Marinehubschrauber für Seenotrettung, fast 50 Jahre im Dienst.|Rettungswinde
+1981|K|B|Roland|Flugabwehrraketensystem auf Marder-Fahrgestell zum Schutz der Truppe.|bis 6 km
+1981|H|B|Sea Lynx|Bordhubschrauber der Fregatten für U-Jagd und Seeziele.|Bordhubschrauber
+1981|S|N|Parchim-Klasse|U-Jagd-Korvetten der Volksmarine, später an Indonesien verkauft.|16 Einheiten
+1982|F|B|Panavia Tornado|Schwenkflügel-Kampfflugzeug, Rückgrat der Luftwaffe und Träger der nuklearen Teilhabe.|Mach 2,2
+1982|S|B|Bremen-Klasse|Fregatten der Klasse 122 für die U-Jagd im Nordatlantik.|8 Einheiten
+1983|W|N|MPi-AK-74N|Kalaschnikow im kleineren Kaliber, letzte Standardwaffe der NVA.|5,45 × 39 mm
+1984|F|N|Su-22|Jagdbomber mit Schwenkflügeln für Luftstreitkräfte und Marineflieger.|Schwenkflügel
+1984|S|N|Tarantul-Klasse|Raketenkorvetten der Volksmarine mit Seezielflugkörpern.|4 × P-15
+1986|P|N|BMP-2|Schützenpanzer mit 30-mm-Maschinenkanone und Lenkflugkörper.|30 mm
+1988|F|N|MiG-29|Modernstes Jagdflugzeug der NVA, danach bis 2004 bei der Luftwaffe in Laage.|Mach 2,3
+1989|K|B|Patriot|Flugabwehrraketensystem großer Reichweite, auch gegen ballistische Raketen.|über 100 km
+1989|S|B|Klasse 332|Minenjagdboote aus amagnetischem Stahl.|Minenjagd
+1989|R|B|Wolf|Geländewagen auf Basis der Mercedes G-Klasse, über 12.000 im Dienst.|Allradantrieb
+1990|A|B|MARS|Mittleres Artillerieraketensystem auf Kettenfahrgestell, die deutsche Variante des MLRS.|12 Raketen
+1990|P|B|Wiesel 1|Kleiner, luftverladbarer Waffenträger der Luftlandetruppen.|ca. 2,8 t
+1990|Z|B|Flecktarn|Fünffarbiges Tarnmuster, seit 1990 Kennzeichen der Bundeswehr-Uniform.|5 Farben
+1992|Z|B|Gefechtshelm B826|Gefechtshelm aus Aramid von Schuberth, Nachfolger des Stahlhelms.|Aramid
+1992|K|B|Panzerfaust 3|Schultergestützte Panzerabwehrwaffe der Infanterie.|bis 600 m
+1994|W|B|P8|Dienstpistole von Heckler & Koch mit Kunststoffgriffstück.|9 × 19 mm, 15 Schuss
+1994|S|B|Brandenburg-Klasse|Fregatten der Klasse 123, spezialisiert auf U-Jagd.|4 Einheiten
+1997|W|B|G36|Sturmgewehr mit Kunststoffgehäuse und integrierter Optik.|5,56 × 45 mm, 30 Schuss
+1998|P|B|Panzerhaubitze 2000|Selbstfahrende Haubitze, die einen Feuerstoß von drei Schuss in rund zehn Sekunden abgibt.|155 mm, bis ca. 40 km
+2000|R|B|ATF Dingo|Allschutz-Transportfahrzeug mit Minenschutz für Auslandseinsätze.|Unimog-Basis
+2001|S|B|Berlin-Klasse|Einsatzgruppenversorger, schwimmende Versorgungsbasen der Flotte.|3 Einheiten
+2002|Z|B|Nachtsichtbrille Lucie|Restlichtverstärker, am Helm oder in der Hand nutzbar.|Restlicht
+2003|S|B|Sachsen-Klasse|Fregatten F124 für die Luftverteidigung von Verbänden.|3 Einheiten
+2004|F|B|Eurofighter Typhoon|Mehrzweckkampfflugzeug aus europäischer Gemeinschaftsentwicklung.|Mach 2
+2005|K|B|IRIS-T|Infrarotgelenkter Luft-Luft-Flugkörper kurzer Reichweite.|Infrarot
+2005|K|B|Taurus KEPD 350|Luftgestützter Marschflugkörper mit Tandemgefechtskopf.|über 500 km
+2005|M|B|MG4|Leichtes Maschinengewehr für die Gruppe.|5,56 × 45 mm
+2005|S|B|U-Boot-Klasse 212A|U-Boote mit Brennstoffzellenantrieb, sehr leise und lange getaucht.|außenluftunabhängig
+2005|H|B|Tiger|Unterstützungshubschrauber, deutsch-französische Entwicklung.|Kampfhubschrauber
+2007|H|B|NH90|Mittlerer Transporthubschrauber mit Fly-by-Wire-Steuerung.|bis 20 Soldaten
+2008|R|B|Fennek|Leichter Spähwagen mit ausfahrbarem Beobachtungsmast.|4 × 4
+2008|S|B|Braunschweig-Klasse|Korvetten der Klasse 130 für Küstengewässer.|K130
+2009|R|B|Boxer|Achtrad-Radpanzer mit austauschbaren Missionsmodulen.|8 × 8
+2013|Z|B|IdZ-ES „Gladius“|Vernetztes Soldatensystem mit Funk, Navigation und Optik.|vernetzt
+2014|F|B|Airbus A400M|Viermotoriges Transportflugzeug, Nachfolger der Transall.|37 t Nutzlast
+2015|M|B|MG5|Maschinengewehr von Heckler & Koch, Nachfolger des MG 3.|7,62 × 51 mm
+2015|P|B|Puma|Hochgeschützter Schützenpanzer, Nachfolger des Marder.|30-mm-Kanone
+2017|K|B|MELLS (Spike LR)|Mehrrollenfähiges leichtes Lenkflugkörpersystem.|bis 4 km
+2019|S|B|Baden-Württemberg-Klasse|Fregatten F125 für lange Stabilisierungseinsätze.|4 Einheiten
+2019|H|B|NH90 Sea Lion|Marinehubschrauber, Nachfolger des Sea King.|Marine
+2022|F|B|Heron TP|Bewaffnungsfähige Langstreckendrohne der Luftwaffe.|über 24 h Flugdauer
+2024|K|B|IRIS-T SLM|Bodengestütztes Flugabwehrsystem mittlerer Reichweite.|bis 40 km
+2025|K|B|Arrow 3|Abwehrsystem gegen ballistische Raketen außerhalb der Atmosphäre.|exoatmosphärisch
+2025|W|B|G95|Sturmgewehr von Heckler & Koch, Nachfolger des G36.|5,56 × 45 mm
+2026|F|B|F-35A Lightning II|Tarnkappen-Kampfflugzeug, Nachfolger des Tornado in der nuklearen Teilhabe.|35 bestellt`;
+const FEATURED=RAW.trim().split("\n").map(l=>{const[y,c,e,n,inf,sp]=l.split("|");return{id:"f:"+n,title:n,year:+y,era:e,cat:c,info:inf,spec:sp,featured:true}})
+ .sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title,"de"));
+const FEATURED_BY_ERA={};FEATURED.forEach(x=>(FEATURED_BY_ERA[x.era]=FEATURED_BY_ERA[x.era]||[]).push(x));
+const ITEMS=new Map();FEATURED.forEach(x=>ITEMS.set(x.id,x));
+
+/* ---------- Speicher ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+ set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const SET=Object.assign({zoom:1,theme:"dark",role:null},store.get("aa-set",{}));
+const isTeacher=()=>SET.role==="t";
+function applySet(){document.documentElement.dataset.theme=SET.theme;document.documentElement.style.setProperty("--zoom",SET.zoom)}
+applySet();
+let MAPPE=store.get("aa-mappe",[]);
+MAPPE.forEach(x=>{if(!ITEMS.has(x.id))ITEMS.set(x.id,x)});
+
+/* ---------- Quellen ---------- */
+const SRC={
+ K:[["cat","Flugzeugtyp des Ersten Weltkrieges (Deutsches Reich)","F",1],["cat","Luftschiff (Kaiserliche Marine)","F",1],["cat","Militärschiff (Kaiserliche Marine)","S",2],
+    ["search",'"Deutsches Heer" "Erster Weltkrieg" incategory:Maschinengewehr',"M",false],["search",'"Deutsches Heer" Ordonnanzwaffe Kaiserreich',"W",true],
+    ["search",'"Erster Weltkrieg" "Deutsches Heer" Geschütz Krupp',"A",true],["search",'"Erster Weltkrieg" deutscher Panzerwagen',"P",true],
+    ["search",'"Erster Weltkrieg" "Deutsches Heer" Ausrüstung Stahlhelm Gasmaske',"Z",true]],
+ R:[["search",'Reichswehr incategory:"Kettenfahrzeug der Wehrmacht"',"P",false],["search",'Reichswehr incategory:"Radfahrzeug der Wehrmacht"',"R",false],
+    ["search",'Reichswehr incategory:"Handwaffe der Wehrmacht"',"W",false],["search",'Reichswehr incategory:"Artillerie der Wehrmacht"',"A",false],
+    ["search",'Reichswehr incategory:"Luftfahrzeug der Wehrmacht"',"F",false],["search",'Reichsmarine incategory:"Militärschiffsklasse (Kriegsmarine)"',"S",false],
+    ["search","Reichsmarine Schiff Indienststellung 1920er","S",true]],
+ W:[["cat","Kettenfahrzeug der Wehrmacht","P",2],["cat","Radfahrzeug der Wehrmacht","R",2],["cat","Luftfahrzeug der Wehrmacht","F",2],
+    ["cat","Artillerie der Wehrmacht","A",2],["cat","Handwaffe der Wehrmacht","W",2],["cat","Militärische Ausrüstung (Wehrmacht)","Z",1],
+    ["cat","Militärschiffsklasse (Kriegsmarine)","S",1],["cat","Militärschiff (Kriegsmarine)","S",2],
+    ["list","Liste von Kettenfahrzeugen der Wehrmacht"],["list","Liste der Handwaffen der Wehrmacht"],
+    ["list","Liste von Luftfahrzeugen der Luftwaffe (Wehrmacht)"],["list","Liste von Schiffen der Kriegsmarine"],
+    ["search","Wehrmacht incategory:Maschinengewehr","M",false],["search","Wehrmacht Lenkwaffe Rakete Vergeltungswaffe","K",true]],
+ N:[["list","Liste der Technik und Bewaffnung der NVA"],["search",'"Nationale Volksarmee" incategory:"Militärisches Kettenfahrzeug"',"P",false],
+    ["search",'"Nationale Volksarmee" Volksmarine Schiffsklasse',"S",true],["search",'"Nationale Volksarmee" Luftstreitkräfte Flugzeug',"F",true],
+    ["search",'"Nationale Volksarmee" Hubschrauber',"H",true],["search",'"Nationale Volksarmee" Lastkraftwagen',"R",true],
+    ["search",'"Nationale Volksarmee" Handwaffe Maschinenpistole',"W",true],["search",'"Nationale Volksarmee" Uniform Ausrüstung',"Z",true]],
+ B:[["cat","Kettenfahrzeug der Bundeswehr","P",2],["cat","Radfahrzeug der Bundeswehr","R",2],["cat","Luftfahrzeug der Bundeswehr","F",2],
+    ["cat","Militärschiff (Bundeswehr)","S",2],["cat","Militärische Ausrüstung (Bundeswehr)","Z",1],
+    ["list","Liste von Handwaffen der Bundeswehr"],["list","Liste von Luftfahrzeugen der Bundeswehr"],["list","Liste von Kettenfahrzeugen der Bundeswehr"],
+    ["search","Bundeswehr incategory:Maschinengewehr","M",false],["search","Bundeswehr Lenkflugkörper Flugabwehr","K",true],
+    ["search","Bundeswehr Panzerhaubitze Artilleriesystem","A",true]]
+};
+/* Gemeinsame Regeln zur Einordnung von Wikipedia-Artikeln (Datensammler und App). */
+
+/** Reihenfolge ist wichtig: spezifische Begriffe vor allgemeinen. */
+const CATEGORY_RULES = [
+  ["M", ["maschinengewehr"]],
+  ["A", ["raketenwerfer", "artilleriesystem", "panzerhaubitze", "selbstfahrlafette", "eisenbahngeschütz"]],
+  ["K", ["rakete", "flugkörper", "lenkwaffe", "panzerabwehrwaffe", "marschflugkörper", "torpedo", "fliegerbombe", "gleitbombe", "seemine", "landmine"]],
+  ["H", ["hubschrauber"]],
+  ["F", ["flugzeug", "luftfahrzeug", "luftschiff", "drohne", "segelflug", "lastensegler"]],
+  ["R", ["radpanzer", "spähwagen", "panzerwagen", "halbkettenfahrzeug", "zugkraftwagen"]],
+  ["P", ["kettenfahrzeug", "kampfpanzer", "schützenpanzer", "jagdpanzer", "flakpanzer", "flugabwehrkanonenpanzer", "spähpanzer", "transportpanzer", "bergepanzer", "brückenlegepanzer", "pionierpanzer", "sturmgeschütz", "panzerkampfwagen", "leichter panzer", "mittlerer panzer", "schwerer panzer"]],
+  ["A", ["geschütz", "haubitze", "kanone", "mörser", "artillerie", "flugabwehrwaffe", "granatwerfer", "minenwerfer"]],
+  ["W", ["pistole", "gewehr", "karabiner", "revolver", "büchse", "handwaffe", "handgranate", "flammenwerfer", "bajonett", "seitengewehr", "maschinenpistole", "blankwaffe"]],
+  ["S", ["schiff", "boot", "korvette", "fregatte", "zerstörer", "kreuzer", "u-boot", "minensucher", "tender", "flottenbegleiter"]],
+  ["P", ["panzer"]],
+  ["R", ["radfahrzeug", "lastkraftwagen", "lkw", "geländewagen", "pkw", "kraftrad", "motorrad", "zugmaschine", "militärfahrzeug", "kraftfahrzeug", "automobil", "kettenkrad"]],
+  ["Z", ["ausrüstung", "helm", "uniform", "tarnmuster", "funkgerät", "optisches gerät", "fernglas", "zielfernrohr", "schlüsselmaschine", "chiffriermaschine", "feldküche", "nachtsichtgerät", "radar", "gasmaske", "fallschirm", "feldflasche"]],
+];
+
+/** Ganze Wörter in Kategorienamen, die auf Personen, Orte, Einheiten usw. hinweisen. */
+const EXCLUDE_WORDS = [
+  "mann", "frau", "geboren", "gestorben", "person", "militärperson", "hersteller", "unternehmen",
+  "geschwader", "verband", "flugplatz", "gemeinde", "behörde", "museum", "schlacht", "konflikt",
+  "begriffsklärung", "organisation", "truppengattung", "dienstgrad", "kaserne", "werft",
+  "konstrukteur", "ingenieur", "pilot", "marineoffizier", "film", "computerspiel", "roman", "ehrenzeichen", "orden",
+];
+
+const GROUP = { P: "v", R: "v", F: "v", H: "v", S: "v", W: "w", M: "w", A: "w", K: "w", Z: "z" };
+const groupOf = (c) => GROUP[c];
+
+const RULES=CATEGORY_RULES;
+const EXCL_RE=new RegExp(`(^|[^a-zäöüß])(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
+const SKIPCAT=["militärische einheit","verband","division","regiment","bataillon","geschwader","staffel","hersteller","unternehmen","museum","liste","film","spiel","besatzung","operation","werft","bauwerk","stützpunkt","flugplatz","person","kommandant","schiffsverlust","wrack","kriegsgefangen","modell","kaserne"];
+function classify(cats){const l=cats.map(c=>c.toLowerCase().replace(/^kategorie:/,""));if(l.some(c=>EXCL_RE.test(c)))return null;
+ for(const[cat,keys]of RULES)if(l.some(c=>keys.some(k=>c.includes(k))))return cat;return null}
+const skipTitle=t=>/^(Liste |Portal:|Kategorie:)/.test(t)||t.includes("Begriffsklärung");
+
+/* ---------- Wikipedia / Wikidata ---------- */
+const DE="de.wikipedia.org",EN="en.wikipedia.org";
+async function api(params,host=DE){
+ const q=new URLSearchParams({...params,format:"json",formatversion:"2",origin:"*"});
+ try{const r=await fetch(`https://${host}/w/api.php?${q}`);if(!r.ok)return null;return await r.json()}catch(e){return null}
+}
+const PP={prop:"pageimages|pageprops",piprop:"thumbnail",pithumbsize:"640",pilimit:"max",ppprop:"wikibase_item"};
+async function collect(base,host=DE,maxRounds=60){
+ const bag=new Map();let cont=null,rounds=0;
+ do{const j=await api({...base,...(cont||{})},host);if(!j)break;
+  for(const p of (j.query&&j.query.pages)||[]){if(!p.title||p.missing||p.invalid)continue;
+   const o=bag.get(p.title)||{title:p.title,ns:0,thumb:null,qid:null,cats:[]};o.ns=p.ns||0;
+   if(p.thumbnail)o.thumb=p.thumbnail.source;if(p.pageprops&&p.pageprops.wikibase_item)o.qid=p.pageprops.wikibase_item;
+   if(p.categories)o.cats.push(...p.categories.map(c=>c.title));bag.set(p.title,o)}
+  cont=j.continue||null;rounds++;
+ }while(cont&&rounds<maxRounds);
+ return[...bag.values()];
+}
+async function pagesInCategory(root,maxDepth){
+ const queue=[["Kategorie:"+root,0]],seen=new Set(),res=new Map();
+ while(queue.length&&seen.size<80){const[c,d]=queue.shift();if(seen.has(c))continue;seen.add(c);
+  const mem=await collect({...PP,action:"query",generator:"categorymembers",gcmtitle:c,gcmtype:"page|subcat",gcmlimit:"50",prop:"pageimages|pageprops|categories",cllimit:"max",clshow:"!hidden"});
+  for(const p of mem){if(p.ns===14){if(d<maxDepth&&!SKIPCAT.some(w=>p.title.toLowerCase().includes(w)))queue.push([p.title,d+1])}else if(p.ns===0)res.set(p.title,p)}}
+ return[...res.values()];
+}
+function searchPages(q,withCats){
+ const b={...PP,action:"query",generator:"search",gsrsearch:q,gsrnamespace:"0",gsrlimit:"50",prop:"pageimages|pageprops|categories",cllimit:"max",clshow:"!hidden"};
+ return collect(b,DE,withCats?40:20);
+}
+function linkedPages(title){
+ return collect({...PP,action:"query",titles:title,redirects:"1",generator:"links",gplnamespace:"0",gpllimit:"50",
+  prop:"pageimages|pageprops|categories",cllimit:"max",clshow:"!hidden"},DE,200);
+}
+function earliestYear(st){let best=null;for(const s of st||[]){const v=s.mainsnak&&s.mainsnak.datavalue&&s.mainsnak.datavalue.value;const t=v&&v.time;
+ if(t){const y=parseInt(t.slice(1,5),10);if(y>1830&&y<2100)best=best===null?y:Math.min(best,y)}}return best}
+async function years(qids){
+ const u=[...new Set(qids)],out={},batches=[];for(let i=0;i<u.length;i+=50)batches.push(u.slice(i,i+50));
+ for(let i=0;i<batches.length;i+=4){
+  await Promise.all(batches.slice(i,i+4).map(async b=>{const j=await api({action:"wbgetentities",ids:b.join("|"),props:"claims"},"www.wikidata.org");
+   if(!j||!j.entities)return;for(const[q,e]of Object.entries(j.entities)){const c=e.claims||{};
+    for(const p of["P729","P606","P571"]){const y=earliestYear(c[p]);if(y){out[q]=y;break}}}}));
+ }
+ return out;
+}
+async function harvest(era,progress){
+ const bag=new Map();
+ for(const s of SRC[era]){if(bag.size>=5000)break;
+  let pages,cls=false;
+  if(s[0]==="cat")pages=await pagesInCategory(s[1],s[3]);
+  else if(s[0]==="list"){pages=await linkedPages(s[1]);cls=true}
+  else{pages=await searchPages(s[1],s[3]);cls=s[3]}
+  for(const p of pages){if(p.ns!==0||skipTitle(p.title))continue;
+   const c2=classify(p.cats);const cat=cls?c2:(c2&&groupOf(c2)===groupOf(s[2])?c2:s[2]);if(!cat)continue;
+   const ex=bag.get(p.title);
+   if(ex){if(!ex.thumb)ex.thumb=p.thumb;if(!ex.qid)ex.qid=p.qid}
+   else bag.set(p.title,{id:"w:"+p.title,title:p.title,year:null,era,cat,wiki:p.title,thumb:p.thumb,qid:p.qid})}
+  progress(bag.size);
+ }
+ if(!bag.size)return[];
+ const ys=await years([...bag.values()].map(x=>x.qid).filter(Boolean));
+ const items=[...bag.values()];items.forEach(x=>{if(x.qid&&ys[x.qid])x.year=ys[x.qid]});
+ return items;
+}
+
+/* ---------- Vorbereitete Daten der Website ---------- */
+let META=null,FEAT_MAP={};
+const BOOT=(async()=>{
+ try{const r=await fetch("data/meta.json",{cache:"no-cache"});if(r.ok)META=await r.json()}catch(e){}
+ if(META){try{const r=await fetch("data/featured.json");if(r.ok)FEAT_MAP=await r.json()}catch(e){}}
+ FEATURED.forEach(x=>{const m=FEAT_MAP[x.title];if(m){x.wiki=m.w;x.thumb=m.img||null}});
+})();
+BOOT.then(()=>{if(META&&!location.hash.slice(2))rerender()});
+
+/* ---------- Bestand je Epoche ---------- */
+const norm=t=>t.toLowerCase().replace(/[^\p{L}\p{N}]/gu,"");
+const STATE={},MERGED={};
+function setMerged(era,online){
+ const feat=FEATURED_BY_ERA[era]||[],known=new Set();
+ feat.forEach(x=>{known.add(norm(x.title));if(x.wiki)known.add(norm(x.wiki))});
+ MERGED[era]=feat.concat(online.filter(x=>!known.has(norm(x.title))));
+ MERGED[era].forEach(x=>ITEMS.set(x.id,x));
+}
+function itemsOf(era){return MERGED[era]||FEATURED_BY_ERA[era]||[]}
+async function loadEra(era,force){
+ const st=STATE[era];if(st&&st.k==="loading")return;if(!force&&st&&st.k==="done")return;
+ STATE[era]={k:"loading",n:0};refreshLive();
+ await BOOT;
+ if(META&&META.eras&&META.eras[era]){
+  try{const r=await fetch("data/"+era+".json");
+   if(r.ok){const j=await r.json();
+    setMerged(era,j.items.map(o=>({id:"w:"+o.t,title:o.t,year:o.y||null,era,cat:o.c,wiki:o.t,thumb:o.img||null,desc:o.d||null})));
+    STATE[era]={k:"done"};refresh();return}}catch(e){}
+ }
+ if(!force){const c=store.get("aa-era-"+era,null);
+  if(c&&Date.now()-c.d<14*864e5&&c.items&&c.items.length){setMerged(era,c.items);STATE[era]={k:"done"};refresh();return}}
+ harvest(era,n=>{STATE[era]={k:"loading",n};refreshLive()}).then(items=>{
+  if(!items.length){STATE[era]={k:"failed"};refresh();return}
+  store.set("aa-era-"+era,{d:Date.now(),items});
+  setMerged(era,items);STATE[era]={k:"done"};refresh();
+ });
+}
+
+/* ---------- Fotos ---------- */
+const REFS=new Map();
+function firstHit(q,host){return collect({action:"query",generator:"search",gsrsearch:q,gsrnamespace:"0",gsrlimit:"1",prop:"pageimages",piprop:"thumbnail",pithumbsize:"900"},host,1).then(r=>r[0]||null)}
+function photoRef(item){
+ if(REFS.has(item.id))return REFS.get(item.id);
+ let p;
+ if(item.wiki)p=Promise.resolve({thumb:item.thumb||null,title:item.wiki,host:DE});
+ else p=(async()=>{let title=null;
+  for(const[q,h]of[[item.title+" "+CATS[item.cat].h,DE],[item.title,DE],[item.title,EN]]){
+   const hit=await firstHit(q,h);if(!hit)continue;if(!title&&h===DE)title=hit.title;
+   if(hit.thumb)return{thumb:hit.thumb,title:title||hit.title,host:title?DE:h}}
+  return{thumb:null,title,host:DE}})();
+ REFS.set(item.id,p);return p;
+}
+function photoHTML(item,cls=""){
+ return `<div class="photo ${cls}" data-pid="${esc(item.id)}" style="--tint:${ERAS[item.era].c}">${svg(item.cat)}</div>`;
+}
+const io=("IntersectionObserver" in window)?new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);fillPhoto(e.target)})},{rootMargin:"300px"}):null;
+function fillPhoto(el){
+ const item=ITEMS.get(el.dataset.pid);if(!item)return;
+ BOOT.then(()=>photoRef(item)).then(r=>{
+  if(!r.thumb){el.classList.add("done");return}
+  const img=new Image();img.alt="";img.decoding="async";
+  img.onload=()=>{img.classList.add("on");el.classList.add("done")};img.onerror=()=>el.classList.add("done");
+  img.src=r.thumb;el.appendChild(img);
+ });
+}
+function observePhotos(root){root.querySelectorAll(".photo[data-pid]").forEach(el=>io?io.observe(el):fillPhoto(el))}
+
+/* ---------- Hilfen ---------- */
+const $app=document.getElementById("app");
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const fmt=n=>n.toLocaleString("de-DE");
+const yearText=x=>x.year?String(x.year):"o. J.";
+const heroOf=e=>(FEATURED_BY_ERA[e]||[]).find(x=>x.title===ERAS[e].hero)||FEATURED_BY_ERA[e][0];
+const countCats=(era,cats)=>itemsOf(era).reduce((a,x)=>a+(cats.includes(x.cat)?1:0),0);
+const itemHref=x=>"#/item/"+encodeURIComponent(x.id);
+const bar=title=>`<header class="bar"><button class="back" data-action="back" aria-label="Zurück">‹</button><h1>${esc(title)}</h1></header>`;
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function toast(t){const el=document.createElement("div");el.className="toast";el.textContent=t;document.body.appendChild(el);setTimeout(()=>el.remove(),1800)}
+async function copyText(t){
+ try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t);return true}}catch(e){}
+ const ta=document.createElement("textarea");ta.value=t;ta.setAttribute("readonly","");ta.style.cssText="position:fixed;top:0;left:0;opacity:0";
+ document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand("copy")}catch(e){}ta.remove();return ok;
+}
+function bannerHTML(era){
+ const s=STATE[era];if(!s)return"";
+ if(s.k==="loading")return`<div class="banner"><div class="spin"></div><div><b>Vollständiger Bestand wird geladen</b><small>${s.n?fmt(s.n)+" Einträge gefunden …":"Quellen werden durchsucht …"}</small></div></div>`;
+ if(s.k==="failed")return`<div class="banner"><div><b>Keine Internetverbindung</b><small>Angezeigt werden die Highlights.</small></div><button data-action="retry" data-era="${era}">Erneut</button></div>`;
+ return"";
+}
+function tileHTML(href,era,title,sub,sil,cats){
+ const loading=STATE[era]&&STATE[era].k==="loading";
+ return`<a class="tile" href="${href}"><div class="photo ico done" style="--tint:${ERAS[era].c}">${svg(sil)}</div>
+  <div class="txt"><b>${esc(title)}</b><small>${esc(sub)}</small><em data-count="${cats.join("")}">${fmt(countCats(era,cats))} Einträge${loading?'<span class="spin sm"></span>':""}</em></div><span class="chev">›</span></a>`;
+}
+function tasksHTML(list,hints){
+ const show=hints&&isTeacher();
+ return`<ol class="tasks">${list.map(([afb,t],i)=>{const k=t.indexOf(" ");
+  return`<li><span class="afb">AFB ${afb}</span><span><b>${esc(t.slice(0,k))}</b>${esc(t.slice(k))}${show&&hints[i]?`<details class="hint"><summary>Lösungshinweise</summary><p>${esc(hints[i])}</p></details>`:""}</span></li>`}).join("")}</ol>`;
+}
+function tasksText(title,list,hints){return title+"\n\n"+list.map(([afb,t],i)=>`${i+1}. (Anforderungsbereich ${afb}) ${t}`+(hints&&hints[i]?`\n   Lösungshinweise: ${hints[i]}`:"")).join("\n")}
+function taskButtons(key){
+ return`<button class="btn" data-action="copy-tasks" data-era="${key}">${ico("copy")}Aufgaben kopieren</button>${isTeacher()?`<button class="btn" data-action="copy-tasks" data-era="${key}" data-hints="1">${ico("copy")}Mit Lösungen kopieren</button>`:""}`;
+}
+
+/* ---------- Willkommen ---------- */
+function viewWelcome(){
+ return`<div class="welcome"><img src="${LOGO}" alt="Arsenal Atlas"><h1>ARSENAL <span>ATLAS</span></h1>
+ <p>Fahrzeuge, Waffen und Ausrüstung deutscher Streitkräfte von 1871 bis heute, mit Zeitleisten, historischer Einordnung, Quiz und Arbeitsaufträgen.</p>
+ <div class="label">Wer nutzt die App?</div>
+ <div class="roles"><button class="role" data-action="set-role" data-v="s"><svg class="ico24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span><b>Ich bin Schülerin oder Schüler</b><small>Entdecken, Aufgaben lösen, Quiz spielen, eigene Mappe anlegen</small></span></button>
+ <button class="role" data-action="set-role" data-v="t"><svg class="ico24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg><span><b>Ich bin Lehrkraft</b><small>Zusätzlich Lösungshinweise, Präsentationsmodus und didaktische Hinweise</small></span></button></div>
+ <p style="font-size:13px">Die Auswahl lässt sich jederzeit unter „Anzeige“ ändern. Es werden keine persönlichen Daten erhoben.</p></div>`;
+}
+
+/* ---------- Startseite ---------- */
+function viewHome(){
+ return`<div class="view"><div class="head"><img src="${LOGO}" alt=""><div><div class="t">ARSENAL <span>ATLAS</span></div><p>Deutsche Militärgeschichte in Technik und Kontext, 1871 bis heute</p><button class="rolechip" data-action="switch-role">${isTeacher()?"Ansicht für Lehrkräfte":"Ansicht für Schüler"} · wechseln</button></div>
+ <a class="gear" href="#/settings" aria-label="Anzeige einstellen">${ico("sliders")}</a></div>
+ <div class="pad"><div class="label" style="margin-bottom:12px">${isTeacher()?"Für den Unterricht":"Lernen und üben"}</div><div class="school">
+  <a class="stile" href="#/quiz" data-action="quiz-home">${ico("quiz")}<b>Quiz</b><small>10 Fragen zu einer oder allen Epochen</small></a>
+  <a class="stile" href="#/mappe">${ico("folder")}<b>${isTeacher()?"Unterrichtsmappe":"Meine Mappe"}</b><small>${isTeacher()?"Sammeln, vergleichen, präsentieren":"Sammeln, vergleichen, Referat halten"}</small><em>${MAPPE.length} gespeichert</em></a>
+  <a class="stile" href="#/aufgaben">${ico("star")}<b>Aufgaben</b><small>${isTeacher()?"Alle Arbeitsaufträge mit Lösungshinweisen":"Arbeitsaufträge zu allen Epochen"}</small></a>
+  <a class="stile" href="#/glossar">${ico("book")}<b>Glossar</b><small>${GLOSSAR.length} Fachbegriffe kurz erklärt</small></a>
+  ${isTeacher()?`<a class="stile wide" href="#/lehrkraefte">${ico("info")}<div><b>Für Lehrkräfte</b><small>Einsatzideen, didaktische Hinweise, Datenschutz</small></div></a>`:""}
+ </div></div>
+ <div class="label pad" style="margin:28px 0 14px">Zeitraum wählen</div>
+ ${TIMELINE.map(e=>{const E=ERAS[e],h=heroOf(e),done=STATE[e]&&STATE[e].k==="done";
+  return`<a class="station" href="#/era/${e}" style="--c:${E.c}"><span class="dot"></span><div class="col"><span class="yr">${E.r}</span>
+  <div class="hero">${photoHTML(h)}<div class="shade"></div><div class="cap"><b>${E.n}</b><small>${E.sub}</small></div></div>
+  <div class="meta-row"><span>${done?fmt(itemsOf(e).length)+" Einträge":META&&META.eras&&META.eras[e]?"Über "+fmt(META.eras[e].count)+" Einträge":(FEATURED_BY_ERA[e]||[]).length+" Highlights · vollständiger Bestand beim Öffnen"}</span><span class="chev">›</span></div></div></a>`}).join("")}
+ <p class="credit">Fotos und Artikeltexte: Wikipedia und Wikimedia Commons</p></div>`;
+}
+
+/* ---------- Epoche ---------- */
+function viewEra(e){
+ loadEra(e);const E=ERAS[e],C=ERA_CTX[e];
+ return`${bar(E.n)}<div class="view"><div class="era-hero">${photoHTML(heroOf(e))}<div class="shade"></div>
+ <div class="cap"><span class="yr">${E.r}</span><b>${E.n}</b><small>${E.sub}</small></div></div>
+ <div class="pad"><p class="summary">${E.s}</p><div id="live">${bannerHTML(e)}</div>
+ <div class="sec"><div class="label">Was möchtest du sehen?</div><div class="tiles">
+ ${Object.entries(GROUPS).map(([k,g])=>tileHTML(k==="vehicles"?`#/era/${e}/vehicles`:`#/era/${e}/list/${k}`,e,g.t,g.s,g.sil,g.cats)).join("")}
+ </div></div>
+ <div class="sec"><div class="label">Wichtige Daten</div><ul class="events">${C.ev.map(([y,t])=>`<li><b>${y}</b><span>${esc(t)}</span></li>`).join("")}</ul></div>
+ <div class="sec"><div class="ctx"><b>Folgen und Opfer</b>${esc(C.folgen)}</div></div>
+ <div class="sec"><div class="label">Arbeitsaufträge</div>${tasksHTML(C.tasks,TASK_HINTS[e])}
+  <div class="btnrow">${taskButtons(e)}
+  <button class="btn" data-action="quiz-start" data-era="${e}">${ico("quiz")}Quiz zu dieser Epoche</button>
+  <button class="btn" data-action="present-era" data-era="${e}">${ico("screen")}${isTeacher()?"Highlights präsentieren":"Highlights als Diashow"}</button></div></div>
+ </div></div>`;
+}
+function viewVehicles(e){
+ loadEra(e);const E=ERAS[e];
+ return`${bar("Fahrzeuge · "+E.n)}<div class="view pad"><div style="padding-top:16px"><span class="yr">${E.r}</span>
+ <div style="font:800 40px/1.05 var(--cond);letter-spacing:.04em;color:var(--brass-hi)">FAHRZEUGE</div>
+ <div style="color:var(--mute);font-size:14px">${E.n} · nach Einsatzbereich</div></div>
+ <div id="live">${bannerHTML(e)}</div><div class="sec"><div class="label">Bereich wählen</div><div class="tiles">
+ ${Object.entries(DOMAINS).map(([k,d])=>tileHTML(`#/era/${e}/domain/${k}`,e,d.t,d.s,d.sil,d.cats)).join("")}</div></div></div>`;
+}
+
+/* ---------- Liste ---------- */
+const LISTSTATE={q:"",cat:null,key:""};
+function viewList(e,kind,key){
+ loadEra(e);const E=ERAS[e];
+ const scope=kind==="domain"?DOMAINS[key]:GROUPS[key];const title=kind==="domain"?scope.lt:scope.t;
+ const k=e+kind+key;if(LISTSTATE.key!==k){LISTSTATE.key=k;LISTSTATE.q="";LISTSTATE.cat=null}
+ return`${bar(title+" · "+E.n)}<div class="view"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+ <input id="q" type="search" placeholder="${esc(title)} durchsuchen" value="${esc(LISTSTATE.q)}" autocomplete="off" aria-label="Suchen"></label>
+ <div id="listbody" data-era="${e}" data-cats="${scope.cats.join("")}">${listBody(e,scope.cats)}</div></div>`;
+}
+function rowHTML(x,removable){
+ return`<a class="row" href="${itemHref(x)}">${photoHTML(x)}<div class="txt"><small>${yearText(x)} · ${CATS[x.cat].s}${removable?" · "+ERAS[x.era].n:""}${x.featured&&!removable?' <span class="star">★</span>':""}</small><b>${esc(x.title)}</b>${x.info||x.desc?`<p>${esc(x.info||x.desc)}</p>`:""}</div>${removable?`<button class="rm" data-action="mappe-remove" data-id="${esc(x.id)}" aria-label="Aus der Mappe entfernen">✕</button>`:'<span class="chev">›</span>'}</a>`;
+}
+function listBody(e,cats){
+ const all=itemsOf(e).filter(x=>cats.includes(x.cat));
+ const q=LISTSTATE.q.trim().toLowerCase();
+ const list=all.filter(x=>(!LISTSTATE.cat||x.cat===LISTSTATE.cat)&&(!q||x.title.toLowerCase().includes(q)||(x.info||x.desc||"").toLowerCase().includes(q)||String(x.year||"").includes(q)));
+ const groups=new Map();list.forEach(x=>{const y=x.year||0;if(!groups.has(y))groups.set(y,[]);groups.get(y).push(x)});
+ const ys=[...groups.keys()].sort((a,b)=>a===0?1:b===0?-1:a-b);
+ const seen=new Set(),decades=[],counts={};all.forEach(x=>counts[x.cat]=(counts[x.cat]||0)+1);
+ const feat=all.filter(x=>x.featured);
+ let h="";
+ if(!q&&!LISTSTATE.cat&&feat.length)
+  h+=`<div class="feat"><div class="label">Bekannteste</div><div class="hscroll">${feat.map(x=>`<a class="fcard" href="${itemHref(x)}">${photoHTML(x)}<div class="t"><small>${yearText(x)} · ${CATS[x.cat].s}</small><b>${esc(x.title)}</b></div></a>`).join("")}</div></div>`;
+ if(cats.length>1)
+  h+=`<div class="hscroll chips"><button class="chip ${LISTSTATE.cat?"":"on"}" data-cat="">Alle <em>${fmt(all.length)}</em></button>${cats.map(c=>`<button class="chip ${LISTSTATE.cat===c?"on":""}" data-cat="${c}">${svg(c)}${CATS[c].s} <em>${fmt(counts[c]||0)}</em></button>`).join("")}</div>`;
+ let rows="";
+ for(const y of ys){
+  const its=groups.get(y).sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)||a.title.localeCompare(b.title,"de"));
+  let anchor="";if(y){const d=Math.floor(y/10)*10;if(!seen.has(d)){seen.add(d);decades.push(d);anchor=` id="dec${d}"`}}
+  rows+=`<div class="yh"${anchor}><b>${y||"Ohne Jahresangabe"}</b><hr><small>${fmt(its.length)}</small></div>`+its.map(x=>rowHTML(x,false)).join("");
+ }
+ if(decades.length>1)h+=`<div class="hscroll decades">${decades.map(d=>`<button data-dec="${d}">${d}er</button>`).join("")}</div>`;
+ h+=`<div class="pad" id="live">${bannerHTML(e)}</div>`;
+ h+=`<div class="count">${fmt(list.length)} Einträge, sortiert nach Einführungsjahr</div>`;
+ h+=list.length?rows:`<div class="empty"><b>Keine Treffer</b>Suchbegriff ändern oder Filter zurücksetzen.</div>`;
+ return h;
+}
+
+/* ---------- Detail ---------- */
+const inMappe=id=>MAPPE.some(x=>x.id===id);
+function mappeBtn(id){return inMappe(id)?`<button class="btn primary" data-action="mappe-toggle" data-id="${esc(id)}">${ico("star")}In der Mappe</button>`:`<button class="btn" data-action="mappe-toggle" data-id="${esc(id)}">${ico("star")}In die Unterrichtsmappe</button>`}
+function viewItem(id){
+ const x=ITEMS.get(id);if(!x)return viewHome();
+ const E=ERAS[x.era],ctx=CTX[x.title];
+ setTimeout(()=>loadSummary(x),0);
+ return`${bar(x.title)}<div class="view"><div class="d-photo">${photoHTML(x)}<span class="tag" style="background:${E.c}">${E.n}</span></div>
+ <div class="d-body"><div class="label">${yearText(x)} · ${CATS[x.cat].n}</div><h2>${esc(x.title)}</h2><div id="desc">${!x.info&&x.desc?`<div class="d-desc">${esc(x.desc)}</div>`:""}</div>
+ ${x.info?`<div class="d-info">${esc(x.info)}</div>`:""}
+ ${ctx?`<div class="ctx"><b>Historische Einordnung</b>${esc(ctx)}</div>`:""}
+ <dl class="facts"><div><dt>Einführung</dt><dd>${x.year||"unbekannt"}</dd></div><div><dt>Epoche</dt><dd>${E.n} · ${E.r}</dd></div>
+ <div><dt>Kategorie</dt><dd>${CATS[x.cat].n}</dd></div><div><dt>Kennwert</dt><dd>${esc(x.spec||"–")}</dd></div></dl>
+ <div class="btnrow" style="margin-top:0" id="mbtn">${mappeBtn(x.id)}<a class="btn" href="#/era/${x.era}">Zur Epoche ${E.n}</a></div>
+ <div class="wiki"><div class="label" style="margin-top:8px">Aus Wikipedia</div><div id="wiki"><div class="loading"><div class="spin"></div>Artikel wird geladen …</div></div></div></div></div>`;
+}
+function citation(title,url){
+ const d=new Date().toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"});
+ return`Wikipedia-Autoren: „${title}“. In: Wikipedia – Die freie Enzyklopädie. URL: ${url} (abgerufen am ${d}).`;
+}
+async function loadSummary(x){
+ await BOOT;const r=await photoRef(x);let s=null;
+ if(r.title){try{const res=await fetch(`https://${r.host}/api/rest_v1/page/summary/${encodeURIComponent(r.title.replace(/ /g,"_"))}`);if(res.ok)s=await res.json()}catch(e){}}
+ const box=document.getElementById("wiki");if(!box||location.hash!==itemHref(x))return;
+ if(s&&s.extract){
+  const url=(s.content_urls&&s.content_urls.desktop&&s.content_urls.desktop.page)||`https://${r.host}/wiki/${encodeURIComponent(r.title.replace(/ /g,"_"))}`;
+  const murl=(s.content_urls&&s.content_urls.mobile&&s.content_urls.mobile.page)||url;
+  const cite=citation(s.title||r.title,decodeURI(url));
+  if(s.description&&!x.info){const d=document.getElementById("desc");if(d)d.innerHTML=`<div class="d-desc">${esc(s.description)}</div>`}
+  box.innerHTML=`<p>${esc(s.extract)}</p><a class="more" href="${esc(murl)}" target="_blank" rel="noopener">Ganzen Artikel lesen<span>↗</span></a>
+  <div class="cite">So zitierst du diesen Artikel:<code>${esc(cite)}</code><button class="btn" data-action="copy" data-text="${esc(cite)}">${ico("copy")}Quelle kopieren</button></div>
+  <div class="lic">Text: Wikipedia, CC BY-SA 4.0. Bild: Wikimedia Commons, Lizenz siehe Bildseite.</div>`;
+ }else box.innerHTML=`<div class="loading">${navigator.onLine===false?"Ohne Internetverbindung ist der Wikipedia-Artikel nicht verfügbar.":"Zu diesem Eintrag ist kein Wikipedia-Artikel verfügbar."}</div>`;
+}
+
+/* ---------- Unterrichtsmappe ---------- */
+function saveMappe(){store.set("aa-mappe",MAPPE)}
+function toggleMappe(id){
+ const x=ITEMS.get(id);if(!x)return;
+ if(inMappe(id)){MAPPE=MAPPE.filter(m=>m.id!==id);toast("Aus der Mappe entfernt")}
+ else{MAPPE.push({id:x.id,title:x.title,year:x.year,era:x.era,cat:x.cat,info:x.info||null,spec:x.spec||null,wiki:x.wiki||null,thumb:x.thumb||null,featured:!!x.featured});toast("In die Mappe gelegt")}
+ saveMappe();
+}
+const mappeSorted=()=>MAPPE.slice().sort((a,b)=>(a.year||9999)-(b.year||9999));
+function viewMappe(){
+ const list=mappeSorted();
+ if(!list.length)return`${bar("Unterrichtsmappe")}<div class="view"><div class="empty"><b>Die Mappe ist leer</b>Öffne einen Eintrag und tippe auf „In die Unterrichtsmappe“.<br>So stellst du Fahrzeuge und Waffen für eine Stunde zusammen, vergleichst sie und präsentierst sie am Beamer.</div><div class="pad" style="text-align:center"><a class="btn primary" href="#/">Zum Zeitstrahl</a></div></div>`;
+ return`${bar("Unterrichtsmappe")}<div class="view"><div class="pad"><div class="btnrow" style="margin-top:16px">
+  <button class="btn primary" data-action="present-mappe">${ico("screen")}Präsentation starten</button>
+  <button class="btn" data-action="copy-mappe">${ico("copy")}Als Text kopieren</button>
+  <button class="btn" data-action="mappe-clear">Mappe leeren</button></div>
+  <div class="sec"><div class="label">Vergleich · ${list.length} Einträge nach Jahr</div><div class="tablewrap"><table><thead><tr><th>Jahr</th><th>Bezeichnung</th><th>Epoche</th><th>Kategorie</th><th>Kennwert</th></tr></thead><tbody>
+  ${list.map(x=>`<tr><td class="y">${yearText(x)}</td><td><a href="${itemHref(x)}" style="color:var(--brass-hi);font-weight:600">${esc(x.title)}</a></td><td>${ERAS[x.era].n}</td><td>${CATS[x.cat].s}</td><td>${esc(x.spec||"–")}</td></tr>`).join("")}
+  </tbody></table></div></div><div class="label sec">Einträge</div></div>
+  <div style="margin-top:6px">${list.map(x=>rowHTML(x,true)).join("")}</div></div>`;
+}
+function mappeText(){return"Unterrichtsmappe – Arsenal Atlas\n\n"+mappeSorted().map(x=>`${yearText(x)} – ${x.title} (${ERAS[x.era].n}, ${CATS[x.cat].s})${x.info?": "+x.info:""}`).join("\n")}
+
+/* ---------- Präsentation ---------- */
+let PRES=null;
+function present(list,start=0){if(!list.length)return;PRES={list,i:start};renderPres()}
+function renderPres(){
+ let el=document.getElementById("pres");
+ if(!PRES){if(el)el.remove();document.body.classList.remove("noscroll");return}
+ if(!el){el=document.createElement("div");el.id="pres";el.setAttribute("role","dialog");el.setAttribute("aria-label","Präsentation");document.body.appendChild(el);
+  let sx=null;el.addEventListener("touchstart",ev=>{sx=ev.touches[0].clientX},{passive:true});
+  el.addEventListener("touchend",ev=>{if(sx===null)return;const dx=ev.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>60)presMove(dx<0?1:-1)})}
+ document.body.classList.add("noscroll");
+ const x=PRES.list[PRES.i],E=ERAS[x.era],ctx=CTX[x.title];
+ el.innerHTML=`<div class="p-media">${photoHTML(x)}</div><div class="p-text"><div><span class="tag static" style="background:${E.c}">${E.n}</span></div>
+  <div class="label">${yearText(x)} · ${CATS[x.cat].n}</div><h2>${esc(x.title)}</h2>${x.info?`<p>${esc(x.info)}</p>`:""}${x.spec?`<div class="p-spec">${esc(x.spec)}</div>`:""}
+  ${ctx?`<div class="ctx"><b>Historische Einordnung</b>${esc(ctx)}</div>`:""}</div>
+  <div class="p-bar"><button data-action="pres-close">✕ Beenden</button><span>${PRES.i+1} / ${PRES.list.length}</span>
+  <div><button data-action="pres-prev" aria-label="Zurück" ${PRES.i?"":"disabled"}>‹ Zurück</button><button data-action="pres-next" aria-label="Weiter" ${PRES.i<PRES.list.length-1?"":"disabled"}>Weiter ›</button></div></div>`;
+ observePhotos(el);
+}
+function presMove(d){if(!PRES)return;const n=PRES.i+d;if(n<0||n>=PRES.list.length)return;PRES.i=n;renderPres()}
+document.addEventListener("keydown",ev=>{if(!PRES)return;
+ if(ev.key==="ArrowRight"||ev.key===" "||ev.key==="PageDown"){ev.preventDefault();presMove(1)}
+ else if(ev.key==="ArrowLeft"||ev.key==="PageUp"){ev.preventDefault();presMove(-1)}
+ else if(ev.key==="Escape"){PRES=null;renderPres()}});
+
+/* ---------- Quiz ---------- */
+let QUIZ=null;
+function qYear(x){
+ const opts=new Set([x.year]);let g=0;
+ while(opts.size<4&&g++<200){const y=x.year+(Math.floor(Math.random()*12)+2)*(Math.random()<.5?-1:1);if(y<=2026&&[...opts].every(o=>Math.abs(o-y)>=2))opts.add(y)}
+ return{q:`In welchem Jahr wurde „${x.title}“ eingeführt?`,opts:[...opts].sort((a,b)=>a-b).map(y=>({t:String(y),ok:y===x.year})),expl:`${x.title} wurde ${x.year} eingeführt. ${x.info}`,item:x};
+}
+function qEra(x){
+ const others=shuffle(Object.keys(ERAS).filter(e=>e!==x.era)).slice(0,3);
+ return{q:`Zu welcher Epoche gehört „${x.title}“?`,opts:shuffle([x.era,...others]).map(e=>({t:`${ERAS[e].n} (${ERAS[e].r.replace(/ /g,"")})`,ok:e===x.era})),expl:`${x.title} (${x.year}) gehört zur Epoche ${ERAS[x.era].n}. ${x.info}`,item:x};
+}
+function qInfo(x,pool){
+ const cand=shuffle(pool.filter(p=>p.id!==x.id&&p.info&&p.info!==x.info)),same=cand.filter(p=>p.cat===x.cat);
+ const others=(same.length>=3?same:cand).slice(0,3);if(others.length<3)return null;
+ return{q:`Welche Beschreibung passt zu „${x.title}“?`,opts:shuffle([x,...others]).map(p=>({t:p.info,ok:p.id===x.id})),expl:`Richtig: ${x.info}`,item:x,long:true};
+}
+function qOrder(pool){
+ const byYear=new Map();shuffle(pool).forEach(p=>{if(!byYear.has(p.year))byYear.set(p.year,p)});
+ const four=[...byYear.values()].slice(0,4);if(four.length<4)return null;
+ const first=four.reduce((a,b)=>a.year<b.year?a:b);
+ return{q:"Was wurde zuerst eingeführt?",opts:four.map(p=>({t:p.title,ok:p===first})),expl:four.slice().sort((a,b)=>a.year-b.year).map(p=>`${p.year}: ${p.title}`).join(" · "),item:null,orderItems:four};
+}
+function makeQuiz(era){
+ const pool=FEATURED.filter(x=>!era||x.era===era);
+ const plan=era?["year","info","order","year","info","order","year","info","year","order"]:["year","era","info","order","year","era","info","year","order","era"];
+ const used=new Set(),qs=[];
+ for(const t of plan){let q=null,g=0;
+  while(!q&&g++<30){
+   if(t==="order"){q=qOrder(pool);break}
+   const x=pick(pool.filter(p=>!used.has(p.id)));if(!x)break;
+   q=t==="year"?qYear(x):t==="era"?qEra(x):qInfo(x,pool);}
+  if(q){qs.push(q);if(q.item)used.add(q.item.id)}}
+ return{era,qs,i:0,score:0,answered:null,wrong:[]};
+}
+function viewQuiz(){
+ if(!QUIZ){
+  return`${bar("Quiz")}<div class="view pad"><p class="summary">Zehn Fragen zu Jahreszahlen, Epochen und Beschreibungen. Geeignet zur Wiederholung, auch gemeinsam am Beamer.</p>
+  <div class="sec"><div class="label">Worüber?</div><div class="scopes"><button class="scope all" data-action="quiz-start" data-era="">Alle Epochen</button>
+  ${TIMELINE.map(e=>`<button class="scope" style="--c:${ERAS[e].c}" data-action="quiz-start" data-era="${e}"><i></i>${ERAS[e].n}</button>`).join("")}</div></div></div>`;
+ }
+ const scopeName=QUIZ.era?ERAS[QUIZ.era].n:"Alle Epochen";
+ if(QUIZ.i>=QUIZ.qs.length){
+  const n=QUIZ.qs.length,s=QUIZ.score;
+  const msg=s>=n*.9?"Ausgezeichnet!":s>=n*.7?"Gut gemacht.":s>=n*.5?"Solide Grundlage.":"Da geht noch mehr. Schau dir die Epochen noch einmal an.";
+  return`${bar("Quiz · "+scopeName)}<div class="view pad"><div class="score">${s} von ${n}</div><p class="summary" style="margin-top:8px">${msg}</p>
+  ${QUIZ.wrong.length?`<div class="sec"><div class="label">Zum Nachlesen</div>${QUIZ.wrong.map(w=>`<div class="feedback" style="margin-top:10px"><b>${esc(w.q)}</b>${esc(w.expl)}</div>`).join("")}</div>`:""}
+  <div class="btnrow" style="margin-top:22px"><button class="btn primary" data-action="quiz-start" data-era="${QUIZ.era||""}">Neues Quiz</button><button class="btn" data-action="quiz-reset">Andere Auswahl</button></div></div>`;
+ }
+ const q=QUIZ.qs[QUIZ.i],a=QUIZ.answered;
+ const keys="ABCD";
+ return`${bar("Quiz · "+scopeName)}<div class="view pad"><div class="q-progress"><i style="width:${QUIZ.i/QUIZ.qs.length*100}%"></i></div>
+ <div class="label" style="margin-top:10px">Frage ${QUIZ.i+1} von ${QUIZ.qs.length} · ${QUIZ.score} richtig</div>
+ ${q.item&&q.long!==true?`<div class="q-photo">${photoHTML(q.item)}</div>`:""}
+ <div class="q-text">${esc(q.q)}</div>
+ <div class="opts">${q.opts.map((o,i)=>{let c="";if(a!==null){if(o.ok)c="ok";else if(i===a)c="bad"}
+  return`<button class="opt ${q.long?"long":""} ${c}" data-action="quiz-answer" data-i="${i}" ${a!==null?"disabled style=\"opacity:1\"":""}><span class="k">${keys[i]}</span><span>${esc(o.t)}</span></button>`}).join("")}</div>
+ ${a!==null?`<div class="feedback"><b class="${q.opts[a].ok?"ok":"bad"}">${q.opts[a].ok?"Richtig!":"Leider falsch."}</b>${esc(q.expl)}</div>
+ <div class="btnrow"><button class="btn primary" data-action="quiz-next">${QUIZ.i+1<QUIZ.qs.length?"Nächste Frage":"Ergebnis anzeigen"}</button></div>`:""}</div>`;
+}
+
+/* ---------- Glossar ---------- */
+let GLQ="";
+function viewGlossar(){
+ return`${bar("Glossar")}<div class="view"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+ <input id="gq" type="search" placeholder="Begriff suchen" value="${esc(GLQ)}" autocomplete="off" aria-label="Begriff suchen"></label><div class="pad" id="glbody">${glossarBody()}</div></div>`;
+}
+function glossarBody(){
+ const q=GLQ.trim().toLowerCase();
+ const list=GLOSSAR.filter(([t,d])=>!q||t.toLowerCase().includes(q)||d.toLowerCase().includes(q)).sort((a,b)=>a[0].localeCompare(b[0],"de"));
+ return list.length?list.map(([t,d])=>`<div class="gl"><b>${esc(t)}</b><span>${esc(d)}</span></div>`).join(""):`<div class="empty"><b>Kein Begriff gefunden</b></div>`;
+}
+
+/* ---------- Lehrkräfte ---------- */
+function viewTeacher(){
+ return`${bar("Für Lehrkräfte")}<div class="view pad prose">
+ <h3>Wozu diese App?</h3>
+ <p>Arsenal Atlas zeigt Fahrzeuge, Waffen und Ausrüstung deutscher Streitkräfte von 1871 bis heute. Die Technik dient als Zugang zur Geschichte: Jede Epoche ist mit Zeitleiste, Folgen und Opfern sowie Arbeitsaufträgen verbunden. Bei zentralen Objekten erklärt eine historische Einordnung Zusammenhänge wie Zwangsarbeit, Kriegsverbrechen oder politische Debatten.</p>
+ <p>Geeignet für Geschichte sowie Politik und Sozialkunde, empfohlen ab Klasse 8.</p>
+ <h3>Ideen für den Einsatz</h3>
+ <ul><li><b>Einstieg:</b> Den Zeitstrahl am Beamer zeigen und fragen, was sich zwischen 1871 und heute verändert hat.</li>
+ <li><b>Gruppenarbeit:</b> Jede Gruppe übernimmt eine Epoche, bearbeitet die Arbeitsaufträge und stellt drei Objekte mit der Unterrichtsmappe vor.</li>
+ <li><b>Längsschnitt:</b> Ein Objekttyp durch alle Epochen, z. B. Helm, Kampfpanzer oder Gewehr. Die Vergleichstabelle der Mappe hilft dabei.</li>
+ <li><b>Sicherung:</b> Das Quiz am Ende der Stunde gemeinsam lösen.</li>
+ <li><b>Quellenarbeit:</b> Den Wikipedia-Text mit der Einordnung der App vergleichen und die Zitierhilfe nutzen.</li></ul>
+ <h3>Aufgaben</h3><p>Zu jeder Epoche gibt es vier Arbeitsaufträge in den Anforderungsbereichen I bis III, dazu epochenübergreifende Aufgaben. Lösungshinweise sind nur in der Ansicht für Lehrkräfte sichtbar und standardmäßig eingeklappt, damit sie am Beamer nicht versehentlich zu sehen sind.</p>
+ <div class="btnrow"><a class="btn primary" href="#/aufgaben">Zu allen Aufgaben</a></div>
+ <h3>Didaktische Leitlinien</h3>
+ <p>Die App folgt dem Beutelsbacher Konsens: Sie will nicht überwältigen, stellt umstrittene Fragen wie Waffenlieferungen oder die Wehrpflicht als umstritten dar und soll Schülerinnen und Schüler zu einem eigenen Urteil befähigen. Beschreibungen sind sachlich gehalten und verherrlichen keine Waffen.</p>
+ <h3>Hinweise zu Bildern und Quellen</h3>
+ <ul><li>Fotos stammen aus Wikimedia Commons und werden automatisch passend zum Eintrag geladen. Prüfen Sie Bilder vor dem Einsatz am Beamer.</li>
+ <li>Historische Fotos können Hoheitszeichen der NS-Zeit zeigen. Ordnen Sie diese im Unterricht als historische Quelle ein.</li>
+ <li>Wikipedia eignet sich als Einstieg, ersetzt aber keine Fachliteratur. Jahreszahlen des vollständigen Bestands stammen aus Wikidata und können Lücken haben.</li></ul>
+ <h3>Technik und Datenschutz</h3>
+ <ul><li>Keine Anmeldung, keine Werbung, keine Auswertung des Nutzungsverhaltens.</li>
+ <li>Mappe und Einstellungen werden nur auf dem Gerät gespeichert.</li>
+ <li>Für Fotos und Artikeltexte ruft die App Wikipedia und Wikimedia Commons auf. Dabei wird wie bei jedem Webseitenaufruf die IP-Adresse an die Wikimedia Foundation übertragen.</li>
+ <li>Ohne Internet funktionieren Highlights, Zeitleisten, Aufgaben, Glossar und Quiz. Eine einmal geladene Epoche bleibt 14 Tage verfügbar.</li>
+ <li>Für den Beamer: Unter „Anzeige“ helle Darstellung und große Schrift wählen.</li></ul>
+ </div>`;
+}
+
+/* ---------- Aufgaben ---------- */
+function viewTasks(){
+ return`${bar("Aufgaben")}<div class="view pad prose">
+ <p>Die Aufgaben sind nach Anforderungsbereichen geordnet: <b>I</b> Wiedergeben, <b>II</b> Erklären und Vergleichen, <b>III</b> Beurteilen. Die Informationen findest du in der App bei der jeweiligen Epoche.</p>
+ ${TIMELINE.map(e=>`<h3>${ERAS[e].n} <span style="font:600 14px var(--mono);color:var(--mute)">${ERAS[e].r}</span></h3>${tasksHTML(ERA_CTX[e].tasks,TASK_HINTS[e])}<div class="btnrow">${taskButtons(e)}<a class="btn" href="#/era/${e}">Zur Epoche</a></div>`).join("")}
+ <h3>Epochenübergreifend</h3>${tasksHTML(CROSS_TASKS,CROSS_HINTS)}<div class="btnrow">${taskButtons("X")}</div></div>`;
+}
+
+/* ---------- Einstellungen ---------- */
+function viewSettings(){
+ const z=[[1,"Normal"],[1.15,"Groß"],[1.3,"Sehr groß"]],t=[["dark","Dunkel"],["light","Hell (Beamer)"]];
+ return`${bar("Anzeige")}<div class="view pad">
+ <div class="sec"><div class="label">Ansicht</div><div class="seg">${[["s","Schülerin / Schüler"],["t","Lehrkraft"]].map(([v,l])=>`<button class="${SET.role===v?"on":""}" data-action="set-role-only" data-v="${v}">${l}</button>`).join("")}</div>
+ <p class="note">In der Ansicht für Lehrkräfte sind Lösungshinweise und didaktische Hinweise sichtbar.</p></div>
+ <div class="sec"><div class="label">Schriftgröße</div><div class="seg">${z.map(([v,l])=>`<button class="${SET.zoom==v?"on":""}" data-action="set-zoom" data-v="${v}">${l}</button>`).join("")}</div></div>
+ <div class="sec"><div class="label">Darstellung</div><div class="seg">${t.map(([v,l])=>`<button class="${SET.theme===v?"on":""}" data-action="set-theme" data-v="${v}">${l}</button>`).join("")}</div>
+ <p class="note">Die helle Darstellung ist am Beamer und am Whiteboard besser lesbar.</p></div>
+ <div class="sec"><div class="label">Gespeicherte Daten</div><p class="note" style="margin:0 0 10px">Geladene Epochen bleiben 14 Tage auf dem Gerät. Hier kannst du sie neu laden lassen.</p>
+ <button class="btn" data-action="clear-cache">Geladene Epochen löschen</button></div></div>`;
+}
+
+/* ---------- Router ---------- */
+const SCROLL={};
+function route(){
+ const h=location.hash||"#/";const p=h.slice(2).split("/").map(s=>{try{return decodeURIComponent(s)}catch(e){return s}});
+ if(PRES){PRES=null;renderPres()}
+ let html;
+ if(!SET.role)html=viewWelcome();
+ else if(p[0]==="era"&&ERAS[p[1]]){
+  if(p[2]==="vehicles")html=viewVehicles(p[1]);
+  else if(p[2]==="domain"&&DOMAINS[p[3]])html=viewList(p[1],"domain",p[3]);
+  else if(p[2]==="list"&&GROUPS[p[3]])html=viewList(p[1],"group",p[3]);
+  else html=viewEra(p[1]);
+ }else if(p[0]==="item")html=viewItem(p.slice(1).join("/"));
+ else if(p[0]==="quiz")html=viewQuiz();
+ else if(p[0]==="mappe")html=viewMappe();
+ else if(p[0]==="glossar")html=viewGlossar();
+ else if(p[0]==="lehrkraefte")html=isTeacher()?viewTeacher():viewHome();
+ else if(p[0]==="aufgaben")html=viewTasks();
+ else if(p[0]==="settings")html=viewSettings();
+ else html=viewHome();
+ $app.innerHTML=html;observePhotos($app);
+ window.scrollTo(0,SCROLL[h]||0);
+}
+function rerender(){const y=window.scrollY;route();window.scrollTo(0,y)}
+function refresh(){
+ if(document.activeElement&&document.activeElement.id==="q"){refreshList();refreshLive();return}
+ if(/^#\/(quiz|item)/.test(location.hash))return;
+ rerender();
+}
+function refreshLive(){
+ const m=(location.hash||"#/").match(/^#\/era\/(\w)/);if(!m)return;const e=m[1];
+ const live=document.getElementById("live");if(live)live.innerHTML=bannerHTML(e);
+ document.querySelectorAll("[data-count]").forEach(el=>{const cats=el.dataset.count.split("");
+  el.innerHTML=fmt(countCats(e,cats))+" Einträge"+(STATE[e]&&STATE[e].k==="loading"?'<span class="spin sm"></span>':"")});
+}
+function refreshList(){const b=document.getElementById("listbody");if(!b)return;b.innerHTML=listBody(b.dataset.era,b.dataset.cats.split(""));observePhotos(b)}
+function goBack(){if(history.length>1)history.back();else location.hash="#/"}
+window.addEventListener("scroll",()=>{SCROLL[location.hash||"#/"]=window.scrollY},{passive:true});
+window.addEventListener("hashchange",route);
+$app.addEventListener("input",ev=>{
+ if(ev.target.id==="q"){LISTSTATE.q=ev.target.value;clearTimeout(window._t);window._t=setTimeout(refreshList,150)}
+ if(ev.target.id==="gq"){GLQ=ev.target.value;document.getElementById("glbody").innerHTML=glossarBody()}
+});
+document.addEventListener("click",async ev=>{
+ const chip=ev.target.closest(".chip[data-cat]");if(chip){LISTSTATE.cat=chip.dataset.cat||null;refreshList();return}
+ const dec=ev.target.closest("[data-dec]");
+ if(dec){const t=document.getElementById("dec"+dec.dataset.dec);if(t){const bar=document.querySelector(".bar");window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-(bar?bar.offsetHeight:52),behavior:"smooth"})}return}
+ const el=ev.target.closest("[data-action]");if(!el)return;
+ const a=el.dataset.action;
+ if(a!=="quiz-home")ev.preventDefault();
+ switch(a){
+  case"back":goBack();break;
+  case"retry":loadEra(el.dataset.era,true);refreshLive();break;
+  case"quiz-home":QUIZ=null;if(location.hash==="#/quiz")rerender();break;
+  case"quiz-start":QUIZ=makeQuiz(el.dataset.era||null);if(location.hash==="#/quiz")route();else location.hash="#/quiz";window.scrollTo(0,0);break;
+  case"quiz-reset":QUIZ=null;route();break;
+  case"quiz-answer":if(QUIZ&&QUIZ.answered===null){const i=+el.dataset.i,q=QUIZ.qs[QUIZ.i];QUIZ.answered=i;if(q.opts[i].ok)QUIZ.score++;else QUIZ.wrong.push(q);rerender()}break;
+  case"quiz-next":if(QUIZ){QUIZ.i++;QUIZ.answered=null;route();window.scrollTo(0,0)}break;
+  case"mappe-toggle":toggleMappe(el.dataset.id);{const b=document.getElementById("mbtn");if(b)b.firstElementChild.outerHTML=mappeBtn(el.dataset.id)}break;
+  case"mappe-remove":MAPPE=MAPPE.filter(m=>m.id!==el.dataset.id);saveMappe();rerender();break;
+  case"mappe-clear":if(el.dataset.confirm){MAPPE=[];saveMappe();rerender()}else{el.dataset.confirm="1";el.textContent="Wirklich leeren?";setTimeout(()=>{if(el.isConnected){delete el.dataset.confirm;el.textContent="Mappe leeren"}},3000)}break;
+  case"present-mappe":present(mappeSorted());break;
+  case"present-era":present(FEATURED_BY_ERA[el.dataset.era]||[]);break;
+  case"pres-close":PRES=null;renderPres();break;
+  case"pres-prev":presMove(-1);break;
+  case"pres-next":presMove(1);break;
+  case"copy":toast(await copyText(el.dataset.text)?"Kopiert":"Bitte den Text markieren und kopieren");break;
+  case"copy-tasks":{const e=el.dataset.era,withH=!!el.dataset.hints&&isTeacher();
+   const title=e==="X"?"Epochenübergreifende Arbeitsaufträge":`Arbeitsaufträge: ${ERAS[e].n} (${ERAS[e].r})`;
+   const list=e==="X"?CROSS_TASKS:ERA_CTX[e].tasks,hints=e==="X"?CROSS_HINTS:TASK_HINTS[e];
+   toast(await copyText(tasksText(title,list,withH?hints:null))?"Aufgaben kopiert":"Kopieren nicht möglich");break}
+  case"set-role":SET.role=el.dataset.v;store.set("aa-set",SET);if(location.hash&&location.hash!=="#/")location.hash="#/";else route();window.scrollTo(0,0);break;
+  case"set-role-only":SET.role=el.dataset.v;store.set("aa-set",SET);rerender();break;
+  case"switch-role":SET.role=null;store.set("aa-set",SET);route();window.scrollTo(0,0);break;
+  case"copy-mappe":toast(await copyText(mappeText())?"Mappe kopiert":"Kopieren nicht möglich");break;
+  case"set-zoom":SET.zoom=+el.dataset.v;store.set("aa-set",SET);applySet();rerender();break;
+  case"set-theme":SET.theme=el.dataset.v;store.set("aa-set",SET);applySet();rerender();break;
+  case"clear-cache":Object.keys(ERAS).forEach(e=>{store.del("aa-era-"+e);delete MERGED[e];delete STATE[e]});toast("Geladene Epochen gelöscht");break;
+ }
+});
+route();
+</script>
+</body>
+</html>

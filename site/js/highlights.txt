@@ -1,0 +1,280 @@
+1842|Z|K|Pickelhaube|Lederhelm mit Spitze, in Preußen eingeführt und bis 1916 Sinnbild des deutschen Soldaten.|Leder, Messingbeschlag
+1871|W|K|Mauser Modell 71|Erstes Einheitsgewehr des Reichsheeres, ein Einzellader mit Zylinderverschluss.|11 × 60 mm R
+1879|W|K|Reichsrevolver M1879|Ordonnanzrevolver der Kavallerie, als M1883 gekürzt für Offiziere.|10,6 mm, 6 Schuss
+1888|W|K|Gewehr 88|„Kommissionsgewehr“, die erste deutsche Waffe für rauchschwaches Pulver.|8 × 57 mm, 5 Schuss
+1896|A|K|7,7-cm-Feldkanone 96 n.A.|Standardgeschütz der Feldartillerie zu Beginn des Ersten Weltkriegs, mit Rohrrücklauf.|Kaliber 77 mm
+1898|W|K|Gewehr 98|Mauser-Repetiergewehr, Grundlage fast aller deutschen Infanteriegewehre bis 1945.|7,92 × 57 mm, 5 Schuss
+1906|S|K|U 1|Erstes U-Boot der Kaiserlichen Marine. Heute im Deutschen Museum in München ausgestellt.|Länge 42 m
+1908|W|K|Pistole 08 (Luger)|Dienstpistole mit Kniegelenkverschluss, weltweit eine der bekanntesten Pistolen.|9 × 19 mm, 8 Schuss
+1908|M|K|MG 08|Wassergekühltes Maxim-Maschinengewehr auf Schlittenlafette, prägte den Stellungskrieg.|ca. 450 Schuss/min
+1909|S|K|SMS Emden|Kleiner Kreuzer, führte 1914 im Indischen Ozean Handelskrieg und versenkte zahlreiche Handelsschiffe.|3.660 t
+1909|S|K|Nassau-Klasse|Die ersten deutschen Großkampfschiffe nach dem Vorbild der britischen Dreadnought.|4 Schiffe
+1909|A|K|10,5-cm-leichte Feldhaubitze 98/09|Haubitze der Feldartillerie für Steilfeuer auf Gräben und Deckungen.|Kaliber 105 mm
+1912|S|K|SMS Seydlitz|Schlachtkreuzer, der in der Skagerrakschlacht schwerste Treffer überstand.|24.988 t
+1913|A|K|42-cm-Mörser „Dicke Bertha“|Krupp-Belagerungsmörser, der 1914 die belgischen Festungen von Lüttich zerschlug.|Granate ca. 800 kg
+1914|F|K|Etrich Taube|Frühes Aufklärungsflugzeug mit vogelartigen Flügeln, typisch für die ersten Kriegsmonate.|ca. 100 km/h
+1914|Z|K|Scherenfernrohr 14|Beobachtungsfernrohr der Artillerie, mit dem man aus der Deckung über die Brustwehr blickte.|10-fache Vergrößerung
+1914|S|K|U 9|Versenkte im September 1914 drei britische Panzerkreuzer innerhalb einer Stunde.|Petroleum-Antrieb
+1915|F|K|Fokker E.III|Eindecker mit durch den Propeller synchronisiertem MG, Auslöser der „Fokker-Plage“.|1 × MG 08/15
+1915|F|K|Junkers J 1|Erstes Ganzmetallflugzeug der Welt, ein reiner Versuchsträger.|Stahlblech
+1915|F|K|Zeppelin P-Klasse|Marineluftschiffe, eingesetzt zur Seeaufklärung und für Angriffe auf England.|Länge 163 m
+1915|M|K|MG 08/15|Leichtere Version des MG 08 mit Zweibein und Kolben für bewegliche Einsätze.|ca. 18 kg
+1915|W|K|Stielhandgranate M1915|Erste deutsche Stielhandgranate, Vorbild aller späteren Modelle.|Brennzünder
+1915|Z|K|Gummimaske GM15|Erste Gasmaske für die gesamte Truppe, eingeführt nach den ersten Gasangriffen.|Schraubfilter
+1915|W|K|Kleiner Flammenwerfer (Kleif)|Tragbarer Flammenwerfer der Pioniere für den Grabenkampf.|Reichweite ca. 20 m
+1916|Z|K|Stahlhelm M1916|Ersetzte die Pickelhaube und bestimmte die Silhouette des deutschen Soldaten bis 1945.|Chromnickelstahl
+1916|S|K|Bayern-Klasse|Letzte fertiggestellte Schlachtschiffe der Kaiserlichen Marine.|8 × 38 cm
+1916|A|K|Leichter Minenwerfer n.A.|Grabenmörser der Pioniere, auch im Flachbahnschuss einsetzbar.|Kaliber 76 mm
+1917|F|K|Albatros D.III|Jagdflugzeug, mit dem die deutschen Staffeln im April 1917 den britischen Fliegern schwere Verluste zufügten.|2 × MG 08/15
+1917|F|K|Fokker Dr.I|Wendiger Dreidecker, eng verbunden mit Manfred von Richthofen.|ca. 185 km/h
+1917|F|K|Gotha G.V|Zweimotoriger Großbomber für Angriffe auf London.|Bombenlast ca. 500 kg
+1917|F|K|Zeppelin-Staaken R.VI|Viermotoriges Riesenflugzeug, eines der größten Flugzeuge seiner Zeit.|Spannweite 42 m
+1917|R|K|Ehrhardt E-V/4|Panzerwagen mit Allradantrieb, nach dem Krieg bei Polizei und Freikorps im Einsatz.|3 MG
+1918|P|K|A7V Sturmpanzerwagen|Erster deutscher Panzer. Nur 20 Stück entstanden, Besatzung von bis zu 18 Mann.|30 t, 5,7-cm-Kanone
+1918|W|K|MP 18|Bergmann-Maschinenpistole für Stoßtrupps, eine der ersten einsatzfähigen MPs.|9 × 19 mm
+1918|W|K|Mauser T-Gewehr|Erstes Panzerabwehrgewehr der Welt, eingeführt als Antwort auf britische Tanks.|13,2 mm
+1918|F|K|Fokker D.VII|Jagdflugzeug von 1918. Der Versailler Vertrag verlangte ausdrücklich die Auslieferung aller Exemplare.|ca. 190 km/h
+1918|A|K|Paris-Geschütz|Fernkanone, die 1918 Paris aus über 120 km Entfernung beschoss.|Reichweite ca. 130 km
+1923|W|R|Karabiner 98b|Gekürzte Version des Gewehr 98 mit abgebogenem Kammerstängel für die Reichswehr.|7,92 × 57 mm
+1924|W|R|Stielhandgranate 24|Die bekannteste deutsche Handgranate, gefertigt bis 1945.|Zugzünder
+1925|S|R|Leichter Kreuzer Emden|Erster größerer Kriegsschiffneubau nach dem Ersten Weltkrieg, später Schulkreuzer.|5.600 t
+1929|P|R|Großtraktor|Geheim entwickelter Versuchspanzer, erprobt in der Panzerschule Kama in der Sowjetunion.|6 Fahrzeuge
+1930|Z|R|Gasmaske GM 30|Gummimaske mit Filterbüchse im geriffelten Tragbehälter.|Tragbüchse
+1930|M|R|MG 13|Luftgekühltes Maschinengewehr aus dem Dreyse-MG, Übergangslösung bis zum MG 34.|Trommel- oder Kurvenmagazin
+1931|Z|R|Zeltbahn 31|Dreieckige Zeltbahn im Splittertarn, auch als Regenponcho tragbar und zu Zelten koppelbar.|Splittertarn
+1931|Z|R|Feldflasche M31|Aluminium-Feldflasche mit Filzbezug und Becher, später vielfach nachgebaut.|0,8 Liter
+1932|Z|R|Enigma I|Elektromechanische Schlüsselmaschine des Heeres. Ihre Entzifferung beeinflusste den Kriegsverlauf.|3 Walzen + Steckbrett
+1932|F|R|Junkers Ju 52/3m|„Tante Ju“: Dreimotoriger Transporter, im Krieg das Arbeitspferd der Luftwaffe.|Wellblechbeplankung
+1932|A|R|7,5-cm-leichtes Infanteriegeschütz 18|Begleitgeschütz der Infanterieregimenter für direkten und indirekten Schuss.|Kaliber 75 mm
+1933|R|R|Kfz 13|Leichter Panzerspähwagen auf Adler-Pkw-Fahrgestell, oft als Ausbildungsfahrzeug.|1 MG 13
+1933|A|R|8,8-cm-Flak 18|Flugabwehrkanone, die im Krieg auch gegen Panzer eingesetzt wurde.|Kaliber 88 mm
+1933|S|R|Panzerschiff Deutschland|„Westentaschenschlachtschiff“ mit Dieselantrieb für große Reichweite, später Lützow.|6 × 28 cm
+1933|S|R|Segelschulschiff Gorch Fock (I)|Bark zur Ausbildung des Marinenachwuchses, heute Museumsschiff in Stralsund.|Bark, 3 Masten
+1933|Z|R|Feldfernsprecher 33|Robuster Feldtelefonapparat im Bakelitgehäuse für das Leitungsnetz der Truppe.|Kurbelinduktor
+1934|P|R|Panzerkampfwagen I|Als Ausbildungspanzer gedacht, kämpfte er in Spanien, Polen und Frankreich.|2 MG, 2 Mann
+1934|M|R|MG 34|Erstes Einheitsmaschinengewehr der Welt, gleichermaßen auf Zweibein und Lafette nutzbar.|800–900 Schuss/min
+1934|A|R|15-cm-schwere Feldhaubitze 18|Standardgeschütz der schweren Divisionsartillerie.|Kaliber 149 mm
+1934|S|R|Zerstörer 1934|Erste Zerstörerklasse der neuen Flotte, Hochdruck-Dampfantrieb.|5 × 12,7 cm
+1935|Z|W|Stahlhelm M35|Leichtere, kompaktere Weiterentwicklung des M1916, Standardhelm der Wehrmacht.|ca. 1 kg
+1935|W|W|Karabiner 98k|Standardgewehr der Wehrmacht, über 14 Millionen Stück gefertigt.|7,92 × 57 mm, 5 Schuss
+1935|R|W|Sd.Kfz. 221|Leichter Panzerspähwagen mit offenem Turm für Aufklärungsabteilungen.|1 MG 34
+1935|P|W|Neubaufahrzeug|Mehrturm-Versuchspanzer. Fünf Exemplare, eingesetzt 1940 in Norwegen.|7,5-cm- und 3,7-cm-Kanone
+1935|A|W|10,5-cm-leichte Feldhaubitze 18|Standardhaubitze der Divisionsartillerie im Zweiten Weltkrieg.|Reichweite 10,6 km
+1935|S|W|U-Boot-Typ II|Kleines Küsten-U-Boot, die ersten Boote der neuen Kriegsmarine.|ca. 250 t
+1936|P|W|Panzerkampfwagen II|Leichter Panzer mit 2-cm-Kanone, Rückgrat der Panzerdivisionen 1939/40.|3 Mann
+1936|A|W|3,7-cm-PaK 36|Leichte Panzerabwehrkanone, gegen schwere Panzer bald wirkungslos.|Kaliber 37 mm
+1936|A|W|8-cm-Granatwerfer 34|Mittlerer Mörser der Infanterie, präzise und weit verbreitet.|Kaliber 81 mm
+1936|S|W|Admiral Graf Spee|Panzerschiff, 1939 nach dem Gefecht am Río de la Plata selbst versenkt.|6 × 28 cm
+1936|S|W|U-Boot-Typ VII|Meistgebaute U-Boot-Klasse der Geschichte mit über 700 Booten.|5 Torpedorohre
+1936|F|W|Heinkel He 111|Mittlerer Bomber mit charakteristischer verglaster Kanzel.|Bombenlast bis 2 t
+1937|P|W|Panzerkampfwagen III|Hauptkampfpanzer der ersten Kriegsjahre, zuletzt mit 5-cm-Langrohr.|5 Mann
+1937|P|W|Panzerkampfwagen IV|Einziger deutscher Panzer, der den ganzen Krieg über gebaut wurde, rund 8.500 Stück.|7,5-cm-Kanone
+1937|R|W|Sd.Kfz. 231 (8-Rad)|Schwerer Panzerspähwagen mit acht Rädern und Allradlenkung.|2-cm-Kanone
+1937|R|W|Opel Blitz|Mittlerer Lkw, der wichtigste Lastwagen der Wehrmacht.|3 t Nutzlast
+1937|R|W|Sd.Kfz. 7|Mittlerer Zugkraftwagen, Zugmittel der 8,8-cm-Flak.|8 t Zugkraft
+1937|F|W|Messerschmitt Bf 109|Meistgebautes Jagdflugzeug der Geschichte, rund 34.000 Stück.|bis ca. 640 km/h
+1937|F|W|Junkers Ju 87 „Stuka“|Sturzkampfbomber mit Knickflügel. Die Sirene, „Jericho-Trompete“ genannt, sollte Angst verbreiten.|Bombenlast bis 1,8 t
+1937|F|W|Dornier Do 17|„Fliegender Bleistift“, schlanker Schnellbomber.|2 Motoren
+1937|F|W|Messerschmitt Bf 110|Zweimotoriger Zerstörer, später erfolgreicher Nachtjäger.|3 Mann
+1937|F|W|Fieseler Fi 156 Storch|Verbindungsflugzeug, das auf wenigen Dutzend Metern starten und landen konnte.|Start ca. 50 m
+1937|A|W|28-cm-Kanone 5 (E)|Eisenbahngeschütz, bei Anzio von den Alliierten „Anzio Annie“ genannt.|Reichweite ca. 62 km
+1937|Z|W|Wehrmachtskanister|20-Liter-Kraftstoffkanister, von den Alliierten als „Jerrycan“ übernommen.|20 Liter
+1938|R|W|Sd.Kfz. 250|Leichter Schützenpanzerwagen für Aufklärung und Führung.|Halbkette
+1938|W|W|MP 38|Erste Maschinenpistole mit Klappschaft und ganz ohne Holzteile.|9 × 19 mm, 32 Schuss
+1938|W|W|Walther P38|Pistole mit Spannabzug, nach dem Krieg als P1 bei der Bundeswehr.|9 × 19 mm, 8 Schuss
+1938|F|W|DFS 230|Lastensegler, 1940 beim Handstreich auf das Fort Eben-Emael eingesetzt.|10 Mann
+1938|S|W|Flugzeugträger Graf Zeppelin|Einziger deutscher Flugzeugträger. 1938 vom Stapel gelaufen, nie fertiggestellt.|262 m
+1938|S|W|U-Boot-Typ IX|Großes Hochsee-U-Boot für Einsätze vor Amerika und im Indischen Ozean.|bis 1.800 t
+1939|P|W|Panzerkampfwagen 38(t)|Tschechischer Panzer, nach der Besetzung in großer Zahl übernommen.|3,7-cm-Kanone
+1939|R|W|Sd.Kfz. 251|Mittlerer Schützenpanzerwagen, über 15.000 gebaut in mehr als 20 Varianten.|Halbkette, 12 Mann
+1939|W|W|Eihandgranate 39|Kleine, leicht zu werfende Handgranate mit Zugzünder.|ca. 230 g
+1939|Z|W|Zielfernrohr ZF 39|Vierfach-Zielfernrohr für den Scharfschützen-Karabiner 98k.|4-fache Vergrößerung
+1939|W|W|Panzerbüchse 39|Panzerabwehrgewehr der Infanterie, bald von Hohlladungswaffen abgelöst.|7,92 × 94 mm
+1939|A|W|2-cm-Flak 38|Leichte Flak, als Flakvierling 38 auch mit vier Rohren gebaut.|bis 480 Schuss/min
+1939|F|W|Junkers Ju 88|Vielseitigster Bomber der Luftwaffe: Sturzkampf, Aufklärer, Nachtjäger.|über 15.000 gebaut
+1939|S|W|Scharnhorst|Schlachtschiff, versenkt im Dezember 1943 im Gefecht am Nordkap.|9 × 28 cm
+1939|S|W|Admiral Hipper|Schwerer Kreuzer, Führungsschiff einer Klasse von drei Einheiten.|8 × 20,3 cm
+1939|S|W|Schnellboot S-38-Klasse|Schnelle Torpedoboote für den Kampf im Ärmelkanal und an der Küste.|ca. 43 kn
+1940|P|W|Sturmgeschütz III|Meistgebautes deutsches Kettenfahrzeug des Krieges, rund 10.000 Stück.|ohne Drehturm
+1940|R|W|Kübelwagen (VW Typ 82)|Geländewagen auf Käfer-Basis, rund 50.000 Stück gebaut.|luftgekühlter Heckmotor
+1940|W|W|MP 40|Vereinfachte Fertigungsversion der MP 38, eine der bekanntesten Waffen des Krieges.|9 × 19 mm
+1940|A|W|Karl-Gerät 040|60-cm-Mörser auf Kettenfahrgestell, sieben Exemplare.|Granate bis 2,2 t
+1940|S|W|Bismarck|Schlachtschiff, versenkte im Mai 1941 die HMS Hood und sank wenige Tage später.|8 × 38 cm
+1940|F|W|Focke-Wulf Fw 200 Condor|Viermotoriger Fernaufklärer über dem Atlantik, aus einem Verkehrsflugzeug entstanden.|Reichweite ca. 3.500 km
+1940|H|W|Focke-Achgelis Fa 223 Drache|Transporthubschrauber mit zwei seitlichen Rotoren.|2 Rotoren
+1941|R|W|Kettenkrad (Sd.Kfz. 2)|Kettenkraftrad, ursprünglich für Luftlandetruppen entwickelt.|Zugmaschine
+1941|R|W|BMW R 75|Krad mit angetriebenem Beiwagen und Geländeuntersetzung.|750 cm³
+1941|A|W|5-cm-PaK 38|Panzerabwehrkanone, erstmals wirksam gegen den T-34.|Kaliber 50 mm
+1941|A|W|15-cm-Nebelwerfer 41|Sechsrohr-Raketenwerfer mit markantem Heulgeräusch.|6 Rohre
+1941|A|W|80-cm-Kanone „Schwerer Gustav“|Größtes je im Kampf eingesetztes Geschütz, 1942 vor Sewastopol.|Granate ca. 7 t
+1941|F|W|Focke-Wulf Fw 190|Robustes Jagdflugzeug mit Sternmotor, auch als Jagdbomber genutzt.|bis ca. 650 km/h
+1941|S|W|Tirpitz|Schwesterschiff der Bismarck, band in Norwegen große Teile der britischen Flotte.|8 × 38 cm
+1942|P|W|Tiger I|56 Tonnen schwerer Panzer mit 8,8-cm-Kanone, 1.347 Stück gebaut.|Frontpanzer 100 mm
+1942|P|W|Marder III|Jagdpanzer auf Basis des 38(t) mit offenem Kampfraum.|7,5-cm-PaK 40
+1942|P|W|Goliath|Ferngelenkter Ladungsträger, per Kabel aus Deckung gesteuert.|Kabelsteuerung
+1942|R|W|Schwimmwagen (VW Typ 166)|Meistgebautes Serien-Amphibienfahrzeug, rund 15.000 Stück.|Propeller am Heck
+1942|M|W|MG 42|Bis zu 1.500 Schuss pro Minute. Als MG 3 bis heute im Dienst.|7,92 × 57 mm
+1942|W|W|FG 42|Fallschirmjägergewehr, automatisches Gewehr mit seitlichem Magazin.|7,92 × 57 mm
+1942|A|W|7,5-cm-PaK 40|Standard-Panzerabwehrkanone der zweiten Kriegshälfte, rund 23.000 Stück.|Kaliber 75 mm
+1942|F|W|Heinkel He 177 Greif|Schwerer Bomber mit gekoppelten Motoren.|Spannweite 31 m
+1942|H|W|Flettner Fl 282 Kolibri|Hubschrauber mit ineinanderkämmenden Rotoren, einer der ersten in Serie bestellten.|Doppelrotor
+1943|P|W|Panther|Antwort auf den T-34 mit geneigter Panzerung, rund 6.000 gebaut.|7,5-cm-KwK 42
+1943|P|W|Ferdinand / Elefant|Schwerer Jagdpanzer auf Porsche-Tiger-Fahrgestell, 91 Stück.|8,8-cm-PaK 43
+1943|P|W|Nashorn|Leicht gepanzerter Jagdpanzer mit großer Kampfentfernung.|8,8-cm-PaK 43
+1943|P|W|Wespe|Leichte Panzerhaubitze auf Panzer-II-Fahrgestell.|10,5 cm
+1943|P|W|Hummel|Schwere Panzerhaubitze auf Panzer-III/IV-Fahrgestell.|15 cm
+1943|P|W|Brummbär|Sturmpanzer IV für den Häuserkampf.|15-cm-Haubitze
+1943|R|W|Sd.Kfz. 4 Maultier|Lkw mit Kettenlaufwerk für den Schlamm an der Ostfront.|Halbkette
+1943|W|W|Gewehr 43|Selbstladegewehr mit Gasdrucklader und Wechselmagazin.|10 Schuss
+1943|K|W|Panzerfaust|Einweg-Panzerabwehrwaffe mit Hohlladung, in Millionen gefertigt.|Kampfentfernung 30–100 m
+1943|K|W|Panzerschreck (RPzB 54)|Raketenpanzerbüchse nach dem Vorbild der amerikanischen Bazooka.|8,8 cm
+1943|K|W|Fritz X|Funkgelenkte Gleitbombe, versenkte 1943 das Schlachtschiff Roma.|1,4 t
+1943|K|W|Henschel Hs 293|Funkgelenkte Gleitbombe mit Raketenantrieb gegen Schiffe.|Raketenmotor
+1943|A|W|8,8-cm-PaK 43|Schwere Panzerabwehrkanone, auch in Jagdpanzern verbaut.|Kaliber 88 mm
+1943|A|W|12,8-cm-Flak 40|Schwerste deutsche Flak, oft auf Flaktürmen.|Kaliber 128 mm
+1944|P|W|Tiger II (Königstiger)|69 Tonnen, 8,8-cm-KwK 43, rund 490 gebaut.|Frontpanzer 150 mm
+1944|P|W|Jagdpanther|Jagdpanzer ohne Drehturm auf Basis des Panther.|8,8-cm-PaK 43
+1944|P|W|Jagdpanzer 38(t) Hetzer|Kleiner, flacher Jagdpanzer, nach dem Krieg in der Schweiz als G-13.|7,5-cm-PaK 39
+1944|P|W|Jagdtiger|Schwerstes Serienkampffahrzeug des Krieges.|12,8-cm-PaK 44
+1944|P|W|Sturmtiger|Tiger-Fahrgestell mit 38-cm-Raketenmörser, nur 18 Stück.|38 cm
+1944|P|W|Flakpanzer IV Wirbelwind|Panzer IV mit offenem Turm und Flakvierling.|4 × 2 cm
+1944|P|W|Maus|188-Tonnen-Prototyp. Nur zwei Exemplare wurden gebaut.|12,8-cm-Kanone
+1944|R|W|Sd.Kfz. 234/2 Puma|Achtrad-Spähpanzer mit 5-cm-Kanone in Drehturm.|101 Stück
+1944|W|W|Sturmgewehr 44|Erstes in Masse eingesetztes Sturmgewehr mit Mittelpatrone.|7,92 × 33 mm, 30 Schuss
+1944|Z|W|Infrarotgerät „Vampir“|Nachtsichtzielgerät für das Sturmgewehr 44.|Aktiv-Infrarot
+1944|K|W|V1 (Fieseler Fi 103)|Flugbombe mit Pulsstrahltriebwerk, erster serienmäßiger Marschflugkörper.|ca. 250 km Reichweite
+1944|K|W|V2 (Aggregat 4)|Erste ballistische Großrakete. Ein Testflug 1944 erreichte als erstes Objekt den Weltraum.|ca. 320 km Reichweite
+1944|K|W|Ruhrstahl X-4|Drahtgelenkte Luft-Luft-Rakete, nicht mehr im Einsatz.|Drahtlenkung
+1944|F|W|Messerschmitt Me 262|Erstes einsatzfähiges Strahljagdflugzeug der Welt.|ca. 870 km/h
+1944|F|W|Messerschmitt Me 163 Komet|Raketenjäger, schnellstes Flugzeug des Krieges.|ca. 960 km/h
+1944|F|W|Arado Ar 234|Erster einsatzfähiger Strahlbomber, auch als Aufklärer genutzt.|2 Strahltriebwerke
+1944|F|W|Dornier Do 335 Pfeil|Jäger mit Zug- und Druckpropeller in Tandemanordnung.|ca. 760 km/h
+1944|F|W|Horten Ho 229|Nurflügel-Strahlflugzeug, Prototyp.|Nurflügel
+1944|S|W|U-Boot-Typ XXI|„Elektroboot“, Vorbild für die U-Boote der Nachkriegszeit.|Schnorchel
+1944|S|W|U-Boot-Typ XXIII|Kleines Elektroboot für Küstengewässer.|2 Bugrohre
+1944|S|W|Seehund|Kleinst-U-Boot mit zwei Mann Besatzung.|2 Torpedos
+1945|F|W|Heinkel He 162 Volksjäger|Leichter Strahljäger aus der Endphase des Krieges, in wenigen Monaten entwickelt.|Holzflügel
+1945|W|W|Volkssturmgewehr|Einfach gefertigte Notwaffe der letzten Kriegsmonate.|7,92 × 33 mm
+1955|R|B|Unimog S 404|Geländegängiger Lkw, Jahrzehnte lang ein vertrautes Bild bei der Truppe.|1,5 t Nutzlast
+1956|P|B|M47 Patton|Erster Kampfpanzer der Bundeswehr, aus US-Beständen.|90-mm-Kanone
+1956|R|B|DKW Munga|Leichter Geländewagen mit Zweitaktmotor.|Allradantrieb
+1956|Z|B|Gefechtshelm M1|Helm nach US-Vorbild, Erstausstattung der Bundeswehr.|Stahl
+1956|P|N|T-34/85|Sowjetischer Kampfpanzer, Erstausstattung der Panzertruppe der NVA.|85-mm-Kanone
+1956|R|N|BTR-152|Sowjetischer Schützenpanzerwagen auf Lkw-Basis.|3 Achsen
+1956|W|N|Karabiner S|Selbstladekarabiner, lizenzgefertigter SKS.|7,62 × 39 mm
+1956|Z|N|Stahlhelm M56|Helm der NVA, schon im Zweiten Weltkrieg entworfen.|Stahl
+1956|F|N|MiG-15|Erstes Strahljagdflugzeug der Luftstreitkräfte der NVA.|ca. 1.050 km/h
+1957|P|B|M48|US-Kampfpanzer, später teils auf 105 mm kampfwertgesteigert.|90 mm / 105 mm
+1957|W|B|Pistole P1|Nachkriegsversion der Walther P38 mit Aluminiumgriffstück.|9 × 19 mm
+1957|F|N|MiG-17|Verbesserter Nachfolger der MiG-15.|Pfeilflügel
+1957|H|N|Mi-4|Erster Hubschrauber der NVA.|Sternmotor
+1957|P|N|PT-76|Schwimmfähiger Spähpanzer.|76-mm-Kanone
+1957|P|N|T-54|Sowjetischer Kampfpanzer der ersten Nachkriegsgeneration.|100-mm-Kanone
+1957|F|B|Dornier Do 27|Leichtes Verbindungsflugzeug, erstes deutsches Nachkriegsflugzeug in Serie.|Kurzstarter
+1958|P|B|SPz kurz (Hotchkiss)|Leichter Schützenpanzer, auch als Spähpanzer und Beobachter.|20-mm-Kanone
+1958|H|B|Alouette II|Erster Hubschrauber mit Wellenturbine bei der Bundeswehr.|Turbine
+1958|F|B|Nord Noratlas|Doppelrumpf-Transportflugzeug, Vorgänger der Transall.|Doppelrumpf
+1958|S|B|Gorch Fock (II)|Segelschulschiff der Deutschen Marine, Wahrzeichen der Marine.|Bark, 3 Masten
+1958|S|B|Zerstörer Z1|Ehemalige US-Fletcher-Zerstörer, erste Zerstörer der Bundesmarine.|5 Einheiten
+1959|W|B|G3|Heckler-&-Koch-Gewehr mit Rollenverschluss, Standardgewehr bis in die 1990er.|7,62 × 51 mm, 20 Schuss
+1959|M|B|MG 3|Weiterentwicklung des MG 42 auf NATO-Kaliber.|bis 1.200 Schuss/min
+1959|P|B|SPz lang HS 30|Schützenpanzer mit 20-mm-Kanone, technisch problematisch.|20 mm
+1959|W|N|MPi-K|Lizenzbau der Kalaschnikow für die NVA.|7,62 × 39 mm
+1959|W|N|Pistole M (Makarow)|Dienstpistole der NVA und der Volkspolizei.|9 × 18 mm
+1960|F|B|F-104G Starfighter|Mehrzweckkampfflugzeug, wegen vieler Abstürze in der Kritik.|Mach 2
+1962|S|B|U-Boot-Klasse 205|Erste neu gebaute U-Boote der Bundesmarine.|Küsten-U-Boot
+1962|F|N|MiG-21|Wichtigstes Jagdflugzeug der NVA, über 500 Stück im Dienst.|Mach 2
+1962|R|N|IFA P3|Geländegängiger Pkw der NVA.|Allradantrieb
+1962|P|B|M113|Gepanzertes Transportfahrzeug in vielen Rollen.|11 Mann
+1964|S|B|Hamburg-Klasse|Erste in Deutschland nach dem Krieg gebaute Zerstörer.|4 Einheiten
+1964|A|B|M109|Panzerhaubitze, bis zur PzH 2000 Standard der Rohrartillerie.|155 mm
+1964|K|B|MIM-23 HAWK|Flugabwehrraketensystem mittlerer Reichweite.|halbaktiv
+1964|P|N|T-55|Wichtigster Kampfpanzer der NVA.|100-mm-Kanone
+1965|P|B|Leopard 1|Erster deutscher Kampfpanzer der Nachkriegszeit, in viele Länder exportiert.|105-mm-Kanone
+1965|R|N|IFA W50|Universal-Lkw aus Ludwigsfelde, über 570.000 gebaut.|5 t Nutzlast
+1965|W|N|MPi-KM|Modernisierte Kalaschnikow aus Wiesa, mit Kunststoffgriff.|7,62 × 39 mm
+1965|Z|N|Strichtarn|Tarnmuster der NVA, „Ein Strich, kein Strich“ genannt.|Strichmuster
+1966|P|B|Kanonenjagdpanzer|Jagdpanzer ohne Drehturm mit 90-mm-Kanone.|90 mm
+1966|P|B|Bergepanzer 2|Bergepanzer auf Leopard-1-Basis.|Kran, Seilwinde
+1966|R|N|BTR-60|Achtrad-Schützenpanzerwagen, schwimmfähig.|8 × 8
+1966|R|N|BRDM-2|Amphibischer Spähwagen.|14,5-mm-MG
+1966|A|N|ZSU-23-4 Schilka|Flugabwehrkanonenpanzer mit vier Rohren und Radar.|4 × 23 mm
+1966|W|B|MP2 (Uzi)|Maschinenpistole israelischer Herkunft, später durch die MP7 ersetzt.|9 × 19 mm
+1967|P|B|Raketenjagdpanzer 2|Jagdpanzer mit SS.11-Lenkflugkörpern.|Drahtlenkung
+1967|H|B|Bell UH-1D|Transporthubschrauber, bekannt aus Rettungseinsätzen.|ca. 350 im Dienst
+1967|K|N|RPG-7|Wiederverwendbare Panzerbüchse mit Raketengranate.|40 mm Rohr
+1968|F|B|Transall C-160|Deutsch-französisches Transportflugzeug, über 50 Jahre im Dienst.|16 t Nutzlast
+1968|H|N|Mi-8|Mittlerer Transporthubschrauber.|bis 24 Mann
+1969|A|B|LARS 110 mm|Leichtes Artillerieraketensystem auf Lkw.|36 Rohre
+1969|S|B|Lütjens-Klasse|Lenkwaffenzerstörer US-amerikanischer Bauart.|Tartar-Flugabwehr
+1970|K|N|9K32 Strela-2|Tragbare Flugabwehrrakete der NVA.|Infrarot
+1971|P|B|Marder 1|Schützenpanzer für den Kampf mit Kampfpanzern, über 50 Jahre im Dienst.|20-mm-Kanone
+1972|H|B|CH-53G|Schwerer Transporthubschrauber, lizenzgebaut.|36 Mann
+1973|F|B|F-4F Phantom II|Jagdflugzeug, bis 2013 bei der Luftwaffe.|Mach 2,2
+1973|S|B|U-Boot-Klasse 206|Kleine, leise Küsten-U-Boote aus amagnetischem Stahl.|18 Einheiten
+1974|P|N|BMP-1|Sowjetischer Schützenpanzer, Vorreiter seiner Klasse.|73-mm-Kanone
+1975|R|B|Luchs|Amphibischer Spähpanzer mit Fahrern vorne und hinten.|8 × 8
+1975|P|B|Biber|Brückenlegepanzer auf Leopard-1-Basis.|22 m Brücke
+1976|P|B|Flakpanzer Gepard|Zwei 35-mm-Kanonen mit Radar. Seit 2022 in der Ukraine zur Abwehr von Drohnen im Einsatz.|2 × 35 mm
+1976|S|B|Schnellboot Klasse 143|Albatros-Klasse, Flugkörperschnellboote.|Exocet
+1976|R|B|MAN-Lkw gl|Geländegängige Lkw-Familie der Bundeswehr.|5–10 t
+1977|K|B|Milan|Drahtgelenkte Panzerabwehrrakete der Infanterie, deutsch-französische Gemeinschaftsentwicklung.|bis 2 km
+1978|A|B|FH 70|Gezogene Feldhaubitze mit eigenem Hilfsmotor für kurze Stellungswechsel.|155 mm, ca. 24 km
+1978|F|N|MiG-23|Schwenkflügel-Jagdflugzeug der Luftstreitkräfte der NVA.|Mach 2,3
+1978|H|N|Mi-24|Kampfhubschrauber mit zusätzlichem Transportraum für acht Soldaten.|„fliegender Panzer“
+1978|P|N|2S1 Gwosdika|Schwimmfähige Panzerhaubitze der Artillerieregimenter.|122 mm
+1978|S|N|Fregatte Rostock|Koni-Klasse, die größten Kampfschiffe der Volksmarine.|2 Einheiten
+1979|P|B|Leopard 2|Kampfpanzer mit 120-mm-Glattrohrkanone. Ständig modernisiert, aktuell als 2A8 im Zulauf.|ca. 60 t, 120 mm
+1979|R|B|Fuchs|Sechsrädriger Transportpanzer, als ABC-Spürpanzer international gefragt.|6 × 6, schwimmfähig
+1979|F|B|Alpha Jet|Leichtes Erdkampf- und Schulflugzeug, bis 1998 in der Luftwaffe.|Unterschall
+1979|P|N|T-72|Modernster Kampfpanzer der NVA mit automatischem Lader.|125-mm-Kanone
+1980|H|B|PAH-1 (Bo 105)|Panzerabwehrhubschrauber mit HOT-Lenkflugkörpern.|6 × HOT
+1974|H|B|Sea King Mk41|Marinehubschrauber für Seenotrettung, fast 50 Jahre im Dienst.|Rettungswinde
+1981|K|B|Roland|Flugabwehrraketensystem auf Marder-Fahrgestell zum Schutz der Truppe.|bis 6 km
+1981|H|B|Sea Lynx|Bordhubschrauber der Fregatten für U-Jagd und Seeziele.|Bordhubschrauber
+1981|S|N|Parchim-Klasse|U-Jagd-Korvetten der Volksmarine, später an Indonesien verkauft.|16 Einheiten
+1982|F|B|Panavia Tornado|Schwenkflügel-Kampfflugzeug, Rückgrat der Luftwaffe und Träger der nuklearen Teilhabe.|Mach 2,2
+1982|S|B|Bremen-Klasse|Fregatten der Klasse 122 für die U-Jagd im Nordatlantik.|8 Einheiten
+1983|W|N|MPi-AK-74N|Kalaschnikow im kleineren Kaliber, letzte Standardwaffe der NVA.|5,45 × 39 mm
+1984|F|N|Su-22|Jagdbomber mit Schwenkflügeln für Luftstreitkräfte und Marineflieger.|Schwenkflügel
+1984|S|N|Tarantul-Klasse|Raketenkorvetten der Volksmarine mit Seezielflugkörpern.|4 × P-15
+1986|P|N|BMP-2|Schützenpanzer mit 30-mm-Maschinenkanone und Lenkflugkörper.|30 mm
+1988|F|N|MiG-29|Modernstes Jagdflugzeug der NVA, danach bis 2004 bei der Luftwaffe in Laage.|Mach 2,3
+1989|K|B|Patriot|Flugabwehrraketensystem großer Reichweite, auch gegen ballistische Raketen.|über 100 km
+1989|S|B|Klasse 332|Minenjagdboote aus amagnetischem Stahl.|Minenjagd
+1989|R|B|Wolf|Geländewagen auf Basis der Mercedes G-Klasse, über 12.000 im Dienst.|Allradantrieb
+1990|A|B|MARS|Mittleres Artillerieraketensystem auf Kettenfahrgestell, die deutsche Variante des MLRS.|12 Raketen
+1990|P|B|Wiesel 1|Kleiner, luftverladbarer Waffenträger der Luftlandetruppen.|ca. 2,8 t
+1990|Z|B|Flecktarn|Fünffarbiges Tarnmuster, seit 1990 Kennzeichen der Bundeswehr-Uniform.|5 Farben
+1992|Z|B|Gefechtshelm B826|Gefechtshelm aus Aramid von Schuberth, Nachfolger des Stahlhelms.|Aramid
+1992|K|B|Panzerfaust 3|Schultergestützte Panzerabwehrwaffe der Infanterie.|bis 600 m
+1994|W|B|P8|Dienstpistole von Heckler & Koch mit Kunststoffgriffstück.|9 × 19 mm, 15 Schuss
+1994|S|B|Brandenburg-Klasse|Fregatten der Klasse 123, spezialisiert auf U-Jagd.|4 Einheiten
+1997|W|B|G36|Sturmgewehr mit Kunststoffgehäuse und integrierter Optik.|5,56 × 45 mm, 30 Schuss
+1998|P|B|Panzerhaubitze 2000|Selbstfahrende Haubitze, die einen Feuerstoß von drei Schuss in rund zehn Sekunden abgibt.|155 mm, bis ca. 40 km
+2000|R|B|ATF Dingo|Allschutz-Transportfahrzeug mit Minenschutz für Auslandseinsätze.|Unimog-Basis
+2001|S|B|Berlin-Klasse|Einsatzgruppenversorger, schwimmende Versorgungsbasen der Flotte.|3 Einheiten
+2002|Z|B|Nachtsichtbrille Lucie|Restlichtverstärker, am Helm oder in der Hand nutzbar.|Restlicht
+2003|S|B|Sachsen-Klasse|Fregatten F124 für die Luftverteidigung von Verbänden.|3 Einheiten
+2004|F|B|Eurofighter Typhoon|Mehrzweckkampfflugzeug aus europäischer Gemeinschaftsentwicklung.|Mach 2
+2005|K|B|IRIS-T|Infrarotgelenkter Luft-Luft-Flugkörper kurzer Reichweite.|Infrarot
+2005|K|B|Taurus KEPD 350|Luftgestützter Marschflugkörper mit Tandemgefechtskopf.|über 500 km
+2005|M|B|MG4|Leichtes Maschinengewehr für die Gruppe.|5,56 × 45 mm
+2005|S|B|U-Boot-Klasse 212A|U-Boote mit Brennstoffzellenantrieb, sehr leise und lange getaucht.|außenluftunabhängig
+2005|H|B|Tiger|Unterstützungshubschrauber, deutsch-französische Entwicklung.|Kampfhubschrauber
+2007|H|B|NH90|Mittlerer Transporthubschrauber mit Fly-by-Wire-Steuerung.|bis 20 Soldaten
+2008|R|B|Fennek|Leichter Spähwagen mit ausfahrbarem Beobachtungsmast.|4 × 4
+2008|S|B|Braunschweig-Klasse|Korvetten der Klasse 130 für Küstengewässer.|K130
+2009|R|B|Boxer|Achtrad-Radpanzer mit austauschbaren Missionsmodulen.|8 × 8
+2013|Z|B|IdZ-ES „Gladius“|Vernetztes Soldatensystem mit Funk, Navigation und Optik.|vernetzt
+2014|F|B|Airbus A400M|Viermotoriges Transportflugzeug, Nachfolger der Transall.|37 t Nutzlast
+2015|M|B|MG5|Maschinengewehr von Heckler & Koch, Nachfolger des MG 3.|7,62 × 51 mm
+2015|P|B|Puma|Hochgeschützter Schützenpanzer, Nachfolger des Marder.|30-mm-Kanone
+2017|K|B|MELLS (Spike LR)|Mehrrollenfähiges leichtes Lenkflugkörpersystem.|bis 4 km
+2019|S|B|Baden-Württemberg-Klasse|Fregatten F125 für lange Stabilisierungseinsätze.|4 Einheiten
+2019|H|B|NH90 Sea Lion|Marinehubschrauber, Nachfolger des Sea King.|Marine
+2022|F|B|Heron TP|Bewaffnungsfähige Langstreckendrohne der Luftwaffe.|über 24 h Flugdauer
+2024|K|B|IRIS-T SLM|Bodengestütztes Flugabwehrsystem mittlerer Reichweite.|bis 40 km
+2025|K|B|Arrow 3|Abwehrsystem gegen ballistische Raketen außerhalb der Atmosphäre.|exoatmosphärisch
+2025|W|B|G95|Sturmgewehr von Heckler & Koch, Nachfolger des G36.|5,56 × 45 mm
+2026|F|B|F-35A Lightning II|Tarnkappen-Kampfflugzeug, Nachfolger des Tornado in der nuklearen Teilhabe.|35 bestellt

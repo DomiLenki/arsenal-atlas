@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arsenal Atlas</title>
+<meta name="description" content="Fahrzeuge, Waffen und Ausrüstung deutscher Streitkräfte von 1871 bis heute – mit Zeitleisten, historischer Einordnung, Quiz und Arbeitsaufträgen für den Unterricht.">
+<meta name="theme-color" content="#0b1626">
+<meta property="og:title" content="Arsenal Atlas">
+<meta property="og:description" content="Deutsche Militärgeschichte in Technik und Kontext, 1871 bis heute. Für Schule und Unterricht.">
+<meta property="og:image" content="icon-512.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Arsenal Atlas">
+<style>
+:root{
+  --night:#0b1626;--deep:#0f1f33;--plate:#14283f;--line:#24405f;
+  --brass:#c9a96a;--brass-hi:#e6cf97;--ink:#e8ecf1;--mute:#93a4b8;
+  --ctx:#2a1f1e;--ctx-line:#5a3a33;--ctx-ink:#f0d9d2;
+  --ok:#5fb37f;--bad:#e0745f;--zoom:1;
+  --cond:"sans-serif-condensed","Roboto Condensed","Avenir Next Condensed","Arial Narrow",sans-serif;
+  --body:Roboto,-apple-system,"Segoe UI",system-ui,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,Menlo,"Droid Sans Mono",monospace;
+  --st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --night:#eef2f6;--deep:#ffffff;--plate:#dde5ee;--line:#c3cfdc;
+  --brass:#8b6a2a;--brass-hi:#5f4512;--ink:#0f1f33;--mute:#4a5a6e;
+  --ctx:#fbeeea;--ctx-line:#e3b9ad;--ctx-ink:#4a1d12;
+  --ok:#2e7d4f;--bad:#b3412f;
+  color-scheme:light;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--night);color:var(--ink);font:15px/1.5 var(--body)}
+body.noscroll{overflow:hidden}
+#app{zoom:var(--zoom)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:disabled{opacity:.35;cursor:default}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.view{min-height:100vh;padding-bottom:calc(40px + var(--sb))}
+.pad{padding-left:18px;padding-right:18px}
+.label{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.sec{margin-top:26px}
+.sec>.label{margin-bottom:12px}
+.yr{font:600 13px var(--mono);color:var(--brass)}
+.chev{color:var(--brass);font-size:20px}
+.ico24{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Kopfleiste */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;height:calc(52px + var(--st));padding:var(--st) 8px 0;background:var(--night);border-bottom:1px solid var(--line)}
+.bar .back{width:40px;height:40px;display:grid;place-items:center;color:var(--brass);font-size:26px;border-radius:20px}
+.bar .back:active{background:var(--deep)}
+.bar h1{margin:0;font:600 17px var(--body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+
+/* Startseite */
+.head{display:flex;gap:16px;align-items:center;padding:calc(24px + var(--st)) 18px 20px}
+.head img{width:68px;height:68px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.4),0 0 0 1px rgba(201,169,106,.4)}
+.head .t{font:800 38px/1 var(--cond);letter-spacing:.05em;color:var(--brass-hi)}
+.head .t span{color:var(--ink)}
+.head p{margin:6px 0 0;color:var(--mute);font-size:14px}
+.head .gear{margin-left:auto;align-self:flex-start;width:42px;height:42px;display:grid;place-items:center;border-radius:21px;color:var(--brass);border:1px solid var(--line)}
+.school{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stile{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:12px;background:var(--deep);border:1px solid var(--line);min-width:0}
+.stile:active{border-color:var(--brass)}
+.stile .ico24{color:var(--brass)}
+.stile b{font:700 19px/1.1 var(--cond);letter-spacing:.03em;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere}
+.stile small{color:var(--mute);font-size:12.5px;line-height:1.35}
+.stile em{font-style:normal;color:var(--brass);font:600 12px var(--mono)}
+.station{position:relative;display:flex;gap:16px;padding:0 18px 28px}
+.station:not(:last-child)::before{content:"";position:absolute;left:26px;top:22px;bottom:0;width:2px;background:var(--line)}
+.dot{flex:none;width:18px;height:18px;border-radius:50%;background:var(--night);border:4px solid var(--c);margin-top:2px;position:relative;z-index:1}
+.station .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.hero{position:relative;height:170px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.hero .photo{position:absolute;inset:0}
+.hero .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.82))}
+.hero .cap{position:absolute;left:14px;right:14px;bottom:12px;z-index:3}
+.hero .cap b{display:block;font:800 32px/1 var(--cond);letter-spacing:.05em;text-transform:uppercase;color:#fff}
+.hero .cap small{display:block;margin-top:4px;color:rgba(255,255,255,.85);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta-row{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-size:13px}
+.credit{color:var(--mute);font-size:12px;padding:0 18px}
+
+/* Foto / Tafel */
+.photo{position:relative;background:var(--plate);overflow:hidden;color:var(--brass)}
+.photo::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,169,106,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,106,.08) 1px,transparent 1px);background-size:18px 18px}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,var(--tint,transparent));opacity:.4;pointer-events:none}
+.photo svg{position:absolute;inset:12% 8%;width:84%;height:76%;opacity:.4;transition:opacity .3s}
+.photo.done svg{opacity:.9}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;z-index:1}
+.photo img.on{opacity:1}
+
+/* Epoche */
+.era-hero{position:relative;height:250px}
+.era-hero .photo{position:absolute;inset:0}
+.era-hero .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 30%,var(--night))}
+.era-hero .cap{position:absolute;left:18px;right:18px;bottom:14px;z-index:3}
+.era-hero .cap .yr{font-size:14px}
+.era-hero .cap b{display:block;font:800 44px/1 var(--cond);letter-spacing:.05em;text-transform:uppercase;color:var(--brass-hi)}
+.era-hero .cap small{display:block;margin-top:4px;color:var(--ink);opacity:.85;font-size:14px}
+.summary{margin:18px 0 0;font-size:16px;line-height:1.6}
+.events{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:6px}
+.events li{position:relative;padding:0 0 14px 18px}
+.events li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--night);border:2px solid var(--brass)}
+.events b{display:block;font:600 13px var(--mono);color:var(--brass)}
+.events span{font-size:15px;line-height:1.5}
+.ctx{padding:14px 16px;border-radius:12px;background:var(--ctx);border:1px solid var(--ctx-line);color:var(--ctx-ink);font-size:15px;line-height:1.55}
+.ctx b{display:flex;align-items:center;gap:8px;margin-bottom:6px;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.ctx b::before{content:"!";display:grid;place-items:center;width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;font-size:11px}
+.tiles{display:flex;flex-direction:column;gap:12px}
+.tile{display:flex;align-items:center;gap:14px;padding:14px;background:var(--deep);border:1px solid var(--line);border-radius:14px}
+.tile:active{border-color:var(--brass)}
+.tile .ico{flex:none;width:104px;height:64px;border-radius:10px}
+.tile .ico svg{opacity:.95!important;inset:14% 10%;width:80%;height:72%}
+.tile .txt{flex:1;min-width:0}
+.tile b{display:block;font:800 24px/1.1 var(--cond);letter-spacing:.04em;text-transform:uppercase}
+.tile small{display:block;color:var(--mute);font-size:13px;line-height:1.35;margin-top:2px}
+.tile em{display:block;font:600 12px var(--mono);font-style:normal;color:var(--brass);margin-top:4px}
+.tasks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.tasks li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--deep);border:1px solid var(--line);border-radius:10px;font-size:15px;line-height:1.5}
+.afb{flex:none;font:700 11px var(--mono);letter-spacing:.06em;padding:3px 7px;border-radius:5px;border:1px solid var(--brass);color:var(--brass);margin-top:2px;white-space:nowrap}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:10px;border:1px solid var(--line);background:var(--deep);color:var(--brass);font-weight:600;font-size:15px}
+.btn.primary{background:var(--brass);border-color:var(--brass);color:var(--night)}
+.btn .ico24{width:20px;height:20px}
+.banner{display:flex;align-items:center;gap:12px;margin-top:16px;padding:14px;background:var(--deep);border:1px solid var(--line);border-radius:12px}
+.banner b{display:block;font-size:14px}
+.banner small{display:block;font:12px var(--mono);color:var(--mute)}
+.banner button{margin-left:auto;color:var(--brass);font-weight:600}
+.spin{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--brass);animation:sp .8s linear infinite}
+.spin.sm{width:11px;height:11px;display:inline-block;vertical-align:-1px;margin-left:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* Liste */
+.search{margin:12px 18px 0;position:relative;display:block}
+.search input{width:100%;padding:11px 12px 11px 38px;border-radius:10px;border:1px solid var(--line);background:var(--deep);color:var(--ink);font:16px var(--body);outline:none}
+.search input:focus{border-color:var(--brass)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--mute)}
+.hscroll{display:flex;gap:8px;overflow-x:auto;padding:0 18px;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.feat{margin-top:16px}
+.feat .label{padding:0 18px 10px}
+.fcard{flex:none;width:230px;background:var(--deep);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fcard .photo{height:130px}
+.fcard div.t{padding:10px 12px}
+.fcard small{display:block;font:11px var(--mono);color:var(--mute)}
+.fcard b{display:block;font:700 19px/1.2 var(--cond);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chips{margin-top:16px}
+.chip{flex:none;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--mute);font:600 14px var(--cond);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.chip svg{width:24px;height:13px;fill:currentColor}
+.chip em{font:11px var(--mono);font-style:normal;opacity:.7}
+.chip.on{background:var(--brass);border-color:var(--brass);color:var(--night)}
+.decades{margin-top:10px;gap:4px}
+.decades button{flex:none;font:600 12px var(--mono);color:var(--brass-hi);background:var(--deep);padding:5px 10px;border-radius:6px;border:1px solid var(--line)}
+.count{font:12px var(--mono);color:var(--mute);padding:14px 18px 4px}
+.yh{position:sticky;top:calc(52px + var(--st));z-index:5;display:flex;align-items:center;gap:10px;padding:9px 18px;background:var(--night)}
+.yh::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brass)}
+.yh b{font:600 15px var(--mono);color:var(--brass-hi)}
+.yh hr{flex:1;border:0;height:1px;background:var(--line);margin:0}
+.yh small{font:11px var(--mono);color:var(--mute)}
+.row{display:flex;align-items:center;gap:12px;padding:9px 18px}
+.row:active{background:var(--deep)}
+.row .photo{flex:none;width:108px;height:72px;border-radius:8px;border:1px solid var(--line)}
+.row .txt{flex:1;min-width:0}
+.row small{display:block;font:11px var(--mono);color:var(--mute)}
+.row small .star{color:var(--brass)}
+.row b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:700 18px/1.2 var(--cond)}
+.row p{margin:2px 0 0;font-size:13px;color:var(--mute);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35}
+.row .chev{color:var(--line);font-size:16px}
+.row .rm{flex:none;width:36px;height:36px;border-radius:18px;color:var(--mute);font-size:18px;border:1px solid var(--line)}
+.empty{text-align:center;padding:50px 18px;color:var(--mute)}
+.empty b{display:block;font:700 24px var(--cond);color:var(--ink);margin-bottom:4px}
+
+/* Detail */
+.d-photo{position:relative;height:290px}
+.d-photo .photo{position:absolute;inset:0}
+.tag{position:absolute;right:12px;top:12px;z-index:3;font:700 12px var(--cond);letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:4px 8px;border-radius:5px}
+.tag.static{position:static;display:inline-block}
+.d-body{padding:20px 18px;display:flex;flex-direction:column;gap:16px}
+.d-body h2{margin:0;font:800 36px/1.05 var(--cond);color:var(--brass-hi)}
+.d-desc{color:var(--brass);font-weight:500}
+.d-info{font-size:17px;line-height:1.55}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0}
+.facts div{background:var(--plate);padding:12px;min-height:58px}
+.facts dt{font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.facts dd{margin:3px 0 0;font:600 17px/1.25 var(--cond)}
+.wiki p{margin:10px 0 0;font-size:16px;line-height:1.65}
+.wiki a.more{display:flex;align-items:center;gap:8px;margin-top:14px;padding:14px;border-radius:12px;background:var(--deep);border:1px solid var(--line);color:var(--brass);font-weight:600}
+.wiki a.more span{margin-left:auto}
+.cite{margin-top:14px;padding:12px 14px;border-radius:10px;border:1px dashed var(--line);font-size:13px;line-height:1.5;color:var(--mute)}
+.cite code{display:block;margin:6px 0 10px;font:13px/1.5 var(--body);color:var(--ink);user-select:all;-webkit-user-select:all}
+.lic{margin-top:10px;font-size:11px;color:var(--mute)}
+.loading{display:flex;align-items:center;gap:10px;color:var(--mute);margin-top:10px;font-size:14px}
+
+/* Quiz */
+.q-progress{height:6px;border-radius:3px;background:var(--plate);overflow:hidden;margin-top:16px}
+.q-progress i{display:block;height:100%;background:var(--brass);transition:width .3s}
+.q-photo{height:190px;border-radius:12px;border:1px solid var(--line);margin-top:16px}
+.q-text{margin:18px 0 0;font:700 26px/1.2 var(--cond);letter-spacing:.01em}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;padding:14px 16px;border-radius:12px;background:var(--deep);border:2px solid var(--line);font-size:17px;line-height:1.4;min-height:56px}
+.opt.long{font-size:15px}
+.opt .k{flex:none;width:28px;height:28px;border-radius:14px;display:grid;place-items:center;border:1px solid var(--line);font:600 13px var(--mono);color:var(--mute)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--deep))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--deep))}
+.feedback{margin-top:16px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--deep);font-size:15px;line-height:1.55}
+.feedback b{display:block;font:700 18px var(--cond);margin-bottom:4px}
+.feedback b.ok{color:var(--ok)}.feedback b.bad{color:var(--bad)}
+.score{font:800 64px/1 var(--cond);color:var(--brass-hi);margin-top:24px}
+.scopes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scope{display:flex;align-items:center;gap:10px;padding:14px;border-radius:12px;background:var(--deep);border:1px solid var(--line);font:700 18px var(--cond);letter-spacing:.03em;text-align:left}
+.scope i{flex:none;width:12px;height:12px;border-radius:50%;background:var(--c)}
+.scope.all{grid-column:1/-1;background:var(--brass);border-color:var(--brass);color:var(--night);justify-content:center}
+
+/* Glossar, Lehrkräfte, Einstellungen */
+.gl{border-bottom:1px solid var(--line);padding:14px 0}
+.gl b{display:block;font:700 19px var(--cond);color:var(--brass-hi)}
+.gl span{font-size:15px;line-height:1.55}
+.prose h3{margin:26px 0 8px;font:700 22px var(--cond);color:var(--brass-hi)}
+.prose p,.prose li{font-size:15.5px;line-height:1.65}
+.prose ul{padding-left:20px;margin:6px 0}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px}
+.seg button{flex:1;padding:12px 6px;font-weight:600;color:var(--mute);background:var(--deep)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button.on{background:var(--brass);color:var(--night)}
+.note{font-size:13px;color:var(--mute);margin-top:6px}
+
+/* Vergleichstabelle */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:6px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);background:var(--plate)}
+td.y{font:600 13px var(--mono);color:var(--brass);font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+
+/* Präsentation */
+#pres{position:fixed;inset:0;z-index:100;background:var(--night);color:var(--ink);display:grid;grid-template-rows:42vh 1fr auto;padding-top:var(--st)}
+#pres .p-media{position:relative}
+#pres .p-media .photo{position:absolute;inset:0}
+#pres .p-text{overflow:auto;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+#pres h2{margin:0;font:800 clamp(32px,6vw,72px)/1.02 var(--cond);color:var(--brass-hi)}
+#pres p{margin:0;font-size:clamp(17px,2.2vw,26px);line-height:1.5}
+#pres .label{font-size:clamp(12px,1.3vw,16px)}
+#pres .p-spec{font:600 clamp(14px,1.6vw,20px) var(--mono);color:var(--brass)}
+#pres .ctx{font-size:clamp(15px,1.8vw,22px)}
+#pres .p-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + var(--sb));border-top:1px solid var(--line);background:var(--deep)}
+#pres .p-bar span{font:600 15px var(--mono);color:var(--mute)}
+#pres .p-bar button{padding:10px 16px;border-radius:10px;border:1px solid var(--line);font-weight:600;color:var(--brass)}
+#pres .p-bar div{display:flex;gap:8px}
+@media (min-width:820px) and (min-aspect-ratio:4/3){
+  #pres{grid-template-columns:1.15fr 1fr;grid-template-rows:1fr auto}
+  #pres .p-text{justify-content:center;padding:40px}
+  #pres .p-bar{grid-column:1/-1}
+}
+/* Willkommen und Rolle */
+.welcome{min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:calc(30px + var(--st)) 20px calc(30px + var(--sb));max-width:560px;margin:0 auto}
+.welcome img{width:96px;height:96px;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.45),0 0 0 1px rgba(201,169,106,.4)}
+.welcome h1{margin:0;font:800 46px/1 var(--cond);letter-spacing:.05em;color:var(--brass-hi)}
+.welcome h1 span{color:var(--ink)}
+.welcome p{margin:0;font-size:16px;line-height:1.6;color:var(--mute)}
+.roles{display:flex;flex-direction:column;gap:12px}
+.role{display:flex;align-items:center;gap:16px;text-align:left;padding:18px;border-radius:16px;background:var(--deep);border:2px solid var(--line)}
+.role:hover,.role:focus-visible{border-color:var(--brass)}
+.role .ico24{width:34px;height:34px;color:var(--brass);flex:none}
+.role b{display:block;font:800 24px/1.1 var(--cond);letter-spacing:.03em}
+.role small{display:block;margin-top:3px;color:var(--mute);font-size:14px;line-height:1.4}
+.rolechip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font:600 12px var(--mono);color:var(--brass);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.stile.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:12px}
+.stile.wide div{display:flex;flex-direction:column;gap:2px}
+details.hint{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+details.hint summary{cursor:pointer;color:var(--brass);font-weight:600;font-size:14px}
+details.hint p{margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--mute)}
+.tasks li>span:last-child{flex:1;min-width:0}
+.toast{position:fixed;left:50%;bottom:calc(24px + var(--sb));transform:translateX(-50%);z-index:200;background:var(--ink);color:var(--night);padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+@media (min-width:700px){.view>.pad,.prose{max-width:760px}.school{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+"use strict";
+/* ---------- Stammdaten ---------- */
+const LOGO="__LOGO__";
+const ERAS={
+ K:{n:"Kaiserreich",r:"1871 – 1918",c:"#9a7b4f",hero:"A7V Sturmpanzerwagen",sub:"Kaiserliches Heer · Kaiserliche Marine · Luftstreitkräfte",
+  s:"Vom Einzellader Mauser 71 bis zum ersten Panzer: Das Kaiserreich erlebte den Übergang von Pferd und Linienschiff zu Maschinengewehr, Flugzeug und Tank. Der Erste Weltkrieg brachte Stahlhelm, Gasmaske und U-Boot-Krieg."},
+ R:{n:"Reichswehr",r:"1919 – 1935",c:"#7a8a5c",hero:"Junkers Ju 52/3m",sub:"Reichsheer · Reichsmarine",
+  s:"Der Versailler Vertrag begrenzte das Heer auf 100.000 Mann und verbot Panzer, Flugzeuge und U-Boote. Neue Technik entstand im Verborgenen, etwa in der Panzerschule Kama in der Sowjetunion."},
+ W:{n:"Wehrmacht",r:"1935 – 1945",c:"#8c6a6a",hero:"Tiger I",sub:"Heer · Luftwaffe · Kriegsmarine",
+  s:"Die Wehrmacht war das militärische Instrument des NS-Staats für Eroberungskrieg und Vernichtungspolitik. Panzer, Flugzeuge und U-Boote wurden in großer Zahl gebaut, ab 1942 zunehmend mit Zwangsarbeit."},
+ N:{n:"NVA",r:"1956 – 1990",c:"#a3574e",hero:"T-72",sub:"Landstreitkräfte · Luftstreitkräfte · Volksmarine",
+  s:"Die Nationale Volksarmee der DDR war nach sowjetischem Vorbild ausgerüstet: Panzer der T-Reihe, MiG-Jäger und Kalaschnikow-Gewehre, teils in Lizenz in der DDR gefertigt."},
+ B:{n:"Bundeswehr",r:"1955 – heute",c:"#4f86a8",hero:"Leopard 2",sub:"Heer · Luftwaffe · Marine · Streitkräftebasis",
+  s:"Die Bundeswehr begann mit amerikanischem Gerät und entwickelte bald eigene Systeme wie Leopard, Marder und Gepard. Heute prägen Leopard 2, Puma, Eurofighter und neue Luftverteidigung das Bild."}
+};
+const TIMELINE=["K","R","W","B","N"];
+const CATS={
+ P:{n:"Panzer & Kettenfahrzeuge",s:"Panzer",h:"Panzer"},R:{n:"Rad- & Halbkettenfahrzeuge",s:"Radfahrzeuge",h:"Militärfahrzeug"},
+ F:{n:"Flugzeuge & Luftschiffe",s:"Flugzeuge",h:"Flugzeug"},H:{n:"Hubschrauber",s:"Hubschrauber",h:"Hubschrauber"},
+ S:{n:"Schiffe & U-Boote",s:"Marine",h:"Schiff"},W:{n:"Handwaffen",s:"Handwaffen",h:"Waffe"},
+ M:{n:"Maschinengewehre",s:"MG",h:"Maschinengewehr"},A:{n:"Artillerie & Flak",s:"Artillerie",h:"Geschütz"},
+ K:{n:"Raketen & Lenkwaffen",s:"Raketen",h:"Rakete"},Z:{n:"Ausrüstung & Zubehör",s:"Ausrüstung",h:"Militär"}
+};
+const GROUPS={
+ vehicles:{t:"Fahrzeuge",s:"Panzer, Radfahrzeuge, Flugzeuge, Hubschrauber, Schiffe",sil:"P",cats:["P","R","F","H","S"]},
+ weapons:{t:"Waffen",s:"Handwaffen, Maschinengewehre, Artillerie, Raketen",sil:"W",cats:["W","M","A","K"]},
+ equipment:{t:"Ausrüstung",s:"Helme, Optik, Tarnung, Funk und Zubehör",sil:"Z",cats:["Z"]}
+};
+const DOMAINS={
+ land:{t:"Land",lt:"Landfahrzeuge",s:"Panzer, Kettenfahrzeuge, Rad- und Halbkettenfahrzeuge",sil:"P",cats:["P","R"]},
+ air:{t:"Luft",lt:"Luftfahrzeuge",s:"Flugzeuge, Luftschiffe, Hubschrauber, Drohnen",sil:"F",cats:["F","H"]},
+ sea:{t:"Wasser",lt:"Wasserfahrzeuge",s:"Schlachtschiffe, Kreuzer, Zerstörer, Fregatten, U-Boote",sil:"S",cats:["S"]}
+};
+const PL='style="fill:var(--plate)"';
+const SIL={
+P:`<path d="M30 76 L50 60 H188 L210 76Z"/><rect x="24" y="76" width="192" height="24" rx="12"/><path d="M78 60 L88 41 H150 L162 60Z"/><rect x="156" y="46" width="76" height="6" rx="2"/><rect x="104" y="34" width="20" height="8" rx="2"/><g ${PL}><circle cx="44" cy="88" r="7"/><circle cx="70" cy="88" r="7"/><circle cx="96" cy="88" r="7"/><circle cx="122" cy="88" r="7"/><circle cx="148" cy="88" r="7"/><circle cx="174" cy="88" r="7"/><circle cx="198" cy="88" r="7"/></g>`,
+R:`<path d="M24 84 V62 L42 48 H152 L176 60 H204 L216 72 V84Z"/><path d="M92 48 L98 34 H138 L144 48Z"/><rect x="138" y="38" width="56" height="5" rx="2"/><circle cx="62" cy="88" r="15"/><circle cx="114" cy="88" r="15"/><circle cx="182" cy="88" r="15"/><g ${PL}><circle cx="62" cy="88" r="6"/><circle cx="114" cy="88" r="6"/><circle cx="182" cy="88" r="6"/></g>`,
+A:`<rect x="80" y="58" width="150" height="8" rx="3" transform="rotate(-16 80 62)"/><path d="M70 50 L118 44 L122 80 L74 86Z"/><path d="M96 78 L22 104 L18 98 L90 70Z"/><circle cx="104" cy="88" r="22"/><circle cx="104" cy="88" r="9" ${PL}/><rect x="64" y="62" width="52" height="16" rx="4"/>`,
+F:'<path d="M24 56 H186 Q216 57 220 60 Q216 63 186 64 H24 Q18 60 24 56Z"/><path d="M98 57 L128 8 H146 L136 57Z"/><path d="M98 63 L128 112 H146 L136 63Z"/><path d="M28 57 L42 34 H52 L48 57Z"/><path d="M28 63 L42 86 H52 L48 63Z"/>',
+H:'<rect x="24" y="30" width="190" height="4" rx="2"/><rect x="104" y="33" width="6" height="14"/><path d="M66 70 Q66 46 110 46 Q150 46 156 66 L222 62 L224 70 L156 78 Q148 92 110 92 Q66 92 66 70Z"/><path d="M212 62 L222 44 H228 L224 66Z"/><rect x="74" y="98" width="80" height="4" rx="2"/><rect x="88" y="90" width="4" height="10"/><rect x="134" y="90" width="4" height="10"/>',
+S:'<path d="M8 76 H232 L216 96 H30Z"/><rect x="88" y="52" width="58" height="24"/><rect x="100" y="38" width="32" height="14"/><rect x="114" y="14" width="4" height="26"/><rect x="104" y="20" width="24" height="3"/><rect x="152" y="58" width="16" height="18"/><path d="M40 66 H64 L68 76 H36Z"/><rect x="58" y="66" width="28" height="3"/><path d="M178 66 H202 L206 76 H174Z"/><rect x="150" y="66" width="30" height="3"/>',
+W:'<path d="M10 66 L58 56 H96 L104 52 H224 V58 H120 L110 66 H96 L84 74 H70 L64 70 L14 84Z"/><rect x="92" y="66" width="10" height="16" rx="2"/><rect x="126" y="46" width="26" height="5" rx="2"/>',
+M:'<path d="M14 62 L48 54 H70 V68 L20 80Z"/><rect x="66" y="50" width="88" height="20" rx="3"/><rect x="150" y="56" width="78" height="6" rx="2"/><path d="M196 62 L184 96 H188 L200 64Z"/><path d="M200 62 L214 96 H210 L198 64Z"/><rect x="84" y="70" width="26" height="22" rx="2"/>',
+K:'<path d="M30 54 H176 Q222 60 176 66 H30Z"/><path d="M30 54 L14 34 H34 L52 54Z"/><path d="M30 66 L14 86 H34 L52 66Z"/><rect x="18" y="58" width="14" height="4"/><path d="M120 54 L132 44 H140 L136 54Z"/><path d="M120 66 L132 76 H140 L136 66Z"/>',
+Z:`<path d="M44 84 Q42 30 118 26 Q186 26 192 70 L212 86 Q196 90 180 82 Q176 86 170 86 H44Z"/><path d="M60 88 H170" style="stroke:var(--plate)" stroke-width="3" fill="none"/><circle cx="84" cy="54" r="4" ${PL}/>`
+};
+const svg=c=>`<svg viewBox="0 0 240 120" fill="currentColor" aria-hidden="true">${SIL[c]}</svg>`;
+const ICON={
+ quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.6v.4"/><path d="M12 17h.01"/>',
+ book:'<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19"/><path d="M9 7h6"/>',
+ folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5h.01"/>',
+ sliders:'<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
+ screen:'<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/>',
+ copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
+ star:'<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>'
+};
+const ico=n=>`<svg class="ico24" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
+
+__SCHOOL__
+
+const RAW=`__RAW__`;
+const FEATURED=RAW.trim().split("\n").map(l=>{const[y,c,e,n,inf,sp]=l.split("|");return{id:"f:"+n,title:n,year:+y,era:e,cat:c,info:inf,spec:sp,featured:true}})
+ .sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title,"de"));
+const FEATURED_BY_ERA={};FEATURED.forEach(x=>(FEATURED_BY_ERA[x.era]=FEATURED_BY_ERA[x.era]||[]).push(x));
+const ITEMS=new Map();FEATURED.forEach(x=>ITEMS.set(x.id,x));
+
+/* ---------- Speicher ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+ set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const SET=Object.assign({zoom:1,theme:"dark",role:null},store.get("aa-set",{}));
+const isTeacher=()=>SET.role==="t";
+function applySet(){document.documentElement.dataset.theme=SET.theme;document.documentElement.style.setProperty("--zoom",SET.zoom)}
+applySet();
+let MAPPE=store.get("aa-mappe",[]);
+MAPPE.forEach(x=>{if(!ITEMS.has(x.id))ITEMS.set(x.id,x)});
+
+/* ---------- Quellen ---------- */
+const SRC={
+ K:[["cat","Flugzeugtyp des Ersten Weltkrieges (Deutsches Reich)","F",1],["cat","Luftschiff (Kaiserliche Marine)","F",1],["cat","Militärschiff (Kaiserliche Marine)","S",2],
+    ["search",'"Deutsches Heer" "Erster Weltkrieg" incategory:Maschinengewehr',"M",false],["search",'"Deutsches Heer" Ordonnanzwaffe Kaiserreich',"W",true],
+    ["search",'"Erster Weltkrieg" "Deutsches Heer" Geschütz Krupp',"A",true],["search",'"Erster Weltkrieg" deutscher Panzerwagen',"P",true],
+    ["search",'"Erster Weltkrieg" "Deutsches Heer" Ausrüstung Stahlhelm Gasmaske',"Z",true]],
+ R:[["search",'Reichswehr incategory:"Kettenfahrzeug der Wehrmacht"',"P",false],["search",'Reichswehr incategory:"Radfahrzeug der Wehrmacht"',"R",false],
+    ["search",'Reichswehr incategory:"Handwaffe der Wehrmacht"',"W",false],["search",'Reichswehr incategory:"Artillerie der Wehrmacht"',"A",false],
+    ["search",'Reichswehr incategory:"Luftfahrzeug der Wehrmacht"',"F",false],["search",'Reichsmarine incategory:"Militärschiffsklasse (Kriegsmarine)"',"S",false],
+    ["search","Reichsmarine Schiff Indienststellung 1920er","S",true]],
+ W:[["cat","Kettenfahrzeug der Wehrmacht","P",2],["cat","Radfahrzeug der Wehrmacht","R",2],["cat","Luftfahrzeug der Wehrmacht","F",2],
+    ["cat","Artillerie der Wehrmacht","A",2],["cat","Handwaffe der Wehrmacht","W",2],["cat","Militärische Ausrüstung (Wehrmacht)","Z",1],
+    ["cat","Militärschiffsklasse (Kriegsmarine)","S",1],["cat","Militärschiff (Kriegsmarine)","S",2],
+    ["list","Liste von Kettenfahrzeugen der Wehrmacht"],["list","Liste der Handwaffen der Wehrmacht"],
+    ["list","Liste von Luftfahrzeugen der Luftwaffe (Wehrmacht)"],["list","Liste von Schiffen der Kriegsmarine"],
+    ["search","Wehrmacht incategory:Maschinengewehr","M",false],["search","Wehrmacht Lenkwaffe Rakete Vergeltungswaffe","K",true]],
+ N:[["list","Liste der Technik und Bewaffnung der NVA"],["search",'"Nationale Volksarmee" incategory:"Militärisches Kettenfahrzeug"',"P",false],
+    ["search",'"Nationale Volksarmee" Volksmarine Schiffsklasse',"S",true],["search",'"Nationale Volksarmee" Luftstreitkräfte Flugzeug',"F",true],
+    ["search",'"Nationale Volksarmee" Hubschrauber',"H",true],["search",'"Nationale Volksarmee" Lastkraftwagen',"R",true],
+    ["search",'"Nationale Volksarmee" Handwaffe Maschinenpistole',"W",true],["search",'"Nationale Volksarmee" Uniform Ausrüstung',"Z",true]],
+ B:[["cat","Kettenfahrzeug der Bundeswehr","P",2],["cat","Radfahrzeug der Bundeswehr","R",2],["cat","Luftfahrzeug der Bundeswehr","F",2],
+    ["cat","Militärschiff (Bundeswehr)","S",2],["cat","Militärische Ausrüstung (Bundeswehr)","Z",1],
+    ["list","Liste von Handwaffen der Bundeswehr"],["list","Liste von Luftfahrzeugen der Bundeswehr"],["list","Liste von Kettenfahrzeugen der Bundeswehr"],
+    ["search","Bundeswehr incategory:Maschinengewehr","M",false],["search","Bundeswehr Lenkflugkörper Flugabwehr","K",true],
+    ["search","Bundeswehr Panzerhaubitze Artilleriesystem","A",true]]
+};
+__CLASSIFY__
+const RULES=CATEGORY_RULES;
+const EXCL_RE=new RegExp(`(^|[^a-zäöüß])(${EXCLUDE_WORDS.join("|")})([^a-zäöüß]|$)`);
+const SKIPCAT=["militärische einheit","verband","division","regiment","bataillon","geschwader","staffel","hersteller","unternehmen","museum","liste","film","spiel","besatzung","operation","werft","bauwerk","stützpunkt","flugplatz","person","kommandant","schiffsverlust","wrack","kriegsgefangen","modell","kaserne"];
+function classify(cats){const l=cats.map(c=>c.toLowerCase().replace(/^kategorie:/,""));if(l.some(c=>EXCL_RE.test(c)))return null;
+ for(const[cat,keys]of RULES)if(l.some(c=>keys.some(k=>c.includes(k))))return cat;return null}
+const skipTitle=t=>/^(Liste |Portal:|Kategorie:)/.test(t)||t.includes("Begriffsklärung");
+
+/* ---------- Wikipedia / Wikidata ---------- */
+const DE="de.wikipedia.org",EN="en.wikipedia.org";
+async function api(params,host=DE){
+ const q=new URLSearchParams({...params,format:"json",formatversion:"2",origin:"*"});
+ try{const r=await fetch(`https://${host}/w/api.php?${q}`);if(!r.ok)return null;return await r.json()}catch(e){return null}
+}
+const PP={prop:"pageimages|pageprops",piprop:"thumbnail",pithumbsize:"640",pilimit:"max",ppprop:"wikibase_item"};
+async function collect(base,host=DE,maxRounds=60){
+ const bag=new Map();let cont=null,rounds=0;
+ do{const j=await api({...base,...(cont||{})},host);if(!j)break;
+  for(const p of (j.query&&j.query.pages)||[]){if(!p.title||p.missing||p.invalid)continue;
+   const o=bag.get(p.title)||{title:p.title,ns:0,thumb:null,qid:null,cats:[]};o.ns=p.ns||0;
+   if(p.thumbnail)o.thumb=p.thumbnail.source;if(p.pageprops&&p.pageprops.wikibase_item)o.qid=p.pageprops.wikibase_item;
+   if(p.categories)o.cats.push(...p.categories.map(c=>c.title));bag.set(p.title,o)}
+  cont=j.continue||null;rounds++;
+ }while(cont&&rounds<maxRounds);
+ return[...bag.values()];
+}
+async function pagesInCategory(root,maxDepth){
+ const queue=[["Kategorie:"+root,0]],seen=new Set(),res=new Map();
+ while(queue.length&&seen.size<80){const[c,d]=queue.shift();if(seen.has(c))continue;seen.add(c);
+  const mem=await collect({...PP,action:"query",generator:"categorymembers",gcmtitle:c,gcmtype:"page|subcat",gcmlimit:"50",prop:"pageimages|pageprops|categories",cllimit:"max",clshow:"!hidden"});
+  for(const p of mem){if(p.ns===14){if(d<maxDepth&&!SKIPCAT.some(w=>p.title.toLowerCase().includes(w)))queue.push([p.title,d+1])}else if(p.ns===0)res.set(p.title,p)}}
+ return[...res.values()];
+}
+function searchPages(q,withCats){
+ const b={...PP,action:"query",generator:"search",gsrsearch:q,gsrnamespace:"0",gsrlimit:"50",prop:"pageimages|pageprops|categories",cllimit:"max",clshow:"!hidden"};
+ return collect(b,DE,withCats?40:20);
+}
+function linkedPages(title){
+ return collect({...PP,action:"query",titles:title,redirects:"1",generator:"links",gplnamespace:"0",gpllimit:"50",
+  prop:"pageimages|pageprops|categories",cllimit:"max",clshow:"!hidden"},DE,200);
+}
+function earliestYear(st){let best=null;for(const s of st||[]){const v=s.mainsnak&&s.mainsnak.datavalue&&s.mainsnak.datavalue.value;const t=v&&v.time;
+ if(t){const y=parseInt(t.slice(1,5),10);if(y>1830&&y<2100)best=best===null?y:Math.min(best,y)}}return best}
+async function years(qids){
+ const u=[...new Set(qids)],out={},batches=[];for(let i=0;i<u.length;i+=50)batches.push(u.slice(i,i+50));
+ for(let i=0;i<batches.length;i+=4){
+  await Promise.all(batches.slice(i,i+4).map(async b=>{const j=await api({action:"wbgetentities",ids:b.join("|"),props:"claims"},"www.wikidata.org");
+   if(!j||!j.entities)return;for(const[q,e]of Object.entries(j.entities)){const c=e.claims||{};
+    for(const p of["P729","P606","P571"]){const y=earliestYear(c[p]);if(y){out[q]=y;break}}}}));
+ }
+ return out;
+}
+async function harvest(era,progress){
+ const bag=new Map();
+ for(const s of SRC[era]){if(bag.size>=5000)break;
+  let pages,cls=false;
+  if(s[0]==="cat")pages=await pagesInCategory(s[1],s[3]);
+  else if(s[0]==="list"){pages=await linkedPages(s[1]);cls=true}
+  else{pages=await searchPages(s[1],s[3]);cls=s[3]}
+  for(const p of pages){if(p.ns!==0||skipTitle(p.title))continue;
+   const c2=classify(p.cats);const cat=cls?c2:(c2&&groupOf(c2)===groupOf(s[2])?c2:s[2]);if(!cat)continue;
+   const ex=bag.get(p.title);
+   if(ex){if(!ex.thumb)ex.thumb=p.thumb;if(!ex.qid)ex.qid=p.qid}
+   else bag.set(p.title,{id:"w:"+p.title,title:p.title,year:null,era,cat,wiki:p.title,thumb:p.thumb,qid:p.qid})}
+  progress(bag.size);
+ }
+ if(!bag.size)return[];
+ const ys=await years([...bag.values()].map(x=>x.qid).filter(Boolean));
+ const items=[...bag.values()];items.forEach(x=>{if(x.qid&&ys[x.qid])x.year=ys[x.qid]});
+ return items;
+}
+
+/* ---------- Vorbereitete Daten der Website ---------- */
+let META=null,FEAT_MAP={};
+const BOOT=(async()=>{
+ try{const r=await fetch("data/meta.json",{cache:"no-cache"});if(r.ok)META=await r.json()}catch(e){}
+ if(META){try{const r=await fetch("data/featured.json");if(r.ok)FEAT_MAP=await r.json()}catch(e){}}
+ FEATURED.forEach(x=>{const m=FEAT_MAP[x.title];if(m){x.wiki=m.w;x.thumb=m.img||null}});
+})();
+BOOT.then(()=>{if(META&&!location.hash.slice(2))rerender()});
+
+/* ---------- Bestand je Epoche ---------- */
+const norm=t=>t.toLowerCase().replace(/[^\p{L}\p{N}]/gu,"");
+const STATE={},MERGED={};
+function setMerged(era,online){
+ const feat=FEATURED_BY_ERA[era]||[],known=new Set();
+ feat.forEach(x=>{known.add(norm(x.title));if(x.wiki)known.add(norm(x.wiki))});
+ MERGED[era]=feat.concat(online.filter(x=>!known.has(norm(x.title))));
+ MERGED[era].forEach(x=>ITEMS.set(x.id,x));
+}
+function itemsOf(era){return MERGED[era]||FEATURED_BY_ERA[era]||[]}
+async function loadEra(era,force){
+ const st=STATE[era];if(st&&st.k==="loading")return;if(!force&&st&&st.k==="done")return;
+ STATE[era]={k:"loading",n:0};refreshLive();
+ await BOOT;
+ if(META&&META.eras&&META.eras[era]){
+  try{const r=await fetch("data/"+era+".json");
+   if(r.ok){const j=await r.json();
+    setMerged(era,j.items.map(o=>({id:"w:"+o.t,title:o.t,year:o.y||null,era,cat:o.c,wiki:o.t,thumb:o.img||null,desc:o.d||null})));
+    STATE[era]={k:"done"};refresh();return}}catch(e){}
+ }
+ if(!force){const c=store.get("aa-era-"+era,null);
+  if(c&&Date.now()-c.d<14*864e5&&c.items&&c.items.length){setMerged(era,c.items);STATE[era]={k:"done"};refresh();return}}
+ harvest(era,n=>{STATE[era]={k:"loading",n};refreshLive()}).then(items=>{
+  if(!items.length){STATE[era]={k:"failed"};refresh();return}
+  store.set("aa-era-"+era,{d:Date.now(),items});
+  setMerged(era,items);STATE[era]={k:"done"};refresh();
+ });
+}
+
+/* ---------- Fotos ---------- */
+const REFS=new Map();
+function firstHit(q,host){return collect({action:"query",generator:"search",gsrsearch:q,gsrnamespace:"0",gsrlimit:"1",prop:"pageimages",piprop:"thumbnail",pithumbsize:"900"},host,1).then(r=>r[0]||null)}
+function photoRef(item){
+ if(REFS.has(item.id))return REFS.get(item.id);
+ let p;
+ if(item.wiki)p=Promise.resolve({thumb:item.thumb||null,title:item.wiki,host:DE});
+ else p=(async()=>{let title=null;
+  for(const[q,h]of[[item.title+" "+CATS[item.cat].h,DE],[item.title,DE],[item.title,EN]]){
+   const hit=await firstHit(q,h);if(!hit)continue;if(!title&&h===DE)title=hit.title;
+   if(hit.thumb)return{thumb:hit.thumb,title:title||hit.title,host:title?DE:h}}
+  return{thumb:null,title,host:DE}})();
+ REFS.set(item.id,p);return p;
+}
+function photoHTML(item,cls=""){
+ return `<div class="photo ${cls}" data-pid="${esc(item.id)}" style="--tint:${ERAS[item.era].c}">${svg(item.cat)}</div>`;
+}
+const io=("IntersectionObserver" in window)?new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);fillPhoto(e.target)})},{rootMargin:"300px"}):null;
+function fillPhoto(el){
+ const item=ITEMS.get(el.dataset.pid);if(!item)return;
+ BOOT.then(()=>photoRef(item)).then(r=>{
+  if(!r.thumb){el.classList.add("done");return}
+  const img=new Image();img.alt="";img.decoding="async";
+  img.onload=()=>{img.classList.add("on");el.classList.add("done")};img.onerror=()=>el.classList.add("done");
+  img.src=r.thumb;el.appendChild(img);
+ });
+}
+function observePhotos(root){root.querySelectorAll(".photo[data-pid]").forEach(el=>io?io.observe(el):fillPhoto(el))}
+
+/* ---------- Hilfen ---------- */
+const $app=document.getElementById("app");
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const fmt=n=>n.toLocaleString("de-DE");
+const yearText=x=>x.year?String(x.year):"o. J.";
+const heroOf=e=>(FEATURED_BY_ERA[e]||[]).find(x=>x.title===ERAS[e].hero)||FEATURED_BY_ERA[e][0];
+const countCats=(era,cats)=>itemsOf(era).reduce((a,x)=>a+(cats.includes(x.cat)?1:0),0);
+const itemHref=x=>"#/item/"+encodeURIComponent(x.id);
+const bar=title=>`<header class="bar"><button class="back" data-action="back" aria-label="Zurück">‹</button><h1>${esc(title)}</h1></header>`;
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function toast(t){const el=document.createElement("div");el.className="toast";el.textContent=t;document.body.appendChild(el);setTimeout(()=>el.remove(),1800)}
+async function copyText(t){
+ try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t);return true}}catch(e){}
+ const ta=document.createElement("textarea");ta.value=t;ta.setAttribute("readonly","");ta.style.cssText="position:fixed;top:0;left:0;opacity:0";
+ document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand("copy")}catch(e){}ta.remove();return ok;
+}
+function bannerHTML(era){
+ const s=STATE[era];if(!s)return"";
+ if(s.k==="loading")return`<div class="banner"><div class="spin"></div><div><b>Vollständiger Bestand wird geladen</b><small>${s.n?fmt(s.n)+" Einträge gefunden …":"Quellen werden durchsucht …"}</small></div></div>`;
+ if(s.k==="failed")return`<div class="banner"><div><b>Keine Internetverbindung</b><small>Angezeigt werden die Highlights.</small></div><button data-action="retry" data-era="${era}">Erneut</button></div>`;
+ return"";
+}
+function tileHTML(href,era,title,sub,sil,cats){
+ const loading=STATE[era]&&STATE[era].k==="loading";
+ return`<a class="tile" href="${href}"><div class="photo ico done" style="--tint:${ERAS[era].c}">${svg(sil)}</div>
+  <div class="txt"><b>${esc(title)}</b><small>${esc(sub)}</small><em data-count="${cats.join("")}">${fmt(countCats(era,cats))} Einträge${loading?'<span class="spin sm"></span>':""}</em></div><span class="chev">›</span></a>`;
+}
+function tasksHTML(list,hints){
+ const show=hints&&isTeacher();
+ return`<ol class="tasks">${list.map(([afb,t],i)=>{const k=t.indexOf(" ");
+  return`<li><span class="afb">AFB ${afb}</span><span><b>${esc(t.slice(0,k))}</b>${esc(t.slice(k))}${show&&hints[i]?`<details class="hint"><summary>Lösungshinweise</summary><p>${esc(hints[i])}</p></details>`:""}</span></li>`}).join("")}</ol>`;
+}
+function tasksText(title,list,hints){return title+"\n\n"+list.map(([afb,t],i)=>`${i+1}. (Anforderungsbereich ${afb}) ${t}`+(hints&&hints[i]?`\n   Lösungshinweise: ${hints[i]}`:"")).join("\n")}
+function taskButtons(key){
+ return`<button class="btn" data-action="copy-tasks" data-era="${key}">${ico("copy")}Aufgaben kopieren</button>${isTeacher()?`<button class="btn" data-action="copy-tasks" data-era="${key}" data-hints="1">${ico("copy")}Mit Lösungen kopieren</button>`:""}`;
+}
+
+/* ---------- Willkommen ---------- */
+function viewWelcome(){
+ return`<div class="welcome"><img src="${LOGO}" alt="Arsenal Atlas"><h1>ARSENAL <span>ATLAS</span></h1>
+ <p>Fahrzeuge, Waffen und Ausrüstung deutscher Streitkräfte von 1871 bis heute, mit Zeitleisten, historischer Einordnung, Quiz und Arbeitsaufträgen.</p>
+ <div class="label">Wer nutzt die App?</div>
+ <div class="roles"><button class="role" data-action="set-role" data-v="s"><svg class="ico24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span><b>Ich bin Schülerin oder Schüler</b><small>Entdecken, Aufgaben lösen, Quiz spielen, eigene Mappe anlegen</small></span></button>
+ <button class="role" data-action="set-role" data-v="t"><svg class="ico24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg><span><b>Ich bin Lehrkraft</b><small>Zusätzlich Lösungshinweise, Präsentationsmodus und didaktische Hinweise</small></span></button></div>
+ <p style="font-size:13px">Die Auswahl lässt sich jederzeit unter „Anzeige“ ändern. Es werden keine persönlichen Daten erhoben.</p></div>`;
+}
+
+/* ---------- Startseite ---------- */
+function viewHome(){
+ return`<div class="view"><div class="head"><img src="${LOGO}" alt=""><div><div class="t">ARSENAL <span>ATLAS</span></div><p>Deutsche Militärgeschichte in Technik und Kontext, 1871 bis heute</p><button class="rolechip" data-action="switch-role">${isTeacher()?"Ansicht für Lehrkräfte":"Ansicht für Schüler"} · wechseln</button></div>
+ <a class="gear" href="#/settings" aria-label="Anzeige einstellen">${ico("sliders")}</a></div>
+ <div class="pad"><div class="label" style="margin-bottom:12px">${isTeacher()?"Für den Unterricht":"Lernen und üben"}</div><div class="school">
+  <a class="stile" href="#/quiz" data-action="quiz-home">${ico("quiz")}<b>Quiz</b><small>10 Fragen zu einer oder allen Epochen</small></a>
+  <a class="stile" href="#/mappe">${ico("folder")}<b>${isTeacher()?"Unterrichtsmappe":"Meine Mappe"}</b><small>${isTeacher()?"Sammeln, vergleichen, präsentieren":"Sammeln, vergleichen, Referat halten"}</small><em>${MAPPE.length} gespeichert</em></a>
+  <a class="stile" href="#/aufgaben">${ico("star")}<b>Aufgaben</b><small>${isTeacher()?"Alle Arbeitsaufträge mit Lösungshinweisen":"Arbeitsaufträge zu allen Epochen"}</small></a>
+  <a class="stile" href="#/glossar">${ico("book")}<b>Glossar</b><small>${GLOSSAR.length} Fachbegriffe kurz erklärt</small></a>
+  ${isTeacher()?`<a class="stile wide" href="#/lehrkraefte">${ico("info")}<div><b>Für Lehrkräfte</b><small>Einsatzideen, didaktische Hinweise, Datenschutz</small></div></a>`:""}
+ </div></div>
+ <div class="label pad" style="margin:28px 0 14px">Zeitraum wählen</div>
+ ${TIMELINE.map(e=>{const E=ERAS[e],h=heroOf(e),done=STATE[e]&&STATE[e].k==="done";
+  return`<a class="station" href="#/era/${e}" style="--c:${E.c}"><span class="dot"></span><div class="col"><span class="yr">${E.r}</span>
+  <div class="hero">${photoHTML(h)}<div class="shade"></div><div class="cap"><b>${E.n}</b><small>${E.sub}</small></div></div>
+  <div class="meta-row"><span>${done?fmt(itemsOf(e).length)+" Einträge":META&&META.eras&&META.eras[e]?"Über "+fmt(META.eras[e].count)+" Einträge":(FEATURED_BY_ERA[e]||[]).length+" Highlights · vollständiger Bestand beim Öffnen"}</span><span class="chev">›</span></div></div></a>`}).join("")}
+ <p class="credit">Fotos und Artikeltexte: Wikipedia und Wikimedia Commons</p></div>`;
+}
+
+/* ---------- Epoche ---------- */
+function viewEra(e){
+ loadEra(e);const E=ERAS[e],C=ERA_CTX[e];
+ return`${bar(E.n)}<div class="view"><div class="era-hero">${photoHTML(heroOf(e))}<div class="shade"></div>
+ <div class="cap"><span class="yr">${E.r}</span><b>${E.n}</b><small>${E.sub}</small></div></div>
+ <div class="pad"><p class="summary">${E.s}</p><div id="live">${bannerHTML(e)}</div>
+ <div class="sec"><div class="label">Was möchtest du sehen?</div><div class="tiles">
+ ${Object.entries(GROUPS).map(([k,g])=>tileHTML(k==="vehicles"?`#/era/${e}/vehicles`:`#/era/${e}/list/${k}`,e,g.t,g.s,g.sil,g.cats)).join("")}
+ </div></div>
+ <div class="sec"><div class="label">Wichtige Daten</div><ul class="events">${C.ev.map(([y,t])=>`<li><b>${y}</b><span>${esc(t)}</span></li>`).join("")}</ul></div>
+ <div class="sec"><div class="ctx"><b>Folgen und Opfer</b>${esc(C.folgen)}</div></div>
+ <div class="sec"><div class="label">Arbeitsaufträge</div>${tasksHTML(C.tasks,TASK_HINTS[e])}
+  <div class="btnrow">${taskButtons(e)}
+  <button class="btn" data-action="quiz-start" data-era="${e}">${ico("quiz")}Quiz zu dieser Epoche</button>
+  <button class="btn" data-action="present-era" data-era="${e}">${ico("screen")}${isTeacher()?"Highlights präsentieren":"Highlights als Diashow"}</button></div></div>
+ </div></div>`;
+}
+function viewVehicles(e){
+ loadEra(e);const E=ERAS[e];
+ return`${bar("Fahrzeuge · "+E.n)}<div class="view pad"><div style="padding-top:16px"><span class="yr">${E.r}</span>
+ <div style="font:800 40px/1.05 var(--cond);letter-spacing:.04em;color:var(--brass-hi)">FAHRZEUGE</div>
+ <div style="color:var(--mute);font-size:14px">${E.n} · nach Einsatzbereich</div></div>
+ <div id="live">${bannerHTML(e)}</div><div class="sec"><div class="label">Bereich wählen</div><div class="tiles">
+ ${Object.entries(DOMAINS).map(([k,d])=>tileHTML(`#/era/${e}/domain/${k}`,e,d.t,d.s,d.sil,d.cats)).join("")}</div></div></div>`;
+}
+
+/* ---------- Liste ---------- */
+const LISTSTATE={q:"",cat:null,key:""};
+function viewList(e,kind,key){
+ loadEra(e);const E=ERAS[e];
+ const scope=kind==="domain"?DOMAINS[key]:GROUPS[key];const title=kind==="domain"?scope.lt:scope.t;
+ const k=e+kind+key;if(LISTSTATE.key!==k){LISTSTATE.key=k;LISTSTATE.q="";LISTSTATE.cat=null}
+ return`${bar(title+" · "+E.n)}<div class="view"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+ <input id="q" type="search" placeholder="${esc(title)} durchsuchen" value="${esc(LISTSTATE.q)}" autocomplete="off" aria-label="Suchen"></label>
+ <div id="listbody" data-era="${e}" data-cats="${scope.cats.join("")}">${listBody(e,scope.cats)}</div></div>`;
+}
+function rowHTML(x,removable){
+ return`<a class="row" href="${itemHref(x)}">${photoHTML(x)}<div class="txt"><small>${yearText(x)} · ${CATS[x.cat].s}${removable?" · "+ERAS[x.era].n:""}${x.featured&&!removable?' <span class="star">★</span>':""}</small><b>${esc(x.title)}</b>${x.info||x.desc?`<p>${esc(x.info||x.desc)}</p>`:""}</div>${removable?`<button class="rm" data-action="mappe-remove" data-id="${esc(x.id)}" aria-label="Aus der Mappe entfernen">✕</button>`:'<span class="chev">›</span>'}</a>`;
+}
+function listBody(e,cats){
+ const all=itemsOf(e).filter(x=>cats.includes(x.cat));
+ const q=LISTSTATE.q.trim().toLowerCase();
+ const list=all.filter(x=>(!LISTSTATE.cat||x.cat===LISTSTATE.cat)&&(!q||x.title.toLowerCase().includes(q)||(x.info||x.desc||"").toLowerCase().includes(q)||String(x.year||"").includes(q)));
+ const groups=new Map();list.forEach(x=>{const y=x.year||0;if(!groups.has(y))groups.set(y,[]);groups.get(y).push(x)});
+ const ys=[...groups.keys()].sort((a,b)=>a===0?1:b===0?-1:a-b);
+ const seen=new Set(),decades=[],counts={};all.forEach(x=>counts[x.cat]=(counts[x.cat]||0)+1);
+ const feat=all.filter(x=>x.featured);
+ let h="";
+ if(!q&&!LISTSTATE.cat&&feat.length)
+  h+=`<div class="feat"><div class="label">Bekannteste</div><div class="hscroll">${feat.map(x=>`<a class="fcard" href="${itemHref(x)}">${photoHTML(x)}<div class="t"><small>${yearText(x)} · ${CATS[x.cat].s}</small><b>${esc(x.title)}</b></div></a>`).join("")}</div></div>`;
+ if(cats.length>1)
+  h+=`<div class="hscroll chips"><button class="chip ${LISTSTATE.cat?"":"on"}" data-cat="">Alle <em>${fmt(all.length)}</em></button>${cats.map(c=>`<button class="chip ${LISTSTATE.cat===c?"on":""}" data-cat="${c}">${svg(c)}${CATS[c].s} <em>${fmt(counts[c]||0)}</em></button>`).join("")}</div>`;
+ let rows="";
+ for(const y of ys){
+  const its=groups.get(y).sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)||a.title.localeCompare(b.title,"de"));
+  let anchor="";if(y){const d=Math.floor(y/10)*10;if(!seen.has(d)){seen.add(d);decades.push(d);anchor=` id="dec${d}"`}}
+  rows+=`<div class="yh"${anchor}><b>${y||"Ohne Jahresangabe"}</b><hr><small>${fmt(its.length)}</small></div>`+its.map(x=>rowHTML(x,false)).join("");
+ }
+ if(decades.length>1)h+=`<div class="hscroll decades">${decades.map(d=>`<button data-dec="${d}">${d}er</button>`).join("")}</div>`;
+ h+=`<div class="pad" id="live">${bannerHTML(e)}</div>`;
+ h+=`<div class="count">${fmt(list.length)} Einträge, sortiert nach Einführungsjahr</div>`;
+ h+=list.length?rows:`<div class="empty"><b>Keine Treffer</b>Suchbegriff ändern oder Filter zurücksetzen.</div>`;
+ return h;
+}
+
+/* ---------- Detail ---------- */
+const inMappe=id=>MAPPE.some(x=>x.id===id);
+function mappeBtn(id){return inMappe(id)?`<button class="btn primary" data-action="mappe-toggle" data-id="${esc(id)}">${ico("star")}In der Mappe</button>`:`<button class="btn" data-action="mappe-toggle" data-id="${esc(id)}">${ico("star")}In die Unterrichtsmappe</button>`}
+function viewItem(id){
+ const x=ITEMS.get(id);if(!x)return viewHome();
+ const E=ERAS[x.era],ctx=CTX[x.title];
+ setTimeout(()=>loadSummary(x),0);
+ return`${bar(x.title)}<div class="view"><div class="d-photo">${photoHTML(x)}<span class="tag" style="background:${E.c}">${E.n}</span></div>
+ <div class="d-body"><div class="label">${yearText(x)} · ${CATS[x.cat].n}</div><h2>${esc(x.title)}</h2><div id="desc">${!x.info&&x.desc?`<div class="d-desc">${esc(x.desc)}</div>`:""}</div>
+ ${x.info?`<div class="d-info">${esc(x.info)}</div>`:""}
+ ${ctx?`<div class="ctx"><b>Historische Einordnung</b>${esc(ctx)}</div>`:""}
+ <dl class="facts"><div><dt>Einführung</dt><dd>${x.year||"unbekannt"}</dd></div><div><dt>Epoche</dt><dd>${E.n} · ${E.r}</dd></div>
+ <div><dt>Kategorie</dt><dd>${CATS[x.cat].n}</dd></div><div><dt>Kennwert</dt><dd>${esc(x.spec||"–")}</dd></div></dl>
+ <div class="btnrow" style="margin-top:0" id="mbtn">${mappeBtn(x.id)}<a class="btn" href="#/era/${x.era}">Zur Epoche ${E.n}</a></div>
+ <div class="wiki"><div class="label" style="margin-top:8px">Aus Wikipedia</div><div id="wiki"><div class="loading"><div class="spin"></div>Artikel wird geladen …</div></div></div></div></div>`;
+}
+function citation(title,url){
+ const d=new Date().toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"});
+ return`Wikipedia-Autoren: „${title}“. In: Wikipedia – Die freie Enzyklopädie. URL: ${url} (abgerufen am ${d}).`;
+}
+async function loadSummary(x){
+ await BOOT;const r=await photoRef(x);let s=null;
+ if(r.title){try{const res=await fetch(`https://${r.host}/api/rest_v1/page/summary/${encodeURIComponent(r.title.replace(/ /g,"_"))}`);if(res.ok)s=await res.json()}catch(e){}}
+ const box=document.getElementById("wiki");if(!box||location.hash!==itemHref(x))return;
+ if(s&&s.extract){
+  const url=(s.content_urls&&s.content_urls.desktop&&s.content_urls.desktop.page)||`https://${r.host}/wiki/${encodeURIComponent(r.title.replace(/ /g,"_"))}`;
+  const murl=(s.content_urls&&s.content_urls.mobile&&s.content_urls.mobile.page)||url;
+  const cite=citation(s.title||r.title,decodeURI(url));
+  if(s.description&&!x.info){const d=document.getElementById("desc");if(d)d.innerHTML=`<div class="d-desc">${esc(s.description)}</div>`}
+  box.innerHTML=`<p>${esc(s.extract)}</p><a class="more" href="${esc(murl)}" target="_blank" rel="noopener">Ganzen Artikel lesen<span>↗</span></a>
+  <div class="cite">So zitierst du diesen Artikel:<code>${esc(cite)}</code><button class="btn" data-action="copy" data-text="${esc(cite)}">${ico("copy")}Quelle kopieren</button></div>
+  <div class="lic">Text: Wikipedia, CC BY-SA 4.0. Bild: Wikimedia Commons, Lizenz siehe Bildseite.</div>`;
+ }else box.innerHTML=`<div class="loading">${navigator.onLine===false?"Ohne Internetverbindung ist der Wikipedia-Artikel nicht verfügbar.":"Zu diesem Eintrag ist kein Wikipedia-Artikel verfügbar."}</div>`;
+}
+
+/* ---------- Unterrichtsmappe ---------- */
+function saveMappe(){store.set("aa-mappe",MAPPE)}
+function toggleMappe(id){
+ const x=ITEMS.get(id);if(!x)return;
+ if(inMappe(id)){MAPPE=MAPPE.filter(m=>m.id!==id);toast("Aus der Mappe entfernt")}
+ else{MAPPE.push({id:x.id,title:x.title,year:x.year,era:x.era,cat:x.cat,info:x.info||null,spec:x.spec||null,wiki:x.wiki||null,thumb:x.thumb||null,featured:!!x.featured});toast("In die Mappe gelegt")}
+ saveMappe();
+}
+const mappeSorted=()=>MAPPE.slice().sort((a,b)=>(a.year||9999)-(b.year||9999));
+function viewMappe(){
+ const list=mappeSorted();
+ if(!list.length)return`${bar("Unterrichtsmappe")}<div class="view"><div class="empty"><b>Die Mappe ist leer</b>Öffne einen Eintrag und tippe auf „In die Unterrichtsmappe“.<br>So stellst du Fahrzeuge und Waffen für eine Stunde zusammen, vergleichst sie und präsentierst sie am Beamer.</div><div class="pad" style="text-align:center"><a class="btn primary" href="#/">Zum Zeitstrahl</a></div></div>`;
+ return`${bar("Unterrichtsmappe")}<div class="view"><div class="pad"><div class="btnrow" style="margin-top:16px">
+  <button class="btn primary" data-action="present-mappe">${ico("screen")}Präsentation starten</button>
+  <button class="btn" data-action="copy-mappe">${ico("copy")}Als Text kopieren</button>
+  <button class="btn" data-action="mappe-clear">Mappe leeren</button></div>
+  <div class="sec"><div class="label">Vergleich · ${list.length} Einträge nach Jahr</div><div class="tablewrap"><table><thead><tr><th>Jahr</th><th>Bezeichnung</th><th>Epoche</th><th>Kategorie</th><th>Kennwert</th></tr></thead><tbody>
+  ${list.map(x=>`<tr><td class="y">${yearText(x)}</td><td><a href="${itemHref(x)}" style="color:var(--brass-hi);font-weight:600">${esc(x.title)}</a></td><td>${ERAS[x.era].n}</td><td>${CATS[x.cat].s}</td><td>${esc(x.spec||"–")}</td></tr>`).join("")}
+  </tbody></table></div></div><div class="label sec">Einträge</div></div>
+  <div style="margin-top:6px">${list.map(x=>rowHTML(x,true)).join("")}</div></div>`;
+}
+function mappeText(){return"Unterrichtsmappe – Arsenal Atlas\n\n"+mappeSorted().map(x=>`${yearText(x)} – ${x.title} (${ERAS[x.era].n}, ${CATS[x.cat].s})${x.info?": "+x.info:""}`).join("\n")}
+
+/* ---------- Präsentation ---------- */
+let PRES=null;
+function present(list,start=0){if(!list.length)return;PRES={list,i:start};renderPres()}
+function renderPres(){
+ let el=document.getElementById("pres");
+ if(!PRES){if(el)el.remove();document.body.classList.remove("noscroll");return}
+ if(!el){el=document.createElement("div");el.id="pres";el.setAttribute("role","dialog");el.setAttribute("aria-label","Präsentation");document.body.appendChild(el);
+  let sx=null;el.addEventListener("touchstart",ev=>{sx=ev.touches[0].clientX},{passive:true});
+  el.addEventListener("touchend",ev=>{if(sx===null)return;const dx=ev.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>60)presMove(dx<0?1:-1)})}
+ document.body.classList.add("noscroll");
+ const x=PRES.list[PRES.i],E=ERAS[x.era],ctx=CTX[x.title];
+ el.innerHTML=`<div class="p-media">${photoHTML(x)}</div><div class="p-text"><div><span class="tag static" style="background:${E.c}">${E.n}</span></div>
+  <div class="label">${yearText(x)} · ${CATS[x.cat].n}</div><h2>${esc(x.title)}</h2>${x.info?`<p>${esc(x.info)}</p>`:""}${x.spec?`<div class="p-spec">${esc(x.spec)}</div>`:""}
+  ${ctx?`<div class="ctx"><b>Historische Einordnung</b>${esc(ctx)}</div>`:""}</div>
+  <div class="p-bar"><button data-action="pres-close">✕ Beenden</button><span>${PRES.i+1} / ${PRES.list.length}</span>
+  <div><button data-action="pres-prev" aria-label="Zurück" ${PRES.i?"":"disabled"}>‹ Zurück</button><button data-action="pres-next" aria-label="Weiter" ${PRES.i<PRES.list.length-1?"":"disabled"}>Weiter ›</button></div></div>`;
+ observePhotos(el);
+}
+function presMove(d){if(!PRES)return;const n=PRES.i+d;if(n<0||n>=PRES.list.length)return;PRES.i=n;renderPres()}
+document.addEventListener("keydown",ev=>{if(!PRES)return;
+ if(ev.key==="ArrowRight"||ev.key===" "||ev.key==="PageDown"){ev.preventDefault();presMove(1)}
+ else if(ev.key==="ArrowLeft"||ev.key==="PageUp"){ev.preventDefault();presMove(-1)}
+ else if(ev.key==="Escape"){PRES=null;renderPres()}});
+
+/* ---------- Quiz ---------- */
+let QUIZ=null;
+function qYear(x){
+ const opts=new Set([x.year]);let g=0;
+ while(opts.size<4&&g++<200){const y=x.year+(Math.floor(Math.random()*12)+2)*(Math.random()<.5?-1:1);if(y<=2026&&[...opts].every(o=>Math.abs(o-y)>=2))opts.add(y)}
+ return{q:`In welchem Jahr wurde „${x.title}“ eingeführt?`,opts:[...opts].sort((a,b)=>a-b).map(y=>({t:String(y),ok:y===x.year})),expl:`${x.title} wurde ${x.year} eingeführt. ${x.info}`,item:x};
+}
+function qEra(x){
+ const others=shuffle(Object.keys(ERAS).filter(e=>e!==x.era)).slice(0,3);
+ return{q:`Zu welcher Epoche gehört „${x.title}“?`,opts:shuffle([x.era,...others]).map(e=>({t:`${ERAS[e].n} (${ERAS[e].r.replace(/ /g,"")})`,ok:e===x.era})),expl:`${x.title} (${x.year}) gehört zur Epoche ${ERAS[x.era].n}. ${x.info}`,item:x};
+}
+function qInfo(x,pool){
+ const cand=shuffle(pool.filter(p=>p.id!==x.id&&p.info&&p.info!==x.info)),same=cand.filter(p=>p.cat===x.cat);
+ const others=(same.length>=3?same:cand).slice(0,3);if(others.length<3)return null;
+ return{q:`Welche Beschreibung passt zu „${x.title}“?`,opts:shuffle([x,...others]).map(p=>({t:p.info,ok:p.id===x.id})),expl:`Richtig: ${x.info}`,item:x,long:true};
+}
+function qOrder(pool){
+ const byYear=new Map();shuffle(pool).forEach(p=>{if(!byYear.has(p.year))byYear.set(p.year,p)});
+ const four=[...byYear.values()].slice(0,4);if(four.length<4)return null;
+ const first=four.reduce((a,b)=>a.year<b.year?a:b);
+ return{q:"Was wurde zuerst eingeführt?",opts:four.map(p=>({t:p.title,ok:p===first})),expl:four.slice().sort((a,b)=>a.year-b.year).map(p=>`${p.year}: ${p.title}`).join(" · "),item:null,orderItems:four};
+}
+function makeQuiz(era){
+ const pool=FEATURED.filter(x=>!era||x.era===era);
+ const plan=era?["year","info","order","year","info","order","year","info","year","order"]:["year","era","info","order","year","era","info","year","order","era"];
+ const used=new Set(),qs=[];
+ for(const t of plan){let q=null,g=0;
+  while(!q&&g++<30){
+   if(t==="order"){q=qOrder(pool);break}
+   const x=pick(pool.filter(p=>!used.has(p.id)));if(!x)break;
+   q=t==="year"?qYear(x):t==="era"?qEra(x):qInfo(x,pool);}
+  if(q){qs.push(q);if(q.item)used.add(q.item.id)}}
+ return{era,qs,i:0,score:0,answered:null,wrong:[]};
+}
+function viewQuiz(){
+ if(!QUIZ){
+  return`${bar("Quiz")}<div class="view pad"><p class="summary">Zehn Fragen zu Jahreszahlen, Epochen und Beschreibungen. Geeignet zur Wiederholung, auch gemeinsam am Beamer.</p>
+  <div class="sec"><div class="label">Worüber?</div><div class="scopes"><button class="scope all" data-action="quiz-start" data-era="">Alle Epochen</button>
+  ${TIMELINE.map(e=>`<button class="scope" style="--c:${ERAS[e].c}" data-action="quiz-start" data-era="${e}"><i></i>${ERAS[e].n}</button>`).join("")}</div></div></div>`;
+ }
+ const scopeName=QUIZ.era?ERAS[QUIZ.era].n:"Alle Epochen";
+ if(QUIZ.i>=QUIZ.qs.length){
+  const n=QUIZ.qs.length,s=QUIZ.score;
+  const msg=s>=n*.9?"Ausgezeichnet!":s>=n*.7?"Gut gemacht.":s>=n*.5?"Solide Grundlage.":"Da geht noch mehr. Schau dir die Epochen noch einmal an.";
+  return`${bar("Quiz · "+scopeName)}<div class="view pad"><div class="score">${s} von ${n}</div><p class="summary" style="margin-top:8px">${msg}</p>
+  ${QUIZ.wrong.length?`<div class="sec"><div class="label">Zum Nachlesen</div>${QUIZ.wrong.map(w=>`<div class="feedback" style="margin-top:10px"><b>${esc(w.q)}</b>${esc(w.expl)}</div>`).join("")}</div>`:""}
+  <div class="btnrow" style="margin-top:22px"><button class="btn primary" data-action="quiz-start" data-era="${QUIZ.era||""}">Neues Quiz</button><button class="btn" data-action="quiz-reset">Andere Auswahl</button></div></div>`;
+ }
+ const q=QUIZ.qs[QUIZ.i],a=QUIZ.answered;
+ const keys="ABCD";
+ return`${bar("Quiz · "+scopeName)}<div class="view pad"><div class="q-progress"><i style="width:${QUIZ.i/QUIZ.qs.length*100}%"></i></div>
+ <div class="label" style="margin-top:10px">Frage ${QUIZ.i+1} von ${QUIZ.qs.length} · ${QUIZ.score} richtig</div>
+ ${q.item&&q.long!==true?`<div class="q-photo">${photoHTML(q.item)}</div>`:""}
+ <div class="q-text">${esc(q.q)}</div>
+ <div class="opts">${q.opts.map((o,i)=>{let c="";if(a!==null){if(o.ok)c="ok";else if(i===a)c="bad"}
+  return`<button class="opt ${q.long?"long":""} ${c}" data-action="quiz-answer" data-i="${i}" ${a!==null?"disabled style=\"opacity:1\"":""}><span class="k">${keys[i]}</span><span>${esc(o.t)}</span></button>`}).join("")}</div>
+ ${a!==null?`<div class="feedback"><b class="${q.opts[a].ok?"ok":"bad"}">${q.opts[a].ok?"Richtig!":"Leider falsch."}</b>${esc(q.expl)}</div>
+ <div class="btnrow"><button class="btn primary" data-action="quiz-next">${QUIZ.i+1<QUIZ.qs.length?"Nächste Frage":"Ergebnis anzeigen"}</button></div>`:""}</div>`;
+}
+
+/* ---------- Glossar ---------- */
+let GLQ="";
+function viewGlossar(){
+ return`${bar("Glossar")}<div class="view"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+ <input id="gq" type="search" placeholder="Begriff suchen" value="${esc(GLQ)}" autocomplete="off" aria-label="Begriff suchen"></label><div class="pad" id="glbody">${glossarBody()}</div></div>`;
+}
+function glossarBody(){
+ const q=GLQ.trim().toLowerCase();
+ const list=GLOSSAR.filter(([t,d])=>!q||t.toLowerCase().includes(q)||d.toLowerCase().includes(q)).sort((a,b)=>a[0].localeCompare(b[0],"de"));
+ return list.length?list.map(([t,d])=>`<div class="gl"><b>${esc(t)}</b><span>${esc(d)}</span></div>`).join(""):`<div class="empty"><b>Kein Begriff gefunden</b></div>`;
+}
+
+/* ---------- Lehrkräfte ---------- */
+function viewTeacher(){
+ return`${bar("Für Lehrkräfte")}<div class="view pad prose">
+ <h3>Wozu diese App?</h3>
+ <p>Arsenal Atlas zeigt Fahrzeuge, Waffen und Ausrüstung deutscher Streitkräfte von 1871 bis heute. Die Technik dient als Zugang zur Geschichte: Jede Epoche ist mit Zeitleiste, Folgen und Opfern sowie Arbeitsaufträgen verbunden. Bei zentralen Objekten erklärt eine historische Einordnung Zusammenhänge wie Zwangsarbeit, Kriegsverbrechen oder politische Debatten.</p>
+ <p>Geeignet für Geschichte sowie Politik und Sozialkunde, empfohlen ab Klasse 8.</p>
+ <h3>Ideen für den Einsatz</h3>
+ <ul><li><b>Einstieg:</b> Den Zeitstrahl am Beamer zeigen und fragen, was sich zwischen 1871 und heute verändert hat.</li>
+ <li><b>Gruppenarbeit:</b> Jede Gruppe übernimmt eine Epoche, bearbeitet die Arbeitsaufträge und stellt drei Objekte mit der Unterrichtsmappe vor.</li>
+ <li><b>Längsschnitt:</b> Ein Objekttyp durch alle Epochen, z. B. Helm, Kampfpanzer oder Gewehr. Die Vergleichstabelle der Mappe hilft dabei.</li>
+ <li><b>Sicherung:</b> Das Quiz am Ende der Stunde gemeinsam lösen.</li>
+ <li><b>Quellenarbeit:</b> Den Wikipedia-Text mit der Einordnung der App vergleichen und die Zitierhilfe nutzen.</li></ul>
+ <h3>Aufgaben</h3><p>Zu jeder Epoche gibt es vier Arbeitsaufträge in den Anforderungsbereichen I bis III, dazu epochenübergreifende Aufgaben. Lösungshinweise sind nur in der Ansicht für Lehrkräfte sichtbar und standardmäßig eingeklappt, damit sie am Beamer nicht versehentlich zu sehen sind.</p>
+ <div class="btnrow"><a class="btn primary" href="#/aufgaben">Zu allen Aufgaben</a></div>
+ <h3>Didaktische Leitlinien</h3>
+ <p>Die App folgt dem Beutelsbacher Konsens: Sie will nicht überwältigen, stellt umstrittene Fragen wie Waffenlieferungen oder die Wehrpflicht als umstritten dar und soll Schülerinnen und Schüler zu einem eigenen Urteil befähigen. Beschreibungen sind sachlich gehalten und verherrlichen keine Waffen.</p>
+ <h3>Hinweise zu Bildern und Quellen</h3>
+ <ul><li>Fotos stammen aus Wikimedia Commons und werden automatisch passend zum Eintrag geladen. Prüfen Sie Bilder vor dem Einsatz am Beamer.</li>
+ <li>Historische Fotos können Hoheitszeichen der NS-Zeit zeigen. Ordnen Sie diese im Unterricht als historische Quelle ein.</li>
+ <li>Wikipedia eignet sich als Einstieg, ersetzt aber keine Fachliteratur. Jahreszahlen des vollständigen Bestands stammen aus Wikidata und können Lücken haben.</li></ul>
+ <h3>Technik und Datenschutz</h3>
+ <ul><li>Keine Anmeldung, keine Werbung, keine Auswertung des Nutzungsverhaltens.</li>
+ <li>Mappe und Einstellungen werden nur auf dem Gerät gespeichert.</li>
+ <li>Für Fotos und Artikeltexte ruft die App Wikipedia und Wikimedia Commons auf. Dabei wird wie bei jedem Webseitenaufruf die IP-Adresse an die Wikimedia Foundation übertragen.</li>
+ <li>Ohne Internet funktionieren Highlights, Zeitleisten, Aufgaben, Glossar und Quiz. Eine einmal geladene Epoche bleibt 14 Tage verfügbar.</li>
+ <li>Für den Beamer: Unter „Anzeige“ helle Darstellung und große Schrift wählen.</li></ul>
+ </div>`;
+}
+
+/* ---------- Aufgaben ---------- */
+function viewTasks(){
+ return`${bar("Aufgaben")}<div class="view pad prose">
+ <p>Die Aufgaben sind nach Anforderungsbereichen geordnet: <b>I</b> Wiedergeben, <b>II</b> Erklären und Vergleichen, <b>III</b> Beurteilen. Die Informationen findest du in der App bei der jeweiligen Epoche.</p>
+ ${TIMELINE.map(e=>`<h3>${ERAS[e].n} <span style="font:600 14px var(--mono);color:var(--mute)">${ERAS[e].r}</span></h3>${tasksHTML(ERA_CTX[e].tasks,TASK_HINTS[e])}<div class="btnrow">${taskButtons(e)}<a class="btn" href="#/era/${e}">Zur Epoche</a></div>`).join("")}
+ <h3>Epochenübergreifend</h3>${tasksHTML(CROSS_TASKS,CROSS_HINTS)}<div class="btnrow">${taskButtons("X")}</div></div>`;
+}
+
+/* ---------- Einstellungen ---------- */
+function viewSettings(){
+ const z=[[1,"Normal"],[1.15,"Groß"],[1.3,"Sehr groß"]],t=[["dark","Dunkel"],["light","Hell (Beamer)"]];
+ return`${bar("Anzeige")}<div class="view pad">
+ <div class="sec"><div class="label">Ansicht</div><div class="seg">${[["s","Schülerin / Schüler"],["t","Lehrkraft"]].map(([v,l])=>`<button class="${SET.role===v?"on":""}" data-action="set-role-only" data-v="${v}">${l}</button>`).join("")}</div>
+ <p class="note">In der Ansicht für Lehrkräfte sind Lösungshinweise und didaktische Hinweise sichtbar.</p></div>
+ <div class="sec"><div class="label">Schriftgröße</div><div class="seg">${z.map(([v,l])=>`<button class="${SET.zoom==v?"on":""}" data-action="set-zoom" data-v="${v}">${l}</button>`).join("")}</div></div>
+ <div class="sec"><div class="label">Darstellung</div><div class="seg">${t.map(([v,l])=>`<button class="${SET.theme===v?"on":""}" data-action="set-theme" data-v="${v}">${l}</button>`).join("")}</div>
+ <p class="note">Die helle Darstellung ist am Beamer und am Whiteboard besser lesbar.</p></div>
+ <div class="sec"><div class="label">Gespeicherte Daten</div><p class="note" style="margin:0 0 10px">Geladene Epochen bleiben 14 Tage auf dem Gerät. Hier kannst du sie neu laden lassen.</p>
+ <button class="btn" data-action="clear-cache">Geladene Epochen löschen</button></div></div>`;
+}
+
+/* ---------- Router ---------- */
+const SCROLL={};
+function route(){
+ const h=location.hash||"#/";const p=h.slice(2).split("/").map(s=>{try{return decodeURIComponent(s)}catch(e){return s}});
+ if(PRES){PRES=null;renderPres()}
+ let html;
+ if(!SET.role)html=viewWelcome();
+ else if(p[0]==="era"&&ERAS[p[1]]){
+  if(p[2]==="vehicles")html=viewVehicles(p[1]);
+  else if(p[2]==="domain"&&DOMAINS[p[3]])html=viewList(p[1],"domain",p[3]);
+  else if(p[2]==="list"&&GROUPS[p[3]])html=viewList(p[1],"group",p[3]);
+  else html=viewEra(p[1]);
+ }else if(p[0]==="item")html=viewItem(p.slice(1).join("/"));
+ else if(p[0]==="quiz")html=viewQuiz();
+ else if(p[0]==="mappe")html=viewMappe();
+ else if(p[0]==="glossar")html=viewGlossar();
+ else if(p[0]==="lehrkraefte")html=isTeacher()?viewTeacher():viewHome();
+ else if(p[0]==="aufgaben")html=viewTasks();
+ else if(p[0]==="settings")html=viewSettings();
+ else html=viewHome();
+ $app.innerHTML=html;observePhotos($app);
+ window.scrollTo(0,SCROLL[h]||0);
+}
+function rerender(){const y=window.scrollY;route();window.scrollTo(0,y)}
+function refresh(){
+ if(document.activeElement&&document.activeElement.id==="q"){refreshList();refreshLive();return}
+ if(/^#\/(quiz|item)/.test(location.hash))return;
+ rerender();
+}
+function refreshLive(){
+ const m=(location.hash||"#/").match(/^#\/era\/(\w)/);if(!m)return;const e=m[1];
+ const live=document.getElementById("live");if(live)live.innerHTML=bannerHTML(e);
+ document.querySelectorAll("[data-count]").forEach(el=>{const cats=el.dataset.count.split("");
+  el.innerHTML=fmt(countCats(e,cats))+" Einträge"+(STATE[e]&&STATE[e].k==="loading"?'<span class="spin sm"></span>':"")});
+}
+function refreshList(){const b=document.getElementById("listbody");if(!b)return;b.innerHTML=listBody(b.dataset.era,b.dataset.cats.split(""));observePhotos(b)}
+function goBack(){if(history.length>1)history.back();else location.hash="#/"}
+window.addEventListener("scroll",()=>{SCROLL[location.hash||"#/"]=window.scrollY},{passive:true});
+window.addEventListener("hashchange",route);
+$app.addEventListener("input",ev=>{
+ if(ev.target.id==="q"){LISTSTATE.q=ev.target.value;clearTimeout(window._t);window._t=setTimeout(refreshList,150)}
+ if(ev.target.id==="gq"){GLQ=ev.target.value;document.getElementById("glbody").innerHTML=glossarBody()}
+});
+document.addEventListener("click",async ev=>{
+ const chip=ev.target.closest(".chip[data-cat]");if(chip){LISTSTATE.cat=chip.dataset.cat||null;refreshList();return}
+ const dec=ev.target.closest("[data-dec]");
+ if(dec){const t=document.getElementById("dec"+dec.dataset.dec);if(t){const bar=document.querySelector(".bar");window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-(bar?bar.offsetHeight:52),behavior:"smooth"})}return}
+ const el=ev.target.closest("[data-action]");if(!el)return;
+ const a=el.dataset.action;
+ if(a!=="quiz-home")ev.preventDefault();
+ switch(a){
+  case"back":goBack();break;
+  case"retry":loadEra(el.dataset.era,true);refreshLive();break;
+  case"quiz-home":QUIZ=null;if(location.hash==="#/quiz")rerender();break;
+  case"quiz-start":QUIZ=makeQuiz(el.dataset.era||null);if(location.hash==="#/quiz")route();else location.hash="#/quiz";window.scrollTo(0,0);break;
+  case"quiz-reset":QUIZ=null;route();break;
+  case"quiz-answer":if(QUIZ&&QUIZ.answered===null){const i=+el.dataset.i,q=QUIZ.qs[QUIZ.i];QUIZ.answered=i;if(q.opts[i].ok)QUIZ.score++;else QUIZ.wrong.push(q);rerender()}break;
+  case"quiz-next":if(QUIZ){QUIZ.i++;QUIZ.answered=null;route();window.scrollTo(0,0)}break;
+  case"mappe-toggle":toggleMappe(el.dataset.id);{const b=document.getElementById("mbtn");if(b)b.firstElementChild.outerHTML=mappeBtn(el.dataset.id)}break;
+  case"mappe-remove":MAPPE=MAPPE.filter(m=>m.id!==el.dataset.id);saveMappe();rerender();break;
+  case"mappe-clear":if(el.dataset.confirm){MAPPE=[];saveMappe();rerender()}else{el.dataset.confirm="1";el.textContent="Wirklich leeren?";setTimeout(()=>{if(el.isConnected){delete el.dataset.confirm;el.textContent="Mappe leeren"}},3000)}break;
+  case"present-mappe":present(mappeSorted());break;
+  case"present-era":present(FEATURED_BY_ERA[el.dataset.era]||[]);break;
+  case"pres-close":PRES=null;renderPres();break;
+  case"pres-prev":presMove(-1);break;
+  case"pres-next":presMove(1);break;
+  case"copy":toast(await copyText(el.dataset.text)?"Kopiert":"Bitte den Text markieren und kopieren");break;
+  case"copy-tasks":{const e=el.dataset.era,withH=!!el.dataset.hints&&isTeacher();
+   const title=e==="X"?"Epochenübergreifende Arbeitsaufträge":`Arbeitsaufträge: ${ERAS[e].n} (${ERAS[e].r})`;
+   const list=e==="X"?CROSS_TASKS:ERA_CTX[e].tasks,hints=e==="X"?CROSS_HINTS:TASK_HINTS[e];
+   toast(await copyText(tasksText(title,list,withH?hints:null))?"Aufgaben kopiert":"Kopieren nicht möglich");break}
+  case"set-role":SET.role=el.dataset.v;store.set("aa-set",SET);if(location.hash&&location.hash!=="#/")location.hash="#/";else route();window.scrollTo(0,0);break;
+  case"set-role-only":SET.role=el.dataset.v;store.set("aa-set",SET);rerender();break;
+  case"switch-role":SET.role=null;store.set("aa-set",SET);route();window.scrollTo(0,0);break;
+  case"copy-mappe":toast(await copyText(mappeText())?"Mappe kopiert":"Kopieren nicht möglich");break;
+  case"set-zoom":SET.zoom=+el.dataset.v;store.set("aa-set",SET);applySet();rerender();break;
+  case"set-theme":SET.theme=el.dataset.v;store.set("aa-set",SET);applySet();rerender();break;
+  case"clear-cache":Object.keys(ERAS).forEach(e=>{store.del("aa-era-"+e);delete MERGED[e];delete STATE[e]});toast("Geladene Epochen gelöscht");break;
+ }
+});
+route();
+</script>
+</body>
+</html>
