@@ -167,12 +167,13 @@ async function resolveQids(titles) {
 }
 
 /** Alles, was laut Wikidata von einer Teilstreitkraft betrieben oder verwendet wurde. */
-async function wikidataOperated(qids, log) {
-  if (!qids.length) return new Map();
-  const values = qids.map((q) => "wd:" + q).join(" ");
+async function wikidataOperated(qids, stateQids, log) {
+  if (!qids.length && !stateQids.length) return new Map();
+  const values = qids.map((q) => "wd:" + q).join(" ") || "wd:Q0";
+  const states = stateQids.map((q) => "wd:" + q).join(" ") || "wd:Q0";
   const query = `SELECT DISTINCT ?article ?start WHERE {
-    VALUES ?op { ${values} }
-    { ?item p:P137 ?st . ?st ps:P137 ?op . } UNION { ?item p:P1535 ?st . ?st ps:P1535 ?op . }
+    { VALUES ?op { ${values} } { ?item p:P137 ?st . ?st ps:P137 ?op . } UNION { ?item p:P1535 ?st . ?st ps:P1535 ?op . } }
+    UNION { VALUES ?op { ${states} } ?item p:P1535 ?st . ?st ps:P1535 ?op . }
     OPTIONAL { ?st pq:P580 ?start . }
     ?article schema:about ?item ; schema:isPartOf <https://de.wikipedia.org/> .
   }`;
@@ -212,6 +213,7 @@ const skipTitle = (t) => /^(Liste |Portal:|Kategorie:)/.test(t) || /Begriffsklä
 const ERAS = {
   K: {
     years: [1840, 1918],
+    states: ["Deutsches Kaiserreich"],
     forces: ["Deutsches Heer (Deutsches Kaiserreich)", "Kaiserliche Marine", "Luftstreitkräfte (Deutsches Kaiserreich)", "Kaiserliche Schutztruppe", "Schutztruppe"],
     sources: [
       ["cat", "Flugzeugtyp des Ersten Weltkrieges (Deutsches Reich)", "F", 1],
@@ -219,6 +221,8 @@ const ERAS = {
       ["cat", "Militärluftschiff", "F", 1],
       ["cat", "Militärschiff (Kaiserliche Marine)", "S", 2],
       ["cat", "Militärschiffsklasse (Kaiserliche Marine)", "S", 1],
+      ["cat", "Deutsches Heer (Deutsches Kaiserreich)", null, 2],
+      ["cat", "Luftstreitkräfte (Deutsches Kaiserreich)", null, 2],
       ["search", '"Deutsches Heer" "Erster Weltkrieg" incategory:Maschinengewehr', "M"],
       ["search", 'incategory:"Handwaffe" "Deutsches Heer" Kaiserreich', null],
       ["search", '"Erster Weltkrieg" "Deutsches Heer" Geschütz', null],
@@ -228,8 +232,12 @@ const ERAS = {
   },
   R: {
     years: [1880, 1935],
+    states: ["Weimarer Republik"],
     forces: ["Reichswehr", "Reichsheer", "Reichsmarine"],
     sources: [
+      ["cat", "Militärschiff (Reichsmarine)", "S", 2],
+      ["cat", "Militärschiffsklasse (Reichsmarine)", "S", 1],
+      ["cat", "Reichswehr", null, 2],
       ["search", 'Reichswehr incategory:"Kettenfahrzeug der Wehrmacht"', "P"],
       ["search", 'Reichswehr incategory:"Radfahrzeug der Wehrmacht"', "R"],
       ["search", 'Reichswehr incategory:"Handwaffe der Wehrmacht"', "W"],
@@ -241,6 +249,7 @@ const ERAS = {
   },
   W: {
     years: [1880, 1945],
+    states: ["Deutsches Reich 1933 bis 1945"],
     forces: ["Wehrmacht", "Heer (Wehrmacht)", "Luftwaffe (Wehrmacht)", "Kriegsmarine"],
     sources: [
       ["cat", "Kettenfahrzeug der Wehrmacht", "P", 3],
@@ -255,6 +264,7 @@ const ERAS = {
       ["list", "Liste der Handwaffen der Wehrmacht"],
       ["list", "Liste von Luftfahrzeugen der Luftwaffe (Wehrmacht)"],
       ["list", "Liste von Schiffen der Kriegsmarine"],
+      ["cat", "Wehrmacht", null, 2],
       ["search", "Wehrmacht incategory:Maschinengewehr", "M"],
       ["search", "Wehrmacht incategory:Lenkflugkörper", "K"],
       ["search", "Wehrmacht Vergeltungswaffe Rakete", null],
@@ -262,9 +272,13 @@ const ERAS = {
   },
   N: {
     years: [1930, 1990],
+    states: ["Deutsche Demokratische Republik"],
     forces: ["Nationale Volksarmee", "Landstreitkräfte der NVA", "Luftstreitkräfte der NVA", "Luftstreitkräfte/Luftverteidigung", "Volksmarine", "Grenztruppen der DDR"],
     sources: [
       ["list", "Liste der Technik und Bewaffnung der NVA"],
+      ["cat", "Militärschiff (Volksmarine)", "S", 2],
+      ["cat", "Militärschiffsklasse (Volksmarine)", "S", 1],
+      ["cat", "Nationale Volksarmee", null, 3],
       ["search", '"Nationale Volksarmee" incategory:"Militärisches Kettenfahrzeug"', "P"],
       ["search", '"Nationalen Volksarmee" Panzer', null],
       ["search", "Volksmarine Schiffsklasse", null],
@@ -285,7 +299,7 @@ const ERAS = {
       ["cat", "Militärschiff (Bundeswehr)", "S", 3],
       ["cat", "Militärschiffsklasse (Bundeswehr)", "S", 2],
       ["cat", "Militärische Ausrüstung (Bundeswehr)", "Z", 2],
-      ["cat", "Handwaffe der Bundeswehr", "W", 2],
+      ["cat", "Bundeswehr", null, 2],
       ["list", "Liste von Handwaffen der Bundeswehr"],
       ["list", "Liste von Luftfahrzeugen der Bundeswehr"],
       ["list", "Liste von Kettenfahrzeugen der Bundeswehr"],
@@ -297,6 +311,43 @@ const ERAS = {
     ],
   },
 };
+
+/* ------------------------------------------------------------ Zuordnung zur Epoche */
+const MARKERS = {
+  K: ["kaiserliche marine", "kaiserlichen marine", "deutsches heer \\(deutsches kaiserreich\\)", "luftstreitkräfte \\(deutsches kaiserreich\\)", "schutztruppe", "deutsches kaiserreich", "deutschen kaiserreich", "kaiserlich-deutsch\\w*"],
+  R: ["reichswehr", "reichsmarine", "reichsheer"],
+  W: ["wehrmacht", "kriegsmarine", "luftwaffe \\(wehrmacht\\)", "heer \\(wehrmacht\\)"],
+  N: ["nationale volksarmee", "nationalen volksarmee", "nva", "volksmarine", "ddr", "grenztruppen der ddr"],
+  B: ["bundeswehr", "bundesmarine", "deutsche marine", "deutschen marine", "luftwaffe \\(bundeswehr\\)", "heer \\(bundeswehr\\)"],
+};
+const FOREIGN = ["royal navy", "united states navy", "us navy", "us army", "united states army", "royal air force", "marine nationale", "französische marine", "regia marina", "kaiserlich japanische", "kaiserlich russische", "russische marine", "k\\.u\\.k\\.", "österreichisch-ungarische", "frachtschiff", "passagierschiff", "fährschiff", "kreuzfahrtschiff", "fischereifahrzeug"];
+const wordRe = (words) => new RegExp(`(^|[^a-zäöüß])(${words.join("|")})([^a-zäöüß]|$)`);
+const OWN_RE = Object.fromEntries(Object.entries(MARKERS).map(([k, w]) => [k, wordRe(w)]));
+const OTHER_RE = Object.fromEntries(Object.keys(MARKERS).map((k) => [k, wordRe([...Object.entries(MARKERS).filter(([o]) => o !== k).flatMap(([, w]) => w), ...FOREIGN])]));
+/** true, wenn ein Artikel eindeutig zu einer anderen Epoche oder einer fremden Streitkraft gehört */
+function foreignToEra(key, cats, desc) {
+  const text = [...cats, desc || ""].join(" | ").toLowerCase();
+  return !OWN_RE[key].test(text) && OTHER_RE[key].test(text);
+}
+const GENERIC_TITLES = new Set(["Luftfahrzeug", "Flugzeug", "Panzer", "Kampfpanzer", "Hubschrauber", "Schiff", "Kriegsschiff", "Waffe", "Feuerwaffe", "Handfeuerwaffe", "Kraftfahrzeug", "Militärfahrzeug", "Vorgeschobener Beobachter", "Artillerie", "Geschütz", "Uniform", "Ausrüstung"]);
+const GENERIC_DESC = /^(transportmittel|rolle |begriff|oberbegriff|sammelbegriff|wikimedia-|teilstreitkraft|truppengattung|waffengattung|militärische einheit|verband )/i;
+
+/* ------------------------------------------------------------ Jahreszahlen aus dem Artikelanfang */
+async function introYears(titles, range) {
+  const out = new Map();
+  const list = [...titles];
+  for (let i = 0; i < list.length; i += 20) {
+    const json = await api({ action: "query", titles: list.slice(i, i + 20).join("|"), prop: "extracts", exintro: "1", explaintext: "1", exlimit: "20", exchars: "600" });
+    for (const p of (json && json.query && json.query.pages) || []) {
+      if (!p.extract) continue;
+      for (const m of p.extract.matchAll(/(?<![\d.,])(1[89]\d\d|20[0-2]\d)(?![\d.,])/g)) {
+        const y = Number(m[1]);
+        if (y >= range[0] && y <= range[1]) { out.set(p.title, y); break; }
+      }
+    }
+  }
+  return out;
+}
 
 /* ------------------------------------------------------------ Details */
 /** Details zu vielen Titeln; liefert Map angefragter Titel -> Seite (Weiterleitungen aufgelöst). */
@@ -393,7 +444,9 @@ async function buildEra(key, era) {
 
   const forces = await resolveQids(era.forces);
   log(`Streitkräfte in Wikidata: ${forces.map((f) => `${f.title} (${f.qid})`).join(", ") || "keine gefunden"}`);
-  const operated = await wikidataOperated(forces.map((f) => f.qid), log);
+  const states = await resolveQids(era.states || []);
+  log(`Staaten (verwendet von): ${states.map((f) => `${f.title} (${f.qid})`).join(", ") || "keine"}`);
+  const operated = await wikidataOperated(forces.map((f) => f.qid), states.map((f) => f.qid), log);
   add(operated.keys(), null);
 
   log(`Kandidaten gesamt: ${candidates.size}`);
@@ -402,24 +455,37 @@ async function buildEra(key, era) {
   const wd = await wikidataDetails(qids);
 
   const items = new Map();
-  let dropped = { excluded: 0, unclassified: 0, disambig: 0 };
+  const dropped = { excluded: 0, unclassified: 0, disambig: 0, otherEra: 0, generic: 0 };
   for (const [title, def] of candidates) {
     const page = details.get(title);
     if (!page || page.ns !== 0) continue;
-    if (page.disambig) { dropped.disambig++; continue; }
+    const w = page.qid ? wd.get(page.qid) || {} : {};
+    if (page.disambig || /begriffsklärung/i.test(w.desc || "")) { dropped.disambig++; continue; }
     if (excluded(page.cats)) { dropped.excluded++; continue; }
+    if (GENERIC_TITLES.has(page.title) || GENERIC_DESC.test(w.desc || "")) { dropped.generic++; continue; }
+    const isOperated = operated.has(title) || operated.has(page.title);
+    if (!isOperated && foreignToEra(key, page.cats, w.desc)) { dropped.otherEra++; continue; }
     const c = classify(page.cats);
     let cat;
     if (def) cat = c && (groupOf(c) === groupOf(def) || def === "Z") ? c : def;
     else cat = c;
     if (!cat) { dropped.unclassified++; continue; }
     if (items.has(page.title)) continue;
-    const w = page.qid ? wd.get(page.qid) || {} : {};
     let year = operated.get(title) || operated.get(page.title) || w.service || w.flight || w.inception || null;
+    if (!year) {
+      for (const c2 of page.cats) {
+        const m = c2.match(/(Erstflug|Stapellauf|Indienststellung|Erbaut|Eingeführt)\D*(1[89]\d\d|20[0-2]\d)/i);
+        if (m) { year = Number(m[2]); break; }
+      }
+    }
     if (year && (year < era.years[0] || year > era.years[1])) year = null;
     const img = page.thumb || (w.image ? commonsThumb(w.image) : null);
     items.set(page.title, { t: page.title, c: cat, y: year, img, d: w.desc || null });
   }
+  const noYear = [...items.values()].filter((x) => !x.y).map((x) => x.t);
+  const fromIntro = await introYears(noYear, era.years);
+  for (const [t, y] of fromIntro) if (items.has(t)) items.get(t).y = y;
+  log(`Jahreszahlen aus dem Artikelanfang ergänzt: ${fromIntro.size} von ${noYear.length}`);
   const list = [...items.values()].sort((a, b) => (a.y || 9999) - (b.y || 9999) || a.t.localeCompare(b.t, "de"));
   const byCat = {};
   list.forEach((x) => { byCat[x.c] = (byCat[x.c] || 0) + 1; });

@@ -2,6 +2,9 @@
 
 /** Reihenfolge ist wichtig: spezifische Begriffe vor allgemeinen. */
 export const CATEGORY_RULES = [
+  ["K", ["u-boot-abwehr", "wasserbombe"]],
+  ["S", ["torpedoboot", "schnellboot", "kanonenboot", "minensuchboot", "u-boot", "unterseeboot", "minenleger", "hilfskreuzer", "militärschiff", "schiffsklasse"]],
+  ["K", ["panzerabwehrmine", "landmine", "seemine", "abwehrmine"]],
   ["M", ["maschinengewehr"]],
   ["A", ["raketenwerfer", "artilleriesystem", "panzerhaubitze", "selbstfahrlafette", "eisenbahngeschütz"]],
   ["K", ["rakete", "flugkörper", "lenkwaffe", "panzerabwehrwaffe", "marschflugkörper", "torpedo", "fliegerbombe", "gleitbombe", "seemine", "landmine"]],

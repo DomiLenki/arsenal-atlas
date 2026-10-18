@@ -68,7 +68,7 @@ button:disabled{opacity:.35;cursor:default}
 .stile{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:12px;background:var(--deep);border:1px solid var(--line);min-width:0}
 .stile:active{border-color:var(--brass)}
 .stile .ico24{color:var(--brass)}
-.stile b{font:700 19px/1.1 var(--cond);letter-spacing:.03em;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere}
+.stile b{font:700 19px/1.1 var(--cond);letter-spacing:.03em;hyphens:manual}
 .stile small{color:var(--mute);font-size:12.5px;line-height:1.35}
 .stile em{font-style:normal;color:var(--brass);font:600 12px var(--mono)}
 .station{position:relative;display:flex;gap:16px;padding:0 18px 28px}
@@ -267,7 +267,7 @@ tr:last-child td{border-bottom:0}
 .role .ico24{width:34px;height:34px;color:var(--brass);flex:none}
 .role b{display:block;font:800 24px/1.1 var(--cond);letter-spacing:.03em}
 .role small{display:block;margin-top:3px;color:var(--mute);font-size:14px;line-height:1.4}
-.rolechip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font:600 12px var(--mono);color:var(--brass);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.rolechip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;white-space:nowrap;font:600 11px var(--mono);color:var(--brass);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
 .stile.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:12px}
 .stile.wide div{display:flex;flex-direction:column;gap:2px}
 details.hint{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
@@ -885,6 +885,9 @@ const SRC={
 
 /** Reihenfolge ist wichtig: spezifische Begriffe vor allgemeinen. */
 const CATEGORY_RULES = [
+  ["K", ["u-boot-abwehr", "wasserbombe"]],
+  ["S", ["torpedoboot", "schnellboot", "kanonenboot", "minensuchboot", "u-boot", "unterseeboot", "minenleger", "hilfskreuzer", "militärschiff", "schiffsklasse"]],
+  ["K", ["panzerabwehrmine", "landmine", "seemine", "abwehrmine"]],
   ["M", ["maschinengewehr"]],
   ["A", ["raketenwerfer", "artilleriesystem", "panzerhaubitze", "selbstfahrlafette", "eisenbahngeschütz"]],
   ["K", ["rakete", "flugkörper", "lenkwaffe", "panzerabwehrwaffe", "marschflugkörper", "torpedo", "fliegerbombe", "gleitbombe", "seemine", "landmine"]],
@@ -1099,11 +1102,11 @@ function viewWelcome(){
 
 /* ---------- Startseite ---------- */
 function viewHome(){
- return`<div class="view"><div class="head"><img src="${LOGO}" alt=""><div><div class="t">ARSENAL <span>ATLAS</span></div><p>Deutsche Militärgeschichte in Technik und Kontext, 1871 bis heute</p><button class="rolechip" data-action="switch-role">${isTeacher()?"Ansicht für Lehrkräfte":"Ansicht für Schüler"} · wechseln</button></div>
+ return`<div class="view"><div class="head"><img src="${LOGO}" alt=""><div><div class="t">ARSENAL <span>ATLAS</span></div><p>Deutsche Militärgeschichte in Technik und Kontext, 1871 bis heute</p><button class="rolechip" data-action="switch-role">${isTeacher()?"Lehrkraft":"Schüler"} · wechseln</button></div>
  <a class="gear" href="#/settings" aria-label="Anzeige einstellen">${ico("sliders")}</a></div>
  <div class="pad"><div class="label" style="margin-bottom:12px">${isTeacher()?"Für den Unterricht":"Lernen und üben"}</div><div class="school">
   <a class="stile" href="#/quiz" data-action="quiz-home">${ico("quiz")}<b>Quiz</b><small>10 Fragen zu einer oder allen Epochen</small></a>
-  <a class="stile" href="#/mappe">${ico("folder")}<b>${isTeacher()?"Unterrichtsmappe":"Meine Mappe"}</b><small>${isTeacher()?"Sammeln, vergleichen, präsentieren":"Sammeln, vergleichen, Referat halten"}</small><em>${MAPPE.length} gespeichert</em></a>
+  <a class="stile" href="#/mappe">${ico("folder")}<b>${isTeacher()?"Unterrichts&shy;mappe":"Meine Mappe"}</b><small>${isTeacher()?"Sammeln, vergleichen, präsentieren":"Sammeln, vergleichen, Referat halten"}</small><em>${MAPPE.length} gespeichert</em></a>
   <a class="stile" href="#/aufgaben">${ico("star")}<b>Aufgaben</b><small>${isTeacher()?"Alle Arbeitsaufträge mit Lösungshinweisen":"Arbeitsaufträge zu allen Epochen"}</small></a>
   <a class="stile" href="#/glossar">${ico("book")}<b>Glossar</b><small>${GLOSSAR.length} Fachbegriffe kurz erklärt</small></a>
   ${isTeacher()?`<a class="stile wide" href="#/lehrkraefte">${ico("info")}<div><b>Für Lehrkräfte</b><small>Einsatzideen, didaktische Hinweise, Datenschutz</small></div></a>`:""}
