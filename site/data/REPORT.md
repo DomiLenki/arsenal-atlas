@@ -1,4 +1,4 @@
-## Arsenal Atlas – Datenstand 2026-10-19T09:02:00.288Z
+## Arsenal Atlas – Datenstand 2026-10-26T09:04:49.678Z
 
 ### K
 - Kategorie „Flugzeugtyp des Ersten Weltkrieges (Deutsches Reich)“ (Tiefe 1): 369 Artikel aus 13 Kategorien
@@ -11,12 +11,12 @@
 - Kategorie „Luftstreitkräfte (Deutsches Kaiserreich)“ (Tiefe 2): 323 Artikel aus 11 Kategorien
 - Suche "Erster Weltkrieg" incategory:Maschinengewehr: 4 Treffer
 - Suche "deutschen Heer" Gewehr eingeführt: 22 Treffer
-- Suche "Deutschen Heeres" Gewehr OR Karabiner OR Pistole OR Revolver: 997 Treffer
-- Suche "Erster Weltkrieg" deutsche Handgranate OR Minenwerfer OR Granatwerfer: 995 Treffer
+- Suche "Deutschen Heeres" Gewehr OR Karabiner OR Pistole OR Revolver: 999 Treffer
+- Suche "Erster Weltkrieg" deutsche Handgranate OR Minenwerfer OR Granatwerfer: 999 Treffer
 - Suche "Erster Weltkrieg" Krupp Feldkanone OR Haubitze OR Mörser: 260 Treffer
-- Suche "Kaiserlichen Marine" Schiffsgeschütz OR Torpedo: 1000 Treffer
+- Suche "Kaiserlichen Marine" Schiffsgeschütz OR Torpedo: 995 Treffer
 - Suche "Ersten Weltkrieg" Stahlhelm OR Gasmaske OR Feldgrau OR Uniform deutsch: 1000 Treffer
-- Suche "Ersten Weltkrieg" deutsches Flugabwehrgeschütz OR Ballonabwehrkanone: 990 Treffer
+- Suche "Ersten Weltkrieg" deutsches Flugabwehrgeschütz OR Ballonabwehrkanone: 998 Treffer
 - Suche incategory:"Handwaffe" "Deutsches Heer" Kaiserreich: 0 Treffer
 - Suche "Erster Weltkrieg" "Deutsches Heer" Geschütz: 3 Treffer
 - Suche "Erster Weltkrieg" deutscher Panzerwagen: 54 Treffer
@@ -24,10 +24,10 @@
 - Streitkräfte in Wikidata: Kaiserliche Marine (Q156649), Schutztruppe (Q513069), Luftstreitkräfte (Deutsches Kaiserreich) (Q678503), Deutsches Heer (Deutsches Kaiserreich) (Q313422)
 - Staaten (verwendet von): Deutsches Kaiserreich (Q43287)
 - Wikidata „betrieben/verwendet von“: 788 Artikel
-- Kandidaten gesamt: 4745
-- Jahreszahlen aus dem Artikelanfang ergänzt: 177 von 427
-- Ergebnis: 1319 Einträge · mit Foto 1056 · mit Jahr 1069 · je Kategorie {"Z":29,"W":15,"A":130,"S":806,"M":5,"R":11,"F":300,"P":20,"K":2,"H":1}
-- Aussortiert: {"excluded":2286,"unclassified":734,"disambig":52,"otherEra":162,"generic":37}
+- Kandidaten gesamt: 4750
+- Jahreszahlen aus dem Artikelanfang ergänzt: 180 von 456
+- Ergebnis: 1321 Einträge · mit Foto 1041 · mit Jahr 1045 · je Kategorie {"Z":29,"W":15,"A":130,"S":807,"M":5,"R":11,"F":301,"P":20,"K":2,"H":1}
+- Aussortiert: {"excluded":2294,"unclassified":730,"disambig":54,"otherEra":158,"generic":36}
 
 ### R
 - Kategorie „Militärschiff (Reichsmarine)“ (Tiefe 2): 105 Artikel aus 18 Kategorien
@@ -67,11 +67,11 @@
 - Suche Wehrmacht Vergeltungswaffe Rakete: 42 Treffer
 - Streitkräfte in Wikidata: Luftwaffe (Wehrmacht) (Q2564009), Kriegsmarine (Q151701), Wehrmacht (Q128781), Heer (Wehrmacht) (Q701923)
 - Staaten (verwendet von): NS-Staat (Q7318)
-- Wikidata „betrieben/verwendet von“: 1266 Artikel
+- Wikidata „betrieben/verwendet von“: 1265 Artikel
 - Kandidaten gesamt: 4195
-- Jahreszahlen aus dem Artikelanfang ergänzt: 473 von 1006
-- Ergebnis: 2260 Einträge · mit Foto 1539 · mit Jahr 1727 · je Kategorie {"S":1238,"A":247,"W":79,"R":130,"K":58,"M":23,"Z":82,"P":130,"F":262,"H":11}
-- Aussortiert: {"excluded":886,"unclassified":540,"disambig":33,"otherEra":46,"generic":52}
+- Jahreszahlen aus dem Artikelanfang ergänzt: 511 von 1116
+- Ergebnis: 2262 Einträge · mit Foto 1521 · mit Jahr 1657 · je Kategorie {"S":1238,"A":247,"M":23,"W":79,"R":130,"K":58,"Z":82,"P":131,"F":263,"H":11}
+- Aussortiert: {"excluded":886,"unclassified":540,"disambig":33,"otherEra":46,"generic":46}
 
 ### N
 - Liste „Liste der Technik und Bewaffnung der NVA“: 388 verlinkte Artikel
@@ -92,16 +92,16 @@
 - Kandidaten gesamt: 1132
 - Jahreszahlen aus dem Artikelanfang ergänzt: 100 von 209
 - Ergebnis: 354 Einträge · mit Foto 332 · mit Jahr 245 · je Kategorie {"W":17,"A":45,"Z":48,"M":10,"R":89,"P":32,"S":40,"F":28,"H":7,"K":38}
-- Aussortiert: {"excluded":352,"unclassified":212,"disambig":14,"otherEra":30,"generic":24}
+- Aussortiert: {"excluded":353,"unclassified":211,"disambig":14,"otherEra":30,"generic":24}
 
 ### B
 - Kategorie „Kettenfahrzeug der Bundeswehr“ (Tiefe 3): 61 Artikel aus 1 Kategorien
 - Kategorie „Radfahrzeug der Bundeswehr“ (Tiefe 3): 58 Artikel aus 1 Kategorien
-- Kategorie „Luftfahrzeug der Bundeswehr“ (Tiefe 3): 95 Artikel aus 5 Kategorien
+- Kategorie „Luftfahrzeug der Bundeswehr“ (Tiefe 3): 96 Artikel aus 5 Kategorien
 - Kategorie „Militärschiff (Bundeswehr)“ (Tiefe 3): 172 Artikel aus 35 Kategorien
 - Kategorie „Militärschiffsklasse (Bundeswehr)“ (Tiefe 2): 89 Artikel aus 1 Kategorien
-- Kategorie „Militärische Ausrüstung (Bundeswehr)“ (Tiefe 2): 436 Artikel aus 23 Kategorien
-- Kategorie „Bundeswehr“ (Tiefe 2): 1687 Artikel aus 72 Kategorien
+- Kategorie „Militärische Ausrüstung (Bundeswehr)“ (Tiefe 2): 437 Artikel aus 23 Kategorien
+- Kategorie „Bundeswehr“ (Tiefe 2): 1689 Artikel aus 72 Kategorien
 - Liste „Liste von Handwaffen der Bundeswehr“: 191 verlinkte Artikel
 - Liste „Liste von Luftfahrzeugen der Bundeswehr“: 178 verlinkte Artikel
 - Liste „Liste von Kettenfahrzeugen der Bundeswehr“: 133 verlinkte Artikel
@@ -113,20 +113,20 @@
 - Streitkräfte in Wikidata: Bundeswehr (Q56010), Bundesmarine (Q314103), Deutsche Marine (Q56015), Heeresflieger (Q1593564), Streitkräftebasis (Q56017), Heer (Bundeswehr) (Q11322507), Luftwaffe (Bundeswehr) (Q56013)
 - Staaten (verwendet von): keine
 - Wikidata „betrieben/verwendet von“: 378 Artikel
-- Kandidaten gesamt: 2636
-- Jahreszahlen aus dem Artikelanfang ergänzt: 211 von 418
-- Ergebnis: 794 Einträge · mit Foto 721 · mit Jahr 587 · je Kategorie {"S":257,"Z":95,"W":52,"M":12,"A":24,"F":102,"P":70,"R":104,"K":42,"H":36}
-- Aussortiert: {"excluded":1120,"unclassified":558,"disambig":1,"otherEra":30,"generic":27}
+- Kandidaten gesamt: 2639
+- Jahreszahlen aus dem Artikelanfang ergänzt: 211 von 417
+- Ergebnis: 794 Einträge · mit Foto 721 · mit Jahr 588 · je Kategorie {"S":256,"Z":95,"W":52,"M":12,"A":24,"F":103,"P":70,"R":104,"K":42,"H":36}
+- Aussortiert: {"excluded":1121,"unclassified":560,"disambig":1,"otherEra":30,"generic":27}
 
 ### Highlights
 Highlights: 274 von 280 zugeordnet, 265 mit Foto
 Ohne passenden Artikel: Kfz 13, Feldfernsprecher 33, Zielfernrohr ZF 39, LARS 110 mm, Gefechtshelm B826, Nachtsichtbrille Lucie
 
 #### Gründe
-- **Kfz 13** – direkt: nicht gefunden; Suche: Kfz-Kennzeichen (Türkei) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen nach Staat; Kategorien: Kategorie:Kraftfahrzeugkennzeichen nach Staat, Kategorie:Straßenverkehr (Türkei)] | Kfz-Kennzeichen (Deutschland) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Deutschland); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Deutschland), Kategorie:Wikipedia:Lesenswert] | Schwerer Panzerspähwagen [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Radfahrzeug der Wehrmacht, Kategorie:Reichswehr] | Kfz-Kennzeichen (Niederlande) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Königreich der Niederlande); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Königreich der Niederlande), Kategorie:Straßenverkehr (Niederlande)] | Panzerspähwagen Sd.Kfz. 234 [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Militärisches Radfahrzeug (8×8), Kategorie:Radpanzer]
+- **Kfz 13** – direkt: nicht gefunden; Suche: Kfz-Kennzeichen (Türkei) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen nach Staat; Kategorien: Kategorie:Kraftfahrzeugkennzeichen nach Staat, Kategorie:Straßenverkehr (Türkei)] | Panzerspähwagen Sd.Kfz. 234 [ns 0; Einordnung R; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Militärisches Radfahrzeug (8×8), Kategorie:Radpanzer] | Kfz-Kennzeichen (Deutschland) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Deutschland); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Deutschland), Kategorie:Wikipedia:Lesenswert] | Liste der deutschen Kfz-Kennzeichen (historisch) [ns 0; Einordnung R; Ausschluss Kategorie:Kraftfahrzeugkennzeichen (Deutschland); Kategorien: Kategorie:Kraftfahrzeugkennzeichen (Deutschland)] | Schwerer Panzerspähwagen [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Aufklärungspanzer der Wehrmacht, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Radfahrzeug der Wehrmacht, Kategorie:Reichswehr]
 - **Feldfernsprecher 33** – direkt: nicht gefunden; Suche: Liste von Auslandshilfen für die Ukraine seit 2014 [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Humanitäre Hilfe (Militär), Kategorie:Humanitäre Hilfsaktion, Kategorie:Liste (Politik), Kategorie:Russisch-Ukrainischer Krieg] | Wehrmacht [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Aufgelöst 1946, Kategorie:Deutschland im Zweiten Weltkrieg, Kategorie:Gegründet 1935, Kategorie:Wehrmacht] | Luftstreitkräfte (Deutsches Kaiserreich) [ns 0; Einordnung F; Ausschluss –; Kategorien: Kategorie:Ballonfahren (Deutschland), Kategorie:Deutsche Militärgeschichte (Erster Weltkrieg), Kategorie:Gegründet 1913, Kategorie:Historische Luftstreitkraft, Kategorie:Luftschifffahrt (Deutschland), Kategorie:Luftstreitkräfte (Deutsches Kaiserreich), Kategorie:Luftstreitkräfte im Ersten Weltkrieg]
-- **Zielfernrohr ZF 39** – direkt: nicht gefunden; Suche: Scharfschütze [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Allgemeine Truppenkunde, Kategorie:Berufliche Funktion der Polizei, Kategorie:Infanterie, Kategorie:Kriegs- und Gefechtsführung, Kategorie:Scharfschütze, Kategorie:Waffengebrauch] | Scharfschützengewehr [ns 0; Einordnung W; Ausschluss –; Kategorien: Kategorie:Scharfschütze, Kategorie:Scharfschützengewehr] | Berlin-Lübecker Maschinenfabriken [ns 0; Einordnung null; Ausschluss Kategorie:Ehemaliger Waffenhersteller; Kategorien: Kategorie:Ehemaliger Waffenhersteller, Kategorie:Ehemaliges Unternehmen (Lübeck), Kategorie:Lübeck-St. Gertrud, Kategorie:Lübeck im 20. Jahrhundert, Kategorie:NS-Zwangsarbeit, Kategorie:Unternehmen (Deutsches Reich, 1933–1945), Kategorie:Unternehmensgründung 1934, Kategorie:Wehr- und Rüstungswirtschaft im Nationalsozialismus] | Leopard 1 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer, Kategorie:Kettenfahrzeug der Bundeswehr, Kategorie:Krauss-Maffei Wegmann, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Rheinmetall, Kategorie:Wikipedia:Exzellent]
-- **LARS 110 mm** – direkt: nicht gefunden; Suche: Artillerie [ns 0; Einordnung A; Ausschluss Kategorie:Truppengattung; Kategorien: Kategorie:Artillerie, Kategorie:Truppengattung] | Raketenwerfer [ns 0; Einordnung A; Ausschluss –; Kategorien: Kategorie:Artillerie, Kategorie:Raketenartillerie, Kategorie:Raketenwerfer] | Kaga (Schiff, 1928) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Flugzeugträger (Japanisches Kaiserreich), Kategorie:Militärschiff (Kawasaki), Kategorie:Schiff im Pazifikkrieg, Kategorie:Schiffsverlust 1942, Kategorie:Schiffsverlust im Zweiten Weltkrieg, Kategorie:Tosa-Klasse] | Fubuki-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Fubuki-Klasse, Kategorie:Militärschiffsklasse (Japanisches Kaiserreich), Kategorie:Zerstörerklasse] | Artillerietruppe (Bundeswehr) [ns 0; Einordnung A; Ausschluss Kategorie:Truppengattung (Bundeswehr); Kategorien: Kategorie:Truppengattung (Bundeswehr), Kategorie:Truppenteil (Artillerie, Bundeswehr)]
+- **Zielfernrohr ZF 39** – direkt: nicht gefunden; Suche: Scharfschützengewehr [ns 0; Einordnung W; Ausschluss –; Kategorien: Kategorie:Scharfschütze, Kategorie:Scharfschützengewehr] | Scharfschütze [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Allgemeine Truppenkunde, Kategorie:Berufliche Funktion der Polizei, Kategorie:Infanterie, Kategorie:Kriegs- und Gefechtsführung, Kategorie:Scharfschütze, Kategorie:Waffengebrauch] | Berlin-Lübecker Maschinenfabriken [ns 0; Einordnung null; Ausschluss Kategorie:Ehemaliger Waffenhersteller; Kategorien: Kategorie:Ehemaliger Waffenhersteller, Kategorie:Ehemaliges Unternehmen (Lübeck), Kategorie:Lübeck-St. Gertrud, Kategorie:Lübeck im 20. Jahrhundert, Kategorie:NS-Zwangsarbeit, Kategorie:Unternehmen (Deutsches Reich, 1933–1945), Kategorie:Unternehmensgründung 1934, Kategorie:Wehr- und Rüstungswirtschaft im Nationalsozialismus] | Leopard 1 [ns 0; Einordnung P; Ausschluss –; Kategorien: Kategorie:Kampfpanzer, Kategorie:Kettenfahrzeug der Bundeswehr, Kategorie:Krauss-Maffei Wegmann, Kategorie:Museumsbestand (Wehrtechnische Studiensammlung Koblenz), Kategorie:Rheinmetall, Kategorie:Wikipedia:Exzellent]
+- **LARS 110 mm** – direkt: nicht gefunden; Suche: Raketenwerfer [ns 0; Einordnung A; Ausschluss –; Kategorien: Kategorie:Artillerie, Kategorie:Raketenartillerie, Kategorie:Raketenwerfer] | Artillerie [ns 0; Einordnung A; Ausschluss Kategorie:Truppengattung; Kategorien: Kategorie:Artillerie, Kategorie:Truppengattung] | Kaga (Schiff, 1928) [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Flugzeugträger (Japanisches Kaiserreich), Kategorie:Militärschiff (Kawasaki), Kategorie:Schiff im Pazifikkrieg, Kategorie:Schiffsverlust 1942, Kategorie:Schiffsverlust im Zweiten Weltkrieg, Kategorie:Tosa-Klasse] | Fubuki-Klasse [ns 0; Einordnung S; Ausschluss –; Kategorien: Kategorie:Fubuki-Klasse, Kategorie:Militärschiffsklasse (Japanisches Kaiserreich), Kategorie:Zerstörerklasse] | Streitkräfte Saudi-Arabiens [ns 0; Einordnung null; Ausschluss –; Kategorien: Kategorie:Militär (Saudi-Arabien), Kategorie:Streitkräfte]
 - **Gefechtshelm B826** – direkt: nicht gefunden; Suche: keine Treffer
 - **Nachtsichtbrille Lucie** – direkt: nicht gefunden; Suche: keine Treffer
 
@@ -219,7 +219,7 @@ Ohne passenden Artikel: Kfz 13, Feldfernsprecher 33, Zielfernrohr ZF 39, LARS 11
 | DFS 230 | DFS 230 | ja |
 | Flugzeugträger Graf Zeppelin | Graf Zeppelin (Schiff, 1938) | ja |
 | U-Boot-Typ IX | U-Boot-Klasse IX | ja |
-| Panzerkampfwagen 38(t) | Panzerkampfwagen II | ja |
+| Panzerkampfwagen 38(t) | Panzerkampfwagen VIII Maus | ja |
 | Sd.Kfz. 251 | Schützenpanzerwagen Sd.Kfz. 251 | ja |
 | Eihandgranate 39 | Eihandgranate 39 | ja |
 | Zielfernrohr ZF 39 | – | nein |
@@ -413,4 +413,4 @@ Ohne passenden Artikel: Kfz 13, Feldfernsprecher 33, Zielfernrohr ZF 39, LARS 11
 | G95 | HK416 | ja |
 | F-35A Lightning II | Lockheed Martin F-35 | ja |
 
-1421 Anfragen in 467 s
+1525 Anfragen in 973 s
